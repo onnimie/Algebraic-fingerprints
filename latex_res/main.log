@@ -1,0 +1,838 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.28)  9 MAR 2023 00:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-24>
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(c:/texlive/2022/texmf-dist/tex/latex/ae/ae.sty
+Package: ae 2001/02/12 1.3 Almost European Computer Modern
+
+(c:/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+))
+(c:/texlive/2022/texmf-dist/tex/latex/ae/aecompl.sty
+Package: aecompl 1998/07/23 0.9 T1 Complements for AE fonts (D. Roegel)
+)
+(c:/texlive/2022/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/01/23 3.85 The Babel package
+\babel@savecnt=\count193
+\U@D=\dimen141
+\l@unhyphenated=\language87
+
+(c:/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count194
+
+(c:/texlive/2022/texmf-dist/tex/generic/babel-finnish/finnish.ldf
+Language: finnish 2021/02/06 v1.3s Finnish support from the babel system
+Package babel Info: Making " an active character on input line 85.
+)
+(c:/texlive/2022/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language21). Reported on input line 108.
+)
+(c:/texlive/2022/texmf-dist/tex/generic/babel-swedish/swedish.ldf
+Language: swedish 2021/02/06 v2.3e Swedish support from the babel system
+)
+
+Package babel Warning: Last declared language option is 'finnish',
+(babel)                but the last processed one was 'swedish'.
+(babel)                The main language can't be set as both a global
+(babel)                and a package option. Use 'main=finnish' as
+(babel)                option. Reported on input line 4381.
+
+) (c:/texlive/2022/texmf-dist/tex/generic/babel/locale/sv/babel-swedish.tex
+Package babel Info: Importing font and identification data for swedish
+(babel)             from babel-sv.ini. Reported on input line 11.
+)
+(c:/texlive/2022/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+)
+(c:/texlive/2022/texmf-dist/tex/generic/babel/locale/fi/babel-finnish.tex
+Package babel Info: Importing font and identification data for finnish
+(babel)             from babel-fi.ini. Reported on input line 11.
+)
+(./aaltosci_t.sty
+Package: aaltosci_t 2011/02/01 v1.02 TIK.kand style
+ (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(c:/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(c:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(c:/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen142
+\Gin@req@width=\dimen143
+)
+(c:/texlive/2022/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip50
+\bibsep=\skip51
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count195
+))
+(c:/texlive/2022/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen144
+))
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen145
+)
+(c:/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count196
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count197
+\leftroot@=\count198
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count199
+\DOTSCASE@=\count266
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen146
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count267
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count268
+\dotsspace@=\muskip16
+\c@parentequation=\count269
+\dspbrk@lvl=\count270
+\tag@help=\toks21
+\row@=\count271
+\column@=\count272
+\maxfields@=\count273
+\andhelp@=\toks22
+\eqnshift@=\dimen147
+\alignsep@=\dimen148
+\tagshift@=\dimen149
+\tagwidth@=\dimen150
+\totwidth@=\dimen151
+\lineht@=\dimen152
+\@envbody=\toks23
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(c:/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count274
+\calc@Bcount=\count275
+\calc@Adimen=\dimen153
+\calc@Bdimen=\dimen154
+\calc@Askip=\skip55
+\calc@Bskip=\skip56
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count276
+\calc@Cskip=\skip57
+)
+(c:/texlive/2022/texmf-dist/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box53
+)
+(c:/texlive/2022/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(c:/texlive/2022/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count277
+\lst@gtempboxa=\box54
+\lst@token=\toks25
+\lst@length=\count278
+\lst@currlwidth=\dimen155
+\lst@column=\count279
+\lst@pos=\count280
+\lst@lostspace=\dimen156
+\lst@width=\dimen157
+\lst@newlines=\count281
+\lst@lineno=\count282
+\lst@maxwidth=\dimen158
+
+(c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count283
+\lst@skipnumbers=\count284
+\lst@framebox=\box55
+)
+(c:/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(c:/texlive/2022/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(c:/texlive/2022/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count285
+\float@exts=\toks26
+\float@box=\box56
+\@float@everytoks=\toks27
+\@floatcapt=\box57
+)
+(c:/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks28
+\c@algorithm=\count286
+)
+(c:/texlive/2022/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count287
+\c@ALC@line=\count288
+\c@ALC@rem=\count289
+\c@ALC@depth=\count290
+\ALC@tlm=\skip58
+\algorithmicindent=\skip59
+)
+(c:/texlive/2022/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+\langwohyphens=\language88
+LaTeX Info: Redefining \_ on input line 43.
+)
+(c:/texlive/2022/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2020/02/02 v4.1g the supertabular environment
+\c@tracingst=\count291
+\ST@wd=\dimen159
+\ST@rightskip=\skip60
+\ST@leftskip=\skip61
+\ST@parfillskip=\skip62
+\ST@pageleft=\dimen160
+\ST@headht=\dimen161
+\ST@tailht=\dimen162
+\ST@pagesofar=\dimen163
+\ST@pboxht=\dimen164
+\ST@lineht=\dimen165
+\ST@prevht=\dimen166
+\ST@toadd=\dimen167
+\ST@dimen=\dimen168
+\ST@pbox=\box58
+)
+(c:/texlive/2022/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen169
+\ar@mcellbox=\box59
+\extrarowheight=\dimen170
+\NC@list=\toks29
+\extratabsurround=\skip63
+\backup@length=\skip64
+\ar@cellbox=\box60
+)
+LaTeX Font Info:    Trying to load font information for T1+aer on input line 62
+.
+
+(c:/texlive/2022/texmf-dist/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)
+(c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count292
+\l__pdf_internal_box=\box61
+)
+(./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+ (c:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count293
+\scratchdimen=\dimen171
+\scratchbox=\box62
+\nofMPsegments=\count294
+\nofMParguments=\count295
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count296
+\MPscratchDim=\dimen172
+\MPnumerator=\count297
+\makeMPintoPDFobject=\count298
+\everyMPtoPDFconversion=\toks31
+) (c:/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(c:/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count299
+
+(./makroja.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 226--226
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 226
+.
+(c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 226
+.
+
+(c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./luku_abstrak
+tit.tex
+Overfull \hbox (2.61234pt too wide) in paragraph at lines 8--44
+[][] [] 
+ []
+
+[2]) (./main.toc)
+\tf@toc=\write3
+\openout3 = `main.toc'.
+
+ [3
+
+] (./luku_lyhenteet.tex
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
+[]|\T1/aer/m/n/12 3rd Gen-er-a-tion Part-ner-ship Project; Kol-man-nen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[]|\T1/aer/m/n/12 Encapsulating Se-cu-rity Pay-load; Yksi IPsec-
+ []
+
+) [4
+
+] (./luku_sisalto.tex
+Overfull \hbox (10.36789pt too wide) in paragraph at lines 5--13
+\T1/aer/m/n/12 poly-no-mial con-tains a mul-ti-lin-ear mono-mial. Namely, the m
+ethod of al-ge-braic fin-ger-print-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--37
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 38--45
+
+ []
+
+LaTeX Font Info:    Trying to load font information for T1+aett on input line 6
+1.
+(c:/texlive/2022/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+
+LaTeX Warning: Reference `sec:esimluku' on page 6 undefined on input line 67.
+
+
+Overfull \hbox (16.52315pt too wide) in paragraph at lines 81--85
+\T1/aer/m/n/12 tarvetta jakaa alalukui-hin, diplomi-työssä ja muissa isom-missa
+ töissä sekä tutkimus-ra-porteissa
+ []
+
+
+Overfull \hbox (5.43552pt too wide) in paragraph at lines 81--85
+\T1/aer/m/n/12 alalu-vut ovat mah-dol-lisia (esim. 1.1 Tutkimu-songelma, 1.2 Ai
+neisto ja tutkimus-menetelmä,
+ []
+
+[6]
+LaTeX Font Info:    Trying to load font information for TS1+aer on input line 9
+6.
+LaTeX Font Info:    No file TS1aer.fd. on input line 96.
+
+
+LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
+(Font)              using `TS1/cmr/m/n' instead
+(Font)              for symbol `textbullet' on input line 96.
+
+[7]
+Overfull \hbox (16.62212pt too wide) in paragraph at lines 154--162
+[]\T1/aer/m/it/12 Kandidaatintyö voi pe-rus-tua teo-reet-tisen taus-tan tarkast
+eluun ja sen analysoin-tiin
+ []
+
+
+Overfull \hbox (1.90125pt too wide) in paragraph at lines 187--201
+\T1/aer/m/n/12 kaikki sivut yh-teen nim-iöle-hdestä lähdeluet-telon tai li-it-t
+ei-den lop-puun (Kir-jas-ton su-ulli-nen
+ []
+
+
+Overfull \hbox (7.85997pt too wide) in paragraph at lines 207--210
+[]\T1/aer/m/n/12 Huomaa, että TKK:n kan-di-daat-in-työn ohjeissa sivu-jen nu-me
+roin-nin ohjeet ovat ri-s-tiri-itaiset
+ []
+
+[8]
+Overfull \hbox (47.5237pt too wide) in paragraph at lines 249--254
+[]\T1/aer/m/n/12 Ohjeita kan-di-daat-in-työn eri osien kir-joit-tamiseen on sis
+äl-lytetty tähän po-h-jaan. Kir-joit-tamiso-hjeita
+ []
+
+
+Package natbib Warning: Citation `kauranen2006' on page 9 undefined on input li
+ne 260.
+
+[9]
+
+Package natbib Warning: Citation `hirsjarvi2009' on page 10 undefined on input 
+line 264.
+
+
+Package natbib Warning: Citation `oikeinkirjoitus2010' on page 10 undefined on 
+input line 268.
+
+
+Overfull \hbox (38.80011pt too wide) in paragraph at lines 301--308
+\T1/aer/m/n/12 ko-men-toja). Tämän doku-mentin sivuaset-te-lut tehdään pääosin 
+tyyl-i-tiedos-tossa [][]\T1/aett/m/n/12 aaltosci_t.sty[]\T1/aer/m/n/12 ,
+ []
+
+
+Package natbib Warning: Citation `lyhyt2e' on page 10 undefined on input line 3
+10.
+
+
+Package natbib Warning: Citation `mattakivela' on page 10 undefined on input li
+ne 311.
+
+
+Package natbib Warning: Citation `mittelbach2004' on page 10 undefined on input
+ line 315.
+
+
+Overfull \hbox (22.08537pt too wide) in paragraph at lines 309--318
+\T1/aer/m/n/12 suomeksi: \T1/aer/b/n/12 ?\T1/aer/m/n/12 , \T1/aer/b/n/12 ?\T1/a
+er/m/n/12 , Wik-i-booksin LaTeX-opas[], Jukka Ko-r-pelan LaTeX-sivut[] yms. Jär
+käle-teok-sia,
+ []
+
+[10]
+Overfull \hbox (5.69933pt too wide) in paragraph at lines 348--351
+[]\T1/aer/m/n/12 Käännösvaiheissa hakemis-toon ilmestyy mo-n-en-laisia työ- ja 
+lok-i-tiedos-toja, joiden päät-teinä
+ []
+
+[11]
+
+LaTeX Warning: Reference `sec:hienos' on page 12 undefined on input line 408.
+
+
+LaTeX Warning: Reference `sec:esim_tavutus' on page 12 undefined on input line 
+427.
+
+[12]
+Overfull \hbox (6.4556pt too wide) in paragraph at lines 436--440
+[][]\T1/aett/m/n/12 \clearpage []\T1/aer/m/n/12 tai [][]\T1/aett/m/n/12 \afterp
+age{\clearpage}[]\T1/aer/m/n/12 , minkä tarkoituk-sena pakot-taa kel-lu-vat ob-
+jek-tit
+ []
+
+
+Underfull \hbox (badness 3386) in paragraph at lines 478--485
+\T1/aer/m/n/12 1,5, mutta sen voi ha-lutes-saan vai-h-taa vä-liksi 1 kom-men-to
+imalla [][]\T1/aett/m/n/12 main.tex[]\T1/aer/m/n/12 in
+ []
+
+
+Package natbib Warning: Citation `ipdcforum_def' on page 13 undefined on input 
+line 503.
+
+
+Overfull \hbox (2.91707pt too wide) in paragraph at lines 499--504
+[]\T1/aer/m/it/12 IP Dat-a-cast-ing is a ser-vice where dig-i-tal con-tent for-
+mats, soft-ware ap-pli-ca-tions,
+ []
+
+[13]
+
+Package natbib Warning: Citation `mittelbach2004' on page 14 undefined on input
+ line 522.
+
+
+Overfull \hbox (9.9234pt too wide) in paragraph at lines 519--525
+\T1/aer/m/n/12 Lis-toja ja ni-iden ulkoa-sua on mah-dol-lista muokata (katso es
+im. \T1/aer/b/n/12 ?\T1/aer/m/n/12 , s. 128). Pe-rus-es-imerkkejä: 
+ []
+
+
+LaTeX Warning: Reference `table:perustaulu' on page 14 undefined on input line 
+562.
+
+
+LaTeX Warning: Reference `table:dvbt_param' on page 14 undefined on input line 
+575.
+
+
+Overfull \hbox (206.59747pt too wide) in paragraph at lines 570--583
+ [] 
+ []
+
+
+LaTeX Warning: Reference `table:dvbt_param' on page 14 undefined on input line 
+588.
+
+
+Underfull \hbox (badness 4779) in paragraph at lines 601--604
+[]|\T1/aer/m/n/12 COFDM mode (num-ber of
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 604--606
+[]|\T1/aer/m/n/12 8k (6817, 1116 Hz, 896 $\OML/cmm/m/it/12 ^^V$\T1/aer/m/n/12 s
+) or 2k
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 607--608
+[]|\T1/aer/m/n/12 Guard in-ter-val (8k/4k
+ []
+
+[14]
+
+LaTeX Warning: Reference `table:kreikka' on page 15 undefined on input line 725
+.
+
+
+Package natbib Warning: Citation `lyhyt2e' on page 15 undefined on input line 7
+50.
+
+[15]
+Underfull \hbox (badness 2142) in paragraph at lines 768--775
+[]\T1/aer/m/n/12 Algoritmien ja pseu-dokoodin esit-tämiseen tarvi-taan es-imerk
+iksi [][]\T1/aett/m/n/12 algorithmic[]\T1/aer/m/n/12 - ja
+ []
+
+
+Overfull \hbox (8.77614pt too wide) in paragraph at lines 783--787
+\T1/aer/m/n/12 Lähdeluettelo kir-joite-taan joko käsin tai au-tomaat-tis-esti k
+erä-ty-istä lähteistä bib-päät-tei-seen
+ []
+
+
+Overfull \hbox (0.14833pt too wide) in paragraph at lines 797--806
+[]\T1/aer/m/n/12 Kurssilla opete-taan käyt-tämään Re-f-Work-sia lähtei-den koko
+amiseen. Sieltä on mah-dol-lista
+ []
+
+[16]
+Overfull \hbox (12.49193pt too wide) in paragraph at lines 807--809
+[]\T1/aer/m/n/12 Google Scholar palaut-taa myös BibTeX-muotoisia lähde-vi-it-te
+itä, kun-han olet sen ase-tuk-sissa
+ []
+
+
+Package natbib Warning: Citation `tktl' on page 17 undefined on input line 815.
+
+
+
+Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
+ine 832.
+
+
+Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
+ine 834.
+
+
+Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
+ine 837.
+
+
+Overfull \hbox (14.22412pt too wide) in paragraph at lines 840--846
+\T1/aer/m/n/12 ``Pro gradu'' (kts. [][]\T1/aett/m/n/12 finnbst.tex[]\T1/aer/m/n
+/12 ). Tämä voidaan muut-taa an-ta-malla ky-seisen merk-in-tä-tyypin
+ []
+
+
+Overfull \hbox (42.11163pt too wide) in paragraph at lines 871--878
+\T1/aer/m/n/12 muu-tok-set on valmis-teltu ti-ivi-issä yhteistyössä ym-päristöm
+in-is-ter-iön kanssa. Ym-päristö-valiokunta
+ []
+
+[17]
+Overfull \hbox (14.27966pt too wide) in paragraph at lines 879--885
+\T1/aer/m/n/12 että vaa-timuk-set aset-tuvat yleis-esti sel-l-aiselle tasolle, 
+että ne ovat ko-htu-ullisella in-vestoin-nilla
+ []
+
+
+Overfull \hbox (1.28827pt too wide) in paragraph at lines 879--885
+\T1/aer/m/n/12 kuitenkaan vaaranna ym-päristön-suo-jelun tasoa ja on es-imerkik
+si Itämeren suo-jelukomis-sio
+ []
+
+
+Overfull \hbox (30.4841pt too wide) in paragraph at lines 886--893
+\T1/aer/m/n/12 pi-laan-tu-mis-vaaran pe-rus-teella herkillä alueilla kuten rant
+a-alueilla tai tärkeillä po-h-javesialueilla. 
+ []
+
+
+Overfull \hbox (19.75168pt too wide) in paragraph at lines 901--910
+[]\T1/aer/m/n/12 Valiokunta ko-rostaa, että lain ja ase-tuk-sen mukaisten vaa-t
+imusten to-teut-tami-nen käytän-nössä
+ []
+
+
+Overfull \hbox (16.18007pt too wide) in paragraph at lines 901--910
+\T1/aer/m/n/12 neu-von-nan jär-jestämiseksi kun-nissa. Vaa-timus-ta-son muu-tok
+-sella ko-htu-ullis-te-taan tarvit-tavia
+ []
+
+
+Overfull \hbox (19.70778pt too wide) in paragraph at lines 911--917
+\T1/aer/m/n/12 vesives-salla varuste-tu-illa vapaa-ajan asun-noilla. Val-taos-a
+lla vapaa-ajan asun-toja lain-säädäntö
+ []
+
+
+Overfull \hbox (8.0398pt too wide) in paragraph at lines 918--926
+[]\T1/aer/m/n/12 Muutoksella tarken-netaan, ketkä voivat hakea kunnalta vi-iden
+ vuo-den mit-taista va-pau-tusta
+ []
+
+
+Overfull \hbox (17.88348pt too wide) in paragraph at lines 918--926
+\T1/aer/m/n/12 vaike-assa elämän-ti-lanteessa ol-e-vat ki-in-teistönomis-ta-jat
+ kuten työt-tömät ja pitkäaikais-sairaat)
+ []
+
+[18]
+Overfull \hbox (5.84348pt too wide) in paragraph at lines 947--954
+\T1/aer/m/n/12 Eu-roopan neu-vos-ton pitääkin varmis-taa, että selvi-tyk-siä ei
+ es-tetä tai vaikeuteta poli-it-ti-sista
+ []
+
+
+Overfull \hbox (25.46814pt too wide) in paragraph at lines 947--954
+\T1/aer/m/n/12 tapah-tu-mien täy-delli-nen läpikäynti aut-taa rak-en-ta-maan pa
+rem-paa tule-vaisu-utta. Os-oit-ta-malla
+ []
+
+
+Overfull \hbox (2.7594pt too wide) in paragraph at lines 955--967
+\T1/aer/m/n/12 virheen, jonka takia pienet taimikot jäivät tilapäis-esti hir-vi
+vahinkoko-r-vausten ulkop-uolelle.
+ []
+
+
+Overfull \hbox (12.2682pt too wide) in paragraph at lines 975--984
+[]\T1/aer/m/n/12 Euroopan unionin ym-päristömerkki si-ir-tyy samaan kotipesään 
+po-hjo-is-maisen Jout-sen-merkin
+ []
+
+
+Overfull \hbox (9.40724pt too wide) in paragraph at lines 975--984
+\T1/aer/m/n/12 kanssa. Eduskunta hyväksyi ti-is-taina lakimuu-tok-sen, jolla ym
+-päristömerkin-nän kansal-lis-ten
+ []
+
+
+Overfull \hbox (14.33113pt too wide) in paragraph at lines 975--984
+\T1/aer/m/n/12 on käytössä kaksi vi-ral-lista ym-päristömerk-in-täjär-jestelmää
+. Po-hjo-is-mainen ym-päristömerkki
+ []
+
+[19]
+Overfull \hbox (7.45587pt too wide) in paragraph at lines 985--992
+[]\T1/aer/m/n/12 Merkit ovat va-paae-htoisia ja ni-illä kan-nuste-taan valmis-t
+a-jia ja palve-lu-tar-joa-jia ke-hit-tämään
+ []
+
+) [20] (./main.bbl (./babelbst.tex (./englbst.tex))
+Underfull \hbox (badness 1852) in paragraph at lines 35--41
+[]\T1/aer/m/n/12 Ilkka Kau-ra-nen, Mikko A. Mus-takallio and Virpi Palm-gren.  
+\T1/aer/m/it/12 Tutkimus-ra-portin
+ []
+
+
+Underfull \hbox (badness 3168) in paragraph at lines 50--55
+\T1/aer/m/n/12 Addison-Wesley, Boston, sec-ond edi-tion, 2004.  ISBN 0-201-3629
+9-6 (nid.).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--67
+[]\T1/aer/m/n/12 Mikael Puo-lakka.  \T1/aer/m/it/12 BiBTeX-tyylin tktl käyt-töo
+-hje\T1/aer/m/n/12 .  Helsin-gin yliopis-ton
+ []
+
+
+Underfull \hbox (badness 7081) in paragraph at lines 69--76
+\T1/aer/m/n/12 Es-poo, 2010.  Saatavissa $\T1/aett/m/n/12 http : / / www . cis 
+. hut . fi / teemu / katkotaan / rivia /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--76
+\T1/aett/m/n/12 jotta / helpompi / katkaista / sopivasta / kohtaa / tamakin / l
+itania / poikki / rtfm .
+ []
+
+) [21
+
+] (./luku_liitteet.tex)
+
+Package natbib Warning: There were undefined citations.
+
+[22
+
+] (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6943 strings out of 476065
+ 104858 string characters out of 5795020
+ 1862299 words of memory out of 5000000
+ 27155 multiletter control sequences out of 15000+600000
+ 563984 words of font info for 143 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 72i,13n,76p,299b,386s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
+live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/texlive/2022/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2022/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
+.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/te
+xlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2022/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2022/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm120
+0.pfb>
+Output written on main.pdf (22 pages, 256886 bytes).
+PDF statistics:
+ 151 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,163 @@
+\documentclass[12pt,a4paper,english,oneside]{article}
+
+% Valitse 'input encoding':
+%\usepackage[latin1]{inputenc} % merkistökoodaus, jos ISO-LATIN-1:tä.
+\usepackage[utf8]{inputenc}   % merkistökoodaus, jos käytetään UTF8:a
+% Valitse 'output/font encoding':
+%\usepackage[T1]{fontenc}      % korjaa ääkkösten tavutusta, bittikarttana
+\usepackage{ae,aecompl}       % ed. lis. vektorigrafiikkana bittikartan sijasta
+% Kieli- ja tavutuspaketit:
+%\usepackage[finnish]{babel}
+% Muita paketteja:
+% \usepackage{amsmath}   % matematiikkaa
+\usepackage{url}       % \url{...}
+
+% Kappaleiden erottaminen ja sisennys
+\parskip 1ex
+\parindent 0pt
+\evensidemargin 0mm
+\oddsidemargin 0mm
+\textwidth 159.2mm
+\topmargin 0mm
+\headheight 0mm
+\headsep 0mm
+\textheight 246.2mm
+
+\pagestyle{plain}
+
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+% Otsikkotiedot: muokkaa tähän omat tietosi
+
+\title{CS. BsC. Thesis Research Plan:\\[5mm]
+Algebraic Fingerprinting}
+
+\author{Onni Miettinen\\
+Aalto-university, SCI\\
+\url{onni.miettinen@aalto.fi}}
+
+\date{\today}
+
+\maketitle
+
+% ---------------------------------------------------------------------
+
+\vspace{10mm}
+
+% MUOKKAA TÄHÄN. Jos tarvitset tähän viitteitä, käytä
+% tässä dokumentissa numeroviitejärjestelmää komennolla \cite{kahva}.
+%
+% Paljon kandidaatintöitä ohjanneen Vesa Hirvisalon tarjoama 
+% sabluuna. Kursivoidut osat \emph{...} ovat kurssin henkilökunnan
+% lisäämiä. 
+
+\textbf{Name of the thesis:} Algebraic Fingerprinting
+
+\textbf{Author:} Onni Miettinen
+
+\textbf{Thesis advisor:} Augusto Modanese
+
+
+\section{Summary of research}
+
+This thesis is a literature review on the use of algebraic fingerprinting in faster algorithms for parameterized problems.
+
+\section{Research goals and perspectives}
+
+The main goal is to understand how faster algorithms can be designed with the utilization of algebraic fingerprinting.
+The thesis could cover these perspectives: 
+(a) what is algebraic fingerprinting,
+(b) implementing algebraic fingerprinting techniques,
+(c) problem specific solutions to linear monomial detection
+
+\section{Research materials}
+
+The research materials consist of published papers and articles on the topic.
+There seems to be a lot of material related to the subject.
+
+The thesis research consists of mainly reading through the papers. Without thorough investigation,
+I would estime the research costs as at least a day or two per paper. However, this is a hard estime
+since I will not go through the material sequentially when researching.
+
+\section{Methods of research}
+
+To acquire material, I plan to use Google Scholar, Web of Sciences, Scopus and other academic databases.
+The idea is to find a paper, locate key terms, ideas and problems, and search for further material using the acquired knowledge.
+Collecting a lot of material should allow for specifying the focus of the research and thesis.
+
+With the research converging on an area of interest, the relevant material is reviewed and further investigated.
+
+After this, the relevant information and sources are organized and further studied.
+To help with studying, I will use methods such as mindmaps and own notes, explaining concepts to roommate with own words,
+relating every information piece with each other.
+
+The organization and relations of information should allow for structuring a report of the research, which will be the thesis.
+
+\section{Obstacles}
+
+The method of converging on an area of interest is problematic when the behaviour of the interest function is unknown on the domain.
+This is the case here, since the problem domain of algebraic fingerprinting is new to me. This may bring multiple problems:
+(1) the function never converges on a specific area,
+(2) the convergence is really slow and costly in relation reading stamina and work,
+(3) it is hard to evaluate when this method has converged enough, i.e., the area of interest is small enough for a satisfactory scope.
+
+Another obstacle for research is of course my own schedule, which will be really busy and, even worse, very varying.
+This means that the weekly workload will not be consistent, which can bring problems with course deadlines.
+
+\section{Resources}
+
+The research itself is done alone by me. Augusto Modanese is my thesis advisor and can help with understanding the topic itself as well
+as writing the thesis (methods and language of reporting). With the university, I have access to large databases of papers on the topic.
+
+\section{Schedule draft}
+
+This is a draft of a schedule, since it is impossible to create one that can be realistically followed with current information.
+
+\begin{tabular}{|p{30mm}|p{120mm}|}
+\hline
+week no.   & done by the end of the week \\ \hline
+4   & research plan \\ \hline
+5   & established some scope for thesis \\ \hline
+6   & Version 1 (2-3 pages: some introduction, table of contents or composition/structure. At least 1 reference) \\ \hline
+7   & further research with review of scope/topic \\ \hline
+8   & logical structure for discussion in thesis and some content (headlines and their order for example) \\ \hline
+9   & Version 2 (~10 pages: headline structure (with subheadlines), introduction complete, some important content in) \\ \hline
+10   & research \\ \hline
+11   & research \\ \hline
+12   & Version 3 (aim for final) \\ \hline
+\end{tabular}
+
+
+\section{Table of contents draft}
+
+(1) Introduction,
+(2) Algebraization of problems,
+(3) Methods for detecting linear monomials,
+(4) Summary.
+%
+
+\emph{This structure and the headlines will very likely change with further research into the subject.}
+
+% ---------------------------------------------------------------------
+%
+% ÄLÄ MUUTA MITÄÄN TÄÄLTÄ LOPUSTA
+
+% Tässä on käytetty siis numeroviittausjärjestelmää. 
+% Toinen hyvin yleinen malli on nimi-vuosi-viittaus.
+
+% \bibliographystyle{plainnat}
+%\bibliographystyle{finplain}  % suomi
+\bibliographystyle{plain}    % englanti
+% Lisää mm. http://amath.colorado.edu/documentation/LaTeX/reference/faq/bibstyles.pdf
+
+% Muutetaan otsikko "Kirjallisuutta" -> "Lähteet"
+\renewcommand{\refname}{Lähteet}  % article-tyyppisen
+
+% Määritä bib-tiedoston nimi tähän (eli lahteet.bib ilman bib)
+\bibliography{lahteet}
+
+% ---------------------------------------------------------------------
+
+\end{document}

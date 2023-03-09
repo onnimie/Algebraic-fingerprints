@@ -1,0 +1,1 @@
+Balanced Substructures in Bicolored Graphs (2023), https://doi.org/10.1007/978-3-031-23101-8_12
