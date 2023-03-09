@@ -5,7 +5,7 @@
 In recent years, there have been rapid advances in the algorithms for combinatorial problems. 
 This has been greatly sparked by the development in algebraic methods for solving the 
 multilinear monomial detection problem, i.e., finding whether a multivariate polynomial contains a multilinear monomial. 
-Namely, the method of algebraic fingerprinting 
+Namely, the technique of algebraic fingerprinting 
 first introduced by Koutis in [ref] and further developed by Williams in [ref] has proven 
 to be very successful. With algebraic fingerprinting, the k-path problem (see problem def), 
 that previously could be solved in \bigO{something} time by X in [ref], 
@@ -20,60 +20,46 @@ This was a significant improvement on a problem that had seen no progress in nea
 The method of algebraic fingerprinting is present in multilinear monomial detection. Multilinear monomial detection 
 is a fundamental problem, since many important combinatorial problems can be reduced into multilinear monomial detection 
 via a problem specific algebraization. The goal of such algebraization is to form a generating multivariate polynomial 
-that encodes the combinations, i.e. the solution space, into multivariate monomials.\nl
+that encodes the combinations, i.e. the solutions and non-solutions, into multivariate monomials where 
+multilinear monomials correspond to solutions to the given problem.\nl
 
 Before discussing multilinear monomial detection and algebraic fingerprints, the thesis covers algebraization, and 
 shows how a combinatorial problem can be reduced into a multilinear monomial detection problem. 
 
 \subsection{Algebraization of combinatorial problems}
 
-Designing an algebraic algorithm for a problem begins by the algebraization of that problem, 
-i.e., reducing the original combinatorial question into a question regarding some algebraic 
-property of some algebraic object, that is built from the elements of the original problem. 
-The recent success in combinatorial problems has been found by using multivariate polynomials; we construct a multivariate polynomial 
-such that it encodes all combinations of the combinatorial problem, the solutions and non-solutions, as monomials, 
-with the solutions being multilinear. Thus, finding whether a solution exists to the combinatorial problem has been 
-transformed into finding whether the constructed polynomial contains a multilinear monomial.\nl
+A combinatorial problem asks whether a given finite set of objects satisfies some given constraints. 
+For example, the k-path problem asks for, given a finite set of vertices and edges, 
+a path of k vertices. The solutions and non-solutions to combinatorial problems can be thought of as 
+combinations of the given objects. The solution space for the k-path problem consists of combinations of k vertices and k-1 edges. 
+A non-solution combination would contain duplicate vertices or edges that contain vertices outside the combination.\nl
 
-Koutis and Williams (2015) showcased an example of this in their article with the parameterized problem of k-3D matching. 
-From a set of triples, this problem asks for a k-matching, i.e., a subset of the input with disjoin elements. 
-This combinatorial problem can be transformed into an algebraic form by viewing each element of each input triple as a unique variable, 
-transforming the input triples into multivariate monomials by taking the product of the elements, summing those monomials together, 
-and constructing the final polynomial by raising the sum to the power of k. Thus, the problem of finding a k-matching transforms into a 
-problem of finding a multilinear monomial within the constructed polynomial. A decision problem version of this can be answered by 
-finding whether a multilinear monomial exists.\nl
+Algebraization is reducing a given problem into an algebraic problem, i.e., a question regarding some algebraic property of some algebraic entity. 
+In an algebraization of a combinatorial problem, the algebraic entity can be constructed from algebraic elements defined from the 
+set of objects given as an input. The motivation behind the construction is some algebraic property that, 
+when satisfied, gives a solution to the problem.\nl
 
-The detection of multilinear monomials is a very important issue since a fast solution 
-will make every algorithm, that utilizes this algebraization, faster. However, when the problem domain is large, 
-with n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\). 
+[TODO: rewrite this paragraph, explain with generating polynomial and expasion into sum of monomials]
+Multilinear monomial detection has proven to be a useful algebraization. First, we introduce multiple variables that 
+correspond to elements from the set of objects given as input. Then, we construct a multivariate polynomial such that it 
+encodes all solutions and non-solutions as multivariate monomials, with solutions encoded specifically as multilinear monomials. 
+Thus, the task of finding a satisfying combination to the combinatorial problem has been reduced to 
+finding a multilinear monomial from the multivariate polynomial. It follows that a decision problem is be answered by 
+the existence of a multilinear monomial.\nl
+
+Appropriate definitions for the variables are problem specific. [ref] showcases an example 
+reduction into multilinear monomial detection for the k-3D matching problem.\nl 
+
+[TODO: define k-3d matching and go through the example]
+
+The detection of multilinear monomials is a fundamental problem, since many important problems have been reduced to it. 
+A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
+other multilinear monomial detection problems [EXAMPLE HERE]. Of course, simply expanding the generating polynomial into 
+a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]\nl
+
+When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
 This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
 which will be the topic of the next section.
-
-
-% Kokeile mitä kappaleen viimeisen rivin lopulle käy, 
-% kun sloppypar-ympäristön kommentoi pois: joku rivi
-% saattaa ylittää marginaalin. Sloppypar-ympäristössä
-% sanojen välissä olevaa tyhjää voi olla enemmänkin
-% jotta marginaalin ylityksiä ei tapahdu.
-\begin{sloppypar}
-  Tämä on TIK.kand-kurssin \LaTeX{}-pohja, jota voi vapaasti
-  käyttää. Koko zip-paketin voi ladata kurssin Noppa-sivulta
-  \url{https://noppa.aalto.fi/noppa/kurssi/TIK.kand/materiaali/}.
-  Pura zip-paketti, avaa \verb!main.pdf! ja samalla katso ja muokkaa
-  tex- ja bib-tiedostoja vapaasti. Juuri tämä teksti löytyy
-  tiedostosta \verb!luku_sisalto.tex!. Muutoksen jälkeen voit katsoa
-  tilannetta komentamalla \verb!make! ja mahdollisesti päivittämällä
-  PDF-version (reload). Yritä olla koskematta sty- ja
-  bst-tyylitiedostoihin. Luvun~\ref{sec:esimluku} alussa on mainittu
-  hyviä lähteitä \LaTeX{}in opetteluun ja käyttämiseen.
-\end{sloppypar}
-
-Teksti ja koodi on peräisin TIK.kand-kurssin historiallisesta
-\LaTeX{}-pohjasta, jota kurssin koordinaattori Jukka Parviainen
-uudisti tammikuussa 2011.  Lisäksi suomen kielen lehtori Sanni
-Heinzmann on kirjoittanut rakenteellisia vinkkejä luvuittain
-(tiivistelmä, käytetyt lyhenteet, johdanto, loppuluku, liitteet).
-Viimeisin päivitys on elokuulta 2014.
 
 \subsection{Johdantoluku}
 % Sanni Heinzmann

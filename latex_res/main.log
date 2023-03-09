@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.28)  9 MAR 2023 00:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.28)  10 MAR 2023 00:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -398,12 +398,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 ) [4
 
 ] (./luku_sisalto.tex
-Overfull \hbox (10.36789pt too wide) in paragraph at lines 5--13
-\T1/aer/m/n/12 poly-no-mial con-tains a mul-ti-lin-ear mono-mial. Namely, the m
-ethod of al-ge-braic fin-ger-print-ing
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 5--13
 
  []
@@ -414,340 +408,352 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--19
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--24
+Underfull \hbox (badness 10000) in paragraph at lines 20--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--37
+Underfull \hbox (badness 10000) in paragraph at lines 31--36
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 38--45
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
 
  []
 
-LaTeX Font Info:    Trying to load font information for T1+aett on input line 6
-1.
-(c:/texlive/2022/texmf-dist/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
 
-LaTeX Warning: Reference `sec:esimluku' on page 6 undefined on input line 67.
+Underfull \hbox (badness 10000) in paragraph at lines 42--49
+
+ []
 
 
-Overfull \hbox (16.52315pt too wide) in paragraph at lines 81--85
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--59
+
+ []
+
+
+Overfull \hbox (16.52315pt too wide) in paragraph at lines 67--71
 \T1/aer/m/n/12 tarvetta jakaa alalukui-hin, diplomi-työssä ja muissa isom-missa
  töissä sekä tutkimus-ra-porteissa
  []
 
 
-Overfull \hbox (5.43552pt too wide) in paragraph at lines 81--85
+Overfull \hbox (5.43552pt too wide) in paragraph at lines 67--71
 \T1/aer/m/n/12 alalu-vut ovat mah-dol-lisia (esim. 1.1 Tutkimu-songelma, 1.2 Ai
 neisto ja tutkimus-menetelmä,
  []
 
 [6]
-LaTeX Font Info:    Trying to load font information for TS1+aer on input line 9
-6.
-LaTeX Font Info:    No file TS1aer.fd. on input line 96.
+LaTeX Font Info:    Trying to load font information for TS1+aer on input line 8
+2.
+LaTeX Font Info:    No file TS1aer.fd. on input line 82.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textbullet' on input line 96.
+(Font)              for symbol `textbullet' on input line 82.
 
-[7]
-Overfull \hbox (16.62212pt too wide) in paragraph at lines 154--162
+LaTeX Font Info:    Trying to load font information for T1+aett on input line 1
+26.
+(c:/texlive/2022/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [7]
+Overfull \hbox (16.62212pt too wide) in paragraph at lines 140--148
 []\T1/aer/m/it/12 Kandidaatintyö voi pe-rus-tua teo-reet-tisen taus-tan tarkast
 eluun ja sen analysoin-tiin
  []
 
 
-Overfull \hbox (1.90125pt too wide) in paragraph at lines 187--201
+Overfull \hbox (1.90125pt too wide) in paragraph at lines 173--187
 \T1/aer/m/n/12 kaikki sivut yh-teen nim-iöle-hdestä lähdeluet-telon tai li-it-t
 ei-den lop-puun (Kir-jas-ton su-ulli-nen
  []
 
-
-Overfull \hbox (7.85997pt too wide) in paragraph at lines 207--210
+[8]
+Overfull \hbox (7.85997pt too wide) in paragraph at lines 193--196
 []\T1/aer/m/n/12 Huomaa, että TKK:n kan-di-daat-in-työn ohjeissa sivu-jen nu-me
 roin-nin ohjeet ovat ri-s-tiri-itaiset
  []
 
-[8]
-Overfull \hbox (47.5237pt too wide) in paragraph at lines 249--254
+
+Overfull \hbox (47.5237pt too wide) in paragraph at lines 235--240
 []\T1/aer/m/n/12 Ohjeita kan-di-daat-in-työn eri osien kir-joit-tamiseen on sis
 äl-lytetty tähän po-h-jaan. Kir-joit-tamiso-hjeita
  []
 
-
-Package natbib Warning: Citation `kauranen2006' on page 9 undefined on input li
-ne 260.
-
 [9]
 
+Package natbib Warning: Citation `kauranen2006' on page 10 undefined on input l
+ine 246.
+
+
 Package natbib Warning: Citation `hirsjarvi2009' on page 10 undefined on input 
-line 264.
+line 250.
 
 
 Package natbib Warning: Citation `oikeinkirjoitus2010' on page 10 undefined on 
-input line 268.
+input line 254.
 
 
-Overfull \hbox (38.80011pt too wide) in paragraph at lines 301--308
+Overfull \hbox (38.80011pt too wide) in paragraph at lines 287--294
 \T1/aer/m/n/12 ko-men-toja). Tämän doku-mentin sivuaset-te-lut tehdään pääosin 
 tyyl-i-tiedos-tossa [][]\T1/aett/m/n/12 aaltosci_t.sty[]\T1/aer/m/n/12 ,
  []
 
 
-Package natbib Warning: Citation `lyhyt2e' on page 10 undefined on input line 3
-10.
+Package natbib Warning: Citation `lyhyt2e' on page 10 undefined on input line 2
+96.
 
 
 Package natbib Warning: Citation `mattakivela' on page 10 undefined on input li
-ne 311.
+ne 297.
 
 
 Package natbib Warning: Citation `mittelbach2004' on page 10 undefined on input
- line 315.
+ line 301.
 
 
-Overfull \hbox (22.08537pt too wide) in paragraph at lines 309--318
+Overfull \hbox (22.08537pt too wide) in paragraph at lines 295--304
 \T1/aer/m/n/12 suomeksi: \T1/aer/b/n/12 ?\T1/aer/m/n/12 , \T1/aer/b/n/12 ?\T1/a
 er/m/n/12 , Wik-i-booksin LaTeX-opas[], Jukka Ko-r-pelan LaTeX-sivut[] yms. Jär
 käle-teok-sia,
  []
 
 [10]
-Overfull \hbox (5.69933pt too wide) in paragraph at lines 348--351
+Overfull \hbox (5.69933pt too wide) in paragraph at lines 334--337
 []\T1/aer/m/n/12 Käännösvaiheissa hakemis-toon ilmestyy mo-n-en-laisia työ- ja 
 lok-i-tiedos-toja, joiden päät-teinä
  []
 
 [11]
 
-LaTeX Warning: Reference `sec:hienos' on page 12 undefined on input line 408.
+LaTeX Warning: Reference `sec:hienos' on page 12 undefined on input line 394.
 
 
 LaTeX Warning: Reference `sec:esim_tavutus' on page 12 undefined on input line 
-427.
+413.
 
 [12]
-Overfull \hbox (6.4556pt too wide) in paragraph at lines 436--440
+Overfull \hbox (6.4556pt too wide) in paragraph at lines 422--426
 [][]\T1/aett/m/n/12 \clearpage []\T1/aer/m/n/12 tai [][]\T1/aett/m/n/12 \afterp
 age{\clearpage}[]\T1/aer/m/n/12 , minkä tarkoituk-sena pakot-taa kel-lu-vat ob-
 jek-tit
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 478--485
+Underfull \hbox (badness 3386) in paragraph at lines 464--471
 \T1/aer/m/n/12 1,5, mutta sen voi ha-lutes-saan vai-h-taa vä-liksi 1 kom-men-to
 imalla [][]\T1/aett/m/n/12 main.tex[]\T1/aer/m/n/12 in
  []
 
+[13]
 
-Package natbib Warning: Citation `ipdcforum_def' on page 13 undefined on input 
-line 503.
+Package natbib Warning: Citation `ipdcforum_def' on page 14 undefined on input 
+line 489.
 
 
-Overfull \hbox (2.91707pt too wide) in paragraph at lines 499--504
+Overfull \hbox (2.91707pt too wide) in paragraph at lines 485--490
 []\T1/aer/m/it/12 IP Dat-a-cast-ing is a ser-vice where dig-i-tal con-tent for-
 mats, soft-ware ap-pli-ca-tions,
  []
 
-[13]
 
 Package natbib Warning: Citation `mittelbach2004' on page 14 undefined on input
- line 522.
+ line 508.
 
 
-Overfull \hbox (9.9234pt too wide) in paragraph at lines 519--525
+Overfull \hbox (9.9234pt too wide) in paragraph at lines 505--511
 \T1/aer/m/n/12 Lis-toja ja ni-iden ulkoa-sua on mah-dol-lista muokata (katso es
 im. \T1/aer/b/n/12 ?\T1/aer/m/n/12 , s. 128). Pe-rus-es-imerkkejä: 
  []
 
 
 LaTeX Warning: Reference `table:perustaulu' on page 14 undefined on input line 
-562.
+548.
+
+[14]
+
+LaTeX Warning: Reference `table:dvbt_param' on page 15 undefined on input line 
+561.
 
 
-LaTeX Warning: Reference `table:dvbt_param' on page 14 undefined on input line 
-575.
-
-
-Overfull \hbox (206.59747pt too wide) in paragraph at lines 570--583
+Overfull \hbox (206.59747pt too wide) in paragraph at lines 556--569
  [] 
  []
 
 
-LaTeX Warning: Reference `table:dvbt_param' on page 14 undefined on input line 
-588.
+LaTeX Warning: Reference `table:dvbt_param' on page 15 undefined on input line 
+574.
 
 
-Underfull \hbox (badness 4779) in paragraph at lines 601--604
+Underfull \hbox (badness 4779) in paragraph at lines 587--590
 []|\T1/aer/m/n/12 COFDM mode (num-ber of
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 604--606
+Underfull \hbox (badness 1472) in paragraph at lines 590--592
 []|\T1/aer/m/n/12 8k (6817, 1116 Hz, 896 $\OML/cmm/m/it/12 ^^V$\T1/aer/m/n/12 s
 ) or 2k
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 607--608
+Underfull \hbox (badness 10000) in paragraph at lines 593--594
 []|\T1/aer/m/n/12 Guard in-ter-val (8k/4k
  []
 
-[14]
+[15]
 
-LaTeX Warning: Reference `table:kreikka' on page 15 undefined on input line 725
+LaTeX Warning: Reference `table:kreikka' on page 16 undefined on input line 711
 .
 
 
-Package natbib Warning: Citation `lyhyt2e' on page 15 undefined on input line 7
-50.
+Package natbib Warning: Citation `lyhyt2e' on page 16 undefined on input line 7
+36.
 
-[15]
-Underfull \hbox (badness 2142) in paragraph at lines 768--775
+
+Underfull \hbox (badness 2142) in paragraph at lines 754--761
 []\T1/aer/m/n/12 Algoritmien ja pseu-dokoodin esit-tämiseen tarvi-taan es-imerk
 iksi [][]\T1/aett/m/n/12 algorithmic[]\T1/aer/m/n/12 - ja
  []
 
 
-Overfull \hbox (8.77614pt too wide) in paragraph at lines 783--787
+Overfull \hbox (8.77614pt too wide) in paragraph at lines 769--773
 \T1/aer/m/n/12 Lähdeluettelo kir-joite-taan joko käsin tai au-tomaat-tis-esti k
 erä-ty-istä lähteistä bib-päät-tei-seen
  []
 
-
-Overfull \hbox (0.14833pt too wide) in paragraph at lines 797--806
+[16]
+Overfull \hbox (0.14833pt too wide) in paragraph at lines 783--792
 []\T1/aer/m/n/12 Kurssilla opete-taan käyt-tämään Re-f-Work-sia lähtei-den koko
 amiseen. Sieltä on mah-dol-lista
  []
 
-[16]
-Overfull \hbox (12.49193pt too wide) in paragraph at lines 807--809
+
+Overfull \hbox (12.49193pt too wide) in paragraph at lines 793--795
 []\T1/aer/m/n/12 Google Scholar palaut-taa myös BibTeX-muotoisia lähde-vi-it-te
 itä, kun-han olet sen ase-tuk-sissa
  []
 
 
-Package natbib Warning: Citation `tktl' on page 17 undefined on input line 815.
+Package natbib Warning: Citation `tktl' on page 17 undefined on input line 801.
 
 
 
 Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
-ine 832.
+ine 818.
 
 
 Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
-ine 834.
+ine 820.
 
 
 Package natbib Warning: Citation `Teekkari2010' on page 17 undefined on input l
-ine 837.
+ine 823.
 
 
-Overfull \hbox (14.22412pt too wide) in paragraph at lines 840--846
+Overfull \hbox (14.22412pt too wide) in paragraph at lines 826--832
 \T1/aer/m/n/12 ``Pro gradu'' (kts. [][]\T1/aett/m/n/12 finnbst.tex[]\T1/aer/m/n
 /12 ). Tämä voidaan muut-taa an-ta-malla ky-seisen merk-in-tä-tyypin
  []
 
-
-Overfull \hbox (42.11163pt too wide) in paragraph at lines 871--878
+[17]
+Overfull \hbox (42.11163pt too wide) in paragraph at lines 857--864
 \T1/aer/m/n/12 muu-tok-set on valmis-teltu ti-ivi-issä yhteistyössä ym-päristöm
 in-is-ter-iön kanssa. Ym-päristö-valiokunta
  []
 
-[17]
-Overfull \hbox (14.27966pt too wide) in paragraph at lines 879--885
+
+Overfull \hbox (14.27966pt too wide) in paragraph at lines 865--871
 \T1/aer/m/n/12 että vaa-timuk-set aset-tuvat yleis-esti sel-l-aiselle tasolle, 
 että ne ovat ko-htu-ullisella in-vestoin-nilla
  []
 
 
-Overfull \hbox (1.28827pt too wide) in paragraph at lines 879--885
+Overfull \hbox (1.28827pt too wide) in paragraph at lines 865--871
 \T1/aer/m/n/12 kuitenkaan vaaranna ym-päristön-suo-jelun tasoa ja on es-imerkik
 si Itämeren suo-jelukomis-sio
  []
 
 
-Overfull \hbox (30.4841pt too wide) in paragraph at lines 886--893
+Overfull \hbox (30.4841pt too wide) in paragraph at lines 872--879
 \T1/aer/m/n/12 pi-laan-tu-mis-vaaran pe-rus-teella herkillä alueilla kuten rant
 a-alueilla tai tärkeillä po-h-javesialueilla. 
  []
 
 
-Overfull \hbox (19.75168pt too wide) in paragraph at lines 901--910
+Overfull \hbox (19.75168pt too wide) in paragraph at lines 887--896
 []\T1/aer/m/n/12 Valiokunta ko-rostaa, että lain ja ase-tuk-sen mukaisten vaa-t
 imusten to-teut-tami-nen käytän-nössä
  []
 
 
-Overfull \hbox (16.18007pt too wide) in paragraph at lines 901--910
+Overfull \hbox (16.18007pt too wide) in paragraph at lines 887--896
 \T1/aer/m/n/12 neu-von-nan jär-jestämiseksi kun-nissa. Vaa-timus-ta-son muu-tok
 -sella ko-htu-ullis-te-taan tarvit-tavia
  []
 
 
-Overfull \hbox (19.70778pt too wide) in paragraph at lines 911--917
+Overfull \hbox (19.70778pt too wide) in paragraph at lines 897--903
 \T1/aer/m/n/12 vesives-salla varuste-tu-illa vapaa-ajan asun-noilla. Val-taos-a
 lla vapaa-ajan asun-toja lain-säädäntö
  []
 
-
-Overfull \hbox (8.0398pt too wide) in paragraph at lines 918--926
+[18]
+Overfull \hbox (8.0398pt too wide) in paragraph at lines 904--912
 []\T1/aer/m/n/12 Muutoksella tarken-netaan, ketkä voivat hakea kunnalta vi-iden
  vuo-den mit-taista va-pau-tusta
  []
 
 
-Overfull \hbox (17.88348pt too wide) in paragraph at lines 918--926
+Overfull \hbox (17.88348pt too wide) in paragraph at lines 904--912
 \T1/aer/m/n/12 vaike-assa elämän-ti-lanteessa ol-e-vat ki-in-teistönomis-ta-jat
  kuten työt-tömät ja pitkäaikais-sairaat)
  []
 
-[18]
-Overfull \hbox (5.84348pt too wide) in paragraph at lines 947--954
+
+Overfull \hbox (5.84348pt too wide) in paragraph at lines 933--940
 \T1/aer/m/n/12 Eu-roopan neu-vos-ton pitääkin varmis-taa, että selvi-tyk-siä ei
  es-tetä tai vaikeuteta poli-it-ti-sista
  []
 
 
-Overfull \hbox (25.46814pt too wide) in paragraph at lines 947--954
+Overfull \hbox (25.46814pt too wide) in paragraph at lines 933--940
 \T1/aer/m/n/12 tapah-tu-mien täy-delli-nen läpikäynti aut-taa rak-en-ta-maan pa
 rem-paa tule-vaisu-utta. Os-oit-ta-malla
  []
 
 
-Overfull \hbox (2.7594pt too wide) in paragraph at lines 955--967
+Overfull \hbox (2.7594pt too wide) in paragraph at lines 941--953
 \T1/aer/m/n/12 virheen, jonka takia pienet taimikot jäivät tilapäis-esti hir-vi
 vahinkoko-r-vausten ulkop-uolelle.
  []
 
-
-Overfull \hbox (12.2682pt too wide) in paragraph at lines 975--984
+[19]
+Overfull \hbox (12.2682pt too wide) in paragraph at lines 961--970
 []\T1/aer/m/n/12 Euroopan unionin ym-päristömerkki si-ir-tyy samaan kotipesään 
 po-hjo-is-maisen Jout-sen-merkin
  []
 
 
-Overfull \hbox (9.40724pt too wide) in paragraph at lines 975--984
+Overfull \hbox (9.40724pt too wide) in paragraph at lines 961--970
 \T1/aer/m/n/12 kanssa. Eduskunta hyväksyi ti-is-taina lakimuu-tok-sen, jolla ym
 -päristömerkin-nän kansal-lis-ten
  []
 
 
-Overfull \hbox (14.33113pt too wide) in paragraph at lines 975--984
+Overfull \hbox (14.33113pt too wide) in paragraph at lines 961--970
 \T1/aer/m/n/12 on käytössä kaksi vi-ral-lista ym-päristömerk-in-täjär-jestelmää
 . Po-hjo-is-mainen ym-päristömerkki
  []
 
-[19]
-Overfull \hbox (7.45587pt too wide) in paragraph at lines 985--992
+
+Overfull \hbox (7.45587pt too wide) in paragraph at lines 971--978
 []\T1/aer/m/n/12 Merkit ovat va-paae-htoisia ja ni-illä kan-nuste-taan valmis-t
 a-jia ja palve-lu-tar-joa-jia ke-hit-tämään
  []
@@ -809,7 +815,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  6943 strings out of 476065
  104858 string characters out of 5795020
- 1862299 words of memory out of 5000000
+ 1860299 words of memory out of 5000000
  27155 multiletter control sequences out of 15000+600000
  563984 words of font info for 143 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -829,7 +835,7 @@ pe1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm120
 0.pfb>
-Output written on main.pdf (22 pages, 256886 bytes).
+Output written on main.pdf (22 pages, 255901 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  96 compressed objects within 1 object stream
