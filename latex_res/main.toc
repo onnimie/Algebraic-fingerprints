@@ -2,33 +2,40 @@
 \babel@toc {english}{}\relax 
 \babel@toc {finnish}{}\relax 
 \babel@toc {english}{}\relax 
-\contentsline {section}{Käytetyt symbolit ja lyhenteet}{4}{}%
-\contentsline {section}{\numberline {1}Introduction}{5}{}%
-\contentsline {subsection}{\numberline {1.1}Algebraization of combinatorial problems}{5}{}%
-\contentsline {subsection}{\numberline {1.2}Johdantoluku}{6}{}%
-\contentsline {section}{\numberline {2}Kandidaatintyön rakenne- ja muotoseikat}{7}{}%
-\contentsline {subsection}{\numberline {2.1}TKK:n kandidaattityöryhmän ohjeistus}{7}{}%
-\contentsline {subsection}{\numberline {2.2}TIK.kand: kommentteja rakenne- ja muotoseikoista}{9}{}%
-\contentsline {subsection}{\numberline {2.3}Kirjallisuutta}{10}{}%
-\contentsline {section}{\numberline {3}Esimerkkejä \LaTeX {}in käytöstä}{10}{}%
-\contentsline {subsection}{\numberline {3.1}\LaTeX {}in asennus ja taustaa}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}Lähdetiedostosta PDF:ksi}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}Ongelmien ratkaisija: \LaTeX {} checker}{11}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}``Ääkköset eivät ole enää ongelma''}{12}{}%
-\contentsline {subsubsection}{\numberline {3.1.4}Tavutus ei toimi?}{12}{}%
-\contentsline {subsubsection}{\numberline {3.1.5}Oikoluku}{12}{}%
-\contentsline {subsubsection}{\numberline {3.1.6}Hienosäätö}{13}{}%
-\contentsline {subsubsection}{\numberline {3.1.7}Eräs vaihtoehto Win7-koneella: MiKTeX ja LEd, Notepad++}{13}{}%
-\contentsline {subsection}{\numberline {3.2}Tekstin kirjoittaminen}{13}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Perusteksti ja muotoilut}{13}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Luetelmat}{14}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}Matematiikka}{15}{}%
-\contentsline {subsubsection}{\numberline {3.2.4}Algoritmit ja ohjelmalistaukset}{16}{}%
-\contentsline {subsection}{\numberline {3.3}Viittaukset ja lähdeluettelo}{16}{}%
-\contentsline {subsubsection}{\numberline {3.3.1}Lähdetiedosto}{16}{}%
-\contentsline {subsubsection}{\numberline {3.3.2}Tekstiviite}{17}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}Lähdeluettelo}{17}{}%
-\contentsline {section}{\numberline {4}Testi: pelkkää tekstiä}{18}{}%
-\contentsline {section}{\numberline {5}Loppuluku}{20}{}%
-\contentsline {section}{References}{21}{}%
-\contentsline {section}{\numberline {A}Esimerkkiliite}{22}{}%
+\contentsline {section}{Käytetyt symbolit ja lyhenteet}{5}{}%
+\contentsline {section}{\numberline {1}Introduction}{6}{}%
+\contentsline {subsection}{\numberline {1.1}Algebraization of combinatorial problems}{6}{}%
+\contentsline {subsection}{\numberline {1.2}Reducing $k$-3D matching into multilinear monomial detection}{7}{}%
+\contentsline {subsection}{\numberline {1.3}Johdantoluku}{8}{}%
+\contentsline {section}{\numberline {2}Preliminaries}{9}{}%
+\contentsline {subsection}{\numberline {2.1}Groups, rings and fields}{9}{}%
+\contentsline {subsection}{\numberline {2.2}General notation and other terminology}{10}{}%
+\contentsline {section}{\numberline {3}Multilinear monomial detection}{10}{}%
+\contentsline {subsection}{\numberline {3.1}Dynamic programming for a smart expansion of the polynomial}{10}{}%
+\contentsline {subsection}{\numberline {3.2}Non-deterministic color coding for faster evaluation}{11}{}%
+\contentsline {section}{\numberline {4}Multilinear monomial detection with algebraic fingerprinting}{11}{}%
+\contentsline {subsection}{\numberline {4.1}Preventing unwanted cancellations}{11}{}%
+\contentsline {subsection}{\numberline {4.2}Fingerprinting for cancellation of non-solutions}{11}{}%
+\contentsline {subsection}{\numberline {4.3}Kirjallisuutta}{11}{}%
+\contentsline {section}{\numberline {5}Esimerkkejä \LaTeX {}in käytöstä}{12}{}%
+\contentsline {subsection}{\numberline {5.1}\LaTeX {}in asennus ja taustaa}{12}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Lähdetiedostosta PDF:ksi}{12}{}%
+\contentsline {subsubsection}{\numberline {5.1.2}Ongelmien ratkaisija: \LaTeX {} checker}{13}{}%
+\contentsline {subsubsection}{\numberline {5.1.3}``Ääkköset eivät ole enää ongelma''}{13}{}%
+\contentsline {subsubsection}{\numberline {5.1.4}Tavutus ei toimi?}{14}{}%
+\contentsline {subsubsection}{\numberline {5.1.5}Oikoluku}{14}{}%
+\contentsline {subsubsection}{\numberline {5.1.6}Hienosäätö}{14}{}%
+\contentsline {subsubsection}{\numberline {5.1.7}Eräs vaihtoehto Win7-koneella: MiKTeX ja LEd, Notepad++}{14}{}%
+\contentsline {subsection}{\numberline {5.2}Tekstin kirjoittaminen}{15}{}%
+\contentsline {subsubsection}{\numberline {5.2.1}Perusteksti ja muotoilut}{15}{}%
+\contentsline {subsubsection}{\numberline {5.2.2}Luetelmat}{15}{}%
+\contentsline {subsubsection}{\numberline {5.2.3}Matematiikka}{17}{}%
+\contentsline {subsubsection}{\numberline {5.2.4}Algoritmit ja ohjelmalistaukset}{18}{}%
+\contentsline {subsection}{\numberline {5.3}Viittaukset ja lähdeluettelo}{18}{}%
+\contentsline {subsubsection}{\numberline {5.3.1}Lähdetiedosto}{18}{}%
+\contentsline {subsubsection}{\numberline {5.3.2}Tekstiviite}{18}{}%
+\contentsline {subsubsection}{\numberline {5.3.3}Lähdeluettelo}{19}{}%
+\contentsline {section}{\numberline {6}Testi: pelkkää tekstiä}{19}{}%
+\contentsline {section}{\numberline {7}Loppuluku}{22}{}%
+\contentsline {section}{References}{23}{}%
+\contentsline {section}{\numberline {A}Esimerkkiliite}{24}{}%

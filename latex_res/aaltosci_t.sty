@@ -36,6 +36,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{natbib}   
 \RequirePackage[english,swedish,finnish]{babel}
+\RequirePackage{environ}
 
 % ------------------- Tavallisen sivun muotoilu -----------------------
 
@@ -341,3 +342,22 @@ Bachelor's Programme in Science and Technology \\}
 \end{tabular}
 \end{otherlanguage}
 \clearpage}
+
+\makeatletter
+\newcommand{\problemtitle}[1]{\gdef\@problemtitle{#1}}% Store problem title
+\newcommand{\probleminput}[1]{\gdef\@probleminput{#1}}% Store problem input
+\newcommand{\problemquestion}[1]{\gdef\@problemquestion{#1}}% Store problem question
+
+\NewEnviron{problem}{
+  \problemtitle{}\probleminput{}\problemquestion{}% Default input is empty
+  \BODY% Parse input
+  \par\addvspace{.5\baselineskip}
+  \noindent
+  \begin{tabularx}{\textwidth}{@{\hspace{\parindent}} l X c}
+    \multicolumn{2}{@{\hspace{\parindent}}l}{\@problemtitle} \\% Title
+    \textbf{Input:} & \@probleminput \\% Input
+    \textbf{Question:} & \@problemquestion% Question
+  \end{tabularx}
+  \par\addvspace{.5\baselineskip}
+}
+\makeatother

@@ -26,6 +26,8 @@ multilinear monomials correspond to solutions to the given problem.\nl
 Before discussing multilinear monomial detection and algebraic fingerprints, the thesis covers algebraization, and 
 shows how a combinatorial problem can be reduced into a multilinear monomial detection problem. 
 
+[TODO: go through the structure of the thesis]
+
 \subsection{Algebraization of combinatorial problems}
 
 A combinatorial problem asks whether a given finite set of objects satisfies some given constraints. 
@@ -47,21 +49,48 @@ Thus, the task of finding a satisfying combination to the combinatorial problem 
 finding a multilinear monomial from the multivariate polynomial. It follows that a decision problem is be answered by 
 the existence of a multilinear monomial.\nl
 
-Appropriate definitions for the variables are problem specific. [ref] showcases an example 
-reduction into multilinear monomial detection for the k-3D matching problem.\nl 
+Appropriate definitions for the variables are problem specific. In the following section, this thesis shows a 
+reduction into multilinear monomial detection, introduced in [ref], for the $k$-3D matching problem.
 
-[TODO: define k-3d matching and go through the example]
+\subsection{Reducing $k$-3D matching into multilinear monomial detection}
 
-The detection of multilinear monomials is a fundamental problem, since many important problems have been reduced to it. 
-A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
-other multilinear monomial detection problems [EXAMPLE HERE]. Of course, simply expanding the generating polynomial into 
-a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]\nl
+The $k$-3D matching problem is defined as follows:
 
-When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
-This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
-which will be the topic of the next section.
+\begin{problem}
+  \problemtitle{$k$-\textsc{3D matching}}
+  \probleminput{Three disjoint sets $A$, $B$ and $C$, and a set of triples $T\subset A\times B\times C$.}
+  \problemquestion{Is there a subset $M\subseteq T$, such that $\abs{M} = k$ and 
+  $\forall m \in M$: None of the elements in $m$ appear in $M\backslash \{m\}$?}
+\end{problem}
 
-[TODO: go through the structure of the thesis]
+We begin by defining new variables corresponding to the elements in $A$, $B$ and $C$, 
+labeled as $a_i$, $b_j$ and $c_k$, respectively, where $i\in [\abs{A}]$, $j\in [\abs{B}]$ and $k\in [\abs{C}]$. 
+
+For every triple $t \in T$, we define a multilinear monomial $x$ that is a product of the elements in $t$. 
+We introduce a set $X$ that satisfies the following:
+\begin{center}$\forall x \in X$: $x = abc$ : $(a, b, c) \in T$.\end{center}
+
+Next, we define multivariate polynomials $P_1$ and $P_k$ as follows:
+\begin{center}$P_1 = \displaystyle \sum_{X}$ ,   $P_k = P_1^k$.\end{center}
+
+Following this construction, we observe that $P_k$, when expanded into a sum of multivariate monomials, 
+contains a multilinear term if and only if the original $k$-3D matching instance can be answered in the positive. 
+Furthermore, every multilinear monomial in the expanded $P_k$ corresponds to a solution to the problem, and 
+the solutions can be directly found from the variables in the multilinear monomial. Thus, 
+a successful reduction into multilinear monomial detection has been given for the $k$-3D mapping.\nl
+
+An example instance of $k$-3D matching with this exact algebraization can be found in [ref]. [show the example?]\nl
+
+
+%A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
+%other multilinear monomial detection problems [EXAMPLE HERE]. Of course, simply expanding the generating polynomial into 
+%a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]\nl
+
+%When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
+%This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
+%which will be the topic of the next section.
+
+
 
 \subsection{Johdantoluku}
 % Sanni Heinzmann
@@ -114,15 +143,83 @@ lanka etenee, viittaukset työhön:
 
 \section{Preliminaries}
 
-[TODO: groups, rings, fields, characteristic of field, group algebra, 
-FPT & O*, multivariate & multilinear, generating & sum of monomials form, 
-non-deterministic algorithm, polynomial ring]
+%[TODO: groups, rings, fields, characteristic of field, group algebra, 
+%FPT \& O*, multivariate \& multilinear, generating \& sum of monomials form, 
+%non-deterministic algorithm, polynomial ring]
+It is necessary to recall basic algebraic concepts 
+before further discussing multilinear monomial detections and algebraic fingerprinting. 
+In this section, definitions for a group, ring and field are given, and some useful concepts 
+regarding them. The second subsection goes through general notation and terminology used 
+throughout the thesis.
+
+\subsection{Groups, rings and fields} %polynomial rings, group algebra, char of field
+
+A group $\textbf G$ is a tuple $(G, +)$, where $G$ is a set of elements, $+$ : $G \times G \longrightarrow G$ is a binary operation closed under 
+the elements in $G$, $+$ is associative, every element $g\in G$ has an inverse $g^{-1}\in G$, and $G$ contains 
+an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. Moreover, a $\textbf G$ is called $Abelian$ if 
+$+$ is also commutative.\nl
+
+A ring $\textbf R$ is a tuple $(R, \cdot )$, where $R = (G, +)$ is an Abelian group, $\cdot$ : $G \times G \longrightarrow G$ 
+is a binary operation closed under $G$. We call the binary operations $+$ and $\cdot$ as addition and multiplication, respectively. 
+Note, that from here on we use $R$ as the set of elements defined for $\textbf R$. 
+$R$ must contain a multiplicative identity $\textbf 1 \in R$ such that $\forall a \in R$: $a \cdot \textbf 1 = a$. 
+We notate the additive identity $e$ required for the group $R$ as $\textbf 0$ from here on. 
+Left and right distributive laws hold for rings, i.e., $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
+$u \in R$ is called $unit$ if it holds that $\exists v \in R$: $u \cdot v = v \cdot u = \textbf 1$.\nl
+
+A field $\textbf F$ is defined with the following conditions:
+\begin{itemize}
+  \item $(F, +)$ is an Abelian group
+  \item $(F\backslash {\textbf 0}, \cdot )$ is an Abelian group
+  \item Left and right distributive laws hold
+\end{itemize}
+
+Equivalently, a ring is a field if every non-zero element is unit, $\textbf 1 \neq \textbf 0$ and multiplication is commutative. 
+The $characteristic$ of a field is defined as follows:
+\begin{center}
+  \begin{equation}
+    char(\textbf F) =
+      \begin{cases}
+        min\{n \in \N : n \cdot \textbf 1 = \textbf 0 \}\\
+        0 & \text{if such $n$ does not exist}\\
+      \end{cases}       
+  \end{equation}
+\end{center}
+
+
+\subsection{General notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
 
 \section{Multilinear monomial detection}
 
-[TODO: go through non-algebraic methods to solving the multilinear monomial detection, dynamic & color coding]
+The detection of multilinear monomials is a fundamental problem, since many important problems can be reduced to it [TODO: quick examples]. 
+However, a faster algorithm for some instance of multilinear monomial detection does not directly imply faster 
+algorithms for other combinatorial problems, since the algebraization into multilinear monomial detection is 
+problem specific. On the other hand, many multilinear monomial detection problems employ similar techniques [TODO: quick examples]. 
+As a result, finding new techniques and ideas for some specific multilinear monomial detection is valuable.\nl
 
-[TODO: end with matrix assignment and specifications for such a field]
+Of course, fast evaluation of the expanded polynomial is also an important aspect, since it contributes 
+directly to the general multilinear monomial detection problem. However, a naive expansion and evaluation is non-optimal.
+When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\) $= 2^{\Theta(N)}$.\nl
+
+This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials. 
+On this section, the thesis gives a quick overview on non-algebraic methods for 
+multilinear monomial detection that are faster than naive expansion and evaluation. These methods, however, are 
+outperformed by the purely algebraic technique of algebraic fingerprinting which is covered later.
+
+\subsection{Dynamic programming for a smart expansion of the polynomial}
+
+In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
+as soon as they are formed, since the degree will not decrease during the expansion of the polynomial. Therefore, a dynamic 
+programming algorithm can be designed for the expansion with an additional rule: any squared variable can be instantly discarded, or 
+in algebraic terms, set to zero.\nl
+
+With this additional rule, the following can be deduced: if there are no solutions to the original problem, 
+the polynomial will identically evaluate to zero. Note, however, that the polynomial 
+evaluating to zero does not imply that no solutions exist.
+
+\subsection{Non-deterministic color coding for faster evaluation}
+
+[TODO: end with hints toward matrix assignment and specifications for such a field]
 
 \section{Multilinear monomial detection with algebraic fingerprinting}
 
