@@ -61,6 +61,8 @@ When the problem domain has n variables in an N-degree polynomial, the number of
 This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
 which will be the topic of the next section.
 
+[TODO: go through the structure of the thesis]
+
 \subsection{Johdantoluku}
 % Sanni Heinzmann
 
@@ -110,133 +112,25 @@ lanka etenee, viittaukset työhön:
 
 % --------------------------------------------------------------------
 
-\section{Kandidaatintyön rakenne- ja muotoseikat}
-\label{sec:esimluku}
+\section{Preliminaries}
 
-Tässä luvussa esitellään kandidaatintyön muotovaatimuksia
-tällä kurssilla. Muutamat alkuperäiset lähteet ovat saattaneet
-kadota organisaatio- ja tietojärjestelmämuutoksissa, kun
-Into-järjestelmä on korvannut WWW-sivustoja.
+[TODO: groups, rings, fields, characteristic of field, group algebra, 
+FPT & O*, multivariate & multilinear, generating & sum of monomials form, 
+non-deterministic algorithm, polynomial ring]
 
-\subsection{TKK:n kandidaattityöryhmän ohjeistus}
+\section{Multilinear monomial detection}
 
-Yleiset kandidaatintyön muotovaatimukset on annettu TKK:n
-kandidaattityöryhmän päätöksellä 14.11.2006 ja ne ovat
-kokonaisuudessaan saatavissa osoitteessa
-\url{http://www.tkk.fi/fi/opinnot/opintohallinto/paatokset/kandi20061114.pdf}.
-Tässä luvussa annetaan lyhyt, selvennetty ja joiltakin osiltaan
-karsittu yhteenveto kyseisistä ohjeista. Seuraavassa viitataan siis
-edellä mainittuihin TKK:n kandidaatintyön ohjeisiin (esim. ``luku 3''
-tarkoittaa TKK:n kandidaatintyön ohjeiden lukua kolme).
+[TODO: go through non-algebraic methods to solving the multilinear monomial detection, dynamic & color coding]
 
-\textbf{TIK.kand suositus: Lue alkuperäiset ohjeet erityisesti
-  silloin, jos et kirjoita työtä annettua \LaTeX{}-pohjaa käyttäen.}
+[TODO: end with matrix assignment and specifications for such a field]
 
-TKK:n kandidaatintyön ohjeissa käsitellään työn rakennetta (luvussa 3)
-ja muotoseikkoja (luvussa 4). Yleisesti todetaan kandidaatintyöstä
-seuraavaa:
-%
-\begin{quotation}
-\noindent \it
-Kandidaatintyö voi perustua teoreettisen taustan tarkasteluun 
-ja sen analysointiin sekä johtopäätösten tekoon tai kokeelliseen osioon ja 
-tulosten analysointiin sekä johtopäätösten tekoon
-tai edellisten yhdistelmään.
-Kandidaatintyön rakenteen tulee olla hyvän tieteellisen kirjoittamisen 
-käytännön mukainen
-ja sisältävän vähintään seuraavat osat: [$\ldots$] (Luku 3)
-\end{quotation}
+\section{Multilinear monomial detection with algebraic fingerprinting}
 
-Rakenteen osia ovat: nimiölehti, tiivistelmä, sisällysluettelo,
-symboli- ja lyhenneluettelo (työn luonteen vaatiessa voi puuttua),
-johdanto, aikaisempi tutkimus (työn luonteen vaatiessa teoreettinen
-tausta), tutkimusongelma ja -menetelmät, tulokset, tarkastelu (työn
-luonteen vaatiessa johtopäätökset tai näiden yhdistelmä), lähteet,
-liitteet (jos tarpeen). Osat johdannosta tarkasteluun muodostavan työn
-tekstiosan. (Luku 3) Tekstiosan sopiva pituus on 15--20 sivua eikä
-työtä ole syytä tarpeettomasti pidentää (luku 4.2.1).
-Kokonaissivumäärä tulee tällöin olemaan noin 18--25 sivua.
+[TODO: add subsections for problem implementations]
 
-Muotoseikoissa TKK:n kandidaatintyön ohjeissa otetaan esille, että
-työn tulee olla jäsennelty ja tyylillisesti sekä kielellisesti
-viimeistelty ja moitteeton.  Tarpeettomia tyylillisiä erikoisuuksia
-tulee välttää.  Tekstiosassa tulee olla vain työn kannalta oleelliset
-kuvat tai taulukot. (Luku 4.1)
-%
-Kirjasinlaji tulee olla roomalaistyyppinen (Times New Roman
-tai Computer Modern\footnote{\LaTeX{}in perusfontti}) ja kooltaan 12 pistettä
-(luku 4.2.2). 
-%
-Työn nimessä ei saa esiintyä lyhenteitä, kaavoja tai lainauksia
-(luku 4.2.3).
+\subsection{Preventing unwanted cancellations}
 
-Nimiölehdellä tulee olla tiedot yliopistosta, tutkinto-ohjelmasta,
-työn nimestä, luonteesta (``Kandidaatintyö''), päivämäärä ja tekijän
-nimi (luku 4.2.4). Tiivistelmäsivusta esitetään vastaavat seikat,
-jotka löytyvät myös tarjolla olevista pohjista
-(doc\footnote{\url{http://peppi.hut.fi/pub/kandi/kandi.php}} tai tämä
-\LaTeX{}-pohja).  Se ei saa olla sivua pidempi. 
-% WANHA:
-%Tiivistelmässä
-%ilmoitettavaan sivumäärään lasketaan tekstiosan lisäksi
-%lähdeluetteloon kuluvat sivut. (Luku 4.2.5)
-Tiivistelmässä
-ilmoitettavaan sivumäärään lasketaan kaikki sivut yhteen 
-nimiölehdestä lähdeluettelon tai liitteiden loppuun
-(Kirjaston suullinen ohje 29.8.2011). 
-
-Asemoinnin suhteen tekstiosaa ei sisennetä vaan kappaleiden väliin
-jätetään yksi tyhjä rivi. Jos oikea reuna tasataan, niin tulee käyttää
-tavutusta ja tarkistaa, että se menee oikein.  Rivivälin tulee olla 1
-tai 1,5. (Luku 2.4.7)
-
-Huomaa, että TKK:n kandidaatintyön ohjeissa sivujen numeroinnin ohjeet
-ovat ristiriitaiset (luku 4.2.6). Oikea sivunumeroinnin malli on
-toteutettu tässä pohjassa.  
-
-Lähdeviittaukset tulee tehdä huolellisesti ja samanmuotoisesti joko
-nimi-vuosi- tai numerojärjestelmällä. Alaviitejärjestelmää ei
-suositella. (Luku 2.4.8)
-
-\textbf{TIK.kand suositus: Numerointi aloitetaan arabialaisilla
-  numeroilla nimiölehdestä kuitenkin niin, ettei numeroa kirjoiteta
-  sille. Siten ensimmäisen tiivistelmäsivun sivunumero on 2. 
-  Kirjasinkoko on 12, riviväli 1,5. Tekstiviitteissä käytetään
-  nimi-vuosi-järjestelmää, mutta tässä ohjaajan sana on määräävä.}
-
-\subsection{TIK.kand: kommentteja rakenne- ja muotoseikoista}
-
-Tekstiasun viimeistelyyn tulee varata runsaasti aikaa V3- ja
-V4-palautusten väliin. Työn tulisi olla oleellisesti valmis jo
-V3-palautuksessa, jotta ohjaajasi voi antaa palautetta, kuinka työ
-viimeistellään ja saadaan hyväksi kokonaisuudeksi, ja sinulla on 
-tarpeeksi aikaa hienosäätöön.
-
-Huomaa, että sivumäärä on hyvin riippuvainen tekstin luonteesta:
-pelkkää tekstiä mahtuu tässä \LaTeX{}-pohjassa sivulle noin 300 sanaa,
-kun taas jos mukana on kuvia, luetteloita tai paljon väliotsikkoja,
-sanamäärä on huomattavasti pienempi. Vastaavasti pienempi riviväli tai
-fonttikoko antaa lisää sanoja sivua kohden.
-
-Luennolla 6.9.2011 kurssin vastuuopettaja Tomi Janhunen linjasi, että
-sivumäärä ei ole kriittisin asia vaan itse aiheen käsittely.  Jos
-sivumäärä poikkeaa, ohjaaja tai kurssin henkilökunta voi puuttua
-tilanteeseen. Jos sivumäärä on pieni, voidaan kysyä, onko aihetta
-käsitelty tarpeeksi laajasti tai onko selittämiseen tai perusteluihin
-käytetty vaivaa. Toisaalta iso sivumäärä voi kertoa siitä, ettei työn
-rajaamista ole hallittu, ja tämäkin voi olla arviointiin liittyvä
-tekijä. Myöskään ei saa ajatella sitä, että kun 20 sivua tekstiä tulee
-täyteen, niin opinnäytetyö on valmis. Tieteellisen tekstin
-kirjoittaminen on iteratiivista: kirjoitetaan, luetaan, karsitaan ja
-lisätään, kirjoitetaan uudestaan, luetaan, jne. Tyypillisesti
-sivumäärän kanssa ei tule ongelmaa: annetusta tehtävästä tällä
-aikataululla tulee tyypillisesti noin 20 sivun mittainen raportti.
-
-Ohjeita kandidaatintyön eri osien kirjoittamiseen on sisällytetty
-tähän pohjaan. Kirjoittamisohjeita on koskien tiivistelmää, käytetyt
-lyhenteet -osiota, johdantoa, loppulukua ja liitteitä.  Lisäksi
-lähdekoodissa \verb!main.tex! on ohjeita alkusanoihin, joiden käyttöä
-ei suositella kandidaatintyössä.
+\subsection{Fingerprinting for cancellation of non-solutions}
 
 \subsection{Kirjallisuutta}
 
