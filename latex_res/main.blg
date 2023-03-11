@@ -1,6 +1,14 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
-The style file: aaltosci_t.bst
-Database file #1: lahteet.bib
-Warning--empty year in mattakivela
-Warning--empty year in lyhyt2e
-(There were 2 warnings)
+[0] Config.pm:306> INFO - This is Biber 2.18
+[0] Config.pm:309> INFO - Logfile is 'main.blg'
+[93] biber-MSWIN32:340> INFO - === 
+[127] Biber.pm:418> INFO - Reading 'main.bcf'
+[220] Biber.pm:978> INFO - Found 4 citekeys in bib section 0
+[234] Biber.pm:4401> INFO - Processing section 0
+[245] Biber.pm:4592> INFO - Looking for bibtex file 'sources.bib' for section 0
+[287] bibtex.pm:1713> INFO - LaTeX decoding ...
+[304] bibtex.pm:1518> INFO - Found BibTeX data source 'sources.bib'
+[368] UCollate.pm:68> INFO - Overriding locale 'sv-SE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[368] UCollate.pm:68> INFO - Overriding locale 'sv-SE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[368] Biber.pm:4221> INFO - Sorting list 'ynt/global//global/global' of type 'entry' with template 'ynt' and locale 'sv-SE'
+[377] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[380] bbl.pm:757> INFO - Output to main.bbl

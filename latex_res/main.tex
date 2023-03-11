@@ -30,7 +30,14 @@
 \usepackage{algorithmic} % algoritmilistaus
 \usepackage{hyphenat}  % tavutuksen viilaamiseen liittyvä (hyphenpenalty,...)
 \usepackage{supertabular,array}  % useampisivuinen taulukko
+
 \usepackage{tabularx,environ,amssymb}
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\addbibresource{sources.bib}
 
 % Koko dokumentin kattavia asetuksia:
 
@@ -49,7 +56,7 @@
 % http://merkel.zoneo.net/Latex/natbib.php
 % jossa selitykset citep, citet, bibpunct, jne.
 % Valitse alla olevista tai muokkaa:
-\bibpunct{(}{)}{;}{a}{,}{,}    % a = tekijä-vuosi (author-year)
+%\bibpunct{(}{)}{;}{a}{,}{,}    % a = tekijä-vuosi (author-year)
 %\bibpunct{[}{]}{;}{n}{,}{,}    % n = numero [1],[2] (numerical style)
 
 % Rivivälin muuttaminen:
@@ -100,27 +107,25 @@
 %
 % "\MUUTTUJA"-kohdat luetaan aaltosci_t.sty:ä varten.
 
-\author{Teemu Teekkari}
+\author{Onni Miettinen}
 
 % Otsikko nimiölehdelle. Yleensä sama kuin seuraavana oleva \TITLE, 
 % mutta jos nimiölehdellä tarvetta "kaksiosaiselle" kaksiriviselle
-\title{\LaTeX{}-pohja kandidaatintyötä varten ohjeiden kera ja varuilta %
-kokeillaan vähän ylipitkää otsikkoa}
+\title{Detecting multilinear monomials with algebraic fingerprints}
 % 2-osainen otsikko:
 %\title{\LaTeX{}-pohja kandidaatintyölle \\[5mm] Pitkiä rivejä kokeilun vuoksi.}
 
 % Otsikko tiivistelmään. Jos lisäksi engl. tiivistelmä, niin viimeisin:
-\TITLE{\LaTeX{}-pohja kandidaatintyötä varten ohjeiden kera ja varuilta %
-kokeillaan vähän ylipitkää otsikkoa}
+%\TITLE{\LaTeX{}-pohja kandidaatintyötä varten ohjeiden kera ja varuilta %
+%kokeillaan vähän ylipitkää otsikkoa}
 %\TITLE{\LaTeX{} för kandidatseminariet med jättelång rubrik som fortsätter och
 % fortsätter ännu}
-\ENTITLE{\LaTeX{} template for Bachelor thesis with a pretty long title %
-line which continues ynd continues}
+\ENTITLE{Detecting multilinear monomials with algebraic fingerprints}
 % 2-osainen otsikko korvataan täällä esim. pisteellä:
 %\TITLE{\LaTeX{}-pohja kandidaatintyölle. Pitkiä rivejä kokeilun vuoksi.}
 
 % Ohjaajan laitos suomi/ruotsi ja tarvittaessa eng (tiivistelmän kieli/kielet)
-\DEPT{Poimi tähän ohjaajasi laitos, DEPT, main.tex}
+%\DEPT{Poimi tähän ohjaajasi laitos, DEPT, main.tex}
 % suomi:
 %\DEPT{Tietotekniikan laitos}               % T
 %\DEPT{Tietojenkäsittelytieteen laitos}     % TKT
@@ -130,20 +135,20 @@ line which continues ynd continues}
 %\DEPT{Institutionen för datavetenskap}     % TKT
 %\DEPT{Institutionen för mediateknik}       % ME
 % englanti:
-%\ENDEPT{Department of Computer Science Engineering}     % T
+\ENDEPT{Department of Computer Science}     % T
 %\ENDEPT{Department of Information and Computer Science} % TKT
 %\ENDEPT{Department of Media Technology}                 % ME
 
 % Vuosi ja päivämäärä, jolloin työ on jätetty tarkistettavaksi.
-\YEAR{20xx}
-\DATE{xx. xxxxxkuuta 20xx}
+\YEAR{2023}
+%\DATE{xx. xxxxxkuuta 20xx}
 %\DATE{31. helmikuuta 2011}
 %\DATE{Den 31 februari 2011}
-\ENDATE{MonthName 31, 20xx}
+\ENDATE{March 11, 2023}
 
 % Kurssin vastuuopettaja ja työsi ohjaaja(t)
-\SUPERVISOR{Apulaisprofessori Juho Kannala}
-\INSTRUCTOR{Ohjaajantitteli Sinun Ohjaajasi}
+%\SUPERVISOR{Prof. Eero Hyvönen}
+%\INSTRUCTOR{Augusto Modanese}
 %\INSTRUCTOR{Ohjaajantitteli Sinun Ohjaajasi, ToinenTitt Matti Meikäläinen}
 % DI       // på svenska DI diplomingenjör
 % TkL      // TkL teknologie licentiat
@@ -152,8 +157,8 @@ line which continues ynd continues}
 % Professori Prof. // Prof. Professor
 % 
 % Jos tiivistelmä englanniksi, niin:
-\ENSUPERVISOR{Assistant Professor Juho Kannala}
-\ENINSTRUCTOR{Your instructor, titleOfInstructor}
+\ENSUPERVISOR{Prof. Eero Hyvönen}
+\ENINSTRUCTOR{Augusto Modanese}
 % M.Sc. (Tech)  // M.Sc. (Eng)
 % Lic.Sc. (Tech)
 % D.Sc. (Tech)   // FT filosofian tohtori, PhD Doctor of Philosophy
@@ -163,7 +168,7 @@ line which continues ynd continues}
 % Kirjoita tänne HOPS:ssa vahvistettu pääaineesi.
 % Pääainekoodit TIK-opinto-oppaasta.
 
-\PAAAINE{}
+\PAAAINE{Computer Science}
 %Tietotekniikka
 %Datateknik
 %Computer Science and Engineering
@@ -198,8 +203,8 @@ line which continues ynd continues}
 
 % Avainsanat tiivistelmään. Tarvittaessa myös englanniksi:
 
-\KEYWORDS{avain, sanoja, niitäkin, tähän, vielä, useampi, vaikkei, %
-niitä, niin, montaa, oikeasti, tarvitse}
+%\KEYWORDS{avain, sanoja, niitäkin, tähän, vielä, useampi, vaikkei, %
+%niitä, niin, montaa, oikeasti, tarvitse}
 \ENKEYWORDS{key, words, the same as in FIN/SWE}
 
 % Tiivistelmään tulee opinnäytteen sivumäärä.
@@ -218,7 +223,7 @@ niitä, niin, montaa, oikeasti, tarvitse}
 % VANHA //  sivunumerolla 1. %   Toisin sanoen, viimeisen lähdeluettelosivun 
 % VANHA //  sivunumero EI ole sivujen määrä vaan se pitää laskea tähän käsin
 
-\PAGES{Kirjoita tähän oikea määrä, tässä esimerkissä 23}
+\PAGES{x}
 %\PAGES{23}  % kaikki sivut laskettuna nimiölehdestä lähdeluettelon tai 
              % mahdollisten liitteiden loppuun. Tässä 23 sivua
 
@@ -235,7 +240,7 @@ niitä, niin, montaa, oikeasti, tarvitse}
 % on 2. \maketitle komento jotenkin kadottaa sivunumeronsa.
 \setcounter{page}{2}    % sivunumeroksi tulee 2
 
-\input{luku_abstraktit}
+\input{abstract}
 \newpage                       % pakota sivunvaihto
 
 % -------------- Sisällysluettelo / TOC -------------------------------
@@ -250,7 +255,7 @@ niitä, niin, montaa, oikeasti, tarvitse}
 % Lyhenteet, termit ja symbolit.
 % Suositus: Käytä vasta kun paljon symboleja tai lyhenteitä.
 %
-\input{luku_lyhenteet} 
+%\input{luku_lyhenteet} 
 %\clearpage                     % luku loppuu, loput kelluvat tänne
 \newpage
 
@@ -312,7 +317,7 @@ niitä, niin, montaa, oikeasti, tarvitse}
 %  (ellet käytä Makefilea ja "make")
 
 % Viitetyylitiedosto aaltosci_t.bst; muokattu HY:n tktl-tyylistä.
-\bibliographystyle{aaltosci_t}
+%\bibliographystyle{aaltosci_t}
 % Katso myös tämän tiedoston yläosan "preamble" ja siellä \bibpunct.
 
 % Muutetaan otsikko "Kirjallisuutta" -> "Lähteet"
@@ -324,8 +329,9 @@ niitä, niin, montaa, oikeasti, tarvitse}
 %\addcontentsline{toc}{chapter}{\bibname}  % book, report
 
 % Määritä kaikki bib-tiedostot
-\bibliography{lahteet}
+%\bibliography{sources}
 %\bibliography{thesis_sources,ietf_sources}
+\printbibliography
 
 \label{pages:refs}
 \clearpage         % erotetaan mahd. liitteet alkamaan uudelta sivulta
@@ -339,10 +345,10 @@ niitä, niin, montaa, oikeasti, tarvitse}
 % haastattelurunko, kyselypohja, ylimääräisiä kuvia, lyhyitä 
 % ohjelmakoodeja tai datatiedostoja.
 
-\appendix
-\input{luku_liitteet}
+%\appendix
+%\input{luku_liitteet}
 
-\label{pages:appendices}
+%\label{pages:appendices}
 
 % ---------------------------------------------------------------------
 

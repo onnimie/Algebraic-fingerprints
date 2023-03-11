@@ -6,20 +6,23 @@ In recent years, there have been rapid advances in the algorithms for combinator
 This has been greatly sparked by the development in algebraic methods for solving the 
 multilinear monomial detection problem, i.e., finding whether a multivariate polynomial contains a multilinear monomial. 
 Namely, the technique of algebraic fingerprinting 
-first introduced by Koutis in [ref] and further developed by Williams in [ref] has proven 
-to be very successful. With algebraic fingerprinting, the k-path problem (see problem def), 
+first introduced by Koutis in \cite{10.1007/978-3-540-70575-8_47} and further developed by Williams in \cite{WILLIAMS2009315} has proven 
+to be very successful.\nl
+
+With algebraic fingerprinting, the $k$-path problem (see problem def), 
 that previously could be solved in \bigO{something} time by X in [ref], 
-could be solved in \bigO{2^k*poly(n)} time by Koutis in [ref].\nl
+could be solved in \bigOstar{2^{3k/2}} time in \cite{10.1007/978-3-540-70575-8_47}. 
+This result was quickly improved in \cite{WILLIAMS2009315}, where a \bigOstar{2^k} algorithm was given.\nl
 
-Of course, this method was further developed, and in [ref] Björklund et al. showed an algorithm 
+Of course, this technique has been further developed, and in \cite{doi:10.1137/110839229} Björklund et al. showed an algorithm 
 that solved the Hamiltonian problem (Hamiltonicity), i.e., finding whether a given graph contains a path that visits 
-every vertex once, in \bigO{something} time. The previous fastest algorithm for Hamiltonicity by Y 
+every vertex once, in \bigOstar{something} time. The previous fastest algorithm for Hamiltonicity by Y 
 in [ref] ran in \bigO{something} time with the use of color coding[??]. [INSERT PREVIOUS MTEHOD] 
-This was a significant improvement on a problem that had seen no progress in nearly forty years.\nl
+This was a significant improvement on a problem that had seen no progress in nearly fifty years.\nl
 
-The method of algebraic fingerprinting is present in multilinear monomial detection. Multilinear monomial detection 
+The technique of algebraic fingerprinting is present in multilinear monomial detection. Multilinear monomial detection 
 is a fundamental problem, since many important combinatorial problems can be reduced into multilinear monomial detection 
-via a problem specific algebraization. The goal of such algebraization is to form a generating multivariate polynomial 
+via a problem specific algebraization. The goal of such algebraization is to form a multivariate polynomial 
 that encodes the combinations, i.e. the solutions and non-solutions, into multivariate monomials where 
 multilinear monomials correspond to solutions to the given problem.\nl
 
@@ -46,11 +49,12 @@ Multilinear monomial detection has proven to be a useful algebraization. First, 
 correspond to elements from the set of objects given as input. Then, we construct a multivariate polynomial such that it 
 encodes all solutions and non-solutions as multivariate monomials, with solutions encoded specifically as multilinear monomials. 
 Thus, the task of finding a satisfying combination to the combinatorial problem has been reduced to 
-finding a multilinear monomial from the multivariate polynomial. It follows that a decision problem is be answered by 
-the existence of a multilinear monomial.\nl
+finding a multilinear monomial from the multivariate polynomial. It follows, that a decision problem is answered by 
+the existence of a multilinear monomial and a counting problem by the number of multilinear monomials.\nl
 
 Appropriate definitions for the variables are problem specific. In the following section, this thesis shows a 
-reduction into multilinear monomial detection, introduced in [ref], for the $k$-3D matching problem.
+reduction into multilinear monomial detection, introduced in \cite{10.1145/2742544}, 
+for the $k$-3D matching problem.
 
 \subsection{Reducing $k$-3D matching into multilinear monomial detection}
 
@@ -79,7 +83,7 @@ Furthermore, every multilinear monomial in the expanded $P_k$ corresponds to a s
 the solutions can be directly found from the variables in the multilinear monomial. Thus, 
 a successful reduction into multilinear monomial detection has been given for the $k$-3D mapping.\nl
 
-An example instance of $k$-3D matching with this exact algebraization can be found in [ref]. [show the example?]\nl
+An example instance of $k$-3D matching with this exact algebraization can be found in [10.1145/2742544]. [show the example?]\nl
 
 
 %A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
@@ -89,57 +93,6 @@ An example instance of $k$-3D matching with this exact algebraization can be fou
 %When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
 %This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
 %which will be the topic of the next section.
-
-
-
-\subsection{Johdantoluku}
-% Sanni Heinzmann
-
-Työn ensimmäinen luku on aina johdanto. Kandidaatintyön laajuudessa
-sitä ei ole tarvetta jakaa alalukuihin, diplomityössä ja muissa
-isommissa töissä sekä tutkimusraporteissa alaluvut ovat mahdollisia
-(esim. 1.1 Tutkimusongelma, 1.2 Aineisto ja tutkimusmenetelmä, jne.).
-
-Johdannon tarkoitus on antaa lukijalle heti alussa selvä kuva siitä,
-mihin kysymykseen työ pyrkii vastaamaan
-(tutkimusongelma). Tyypillisesti aiheen esittely alkaa sanoilla ``Tämä
-(kandidaatin/diplomi)työ käsittelee...''  Johdanto esittelee lyhyesti
-työn pääpiirteet ja johdattaa lukijan itse työn pariin. Johdannon
-ohjepituus on 1--3 sivua, kandidaatintyössä 2 sivua on hyvä maksimi.
-
-Käsittele nämä aiheet johdannossa (jotakuinkin tässä järjestyksessä):
-%
-\begin{itemize}
- \item Johdatus aihepiiriin 
-(ei liian laajasti, vaan relevantisti ja napakasti)
-%
- \item Tutkimuskohteen esittely (MITÄ tämä työ tutkii? 
-Kerro työstä/tutkimusaiheesta, ei omasta kirjoitusprosessistasi 
-tai omasta kiinnostuksestasi.)
-%
- \item Tutkimuksen perustelu: ongelma tai aukko 
-(aiemmassa tutkimuksessa on aukko, tai siitä nousee esiin 
-kysymys, johon tässä etsitään vastausta)
-%
- \item Tutkimusongelma / -kysymykset (koko työsi sydän, 
-jonka pitäisi näkyä ''punaisena lankana'' koko työn läpi)
- \item Tavoitteet (Käytä konkreettisesti sanaa ''tavoite'')
- \item Rajaus (Mitä tämä työ EI tutki)
- \item Menetelmä, aineisto, teoreettinen kehys (Esittele, 
-MITEN em. aihetta tutkitaan)
- \item Tulokset? (Johdannossa on ihan hyvä antaa lyhyesti 
-tietoa päätuloksista, mutta ei pakko)
- \item Työn sisältö ja rakenne (Esittele, miten työn punainen 
-lanka etenee, viittaukset työhön: 
-``ensin, sitten, seuraavaksi, luvussa 3'' jne.)
-\end{itemize}
-
-%\textbf{TIK.kand kommentti: Helpota lukijan työtä kaikin
-%mahdollisin tavoin. Haluat voittaa lukijan omalle puolellesi.
-%Lukijalle on hyvä tuoda heti alusta selville, mihin pyrit.
-%Verratuna kaunokirjallisuuteen: ``kerro heti kuka murhaaja on''}
-
-% --------------------------------------------------------------------
 
 \section{Preliminaries}
 
@@ -156,27 +109,33 @@ throughout the thesis.
 
 A group $\textbf G$ is a tuple $(G, +)$, where $G$ is a set of elements, $+$ : $G \times G \longrightarrow G$ is a binary operation closed under 
 the elements in $G$, $+$ is associative, every element $g\in G$ has an inverse $g^{-1}\in G$, and $G$ contains 
-an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. Moreover, a $\textbf G$ is called $Abelian$ if 
+an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. Moreover, $\textbf G$ is called $Abelian$ if 
 $+$ is also commutative.\nl
 
 A ring $\textbf R$ is a tuple $(R, \cdot )$, where $R = (G, +)$ is an Abelian group, $\cdot$ : $G \times G \longrightarrow G$ 
 is a binary operation closed under $G$. We call the binary operations $+$ and $\cdot$ as addition and multiplication, respectively. 
 Note, that from here on we use $R$ as the set of elements defined for $\textbf R$. 
+In general, a bold typeface \textbf X represents a group, ring or field and $X$ its set of elements. 
 $R$ must contain a multiplicative identity $\textbf 1 \in R$ such that $\forall a \in R$: $a \cdot \textbf 1 = a$. 
 We notate the additive identity $e$ required for the group $R$ as $\textbf 0$ from here on. 
-Left and right distributive laws hold for rings, i.e., $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
-$u \in R$ is called $unit$ if it holds that $\exists v \in R$: $u \cdot v = v \cdot u = \textbf 1$.\nl
+Observe, that for any $\textbf R \neq \{\textbf 0\}$, $\textbf 1 \neq \textbf 0$.  
+Left and right distributive laws hold for rings, i.e., 
+\begin{center}
+  $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
+\end{center}
+$u \in R$ is called $unit$ if it holds that $\exists v \in R$: $u \cdot v = v \cdot u = \textbf 1$, 
+i.e., it has a multiplicative inverse $v \in R$.\nl
 
-A field $\textbf F$ is defined with the following conditions:
+A field $\textbf F = (F, +, \cdot)$ is defined with the following conditions:
 \begin{itemize}
   \item $(F, +)$ is an Abelian group
-  \item $(F\backslash {\textbf 0}, \cdot )$ is an Abelian group
-  \item Left and right distributive laws hold
+  \item $(F\backslash \{\textbf 0\}, \cdot )$ is an Abelian group
+  \item Left and right distributive laws hold for \textbf F
 \end{itemize}
 
-Equivalently, a ring is a field if every non-zero element is unit, $\textbf 1 \neq \textbf 0$ and multiplication is commutative. 
-The $characteristic$ of a field is defined as follows:
-\begin{center}
+Equivalently, a ring is a field if every non-zero element is unit, $\textbf 1 \neq \textbf 0$, and multiplication is commutative. 
+The $characteristic$ of a field \textbf F is defined as follows:
+%\begin{center}
   \begin{equation}
     char(\textbf F) =
       \begin{cases}
@@ -184,18 +143,45 @@ The $characteristic$ of a field is defined as follows:
         0 & \text{if such $n$ does not exist}\\
       \end{cases}       
   \end{equation}
+%\end{center}
+
+Note, that a field \textbf F with characeristic 2 satisfies the following:
+\begin{center}
+  $\forall u \in F$: $u + u = u \cdot (\textbf 1 + \textbf 1) = u \cdot \textbf 0 = \textbf 0$
 \end{center}
 
+TODO: polynomial rings, group algebra
 
-\subsection{General notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
+\subsection{Notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
 
-\section{Multilinear monomial detection}
+TODO: create a table or like, list terms: 
+multilinearity, multivariety, sum of monomials form \& generating form (arithmetic circuit) of polynomial, 
+degree of multivariate monomial, $\mathcal{O}$, $\Theta$, FPT, $\mathcal{O}$*, determinism \& non-determinism
 
-The detection of multilinear monomials is a fundamental problem, since many important problems can be reduced to it [TODO: quick examples]. 
-However, a faster algorithm for some instance of multilinear monomial detection does not directly imply faster 
-algorithms for other combinatorial problems, since the algebraization into multilinear monomial detection is 
-problem specific. On the other hand, many multilinear monomial detection problems employ similar techniques [TODO: quick examples]. 
-As a result, finding new techniques and ideas for some specific multilinear monomial detection is valuable.\nl
+\section{General multilinear monomial detection}
+
+The detection of multilinear monomials is a fundamental problem, 
+since many important problems can be reduced to it [TODO: quick examples (just refs?)]. 
+Therefore, any progress in general multilinear monomial detection directly implies 
+faster algorithms for all problems, that are reduced to and solved with general multilinear monomial detection. 
+The general, parameterized multilinear monomial problem is defined as follows: 
+
+\begin{problem}
+  \problemtitle{$k$-\textsc{multilinear monomial detection}}
+  \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$.}
+  \problemquestion{Does the sum of monomials form of the polynomial $P(X)$ represented by $A$ 
+  contain a multilinear monomial of degree $k$?}
+\end{problem}
+
+
+%However, a faster algorithm for some instance of multilinear monomial detection does not directly imply faster 
+%algorithms for other combinatorial problems, since the algebraization into multilinear monomial detection is 
+%problem specific. On the other hand, many multilinear monomial detection problems employ similar techniques [TODO: quick examples (just refs?)]. 
+%As a result, finding new techniques and ideas for some specific multilinear monomial detection is valuable. 
+%This thesis discusses clever utilizations of algebraic fingerprints on specific problems in a later section. 
+%In this section, we focus on the general multilinear monomial detection, which\nl
+
+\subsection{Non-algebraic methods}
 
 Of course, fast evaluation of the expanded polynomial is also an important aspect, since it contributes 
 directly to the general multilinear monomial detection problem. However, a naive expansion and evaluation is non-optimal.
@@ -204,794 +190,56 @@ When the problem domain has n variables in an N-degree polynomial, the number of
 This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials. 
 On this section, the thesis gives a quick overview on non-algebraic methods for 
 multilinear monomial detection that are faster than naive expansion and evaluation. These methods, however, are 
-outperformed by the purely algebraic technique of algebraic fingerprinting which is covered later.
+outperformed by the purely algebraic technique of algebraic fingerprinting which is covered later. 
 
-\subsection{Dynamic programming for a smart expansion of the polynomial}
+[TODO: motivate quickly why we still go through them anyway] 
+
+[dynamic programming is used in random color coding, 
+random assignment is used in algebraic fingerprinting,
+dynamic programming's set rule of any var squared = 0 can be achieved with matrices]
+
+\subsubsection{Dynamic programming for smart expansion of the polynomial}
 
 In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
 as soon as they are formed, since the degree will not decrease during the expansion of the polynomial. Therefore, a dynamic 
 programming algorithm can be designed for the expansion with an additional rule: any squared variable can be instantly discarded, or 
 in algebraic terms, set to zero.\nl
 
-With this additional rule, the following can be deduced: if there are no solutions to the original problem, 
+With this additional rule, the following is deduced: if there are no solutions to the original problem, 
 the polynomial will identically evaluate to zero. Note, however, that the polynomial 
-evaluating to zero does not imply that no solutions exist.
+evaluating to zero does not imply that no solutions exist. Indeed, we will come across a problem where 
+multilinear monomials cancel each other, and thus evaluate to zero (see chapther x).
 
-\subsection{Non-deterministic color coding for faster evaluation}
+\subsubsection{Non-deterministic color coding for faster evaluation}
 
-[TODO: end with hints toward matrix assignment and specifications for such a field]
+[TODO: go over random assignment with colors, 
+which results a polynomial of smaller domain (less variables), thus 
+making the evaluation faster]
 
-\section{Multilinear monomial detection with algebraic fingerprinting}
+[TODO: end with hints toward matrix assignment (a non-zero matrix squared can equal zero)]
 
-[TODO: add subsections for problem implementations]
+\subsection{Non-deterministic color coding with matrices}
 
-\subsection{Preventing unwanted cancellations}
+[TODO: go through idea of matrix assignment and specifications for a suitable algebra, 
+then lead to fingerprinting]
+
+\subsection{Algebraic fingerprinting to prevent unwanted cancellation}
+
+
+
+[TODO: add subsections for problem specific implementations with different utilizations of fingerprints]
+
+\subsection{Limits of general multilinear monomial detection}
+
+[TODO: explain the limit in general multilinear detection with this algebra 
+(impossible to find better algebra than what is used for the current fastest k-mld algorithm)]
+
+[TODO: lead to problem specific implementations 
+(we can use fingerprinting cleverly, when we understand the underlying problem well)]
+
+\section{Problem specific implementations of algebraic fingerprints}
 
 \subsection{Fingerprinting for cancellation of non-solutions}
 
-\subsection{Kirjallisuutta}
-
-Seuraavat kolme kirjaa löytyvät T-kirjaston käsikirjastosta:
-%
-\begin{itemize}
-\item \cite{kauranen2006} ovat kirjoittaneet kirjan erityisesti TKK:n
-  opinnäytetöitä ajatellen.  Kirjaa saa pääkirjastosta 8 euron
-  hintaan.
-%
-\item ``Tutki ja kirjoita'' \citep{hirsjarvi2009} lienee Suomessa alan
-  perusteos.  Kirjan hinta on noin 60--70 euroa.  T-talon kirjastossa
-  on kohdassa ``Yleistä 0'' muutamia vanhempia painoksia kirjasta.
-%
-\item Kielenhuollon opas \citep{oikeinkirjoitus2010} tarjoaa apua
-  oikeinkirjoitukseen. Kirjaa saa Kotimaisten kielten
-  tutkimuskeskuksen verkkokaupasta
-  \url{http://www.kotus.fi/index.phtml?s=2420} 20 euron hintaan.
-\end{itemize}
-
-Kurssiesitteeessä Nopassa on myös linkkejä lukuisiin 
-kotimaisiin Internet-sivustoihin opinnäytetyön kirjoittamisesta.
-Näitä ovat mm.
-%
-\begin{itemize}
-\item Oulun yliopiston ``Kirjoittamisen ABC''
-  \url{http://webcgi.oulu.fi/oykk/abc}
-%
-\item Helsingin yliopioston puhe- ja kirjoitusviestinnän opas
-  ``Kielijelppi'' \url{http://www.kielijelppi.fi/}
-%
-\item Oman kirjastomme tarjoama tiedonhaun itseopiskelupaketti
-  \url{http://peppi.hut.fi/pub/opetus/tiedonhaku/pmwiki.php}
-%
-\item Yucca Korpela on kirjoittanut nettioppaan ``Arkisen
-  asiakirjoittamisen opas'' \url{http://www.cs.tut.fi/~jkorpela/kirj/}
-\item Aalto-yliopiston Opiskelutaidot-sivusto \\
-  \url{https://into.aalto.fi/ display/ fiopiskelutaidot/}
-%
-\end{itemize}
-
-
-% --------------------------------------------------------------------
-
-\section{Esimerkkejä \LaTeX{}in käytöstä}
-\label{sec:esimluku}
-
-Tässä luvussa annetaan esimerkkejä tyypillisimpiin
-kirjoitustehtäviin. Katso siis valmista PDF-tiedostoa ja lähdetekstiä
-tiedostossa \verb!luku_sisalto.tex!. Katso myös varsinaista
-päätiedostoa \verb!main.tex! ja etenkin sen alkua, jossa ladataan
-lisäpaketteja (sisältäen komentoja). Tämän dokumentin sivuasettelut
-tehdään pääosin tyylitiedostossa \verb!aaltosci_t.sty!, jota ei tulisi
-itse muuttaa lainkaan.
-
-Tarkempia ohjeita voi etsiä kirjallisuudesta tai Internetistä
-sopivilla hakusanoilla. Apua suomeksi: \citet{lyhyt2e},
-\citet{mattakivela}, Wikibooksin LaTeX-opas%
-\footnote{http://en.wikibooks.org/wiki/LaTeX/}, Jukka Korpelan
-LaTeX-sivut%
-\footnote{http://www.cs.tut.fi/~jkorpela/softa/latex.html} yms.
-Järkäleteoksia, mm.  \citet{mittelbach2004}, on saatavilla myös
-kirjaston sivujen kautta e-kirjana. Googlaamalla ``latex <ongelmasi
-avainsanoja>'' löytyy varmasti apua.
-
-\subsection{\LaTeX{}in asennus ja taustaa}
-\label{sec:esimlatexajo}
-
-TeX-jakeluita on saatavilla ``kaikkiin'' eri ympäristöihin.
-Suositeltavaa (helpointa?) on käyttää koulun omia Linux-ympäristöjä,
-jolloin tarvittavat tausta-asetukset lienevät kunnossa.  Windows- ja
-Mac-koneille on saatavana eri TeX-jakeluja, mm.
-TeXlipse\footnote{\url{http://texlipse.sourceforge.net/}} (Eclipsen
-liitännäinen) ja MiKTeX\footnote{\url{http://miktex.org/}}.
-
-\subsubsection{Lähdetiedostosta PDF:ksi}
-\label{sec:esimkaannos}
-
-Tässä zip-paketissa on mukana \verb!Makefile! (päivitä
-omat tex- ja bib-tiedostojen nimet), joten pelkkä komento
-\verb!make! riittää. Olkoon tässä päätiedoston nimi \verb!main.tex! --
-voit sen vaihtaa luonnollisesti miksi tahansa.
-
-Jos ajat \LaTeX{}ia komentoriviltä tai jostain graafisesta ikkunasta,
-niin ``käännä ja kaulitse'' \verb!pdflatex main.tex! tarvittaessa kaksikin
-kertaa. Kun olet lisännyt tekstiviitteitä komenna \verb!pdflatex main!,
-\verb!bibtex main!, \verb!pdflatex main!, \verb!pdflatex main!. Tarkkaile
-ruudulle tulevaa tulostusta; esimerkiksi:
-%
-\begin{verbatim}
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-\end{verbatim}
-
-Käännösvaiheissa hakemistoon ilmestyy monenlaisia työ- ja 
-lokitiedostoja, joiden päätteinä mm. aux, log, toc, bbl, blg.
-Joskus voi olla syytä poistaa nämä komentamalla \verb!make clean!.
-
-\subsubsection{Ongelmien ratkaisija: \LaTeX{} checker}
-\label{sec:esimlacheck}
-
-Sopiva tekstieditori (emacs, TeXLive, LEd, $\ldots$) osaa
-neuvoja, kun joku tekstissä on joku kielioppivirhe. Tämän 
-lisäksi oiva työkalu on \verb!lacheck!, joka löytyy (?)
-unix-koneista asennettuna ja ladattavissa 
-Windows-koneelle%
-\footnote{\url{http://www.ctan.org/tex-archive/support/lacheck/}}.
-Komennon \verb!lacheck main.tex! (\verb!lacheckw32 main.tex!)
-tulostuksesta voi helposti etsiä, missä kohtaa on jäänyt joku
-sulku tai ympäristö sulkematta kiinni. Alla olevassa listauksessa
-vika löytyy rivin 224 läheisyydestä.
-%
-\small
-\begin{verbatim}
-** luku_sisalto:
-"luku_sisalto.tex", line 178: missing `\ ' after "engl."
-"luku_sisalto.tex", line 224: <- unmatched "\end{center}"
-"luku_sisalto.tex", line 1: -> unmatched "beginning of file luku_sisalto.tex"
-"luku_sisalto.tex", line 506: <- unmatched "end of file luku_sisalto.tex"
-"main.tex", line 48: -> unmatched "\begin{document}"
-\end{verbatim}
-\normalsize
-
-\subsubsection{``Ääkköset eivät ole enää ongelma''}
-
-Katso tiedoston \verb!main.tex! alkua. Näppäimistön merkistökoodaus
-valitaan kohdassa \verb!inputenc!. Kaikkien lähdetiedostojen tulee
-olla saman merkistökoodauksen mukaisia.  Useat editorit osaavat
-vaihtaa koodausta; pääosin on tarve vaihtaa ISO-8859-1 (Latin 1) ja
-UTF-8 (Unicode) välillä. Linuxissa voit katsoa tiedoston koodauksen
-\verb!file -i tiedosto.tex! ja muuttaa sen tarvittaessa\\
-\verb!iconv -f ISO_8859-1 -t UTF8 fileLatin1.tex > fileUTF8.tex!.
-
-Kohdassa \verb!fontenc! kerrotaan, millaista ulostuloa \verb!pdflatex!in
-halutaan antavan. Tämä näkyy esimerkiksi siinä, ovatko kirjaimet
-bittikarttoja vai vektorigrafiikkaa (suurenna PDF-selaimessa 1600\%)
-tai miten ääkköset esitetään (kopioi ja liitä tekstiä ruudulta 
-tekstieditoriin; näkyykö ä \verb!ä!:nä vai \verb!\"a!:na.
-
-Tämän zip-paketin tiedostot ovat UTF8-koodattuja.
-
-\subsubsection{Tavutus ei toimi?}
-\label{sec:esim_tavutus}
-
-\LaTeX{} osaa tavuttaa melko lailla oikein, kun valitaan \verb!babel!illa
-oikea kieli. Joidenkin hankalien sanojen osalta voit auttaa
-ehdottamalla tavurajoja paikallisesti \verb!ta\-vu\-ra\-ja!
-tai koko tekstin osalta \verb!\hyphenation{}!-määrittelyssä
-\verb!main.tex!:n alussa. Jos tavutus ei toimi, varmista merkistökoodaus
-(UTF-8 / ISO-8859-1). Varmista myös, että valittuna tekstissä oikea kieli
-komennolla \verb!\selectlanguage!.
-
-Testaa myös kääntöä IT-keskuksen koneissa -- jos
-toimii koululla, niin omasta jakelusta puuttuu \verb!babel!.
-Katso myös luvun~\ref{sec:hienos} \verb!sloppypar!-ympäristö.
-
-\subsubsection{Oikoluku}
-
-Oikoluvun suoran tuen puute on yksi iso ongelma kirjoitettaessa suomeksi.
-Yksi mahdollisuus on kopioida teksti johonkin oikolukijaan. Helpompi
-tapa lienee kopioida tiedostot Linux-koneille, joissa
-suomenkielisen tekstin voi oikolukea Voikkoa käyttäen tex-tiedostoista
-\verb!tmispell -dsuomi -t main.tex!.
-Ohjelman \verb!tmispell! vipu \verb!-t! jättää \LaTeX{}-komennot
-huomioimatta. Ohjelma saattaa lukea vain UTF8:aa, joten 
-tällöin tiedostot on muutettava tai kopioitava \verb!iconv!illa,
-katso ääkköslukua yllä.
-
-\subsubsection{Hienosäätö}
-\label{sec:hienos}
-
-\begin{sloppypar}
-  Vihoviimeisen version osalta tulee tarkastaa mm. tavutus
-  (luku~\ref{sec:esim_tavutus}) ja rivien siisti ulkoasu.  Jos rivillä
-  on kaavoja tai eri fontteja, rivi saattaa jatkua pitkäksi. Tällöin
-  yksi mahdollisuus on käyttää \verb!sloppypar!-ympäristöä, joka antaa
-  \LaTeX{}ille lisää vapautta päättää sanojen väleistä (katso
-  lähdekoodi). Komento \verb!\sloppy! antaa väljyyden koko tekstiin.
-  \verb!\hyphenpenalty!-arvon määrittämisen pitäisi myös
-  auttaa (?).
-\end{sloppypar}
-
-Jos luvun $N$ kuvat tai taulukot ``valuvat'' lukuun $N+1$,
-voi luvun loppuun kokeilla \verb!\clearpage! tai 
-\verb!\afterpage{\clearpage}!, minkä tarkoituksena pakottaa
-kelluvat objektit tulostumaan ennen luvun loppua.
-
-
-\subsubsection{Eräs vaihtoehto Win7-koneella: MiKTeX ja LEd, Notepad++}
-\label{sec:esimmiktex}
-
-Esimerkin omaisesti esittelen oman kokonaisuuteni, johon kuuluu
-Windows 7 -koneella MiKTeX ja
-LEd-editori\footnote{\url{http://www.latexeditor.org/}}.  Jos kaikkia
-paketteja (engl. package) ei ole ladattu valmiiksi, niin ne kannattaa
-hakea erikseen MiKTeX package managerilla, joka löytyy nimellä
-\verb!mpm!.
-
-Ongelmia ja ratkaisuja: Jos paketti on puuttunut ja LEdin kautta
-lataus epäonnistuu, niin avaa \verb!mpm! ja lataa sitä kautta.  Jos
-tavutus ei toimi, niin tarkista, että sopiva
-\verb!miktex-hyphen!-paketti on ladattu ja lisäksi suomen kieli on
-valittu MiKTeXin konfiguraatiossa.
-
-Usein kirjoitan tekstiä Notepad++-editorilla%
-\footnote{http://notepad-plus-plus.org/}, joka on avoimen lähdekoodin
-ohjelma. Sen jälkeen kopioin tiedoston koulun koneelle, jossa ajan
-komennon \verb!pdflatex! tai \verb!make!.
-
-\subsection{Tekstin kirjoittaminen}
-\label{sec:esimmuotoilut}
-
-Voit kirjoittaa tekstisi suoraan \verb!main.tex!-tiedostoon tai
-vaikkapa luvuittain omiin tiedostoihin, jotka voi upottaa
-päätiedostoon \verb!\input!-komennolla. Tässä käytetään
-dokumenttityyppiä \verb!article!, joka on monessa suhteessa kevyempi
-ja sopivampi kuin \verb!report! tai \verb!book!.
-
-
-\subsubsection{Perusteksti ja muotoilut}
-
-% Kokeile mitä kappaleen viimeisen rivin lopulle käy, 
-% kun sloppypar-ympäristön kommentoi pois.
-\begin{sloppypar}
-Perusteksti kirjoitetaan konstailematta samalla fontilla ja koolla
-läpi dokumentin. Sanojen \textbf{vahvistamista} tai
-\textit{kursivointia} tulee välttää.  Riviväli on oletusarvoisesti
-1,5, mutta sen voi halutessaan vaihtaa väliksi 1 kommentoimalla
-\verb!main.tex!in alussa \verb!linespread!-rivin.  Fontin koko, 12 pt,
-on asetettu heti \verb!main.tex!:n alussa
-\verb!\documentclass!-määrittelyssä.
-\end{sloppypar}
-
-% tik.kand 1.5 ja 12
-
-Lainatun tekstin tulee erottua selkeästi omasta tekstistä. Lainauksia
-tulee käyttää maltillisesti. Asiat tulisi kertoa aina omin
-sanoin. Lainaus merkitään tyypillisesti tekstin seassa
-lainausmerkkeihin, jotka kirjoitetaan tyypillisesti kahdella
-erillisellä merkillä \verb!''! tavallisten lainausmerkkien \verb!"!
-sijaan. (Ainakin) emacs osaa muuttaa automaattisesti lainausmerkin
-oikeanlaiseksi. Isompi lainaus voidaan sijoittaa
-\verb!quotation!-ympäristöön:
-
-\begin{quotation} { 
-\noindent \it
-IP Datacasting is a service where digital content formats, software
-applications, programming interfaces and multimedia services are
-combined through IP (Internet Protocol) with digital
-broadcasting \citep{ipdcforum_def}. } 
-\end{quotation}
-
-Prosenttimerkkiä (\%) eikä mitään sen oikealla puolella olevaa tulostu
-ulostuloon. Sillä voi katkaista pitkän rivin ja jat% katkaistaan rivi
-kaa seuraavalta (katso lähdetiedostoa!).  Yhdysmerkki eli yhdysviiva
-(-) saadaan yhdellä, ajatusviiva (--) kahdella peräkkäisellä
-yhdysmerkillä: 7--9-vuotiaat, LaTeXin käyttö -- helppoa vai hullun
-hommaa, 25-vuotias.
-
-\subsubsection{Luetelmat}
-\label{sec:esimluettelo}
-
-Älä käytä luetelmia jatkuvasti kandidaatintyössäsi. Kirjoita
-mieluummin suoraa tekstiä.
-
-\LaTeX{}in peruslistaympäristöt ovat \verb!itemize!, 
-\verb!enumerate! (numeroitu)
-ja \verb!description!. Listoja ja niiden ulkoasua on
-mahdollista muokata~\citep[katso esim.][s. 128]{mittelbach2004}. 
-Perusesimerkkejä:
-%
-\begin{itemize}
-\item luetteloaihe yksi
- \begin{itemize}
- \item luetteloaiheen sisäinen lista
- \end{itemize}
-\item luetteloaihe kaksi
-\end{itemize}
-
-Toinen luettelo omine merkkeineen:
-%
-\begin{itemize}
-\item[b)] luetteloaihe b
-\item[E)] luetteloaihe E
-\end{itemize}
-
-Numerointi ympäristössä \verb!enumerate!:
-%
-\begin{enumerate}
-\item luetteloaihe yksi
-\item luetteloaihe kaksi
-\end{enumerate}
-
-
-Yksinkertainen taulukko, joka ei ole kelluva ja siten sen pitäisi
-latoutua heti tämän tekstin alle. Tässä komento \verb!\topcaption!
-kyllä varaa itselleen ``Taulukko 1'', mutta tekstiä ei näy missään.
-
-\topcaption{Yksinkertainen taulukko}
-%\begin{center}                         % keskitys?
-\begin{tabular}{|l|l|l|} 
-\hline
-Tässä & sarakkeet & ei ole eroteltu mitenkään \\
-ja    & ne        & saattavat valua yli laidankin ikävästi \\
-\hline
-\end{tabular}
-%\end{center}
-
-Toinen kelluva perustaulukko, viitataan nyt taulukkoon~\ref{table:perustaulu}.
-Lähdetekstiä lukiessa näet tilde-merkin, joka pakottaa välilyönnin
-mutta estää rivinvaihdon.
-
-\begin{table}[ht]
-\caption{Tässä perustaulukko.}
-\label{table:perustaulu}
-\begin{center}
-\begin{tabular}{|l|l|l|} 
-\hline
-Tässä & sarakkeet & ei ole eroteltu mitenkään \\
-\hline
-ja    & ne        & saattavat valua yli laidankin ikävästi, %
-                   siksi käytä taulukkoa~\ref{table:dvbt_param}. %
-                   Teksti katoaa jonnekin sivun ulkopuolelle. \\
-\hline
-Nro   & Nro       & Nro \\
-\hline
-$-4$  & $8$       & $12$ \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-Vielä kolmas esimerkki taulukosta, jossa sarakkeiden leveys määritelty
-ja soluissa voi olla useampi rivi tekstiä. Katso
-taulukko~\ref{table:dvbt_param}.
-
-\begin{table}[th]
-\caption{The DVB-T transmission parameters.}
-\label{table:dvbt_param}
-\begin{center}
-\begin{tabular}{|p{0.35\textwidth}|p{0.45\textwidth}|} 
-    \hline
-Parameter & Typical values \\
-    \hline
-    \hline
-Physical channel&8 MHz (also 6 MHz or 7 MHz possible)\\ 
-    \hline
-COFDM mode (number of subcarriers, 
-subcarrier width, 
-signal element length)
-&8k (6817, 1116 Hz, 896 $\mu$s) or 
-2k (1705,4464 Hz, 224 $\mu$s)\\
-    \hline
-Guard interval (8k/4k duration)
-&1/4 (224/56 $\mu$s), 1/8 (112/28 $\mu$s),
-   1/16 (56/14 $\mu$s) or 1/32 (28/7 $\mu$s)\\
-    \hline
-Inner code rate &1/2, 2/3, 3/4, 5/6 or 7/8\\
-    \hline
-Signal  element constellation 
-&QPSK, 16-QAM or 64-QAM \\
-    \hline
-\end{tabular}
-\end{center}
-\end{table}
-
-
-% Tässä esimerkki monisivuisesta taulukosta.
-% EI toiminut aivat täydellisesti 27.1.2011: tablecaption hyppäsi edelliselle
-% sivulle ennen ylläolevaa taulukkoa. Tämä supertabular taas ei voi olla 
-% table-ympäristössä, kun muuten ei sivutu. supertabular on vain tabular,
-% joka pitää kirjaa milloin sivun vaihto ja lisää automaatigisesti \end{tabular}
-% ja uudestaa \begin{tabular}.
-%\begin{center}
-%\tablecaption{Esimerkki monisivuisesta taulukosta.}
-%%\topcaption{taulukon nimi ylhäällä}
-%%\bottomcaption{taulukon nimi alhaalla}
-%\tablefirsthead{\hline \# & Sarakkeen aihe \\ \hline \hline }
-%\tablehead{\hline \multicolumn{2}{|l|}{jatkoa edelliseltä sivulta} \\ %
-%  \hline  \# & Sarakkeen aihe  \\ \hline \hline }
-%\tabletail{\hline \multicolumn{2}{|r|}{jatkuu seuraavalle sivulle} \\ \hline}
-%\tablelasttail{\hline}
-%\label{table:pitkataulukko}
-%\begin{supertabular}{|>{\bf}r|p{120mm}|} 
-%\hline
-%\multicolumn{2}{|l|}{Otsikko A} \\ 
-%\hline
-%1 & complex numbers, Carthesian and polar coordinate systems, Euler's formula   %\\
-%2 & Euler's formula, cosine and sine, odd and even functions   \\
-%3 & complex numbers, graphical notation   \\
-%\hline 
-%\multicolumn{2}{|l|}{Otsikko B} \\ 
-%\hline
-%14 & analog, discrete-time and digital signal   \\
-%17 & analog, discrete-time and digital signal   \\
-%16 & digital signals and spectra, spectogram \\
-%17 & Fourier series, Fourier transforms: CTFT, DTFT, DFT \\
-%18 & time-frequency-domain analysis and filtering \\
-%21 & moving average (MA) filter, a simple FIR filter   \\
-%22 & a simple IIR filter \\
-%23 & flow / block diagram of a discrete-time system   \\
-%24 & recognition of LTI systems, causal LTI systems, filter order, FIR, IIR   %\\
-%25 & properties of LTI systems: linear, time-invariant, causal, stable   \\
-%26 & shifted and scaled sequences in LTI system   \\
-%31 & convolution as products of polynomials   \\
-%32 & deconvolution   \\
-%33 & parallel and cascade (series) LTI systems   \\
-%34 & matched filter   \\
-%35 & auto- and cross-correlation   \\
-%37 & spectrum, CTFT, discrete-time Fourier transform (DTFT), %
-% discrete Fourier transform (DFT)   \\
-%38 & DTFT, computation from definition   \\
-%39 & DTFT, using a transform table   \\
-%40 & $2\pi$-periodic spectrum, DTFT   \\
-%41 & magnitude/amplitude response, periodicity of DTFT   \\
-%43 & sampling, Shannon's theorem   \\
-%44 & impulse train and Fourier-series   \\
-%45 & impulse train and sampling in frequency-domain   \\
-%46 & sampling in frequency-domain   \\
-%47 & aliasing   \\
-%48 & sampling, aliasing, anti-aliasing   \\
-%49 & anti-aliasing filter  \\
-%51 & circular shift, DFT \\
-%54 & amplitude response grafically from pole-zero-plot   \\
-%55 & analysis of LTI IIR system, pole-zero plot   \\
-%56 & transfer function, region of convergence (ROC)   \\
-%57 & scaling factor   \\
-%63 & direct form (DF) structures   \\
-%70 & FIR-window method in digital filter design   \\
-%71 & computational comparisons between IIR and FIR filters   \\
-%73 & FFT computational complexity   \\
-%74 & radix-2 DIT FFT algorithm   \\
-%75 & binary addition and substraction, two's complement  \\
-%78 & roundoff noise in FIR filters   \\
-%79 & signal-to-noise ration (SNR) \\
-%80 & error-feedback structure   \\
-%81 & up- and downsampling in time- and frequency domain   \\
-%82 & multirate system analysis   \\
-%83 & linearity of up- and downsampling systems   \\
-%84 & filter bank   \\
-%85 & interpolated FIR filter (IFIR), FIR window method design  \\
-%\end{supertabular}
-%\end{center}
-
-
-\subsubsection{Matematiikka}
-\label{sec:esimmatematiikka}
-
-Lyhyet matemaattiset kaavat voi kirjoittaa tekstin
-sisään $E_{\textrm{total}} = m_i c^2$, mutta kaavat, joita käytetään, 
-kannattaa keskittää
-%
-\begin{equation}
-\label{eq:kaava1}
-x^2 + y^2 = 1 
-\end{equation}
-%
-josta lyhyempi versio ilman kaavan numerointia
-%
-\[ x^2 + y^2 = 1 \]
-%
-tai jakaa useammalle riville
-\begin{equation}
-\label{eq:kaava2}
-\begin{aligned}
-x^2 + y^2 &= 1 \\
-        x &= \sqrt{1-y^2}
-\end{aligned}
-\end{equation}
-%
-
-Kreikkalaiset kirjaimet löytyvät taulukosta~\ref{table:kreikka}.
-
-\begin{table}
-\caption{Kreikkalaiset kirjaimet}
-\label{table:kreikka}
-\begin{center}
-\begin{tabular}{|llllllll|}
-\hline
-$\alpha$        &$\theta$       &o              &$\tau$         &%
-$\beta$         &$\vartheta$    &$\pi$          &$\upsilon$     \\
-$\gamma$        &$\gamma$       &$\varpi$       &$\phi$         &%
-$\delta$        &$\kappa$       &$\rho$         &$\varphi$      \\
-$\epsilon$      &$\lambda$      &$\varrho$      &$\chi$         &%
-$\varepsilon$   &$\mu$          &$\sigma$       &$\psi$         \\
-$\zeta$         &$\nu$          &$\varsigma$    &$\omega$       &%
-$\eta$          &$\xi$          &               &               \\
-\hline
-$\Gamma$        &$\Lambda$      &$\Sigma$       &$\Psi$         &%
-$\Delta$        &$\Xi$          &$\Upsilon$     &$\Omega$       \\
-$\Theta$        &$\Pi$          &$\Phi$         & & & & &       \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-Matematiikkaan liittyviä ohjeistusta löytyy esim. \citet{lyhyt2e}.
-Makroja sisältävästä tiedostosta \verb!makroja.tex! löytyy joitakin
-esimerkkejä, kuten 
-%
-\[ \myInt{-\infty}{0}{e^{x}}{x} \]
-%
-
-\subsubsection{Algoritmit ja ohjelmalistaukset}
-
-Työlle oleellisen tulostuslistauksen voi laittaa
-\verb!verbatim!-ympäristöön.
-%
-\begin{verbatim}
-Output written on main.pdf (23 pages, 268760 bytes).
-Transcript written on main.log.
-\end{verbatim}
-%
-\begin{sloppypar}
-Algoritmien ja pseudokoodin esittämiseen tarvitaan esimerkiksi
-\verb!algorithmic!- ja \verb!algorithm!-paketit.  Ohjelman esittelyn
-voi tehdä vaikkapa \verb!program!-paketin avulla.  Ohjelmakoodia ei
-tyypillisesti lisätä edes liitteeksi.  Jos näin kuitenkin tehdään,
-käytä ylläolevia tai esimerkiksi \verb!listinginput!-komentoa. Näiden
-käyttöön löytyy apua Internetistä.
-% Katso esim. http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode
-\end{sloppypar}
-
-\subsection{Viittaukset ja lähdeluettelo}
-\label{sec:esimviitteet}
-
-\subsubsection{Lähdetiedosto}
-\label{sec:esimlahdetiedosto}
-
-Lähdeluettelo kirjoitetaan joko käsin tai automaattisesti
-kerätyistä lähteistä bib-päät\-tei\-seen tiedostoon. Katso 
-esimerkkejä tiedostosta \verb!lahteet.bib!, jota kutsutaan
-\verb!main.tex! tiedoston loppupuolella. 
-
-Kirjaa tiedot mahdollisimman täydellisesti. Kiinnitä erityisesti
-huomio nimiin ja kirjoita ne samanmuotoisesti
-\verb!Sukunimi, Etunimi and Sukunimi2, Etunimi2 Etukirjain2.!.
-
-Jos esimerkiksi kirjojen nimissä on muotoiluja, pakkaa ne
-kaarisulkuihin \verb!{My {T}hesis}!. 
-Pelkkä \verb!title={My Thesis}! muuttuu muuten
-muotoon ``My thesis''.
-
-Kurssilla opetetaan käyttämään RefWorksia lähteiden kokoamiseen.
-Sieltä on mahdollista saada BibTeX-muotoinen luettelo lähteistä.
-Valitse ylävalikosta ``Bibliography'' ja ensimmäisellä kerralla
-valitse alasvetovalikosta ``Access output style manager'' ja
-sieltä lisää BibTeX suosikkeihin. Määrää lähdetiedosto tekstityyppiseksi
-(``Text'') ja luo tiedosto. RefWorksin tulostukseen tulee loppuun
-ylimääräinen sulkumerkki \verb!}!, viimeisen tietorivin perässä
-ylimääräinen pilkku ja alusta puuttuu itse viittausnimi, jonka
-voit itse keksiä.
-
-Google Scholar palauttaa myös BibTeX-muotoisia lähdeviitteitä,
-kunhan olet sen asetuksissa valinnut BibTeXin mahdolliseksi.
-
-\subsubsection{Tekstiviite}
-\label{sec:esimtekstiviite}
-
-Tässä pohjassa käytetään Helsingin yliopiston 
-\verb!tktl!-tyyliä, joka pohjautuu \verb!alpha!-
-ja \verb!natbib!-tyyliin~\cite{tktl}.
-Tekstiviitteet saadaan mukaan joko tekijä-vuosi-tavalla (oletusarvo)
-tai yksinkertaisella numeromerkinnällä, kuten \verb![1]!. 
-Jälkimmäistä varten sinun pitää vaihtaa tekstiviitteen esitystapa
-tiedon \verb!main.tex! lopussa rivillä \verb!bibpunct!. 
-
-% kokeillaan vähän vapaampaa, kun natbibiin kohdalla rivivaihto
-\begin{sloppypar}
-Katso eri tapoja tekstiviitteiden muotoiluun sivulta
-\url{http://merkel.zoneo.net/Latex/natbib.php}.
-Viittauskomennot  \verb!\citet! ja \verb!\citep! ovat
-hyviä tekijä-vuosi-tavassa \verb!natbib!iin liittyen
-ja \verb!\cite! on perusviittauskomento.
-\end{sloppypar}
-
-Pari esimerkkiä:
-% \citet
-\citet[s. 21]{Teekkari2010} on havainnut asian jos toisenkin. 
-% \citep
-Tämä ja tuo uusi havainto on vahvistanut teoriaa~\citep[s. 22]{Teekkari2010}.
-% \citep
-Joku asia on selitetty tarkasti monissa lähteissä 
-\citep[katso][s. 27]{Teekkari2010}.
-% KATSO LISÄÄ: http://merkel.zoneo.net/Latex/natbib.php
-
-\verb!tktl!-tyylin lähdetiedostoa \verb!tktl.dtx! ei ole
-muokattu Aalto-yliopiston käyttöön, joten esimerkiksi 
-lähdeviitteen merkintätyyppi \verb!@MasterThesis! tuottaa lähdeluetteloon
-tekstin ``Pro gradu'' (kts. \verb!finnbst.tex!).
-Tämä voidaan muuttaa antamalla kyseisen merkintätyypin kentälle
-\verb!type! arvo ``Diplomityö''. 
-
-\subsubsection{Lähdeluettelo}
-\label{sec:esimlahdeluettelo}
-
-Lähdeluettelon tulisi nyt ilmaantua dokumentin loppuun
-automaattisesti. Jos sitä ei näy ja etenkin jos tekstiviitteiden
-paikalla on kysymysmerkkejä, niin muista ajaa \verb!bibtex main!.
-
-% --------------------------------------------------------------------
-
-% Tätä käytetään vain testaustarkoituksiin, kun halutaan katsoa 
-% miten sivu täyttyy pelkästä tekstistä tai miten fonttikoko
-% vaikuttaa. 
-%
-% Teksti haettu eduskunta.fi-sivustolta tammikuussa 2011.
-
-\section{Testi: pelkkää tekstiä}
-
-Eduskunnan ympäristövaliokunta ehdottaa, että nykyinen
-hajajätevesiasetus kumotaan ja ympäristöministeriö laatii uuden
-asetuksen mahdollisimman pian. Lisäksi valiokunta ehdottaa, että
-ympäristönsuojelulakiin sisällytetään uusi 3 a luku, johon tulee
-yhteensä 5 pykälää. Ympäristövaliokunta antoi asiaa koskevan mietinnön
-25. tammikuuta (YmVM 18/2010).
-
-Valiokunta esittää lisäksi eduskunnan hyväksyttäväksi viisi
-lausumaehdotusta, joilla vauhditetaan lain ja uuden asetuksen selkeää
-ja tehokasta toimeenpanoa. Nyt esitettävät muutokset on valmisteltu
-tiiviissä yhteistyössä ympäristöministeriön
-kanssa. Ympäristövaliokunta on käsitellyt asiaa laajasti ja
-perusteellisesti sekä ottanut ehdotuksissaan huomioon sen, mitä
-perustuslakivaliokunta aiemmin asiassa edellytti.
-
-Ehdotetuilla muutoksilla kohtuullistetaan hajajätevesien käsittelyn
-vaatimustasoa siten, että vaatimukset asettuvat yleisesti sellaiselle
-tasolle, että ne ovat kohtuullisella investoinnilla ja toimivalla
-tekniikalla moitteettomasti täytettävissä. Esitetty kohtuullistaminen
-ei kuitenkaan vaaranna ympäristönsuojelun tasoa ja on esimerkiksi
-Itämeren suojelukomissio HELCOMin suositusten mukainen.
-
-Nykyisen asetuksen lievempi vaatimustaso (orgaaninen aine 80\%,
-kokonaisfosfori 70\%, kokonaistyppi 30\%) säädetään pääsääntöisesti
-noudatettavaksi lähtökohdaksi, koska suuri osa kiinteistöistä
-sijaitsee muualla kuin herkillä alueilla kuten ranta-alueella. Kunnat
-voivat kuitenkin ympäristönsuojelumääräyksillä antaa tiukempia
-määräyksiä ympäristön pilaantumisvaaran perusteella herkillä alueilla
-kuten ranta-alueilla tai tärkeillä pohjavesialueilla.
-
-Puhdistustasovaatimuksen perusteista säädetään laissa ja prosentit
-edelleen asetuksella. Uudet säännökset ovat ensisijaisesti
-jätevesijärjestelmän suunnittelun ja rakentamisen lähtökohta, eivät
-valvontaperuste. Tosiasiallinen puhdistustulos voi siten vaihdella
-esimerkiksi sääoloista tai kiinteistön käytön väliaikaisista
-muutoksista johtuen, ja silti järjestelmä täyttää lain vaatimukset.
-
-Valiokunta korostaa, että lain ja asetuksen mukaisten vaatimusten
-toteuttaminen käytännössä edellyttää aina kiinteistökohtaista
-arviointia. Kiinteistökohtainen neuvonta on siksi järjestettävä
-valtakunnallisessa ohjauksessa. Valiokunta edellyttää riittävää
-määrärahaa neuvonnan järjestämiseksi kunnissa.  Vaatimustason
-muutoksella kohtuullistetaan tarvittavia investointeja, mutta
-säilytetään samalla riittävä ympäristönsuojelun taso. Erityisen
-tärkeää on ehkäistä lähiympäristön kuten kaivoveden pilaantumista ja
-muita vastaavia hygieenisiä haittoja.
-
-Muutoksella vapautetaan suoraan lain nojalla lain voimaan tullessa 68
-vuotta täyttäneet vakituisesti asuttujen kiinteistön haltijat
-asetuksen käsittelyvaatimuksista. Vapautus ei koske uudisrakentamista
-eikä vapaa-ajan asuntoja. Käytännössä toimenpiteitä tarvitaan
-vesivessalla varustetuilla vapaa-ajan asunnoilla.  Valtaosalla
-vapaa-ajan asuntoja lainsäädäntö ei aiheuta mitään toimenpiteitä.
-
-Muutoksella tarkennetaan, ketkä voivat hakea kunnalta viiden vuoden
-mittaista vapautusta asetuksen vaatimusten noudattamisesta niin
-sanotun sosiaalisen suoritusesteen (erityisen vaikeassa
-elämäntilanteessa olevat kiinteistönomistajat kuten työttömät ja
-pitkäaikaissairaat) perusteella.  Lainmuutos ja uusi asetus voivat
-tulla voimaan 15.3.2011. Jo rakennetun kiinteistön olemassa olevan
-jätevesijärjestelmän on täytettävä puhdistustehosta asetetut
-vaatimukset vuoteen 2016 mennessä.
-
-Suomen Euroopan neuvoston valtuuskunnan jäsenet Kimmo Sasi (kok.) ja
-Krista Kiuru (sd.) vaativat parlamentaarisen yleiskokouksen
-istunnossa, että Kosovossa rikosten uhreina kadonneiden ihmisten
-kohtalot selvitetään.
-
-Yleiskokous käsitteli tiistaiaamuna etukäteen paljon huomiota
-herättänyttä sveitsiläisen kansanedustajan Dick Martyn raporttia
-Kosovon vuoden 1999 sodan jälkimainingeissa tapahtuneista
-ihmisoikeusloukkauksista. Martyn mukaan Kosovon vapautusarmeija
-surmasi vangeiksi ottamiaan ihmisiä, poisti heiltä elimiä ja kauppasi
-niitä pimeillä markkinoilla.
-
-Keskustelussa Martyn väitteet myös kiistettiin. Kansanedustaja Krista
-Kiuru korostikin täysistuntopuheessaan, että väitteet pitää tutkia
-huolellisesti.  Totuuden selvittämiseksi tarvitaan puolueeton ja
-läpinäkyvä tutkinta kansallisten ja kansainvälisten viranomaisten
-yhteistyönä, hän totesi.  Kansanedustaja Kimmo Sasi (kok.) piti
-huolestuttavana, että satojen ihmisten epäillään kadonneen sodan
-jälkimainingeissa rikoksen uhreina.
-
-Tarpeellisia selvityksiä ei voida tehdä ilman Albanian ja Kosovon
-täydellistä yhteistyötä. Euroopan neuvoston pitääkin varmistaa, että
-selvityksiä ei estetä tai vaikeuteta poliittisista syistä. Kosovon
-hallitukselle onkin tärkeää, että asia tutkitaan. Vaikeidenkin
-historian tapahtumien täydellinen läpikäynti auttaa rakentamaan
-parempaa tulevaisuutta. Osoittamalla olevansa vahva oikeusvaltio,
-vahvistaa Kosovo omaa asemaansa itsenäisenä valtiona, Sasi totesi.
-
-Eduskunta korjaa pikavauhtia neljän kansanedustajan lakialoitteella
-metsälakiin jääneen virheen, jonka takia pienet taimikot jäivät
-tilapäisesti hirvivahinkokorvausten ulkopuolelle.  Metsälain muutos
-tuli voimaan vuoden vaihteessa. Maa- ja metsätalousministeriössä lain
-valmistelussa tapahtuneen teknisen virheen takia pienet, alle 1,3
-metrin pituiset taimikot jäivät lakimuutoksen myötä hirvivahinkojen
-korvauksen ulkopuolelle.  Lakitekstiin kiireessä jäänyt virhe
-havaittiin vasta, kun laki oli jo hyväksytty ja vahvistettu, mitä
-ministeriö pahoitteli. Virhe korjataan eduskunnan maa- ja
-metsätalousvaliokunnan puheenjohtajan Jari Lepän (kesk.)
-lakialoitteella, jonka on allekirjoittanut myös kolme muuta
-valiokunnan kansanedustajaa.
-
-Aloitteen tekijät ehdottavat, että kyseistä riistavahinkolain pykälää
-korjattaisiin siten, että lakia sovellettaisiin taannehtivasti vuoden
-alusta alkaen. Siten kukaan ei lopullisesti menetä oikeuttaan
-korvaukseen.  Lakialoite (LA 121/2010) oli lähetekeskustelussa
-tiistaina. Keskustelun päätteeksi asia lähetettiin maa- ja
-metsätalousvaliokuntaan.
-
-Euroopan unionin ympäristömerkki siirtyy samaan kotipesään
-pohjoismaisen Joutsenmerkin kanssa. Eduskunta hyväksyi tiistaina
-lakimuutoksen, jolla ympäristömerkinnän kansallisten tehtävien hoito
-siirtyy Suomen Standardisoimisliitolta Motiva Services Oy:lle.
-Suomessa on käytössä kaksi virallista
-ympäristömerkintäjärjestelmää. Pohjoismainen ympäristömerkki eli
-Joutsenmerkki on Pohjoismaiden ministerineuvoston vuonna 1989
-perustama merkki. EU:n ympäristömerkki on Euroopan parlamentin ja
-neuvoston antamaan asetukseen pohjautuva ympäristömerkki.
-
-Merkit ovat vapaaehtoisia ja niillä kannustetaan valmistajia ja
-palvelutarjoajia kehittämään ympäristön kannalta parempia
-vaihtoehtoja. Joutsenmerkkejä on myönnetty yli 300. EU:n
-ympäristömerkin luvanhaltijoita on noin 10 ja merkittyjä tuotteita
-noin 50.  Joutsenmerkin hallinnointi siirtyi Motivalle vuoden
-vaihteessa. Motiva Services Oy on valtion omistama asiantuntijayritys,
-joka edistää energian ja materiaalien tehokasta ja kestävää käyttöä.
-
-% --------------------------------------------------------------------
-
-\section{Loppuluku}
-
-Loppuluku päättää työn. Luvun nimi on tyypillisesti ``yhteenveto'' tai
-``johtopäätöksiä''. Valitse se otsikko, joka tuntuu sopivammalta työsi
-luonteeseen. Joka tapauksessa loppuluku sisältää niin työn yhteenvedon
-kuin johtopäätöksiä työn tulosten perusteella. Pääajatus on antaa
-lukijalle selvä kuva siitä, miten johdannossa asetettuihin
-tavoitteisiin työssä vastattiin.
-
-Käsittele loppupuvussa seuraavia asioita (jotakuinkin tässä järjestyksessä):
-%
-\begin{itemize}
-  \item Muistutus työn tavoitteista (sidoksisuus johdantoon)
-  \item Päätulokset kootaan yhteen, pohditaan niiden merkitystä
-  \item Suositukset konkreettisiksi toimenpiteiksi (``Mitä sitten?'' 
-Nyt kun käytössä on tämän työn myötä tullut tieto, 
-mitä se nyt tarkoittaa tälle asialle/alalle.)
-  \item Tulosten soveltuvuus, käyttöön liittyvät rajoitukset
-  \item Jatkotutkimustarve 
-(``Tulevaisuudessa olisi mielenkiintoista selvittää...'' tms.)
-  \item Työn onnistumisen arviointi 
-(Huom! Älä arvioi omaa kirjoitusprosessiasi vaan tekemääsi tutkimusta)
-\end{itemize}
-
-% --------------------------------------------------------------------
+[TODO: go over Björklund et al. for k-path, managed to insert fingerprints such that non-solutions cancel]
 
