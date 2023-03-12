@@ -1,4 +1,4 @@
-@article{10.1145/2742544,
+@article{KouWil15,
 author = {Koutis, Ioannis and Williams, Ryan},
 title = {Algebraic Fingerprints for Faster Algorithms},
 year = {2015},
@@ -17,7 +17,7 @@ pages = {98–105},
 numpages = {8}
 }
 
-@InProceedings{10.1007/978-3-540-70575-8_47,
+@InProceedings{Koutis08,
 author="Koutis, Ioannis",
 editor="Aceto, Luca
 and Damg{\aa}rd, Ivan
@@ -35,7 +35,22 @@ abstract="We study the problem of deciding whether an n-variate polynomial, pres
 isbn="978-3-540-70575-8"
 }
 
-@article{doi:10.1137/110839229,
+@article{Koutis05,
+title = {A faster parameterized algorithm for set packing},
+journal = {Information Processing Letters},
+volume = {94},
+number = {1},
+pages = {7-9},
+year = {2005},
+issn = {0020-0190},
+doi = {https://doi.org/10.1016/j.ipl.2004.12.005},
+url = {https://www.sciencedirect.com/science/article/pii/S0020019004003655},
+author = {Ioannis Koutis},
+keywords = {Algorithms, Analysis of algorithms, Parameterized computation, Set packing},
+abstract = {We present an efficient parameterized algorithm for the (k,t)-set packing problem, in which we are looking for a collection of k disjoint sets whose union consists of t elements. The complexity of the algorithm is O(2O(t)nNlogN). For the special case of sets of bounded size, this improves the O((ck)kn) algorithm of Jia et al. [J. Algorithms 50 (1) (2004) 106].}
+}
+
+@article{Björklund14,
 author = {Bj\"{o}rklund, Andreas},
 title = {Determinant Sums for Undirected Hamiltonicity},
 journal = {SIAM Journal on Computing},
@@ -54,7 +69,7 @@ eprint = {
     abstract = { We present a Monte Carlo algorithm for Hamiltonicity detection in an \$n\$-vertex undirected graph running in \$O(1.657^{n})\$ time. To the best of our knowledge, this is the first superpolynomial improvement on the worst case runtime for the problem since the \$O^*(2^n)\$ bound established for the traveling salesman problem (TSP) over 50 years ago [R. Bellman, J. Assoc. Comput. Mach., 9 (1962), pp. 61--63], [M. Held and R. M. Karp, J. Soc. Indust. Appl. Math., 10 (1962), pp. 196--210]. (\$O^*(f(n))\$ suppresses polylogarithmic functions in \$f(n)\$). It answers in part the first open problem in Woeginger's 2003 survey on exact algorithms for NP-hard problems. For bipartite graphs, we improve the bound to \$O^*(\sqrt{2}^n)\subset O(1.415^{n})\$ time. Both the bipartite and the general algorithm can be implemented to use space polynomial in \$n\$. We combine several recently resurrected ideas to get the results. Our main technical contribution is a new algebraic characterization of Hamiltonian graphs. We introduce an extension of Hamiltonicity called Labeled Hamiltonicity and relate it to a Labeled Cycle Cover Sum in which we are set to count weighted arc labeled cycle covers over a finite field of characteristic two. The Labeled Cycle Cover Sum can be evaluated efficiently via determinants. }
 }
 
-@article{WILLIAMS2009315,
+@article{Williams09,
 title = {Finding paths of length k in O*(2k) time},
 journal = {Information Processing Letters},
 volume = {109},
@@ -67,4 +82,77 @@ url = {https://www.sciencedirect.com/science/article/pii/S0020019008003396},
 author = {Ryan Williams},
 keywords = {Randomized algorithms, Parameterized algorithms, Graph algorithms, Group algebra},
 abstract = {We give a randomized algorithm that determines if a given graph has a simple path of length at least k in O(2k⋅poly(n)) time. Our method extends a recent O(23k/2⋅poly(n))⩽O(2.83k⋅poly(n)) algorithm of Koutis.}
+}
+
+@article{Alon95,
+author = {Alon, Noga and Yuster, Raphael and Zwick, Uri},
+title = {Color-Coding},
+year = {1995},
+issue_date = {July 1995},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {42},
+number = {4},
+issn = {0004-5411},
+url = {https://doi.org/10.1145/210332.210337},
+doi = {10.1145/210332.210337},
+journal = {J. ACM},
+month = jul,
+pages = {844–856},
+numpages = {13},
+keywords = {derandomization, subgraph isomorphism, perfect hashing, tree-width}
+}
+
+@inproceedings{Chen07,
+author = {Chen, Jianer and Lu, Songjian and Sze, Sing-Hoi and Zhang, Fenghui},
+title = {Improved Algorithms for Path, Matching, and Packing Problems},
+year = {2007},
+isbn = {9780898716245},
+publisher = {Society for Industrial and Applied Mathematics},
+address = {USA},
+abstract = {Improved randomized and deterministic algorithms are presented for PATH, MATCHING, and PACKING problems. Our randomized algorithms are based on the divide-and-conquer technique, and improve previous best algorithms for these problems. For example, for the k-PATH problem, our randomized algorithm runs in time O(4kk3.42m) and space O(nklogk + m), improving the previous best randomized algorithm for the problem that runs in time O(5.44kkm) and space O(2kkn + m). To achieve improved deterministic algorithms, we study a number of previously proposed de-randomization schemes, and also develop a new derandomization scheme. These studies result in a number of deterministic algorithms: one of time O(4k+o(k)m) for the k-PATH problem, one of time O(2.803kk nlog2 n) for the 3-D MATCHING problem, and one of time O(43k+o(k)n) for the 3-SET PACKING problem. All these significantly improve previous best algorithms for the problems.},
+booktitle = {Proceedings of the Eighteenth Annual ACM-SIAM Symposium on Discrete Algorithms},
+pages = {298–307},
+numpages = {10},
+location = {New Orleans, Louisiana},
+series = {SODA '07}
+}
+
+@article{HelKar62,
+author = {Held, Michael and Karp, Richard M.},
+title = {A Dynamic Programming Approach to Sequencing Problems},
+journal = {Journal of the Society for Industrial and Applied Mathematics},
+volume = {10},
+number = {1},
+pages = {196-210},
+year = {1962},
+doi = {10.1137/0110015},
+URL = {https://doi.org/10.1137/0110015},
+eprint = {https://doi.org/10.1137/0110015}
+}
+
+@article{Bellman62,
+  title={Dynamic programming treatment of the travelling salesman problem},
+  author={Bellman, Richard},
+  journal={Journal of the ACM (JACM)},
+  volume={9},
+  number={1},
+  pages={61--63},
+  year={1962},
+  publisher={ACM New York, NY, USA}
+}
+
+@article{Björklund17,
+	abstract = {We present parameterized algorithms for the k-path problem, the p-packing of q-sets problem, and the q-dimensional p-matching problem. Our algorithms solve these problems with high probability in time exponential only in the parameter (k, p, q) and using polynomial space. The constant bases of the exponentials are significantly smaller than in previous works; for example, for the k-path problem the improvement is from 2 to 1.66. We also show how to detect if a d-regular graph admits an edge coloring with d colors in time within a polynomial factor of 2(d−1)n/2. Our techniques generalize an algebraic approach studied in various recent works.},
+	affiliation = {Lund University, Department of Computer Science, PO Box 118, SE-22100 Lund, Sweden; IT University of Copenhagen, 2300 Copenhagen S, Denmark; Helsinki Institute for Information Technology HIIT, Aalto University, Department of Information and Computer Science, PO Box 15400, FI-00076 Aalto, Finland; Helsinki Institute for Information Technology HIIT, Department of Computer Science, University of Helsinki, PO Box 68, FI-00014 University of Helsinki, Finland},
+	author = {Björklund, Andreas and Husfeldt, Thore and Kaski, Petteri and Koivisto, Mikko},
+	doi = {10.1016/j.jcss.2017.03.003},
+	journal = {Journal of Computer and System Sciences},
+	keywords = {Determinant; Edge coloring; Graph algorithm; k-Path; Multidimensional matching; Sieve; Set packing; Polynomial identity testing; Randomized algorithm},
+	language = {English},
+	number = {C},
+	pages = {119-139},
+	title = {Narrow sieves for parameterized paths and packings},
+	volume = {87},
+	year = {2017},
 }

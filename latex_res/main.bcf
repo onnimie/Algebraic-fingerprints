@@ -2349,12 +2349,21 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">sources.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">10.1007/978-3-540-70575-8_47</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">WILLIAMS2009315</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">10.1007/978-3-540-70575-8_47</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">WILLIAMS2009315</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">doi:10.1137/110839229</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">10.1145/2742544</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">Koutis05</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Koutis08</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Williams09</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Chen07</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Koutis08</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Williams09</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">Björklund14</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">Björklund17</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">HelKar62</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">Bellman62</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">KouWil15</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">Koutis05</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">KouWil15</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">Alon95</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">Alon95</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="ynt">

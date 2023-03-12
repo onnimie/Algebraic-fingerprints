@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.28)  12 MAR 2023 00:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.28)  12 MAR 2023 23:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -708,98 +708,146 @@ Overfull \hbox (2.61234pt too wide) in paragraph at lines 8--12
  [3
 
 ] (./content.tex
-Underfull \hbox (badness 10000) in paragraph at lines 5--11
+Underfull \hbox (badness 10000) in paragraph at lines 5--9
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--16
+Underfull \hbox (badness 10000) in paragraph at lines 10--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--22
+Underfull \hbox (badness 10000) in paragraph at lines 17--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--28
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--38
 
  []
 
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 42--46
+Underfull \hbox (badness 10000) in paragraph at lines 48--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--54
+Underfull \hbox (badness 10000) in paragraph at lines 54--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--66
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 80--85
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--114
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 126--128
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+aer on input line 1
-31.
-LaTeX Font Info:    No file TS1aer.fd. on input line 131.
+43.
+LaTeX Font Info:    No file TS1aer.fd. on input line 143.
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textbullet' on input line 131.
+(Font)              for symbol `textbullet' on input line 143.
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 186--189
+Underfull \hbox (badness 10000) in paragraph at lines 188--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--207
+Underfull \hbox (badness 10000) in paragraph at lines 193--200
 
  []
 
 [8]
-Overfull \hbox (5.58511pt too wide) in paragraph at lines 240--240
+Underfull \hbox (badness 10000) in paragraph at lines 221--225
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--249
+
+ []
+
+[9]
+Overfull \hbox (2.59232pt too wide) in paragraph at lines 268--271
+\T1/aer/m/n/12 TODO: ex-plain how fin-ger-prints pre-vent can-cel-la-tion, give
+ the gen-eral al-ge-braic frame-work
+ []
+
+
+Overfull \hbox (5.58511pt too wide) in paragraph at lines 283--283
 []\T1/aer/b/n/17.28 Problem spe-cific im-ple-men-ta-tions of al-ge-braic fin-ge
 r-prints 
  []
 
-) [9]
+[10]) [11]
+Overfull \hbox (1.5383pt too wide) in paragraph at lines 335--335
+[]\T1/aer/m/n/12 Richard Bell-man. ``Dy-namic pro-gram-ming treat-ment of the t
+rav-el-ling sales-man
+ []
+
 LaTeX Font Info:    Trying to load font information for T1+aett on input line 3
 34.
- (c:/texlive/2022/texmf-dist/tex/latex/ae/t1aett.fd
+(c:/texlive/2022/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Overfull \hbox (13.31029pt too wide) in paragraph at lines 335--335
+Overfull \hbox (21.14622pt too wide) in paragraph at lines 335--335
 []\T1/aer/m/n/12 Ioannis Koutis and Ryan Williams. ``Al-ge-braic Fin-ger-prints
  for Faster Al-go-rithms''.
  []
 
-[10
+
+Overfull \hbox (3.8787pt too wide) in paragraph at lines 335--335
+[]\T1/aer/m/n/12 Andreas Björk-lund et al. ``Nar-row sieves for pa-ram-e-ter-iz
+ed paths and pack-ings''.
+ []
+
+
+Overfull \hbox (9.62709pt too wide) in paragraph at lines 335--335
+\T1/aer/m/n/12 En-glish. In: \T1/aer/m/it/12 Jour-nal of Com-puter and Sys-tem 
+Sci-ences \T1/aer/m/n/12 87.C (2017), pp. 119^^U139.
+ []
+
+[12
 
 ] (./main.aux)
 
@@ -810,13 +858,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 14578 strings out of 476065
- 260709 string characters out of 5795020
- 1860299 words of memory out of 5000000
- 34735 multiletter control sequences out of 15000+600000
+ 14605 strings out of 476065
+ 261691 string characters out of 5795020
+ 1862299 words of memory out of 5000000
+ 34762 multiletter control sequences out of 15000+600000
  551111 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,76p,1418b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,76p,1409b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/texlive/2022/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2022/texmf-di
@@ -830,10 +878,10 @@ texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/20
 dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2022/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2022/texmf-dist/fonts/ty
 pe1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (10 pages, 165921 bytes).
+Output written on main.pdf (12 pages, 173572 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 109 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

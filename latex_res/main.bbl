@@ -19,7 +19,226 @@
 
 \refsection{0}
   \datalist[entry]{ynt/global//global/global}
-    \entry{10.1007/978-3-540-70575-8_47}{inproceedings}{}
+    \entry{Bellman62}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7bb51e859e70aaedef4ed1f3bb67779b}{%
+           family={Bellman},
+           familyi={B\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM New York, NY, USA}%
+      }
+      \strng{namehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{fullhash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{bibnamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authorbibnamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authornamehash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \strng{authorfullhash}{7bb51e859e70aaedef4ed1f3bb67779b}
+      \field{labelalpha}{Bel62}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the ACM (JACM)}
+      \field{number}{1}
+      \field{title}{Dynamic programming treatment of the travelling salesman problem}
+      \field{volume}{9}
+      \field{year}{1962}
+      \field{pages}{61\bibrangedash 63}
+      \range{pages}{3}
+    \endentry
+    \entry{HelKar62}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7270cd7f9e9b61fa9da8f48cc795cd39}{%
+           family={Held},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5290385c419686f6312edeb3578dc9cf}{%
+           family={Karp},
+           familyi={K\bibinitperiod},
+           given={Richard\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{fullhash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{bibnamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authorbibnamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authornamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authorfullhash}{b66ac2ce1dd288a9211b490f708575bb}
+      \field{labelalpha}{HK62}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Society for Industrial and Applied Mathematics}
+      \field{number}{1}
+      \field{title}{A Dynamic Programming Approach to Sequencing Problems}
+      \field{volume}{10}
+      \field{year}{1962}
+      \field{pages}{196\bibrangedash 210}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1137/0110015
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1137/0110015
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/0110015
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/0110015
+      \endverb
+    \endentry
+    \entry{Alon95}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
+           family={Alon},
+           familyi={A\bibinitperiod},
+           given={Noga},
+           giveni={N\bibinitperiod}}}%
+        {{hash=12862dbd59db8d2d1ca17a3b8a41d0e4}{%
+           family={Yuster},
+           familyi={Y\bibinitperiod},
+           given={Raphael},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3bef1811606c259a72c0244c2e7b3ca4}{%
+           family={Zwick},
+           familyi={Z\bibinitperiod},
+           given={Uri},
+           giveni={U\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{827b1607278c12a5df756b8bd6876493}
+      \strng{fullhash}{827b1607278c12a5df756b8bd6876493}
+      \strng{bibnamehash}{827b1607278c12a5df756b8bd6876493}
+      \strng{authorbibnamehash}{827b1607278c12a5df756b8bd6876493}
+      \strng{authornamehash}{827b1607278c12a5df756b8bd6876493}
+      \strng{authorfullhash}{827b1607278c12a5df756b8bd6876493}
+      \field{labelalpha}{AYZ95}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0004-5411}
+      \field{journaltitle}{J. ACM}
+      \field{month}{7}
+      \field{number}{4}
+      \field{title}{Color-Coding}
+      \field{volume}{42}
+      \field{year}{1995}
+      \field{pages}{844\bibrangedash 856}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1145/210332.210337
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/210332.210337
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/210332.210337
+      \endverb
+      \keyw{derandomization,subgraph isomorphism,perfect hashing,tree-width}
+    \endentry
+    \entry{Koutis05}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0404372369dd3ddaeacb3d1490e9cbd8}{%
+           family={Koutis},
+           familyi={K\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \strng{fullhash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \strng{bibnamehash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \strng{authorbibnamehash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \strng{authornamehash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \strng{authorfullhash}{0404372369dd3ddaeacb3d1490e9cbd8}
+      \field{extraname}{1}
+      \field{labelalpha}{Kou05}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present an efficient parameterized algorithm for the (k,t)-set packing problem, in which we are looking for a collection of k disjoint sets whose union consists of t elements. The complexity of the algorithm is O(2O(t)nNlogN). For the special case of sets of bounded size, this improves the O((ck)kn) algorithm of Jia et al. [J. Algorithms 50 (1) (2004) 106].}
+      \field{issn}{0020-0190}
+      \field{journaltitle}{Information Processing Letters}
+      \field{number}{1}
+      \field{title}{A faster parameterized algorithm for set packing}
+      \field{volume}{94}
+      \field{year}{2005}
+      \field{pages}{7\bibrangedash 9}
+      \range{pages}{3}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ipl.2004.12.005
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0020019004003655
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0020019004003655
+      \endverb
+      \keyw{Algorithms,Analysis of algorithms,Parameterized computation,Set packing}
+    \endentry
+    \entry{Chen07}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=7b65b7026308f5438215866d023a0d67}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jianer},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a4ae49f2ddb373720ec074fa67f33182}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Songjian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c717af83a4dc0e87ec0c7822dcff863a}{%
+           family={Sze},
+           familyi={S\bibinitperiod},
+           given={Sing-Hoi},
+           giveni={S\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=800568979d2696921bd154a86875a77c}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Fenghui},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New Orleans, Louisiana}%
+      }
+      \list{publisher}{2}{%
+        {Society for Industrial}%
+        {Applied Mathematics}%
+      }
+      \strng{namehash}{a8bd6ac686a0718d27b771c887eaca40}
+      \strng{fullhash}{c4ab44a9ecaf6fc251caa0eb1ac4d670}
+      \strng{bibnamehash}{a8bd6ac686a0718d27b771c887eaca40}
+      \strng{authorbibnamehash}{a8bd6ac686a0718d27b771c887eaca40}
+      \strng{authornamehash}{a8bd6ac686a0718d27b771c887eaca40}
+      \strng{authorfullhash}{c4ab44a9ecaf6fc251caa0eb1ac4d670}
+      \field{labelalpha}{Che+07}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Improved randomized and deterministic algorithms are presented for PATH, MATCHING, and PACKING problems. Our randomized algorithms are based on the divide-and-conquer technique, and improve previous best algorithms for these problems. For example, for the k-PATH problem, our randomized algorithm runs in time O(4kk3.42m) and space O(nklogk + m), improving the previous best randomized algorithm for the problem that runs in time O(5.44kkm) and space O(2kkn + m). To achieve improved deterministic algorithms, we study a number of previously proposed de-randomization schemes, and also develop a new derandomization scheme. These studies result in a number of deterministic algorithms: one of time O(4k+o(k)m) for the k-PATH problem, one of time O(2.803kk nlog2 n) for the 3-D MATCHING problem, and one of time O(43k+o(k)n) for the 3-SET PACKING problem. All these significantly improve previous best algorithms for the problems.}
+      \field{booktitle}{Proceedings of the Eighteenth Annual ACM-SIAM Symposium on Discrete Algorithms}
+      \field{isbn}{9780898716245}
+      \field{series}{SODA '07}
+      \field{title}{Improved Algorithms for Path, Matching, and Packing Problems}
+      \field{year}{2007}
+      \field{pages}{298\bibrangedash 307}
+      \range{pages}{10}
+    \endentry
+    \entry{Koutis08}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=0404372369dd3ddaeacb3d1490e9cbd8}{%
            family={Koutis},
@@ -74,6 +293,7 @@
       \strng{editorbibnamehash}{a78b422e876b5e0aa03e2f0abf2ccb60}
       \strng{editornamehash}{a78b422e876b5e0aa03e2f0abf2ccb60}
       \strng{editorfullhash}{f0a3546d220090e61e0460f1ae534b30}
+      \field{extraname}{2}
       \field{labelalpha}{Kou08}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -87,7 +307,7 @@
       \field{pages}{575\bibrangedash 586}
       \range{pages}{12}
     \endentry
-    \entry{WILLIAMS2009315}{article}{}
+    \entry{Williams09}{article}{}
       \name{author}{1}{}{%
         {{hash=fae3fd8ed553265acb8288519a5a1f55}{%
            family={Williams},
@@ -126,7 +346,7 @@
       \endverb
       \keyw{Randomized algorithms,Parameterized algorithms,Graph algorithms,Group algebra}
     \endentry
-    \entry{doi:10.1137/110839229}{article}{}
+    \entry{Björklund14}{article}{}
       \name{author}{1}{}{%
         {{hash=479f084e07d4c1a145e7f325953f3715}{%
            family={Björklund},
@@ -166,7 +386,7 @@
       \verb https://doi.org/10.1137/110839229
       \endverb
     \endentry
-    \entry{10.1145/2742544}{article}{}
+    \entry{KouWil15}{article}{}
       \name{author}{2}{}{%
         {{hash=0404372369dd3ddaeacb3d1490e9cbd8}{%
            family={Koutis},
@@ -215,6 +435,56 @@
       \verb{url}
       \verb https://doi.org/10.1145/2742544
       \endverb
+    \endentry
+    \entry{Björklund17}{article}{}
+      \name{author}{4}{}{%
+        {{hash=479f084e07d4c1a145e7f325953f3715}{%
+           family={Björklund},
+           familyi={B\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7a31971ced777f2ed7c77a272fa934eb}{%
+           family={Husfeldt},
+           familyi={H\bibinitperiod},
+           given={Thore},
+           giveni={T\bibinitperiod}}}%
+        {{hash=577a9b82a2cc5f487c5d1526cf9708f8}{%
+           family={Kaski},
+           familyi={K\bibinitperiod},
+           given={Petteri},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e9fe5d909f66402b31c56f118ec209a3}{%
+           family={Koivisto},
+           familyi={K\bibinitperiod},
+           given={Mikko},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{6ef725e094cc61380420c1f5274a26f9}
+      \strng{fullhash}{1a34f9ecf55c92954dd3261a70cb24e5}
+      \strng{bibnamehash}{6ef725e094cc61380420c1f5274a26f9}
+      \strng{authorbibnamehash}{6ef725e094cc61380420c1f5274a26f9}
+      \strng{authornamehash}{6ef725e094cc61380420c1f5274a26f9}
+      \strng{authorfullhash}{1a34f9ecf55c92954dd3261a70cb24e5}
+      \field{labelalpha}{Bjö+17}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present parameterized algorithms for the k-path problem, the p-packing of q-sets problem, and the q-dimensional p-matching problem. Our algorithms solve these problems with high probability in time exponential only in the parameter (k, p, q) and using polynomial space. The constant bases of the exponentials are significantly smaller than in previous works; for example, for the k-path problem the improvement is from 2 to 1.66. We also show how to detect if a d-regular graph admits an edge coloring with d colors in time within a polynomial factor of 2(d−1)n/2. Our techniques generalize an algebraic approach studied in various recent works.}
+      \field{journaltitle}{Journal of Computer and System Sciences}
+      \field{number}{C}
+      \field{title}{Narrow sieves for parameterized paths and packings}
+      \field{volume}{87}
+      \field{year}{2017}
+      \field{pages}{119\bibrangedash 139}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/j.jcss.2017.03.003
+      \endverb
+      \keyw{Determinant; Edge coloring; Graph algorithm; k-Path; Multidimensional matching; Sieve; Set packing; Polynomial identity testing; Randomized algorithm}
     \endentry
   \enddatalist
 \endrefsection
