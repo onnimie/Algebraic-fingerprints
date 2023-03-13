@@ -46,10 +46,10 @@ utilizations of algebraic fingerprints are shown. Section 5 concludes the thesis
 \subsection{Algebraization of combinatorial problems}
 
 A combinatorial problem asks whether a given finite set of objects satisfies some given constraints. 
-For example, the k-path problem asks for, given a finite set of vertices and edges, 
-a path of k vertices. The solutions and non-solutions to combinatorial problems can be thought of as 
-combinations of the given objects. The solution space for the k-path problem consists of combinations of k vertices and k-1 edges. 
-A non-solution combination would contain duplicate vertices or edges that contain vertices outside the combination.\nl
+For example, the $k$-path problem asks for, given a finite set of vertices and edges, 
+a simple path of $k$ vertices. The solutions and non-solutions (solution space) to combinatorial problems can be thought of as 
+combinations of the given objects. The solution space for the $k$-path problem consists of combinations of $k$ vertices and $k-1$ edges. 
+A non-solution combination would contain duplicate vertices, or edges that contain vertices outside the combination.\nl
 
 Algebraization is reducing a given problem into an algebraic problem, i.e., a question regarding some algebraic property of some algebraic entity. 
 In an algebraization of a combinatorial problem, the algebraic entity can be constructed from algebraic elements defined from the 
@@ -114,7 +114,7 @@ An example instance of $k$-3D matching with this exact algebraization can be fou
 It is necessary to recall basic algebraic concepts 
 before further discussing multilinear monomial detections and algebraic fingerprinting. 
 In this section, definitions for a group, ring and field are given, and some useful concepts 
-regarding them. The second subsection goes through general notation and terminology used 
+regarding them. The second subsection goes through other notation and terminology used 
 throughout the thesis.
 
 \subsection{Groups, rings and fields} %polynomial rings, group algebra, char of field
@@ -129,8 +129,8 @@ is a binary operation closed under $G$. We call the binary operations $+$ and $\
 Note, that from here on we use $R$ as the set of elements defined for $\textbf R$. 
 In general, a bold typeface \textbf X represents a group, ring or field and $X$ its set of elements. 
 $R$ must contain a multiplicative identity $\textbf 1 \in R$ such that $\forall a \in R$: $a \cdot \textbf 1 = a$. 
-We notate the additive identity $e$ required for the group $R$ as $\textbf 0$ from here on. 
-Observe, that for any $\textbf R \neq \{\textbf 0\}$, $\textbf 1 \neq \textbf 0$.  
+We notate the additive identity $e$ required for the group as $\textbf 0$ from here on. 
+Observe, that for any $R \neq \{\textbf 0\}$, $\textbf 1 \neq \textbf 0$.  
 Left and right distributive laws hold for rings, i.e., 
 \begin{center}
   $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
@@ -162,7 +162,7 @@ Note, that a field \textbf F with characeristic 2 satisfies the following:
   $\forall u \in F$: $u + u = u \cdot (\textbf 1 + \textbf 1) = u \cdot \textbf 0 = \textbf 0$
 \end{center}
 
-TODO: polynomial rings, group algebra
+TODO: group algebra, polynomial ring, linear dependency
 
 \subsection{Notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
 
@@ -190,15 +190,15 @@ an $N$-degree polynomial will have $2^{\Theta(N)}$ possible monomials, and most
 problems, that can use this algebraization, have been solved with faster algorithms (TODO: quick example?). 
 This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials.\nl
 
-In the next section, this thesis quickly overviews dynamic programming and 
+In the next subsection, this thesis quickly overviews dynamic programming and 
 color coding for $k$-path in the context of 
 $k$-multilinear monomial detection. Although color coding is outperformed by the 
-purely algebraic methods, color coding is given as valuable background information, 
+purely algebraic technique of fingerprinting, color coding is given as valuable background information, 
 since some ideas carry on to the algebraic methods. Moreover, 
 it appears that most parameterized problems that are solved with color coding can be reduced to 
-multilinear monomial detection and, thus, have faster algorithms [TODO: add ref].\nl 
+multilinear monomial detection, and thus have faster algorithms [TODO: add ref].\nl 
 
-In a later section, 
+In a later subsection, 
 the thesis covers color coding with matrices as a purely algebraic method, which leads into 
 the technique of algebraic fingerprinting. Then, a general framework for algebraic fingerprinting is discussed. 
 In the last subsection under this section, 
@@ -213,8 +213,8 @@ the thesis discusses some limits and cons in general multilinear monomial detect
 \subsection{Non-algebraic methods}
 
 Before discussing color coding, the thesis briefly overviews dynamic programming in the context of 
-multilinear monomial detection, since dynamic programming is used in color coding. Moreover, the 
-thesis introduces an algebraically interesting idea of setting squared variables to zero.
+multilinear monomial detection, since dynamic programming is used in color coding. Furthermore, 
+the thesis introduces an algebraically interesting idea of setting squared variables to zero.
 
 \subsubsection{Dynamic programming for smart expansion of the polynomial}
 
@@ -252,8 +252,9 @@ TODO: go over random assignment with colors,
 which results a polynomial of smaller domain (less variables), thus 
 making the evaluation faster
 
-In \cite{Alon95}, Alon et al. introduces color coding, and applies it in a non-deterministic algorithm 
-for the $k$-path problem. First, the thesis explains the idea behind the algorithm in \cite{Alon95}. 
+Color coding was introduced in \cite{Alon95} as a randomized method for subgraph problems. Among others, 
+a non-deterministic algorithm for the $k$-path problem is given.
+First, the thesis explains the idea behind the algorithm in \cite{Alon95}. 
 After this, the idea is translated into multilinear monomial detection for easier relevance.
 
 \begin{problem}
@@ -265,17 +266,22 @@ After this, the idea is translated into multilinear monomial detection for easie
 TODO: go quickly over the algorithm, translate it in terms of multilinear monomial detection, 
 give focus on the random assignment in order to reduce domain size (adds non-determinism, though)
 
-TODO: end with hints toward matrix assignment (a non-zero matrix squared can equal zero)
+TODO: end with hints toward algebraic assignment (for example, a non-zero matrix squared can equal zero)
 
-\subsection{Non-deterministic color coding with matrices}
+\subsection{Color coding with algebra}
 
-TODO: go through idea of matrix assignment and specifications for a suitable algebra, 
-then lead to fingerprinting
+TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
+then lead to fingerprinting (fingerprints solve an issue that arises with commutative algebra)
+%\cite{Valiant92} 1992 paper, ideas regarding arithmetic circuits with boolean rings
+\cite{Koutis08} uses commutative group algebras of $\Z^{2}_{k}$ (to have squared variables equal zero) 
+for ODD k-multilinear detection (multilinear monomials have odd coefficients). randomized assignment, no false positives
+
+
 
 \subsection{Algebraic fingerprinting to prevent unwanted cancellation}
 
 TODO: explain how fingerprints prevent cancellation, 
-give the general algebraic framework proposed by Williams and Koutis, 
+give the general algebraic framework that appears in \cite{Williams09}, 
 (also polynomial identity testing)
 
 \subsection{Limits of general multilinear monomial detection}

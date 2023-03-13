@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {3.1}Non-algebraic methods}{9}{}%
 \contentsline {subsubsection}{\numberline {3.1.1}Dynamic programming for smart expansion of the polynomial}{9}{}%
 \contentsline {subsubsection}{\numberline {3.1.2}Non-deterministic color coding for faster evaluation}{10}{}%
-\contentsline {subsection}{\numberline {3.2}Non-deterministic color coding with matrices}{10}{}%
+\contentsline {subsection}{\numberline {3.2}Color coding with algebra}{10}{}%
 \contentsline {subsection}{\numberline {3.3}Algebraic fingerprinting to prevent unwanted cancellation}{10}{}%
 \contentsline {subsection}{\numberline {3.4}Limits of general multilinear monomial detection}{10}{}%
 \contentsline {section}{\numberline {4}Problem specific implementations of algebraic fingerprints}{11}{}%
