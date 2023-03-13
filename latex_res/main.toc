@@ -3,19 +3,20 @@
 \babel@toc {english}{}\relax 
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{4}{}%
-\contentsline {subsection}{\numberline {1.1}Algebraization of combinatorial problems}{5}{}%
-\contentsline {subsection}{\numberline {1.2}Reducing $k$-3D matching into multilinear monomial detection}{6}{}%
+\contentsline {subsection}{\numberline {1.1}Research goals and thesis structure}{4}{}%
+\contentsline {subsection}{\numberline {1.2}Algebraization of combinatorial problems}{5}{}%
+\contentsline {subsection}{\numberline {1.3}Reducing $k$-3D matching into multilinear monomial detection}{6}{}%
 \contentsline {section}{\numberline {2}Preliminaries}{6}{}%
 \contentsline {subsection}{\numberline {2.1}Groups, rings and fields}{7}{}%
 \contentsline {subsection}{\numberline {2.2}Notation and other terminology}{8}{}%
 \contentsline {section}{\numberline {3}General multilinear monomial detection}{8}{}%
 \contentsline {subsection}{\numberline {3.1}Non-algebraic methods}{9}{}%
 \contentsline {subsubsection}{\numberline {3.1.1}Dynamic programming for smart expansion of the polynomial}{9}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}Non-deterministic color coding for faster evaluation}{9}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}Non-deterministic color coding for faster evaluation}{10}{}%
 \contentsline {subsection}{\numberline {3.2}Non-deterministic color coding with matrices}{10}{}%
 \contentsline {subsection}{\numberline {3.3}Algebraic fingerprinting to prevent unwanted cancellation}{10}{}%
 \contentsline {subsection}{\numberline {3.4}Limits of general multilinear monomial detection}{10}{}%
-\contentsline {section}{\numberline {4}Problem specific implementations of algebraic fingerprints}{10}{}%
+\contentsline {section}{\numberline {4}Problem specific implementations of algebraic fingerprints}{11}{}%
 \contentsline {subsection}{\numberline {4.1}Fingerprinting for cancellation of non-solutions}{11}{}%
 \contentsline {section}{\numberline {5}Conclusion}{11}{}%
 \contentsline {section}{References}{12}{}%

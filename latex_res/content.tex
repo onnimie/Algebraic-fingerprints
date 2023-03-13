@@ -12,14 +12,16 @@ has found great success for many combinatorial problems.
 With algebraic fingerprinting, the $k$-path problem, 
 that previously could be solved in \bigOstar{4^{k}} time by Chen et al. in \cite{Chen07}, 
 could be solved in \bigOstar{2^{3k/2}} time in \cite{Koutis08}. 
-This result was quickly improved in \cite{Williams09}, where a \bigOstar{2^k} algorithm was given.\nl
+This result was quickly improved in \cite{Williams09}, where an \bigOstar{2^k} algorithm was given.\nl
 
 Of course, this technique was further developed, and soon after in \cite{Björklund14} Björklund et al. showed an algorithm 
 that solved the Hamiltonian problem (Hamiltonicity), i.e., finding whether a given graph contains a simple path that visits 
-every vertex, in \bigOstar{1.657^n} time. Soon enough, for $k$-path, a \bigOstar{1.66^k} algorithm was found \cite{Björklund17}. 
+every vertex, in \bigOstar{1.657^n} time. Soon enough, for $k$-path, an \bigOstar{1.66^k} algorithm was found \cite{Björklund17}. 
 The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} 
 and were known since 1962 \cite{HelKar62}, \cite{Bellman62}.
-This was a significant improvement on a problem that had seen no progress in nearly fifty years.\nl
+This was a significant improvement on a problem that had seen no progress in nearly fifty years.
+
+\subsection{Research goals and thesis structure}
 
 The goals of this thesis are to find out how multilinear monomial detection is relevant in 
 combinatorial problems, and how algebraic fingerprints can be utilized to design faster 
@@ -40,8 +42,6 @@ In the next subsections, the thesis discusses algebraization and reduction into 
 The section 2 covers preliminaries. In section 3, the thesis discusses general multilinear monomial detection. 
 In section 4, some problem specific instances of multilinear monomial detection are given, and clever 
 utilizations of algebraic fingerprints are shown. Section 5 concludes the thesis.
-
-[TODO: go through the structure of the thesis]
 
 \subsection{Algebraization of combinatorial problems}
 
@@ -168,7 +168,7 @@ TODO: polynomial rings, group algebra
 
 TODO: create a table or like, list terms: 
 multilinearity, multivariety, sum of monomials form \& generating form (arithmetic circuit) of polynomial, 
-degree of multivariate monomial, $\mathcal{O}$, $\Theta$, FPT, $\mathcal{O}$*, determinism \& non-determinism ( or use 'Monte Carlo' c: )
+degree of multivariate monomial, $\mathcal{O}$, $\Theta$, FPT, $\mathcal{O}$*, determinism \& non-determinism [or use 'Monte Carlo' :)]
 
 \section{General multilinear monomial detection}
 
@@ -196,7 +196,7 @@ $k$-multilinear monomial detection. Although color coding is outperformed by the
 purely algebraic methods, color coding is given as valuable background information, 
 since some ideas carry on to the algebraic methods. Moreover, 
 it appears that most parameterized problems that are solved with color coding can be reduced to 
-multilinear monomial detection and, thus, have faster algorithms [ref forgot :p].\nl 
+multilinear monomial detection and, thus, have faster algorithms [TODO: add ref].\nl 
 
 In a later section, 
 the thesis covers color coding with matrices as a purely algebraic method, which leads into 
@@ -218,13 +218,22 @@ thesis introduces an algebraically interesting idea of setting squared variables
 
 \subsubsection{Dynamic programming for smart expansion of the polynomial}
 
+Multilinear monomial detection can be solved with dynamic programming. 
+Dynamic programming, used for e.g. Hamiltonicity in \cite{HelKar62}, is a method where the problem 
+is recursively broken down into smaller subproblems. \cite{Fomin17} gives a dynamic programming algorithm 
+for solving an instance of $k$-multilinear monomial detection in the problem context of 
+representative families for product families.\nl
+
 In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
 as soon as they are formed in the arithmetic circuit, since the arithmetic circuit will never decrease the degree of a monomial. 
-Therefore, a dynamic programming algorithm can be designed for the expansion with an additional rule: 
+Therefore, a smart algorithm can be designed for the expansion that applies an additional rule: 
 any squared variable can be instantly discarded.\nl
 
-In practise, a dynamic programming algorithm ... 
-TODO: explain dynamic programming briefly and how it works with the arithmetic circuit
+With dynamic programming, this can be implemented by redesigning the arithmetic gates in the arithmetic circuit. 
+In practise, the algorithm would employ special addition and multiplication gates that discard squared variables. 
+Thus, the evaluation of the (sum of monomials form) polynomial is reduced to just evaluating the multilinear terms. 
+For a multivariate polynomial with $n$ variables, there are $2^n$ multilinear terms, which implies 
+that the expansion can be ran in \bigOstar{2^n} time \cite{KouWil15}.\nl
 
 The rule of discarding squared variables can be written in algebraic form: 
 a squared variable $x^2 \in X$ is set to the additive identity (zero) of the field $\textbf F$, 
@@ -245,7 +254,7 @@ making the evaluation faster
 
 In \cite{Alon95}, Alon et al. introduces color coding, and applies it in a non-deterministic algorithm 
 for the $k$-path problem. First, the thesis explains the idea behind the algorithm in \cite{Alon95}. 
-After this, the idea is translated into multilinear monomial detection for easier relevance.\nl
+After this, the idea is translated into multilinear monomial detection for easier relevance.
 
 \begin{problem}
   \problemtitle{\textsc{(directed or undirected)} $k$-\textsc{path (decision and search)}}
@@ -267,7 +276,7 @@ then lead to fingerprinting
 
 TODO: explain how fingerprints prevent cancellation, 
 give the general algebraic framework proposed by Williams and Koutis, 
-(polynomial identity testing)
+(also polynomial identity testing)
 
 \subsection{Limits of general multilinear monomial detection}
 

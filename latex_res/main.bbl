@@ -486,6 +486,65 @@
       \endverb
       \keyw{Determinant; Edge coloring; Graph algorithm; k-Path; Multidimensional matching; Sieve; Set packing; Polynomial identity testing; Randomized algorithm}
     \endentry
+    \entry{Fomin17}{article}{}
+      \name{author}{4}{}{%
+        {{hash=79f82fca58f3e65e15c5f702996ec47f}{%
+           family={Fomin},
+           familyi={F\bibinitperiod},
+           given={Fedor\bibnamedelima V.},
+           giveni={F\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=d36fdf541c333f611dfa11132a784053}{%
+           family={Lokshtanov},
+           familyi={L\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=eb4f5857e29210d666467b176caa77b7}{%
+           family={Panolan},
+           familyi={P\bibinitperiod},
+           given={Fahad},
+           giveni={F\bibinitperiod}}}%
+        {{hash=f6ffd3ea3887e04ef5a00a54c6c71668}{%
+           family={Saurabh},
+           familyi={S\bibinitperiod},
+           given={Saket},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{2e9cbb84b2b980c46e6520235290957e}
+      \strng{fullhash}{20a92e26ce66d8d6f43bb84d2ed13aa2}
+      \strng{bibnamehash}{2e9cbb84b2b980c46e6520235290957e}
+      \strng{authorbibnamehash}{2e9cbb84b2b980c46e6520235290957e}
+      \strng{authornamehash}{2e9cbb84b2b980c46e6520235290957e}
+      \strng{authorfullhash}{20a92e26ce66d8d6f43bb84d2ed13aa2}
+      \field{labelalpha}{Fom+17}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A subfamily F′ of a set family F is said to q-represent F if for every A ∈ F and B of size q such that A∩B = ∅ there exists a set A′ ∈ F′ such that A′ ∩ B = ∅. Recently, we provided an algorithm that, for a given family F of sets of size p together with an integer q, efficiently computes a q-representative family F′ of F of size approximately (p+q p). In this article, we consider the efficient computation of q-representative families for product families F. A family F is a product family if there exist families A and B such that F = { A, ∪, B : A ∈ A, B ∈ B, A, ∩, B = ∅}. Our main technical contribution is an algorithm that, given A, B and q, computes a q-representative family F′ of F. The running time of our algorithm is sublinear in |F| for many choices of A, B, and q that occur naturally in several dynamic programming algorithms. We also give an algorithm for the computation of q-representative families for product families F in the more general setting where q-representation also involves independence in a matroid in addition to disjointness. This algorithm considerably outperforms the naive approach where one first computes F from A and B and then computes the q-representative family F′ from F.We give two applications of our new algorithms for computing q-representative families for product families. The first is a 3.8408knO(1) deterministic algorithm for the Multilinear Monomial Detection (k-MlD) problem. The second is a significant improvement of deterministic dynamic programming algorithms for “connectivity problems” on graphs of bounded treewidth.}
+      \field{issn}{1549-6325}
+      \field{journaltitle}{ACM Trans. Algorithms}
+      \field{month}{3}
+      \field{number}{3}
+      \field{title}{Representative Families of Product Families}
+      \field{volume}{13}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1145/3039243
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3039243
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3039243
+      \endverb
+      \keyw{multi-linear monomial detection,tree-width bounded graphs,representative families,Matroids,parameterized algorithms}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
