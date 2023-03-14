@@ -93,6 +93,33 @@
       \verb https://doi.org/10.1137/0110015
       \endverb
     \endentry
+    \entry{Valiant92}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5f6de757ace433a38a527a005db316f1}{%
+           family={Valiant},
+           familyi={V\bibinitperiod},
+           given={Leslie\bibnamedelima G},
+           giveni={L\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f6de757ace433a38a527a005db316f1}
+      \strng{fullhash}{5f6de757ace433a38a527a005db316f1}
+      \strng{bibnamehash}{5f6de757ace433a38a527a005db316f1}
+      \strng{authorbibnamehash}{5f6de757ace433a38a527a005db316f1}
+      \strng{authornamehash}{5f6de757ace433a38a527a005db316f1}
+      \strng{authorfullhash}{5f6de757ace433a38a527a005db316f1}
+      \field{labelalpha}{Val92}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Boolean Function Complexity}
+      \field{number}{84-94}
+      \field{title}{Why is Boolean complexity theory difficult}
+      \field{volume}{169}
+      \field{year}{1992}
+      \field{pages}{4}
+      \range{pages}{1}
+    \endentry
     \entry{Alon95}{article}{}
       \name{author}{3}{}{%
         {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
@@ -307,6 +334,75 @@
       \field{pages}{575\bibrangedash 586}
       \range{pages}{12}
     \endentry
+    \entry{KouWil09}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0404372369dd3ddaeacb3d1490e9cbd8}{%
+           family={Koutis},
+           familyi={K\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod}}}%
+        {{hash=fae3fd8ed553265acb8288519a5a1f55}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=0b66b903ea68fa7756de7807b3cd265d}{%
+           family={Albers},
+           familyi={A\bibinitperiod},
+           given={Susanne},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0a32a40115a59553203cbd569e19218d}{%
+           family={Marchetti-Spaccamela},
+           familyi={M\bibinithyphendelim S\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=46fb71a11e070da3ec8e9ff62a75ddef}{%
+           family={Matias},
+           familyi={M\bibinitperiod},
+           given={Yossi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b41124fca7f277dc09717d288376c714}{%
+           family={Nikoletseas},
+           familyi={N\bibinitperiod},
+           given={Sotiris},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e0ad3eea03cdb692141e079403b79b25}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{fullhash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{bibnamehash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{authorbibnamehash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{authornamehash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{authorfullhash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \strng{editorbibnamehash}{473daea546c318df9a430fd4e2316998}
+      \strng{editornamehash}{473daea546c318df9a430fd4e2316998}
+      \strng{editorfullhash}{e4bd786e56c31091b277393463ad4a2d}
+      \field{extraname}{1}
+      \field{labelalpha}{KW09}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The algebraic framework introduced in [Koutis, Proc. of the 35thICALP 2008] reduces several combinatorial problems in parameterized complexity to the problem of detecting multilinear degree-k monomials in polynomials presented as circuits. The best known (randomized) algorithm for this problem requires only O*(2k) time and oracle access to an arithmetic circuit, i.e. the ability to evaluate the circuit on elements from a suitable group algebra. This algorithm has been used to obtain the best known algorithms for several parameterized problems. In this paper we use communication complexity to show that the O*(2k) algorithm is essentially optimal within this evaluation oracle framework. On the positive side, we give new applications of the method: finding a copy of a given tree on k nodes, a spanning tree with at least k leaves, a minimum set of nodes that dominate at least t nodes, and an m-dimensional k-matching. In each case we achieve a faster algorithm than what was known. We also apply the algebraic method to problems in exact counting. Among other results, we show that a combination of dynamic programming and a variation of the algebraic method can break the trivial upper bounds for exact parameterized counting in fairly general settings.}
+      \field{booktitle}{Automata, Languages and Programming}
+      \field{isbn}{978-3-642-02927-1}
+      \field{title}{Limits and Applications of Group Algebras for Parameterized Problems}
+      \field{year}{2009}
+      \field{pages}{653\bibrangedash 664}
+      \range{pages}{12}
+    \endentry
     \entry{Williams09}{article}{}
       \name{author}{1}{}{%
         {{hash=fae3fd8ed553265acb8288519a5a1f55}{%
@@ -411,6 +507,7 @@
       \strng{authorbibnamehash}{4e9cd4d5e70772b8bb586623272aeeef}
       \strng{authornamehash}{4e9cd4d5e70772b8bb586623272aeeef}
       \strng{authorfullhash}{4e9cd4d5e70772b8bb586623272aeeef}
+      \field{extraname}{2}
       \field{labelalpha}{KW15}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}

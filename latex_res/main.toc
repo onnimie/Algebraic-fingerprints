@@ -14,9 +14,10 @@
 \contentsline {subsubsection}{\numberline {3.1.1}Dynamic programming for smart expansion of the polynomial}{9}{}%
 \contentsline {subsubsection}{\numberline {3.1.2}Non-deterministic color coding for faster evaluation}{10}{}%
 \contentsline {subsection}{\numberline {3.2}Color coding with algebra}{10}{}%
-\contentsline {subsection}{\numberline {3.3}Algebraic fingerprinting to prevent unwanted cancellation}{10}{}%
-\contentsline {subsection}{\numberline {3.4}Limits of general multilinear monomial detection}{10}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Algebraic fingerprinting to prevent unwanted cancellation}{10}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Finding the solution}{11}{}%
+\contentsline {subsection}{\numberline {3.3}Limits of general multilinear monomial detection}{11}{}%
 \contentsline {section}{\numberline {4}Problem specific implementations of algebraic fingerprints}{11}{}%
 \contentsline {subsection}{\numberline {4.1}Fingerprinting for cancellation of non-solutions}{11}{}%
-\contentsline {section}{\numberline {5}Conclusion}{11}{}%
-\contentsline {section}{References}{12}{}%
+\contentsline {section}{\numberline {5}Conclusion}{12}{}%
+\contentsline {section}{References}{13}{}%

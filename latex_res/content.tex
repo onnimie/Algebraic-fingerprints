@@ -30,12 +30,13 @@ regarding algebraic fingerprints are explored for.\nl
 
 Multilinear monomial detection 
 is a fundamental problem, since many important combinatorial problems can be reduced into it 
-via a problem specific algebraization. The goal of such algebraization is to form an arithmetic circuit representing a 
-multivariate polynomial that encodes the combinations, i.e. the solutions and non-solutions, into multivariate monomials where 
-multilinear terms correspond to solutions to the given problem.\nl
+via a problem specific algebraization. Thus, faster algorithms and new ideas for multilinear monomial detection 
+are important.\nl
 
+Multilinear monomial detection is essentially searching for solutions among non-solutions, 
+both of which are encoded as monomials in a polynomial. 
 The technique of algebraic fingerprinting is present in multilinear monomial detection. 
-With algebraic fingerprints, unwanted cancelation due to the characteristic of a field can be prevented. 
+With algebraic fingerprints, unwanted cancelation of solution monomials due to the characteristic of a field can be prevented. 
 Moreover, algebraic fingerprints can be used to cancel non-solution monomials by abusing the characteristic.\nl
 
 In the next subsections, the thesis discusses algebraization and reduction into multilinear monomial detection. 
@@ -51,21 +52,24 @@ a simple path of $k$ vertices. The solutions and non-solutions (solution space) 
 combinations of the given objects. The solution space for the $k$-path problem consists of combinations of $k$ vertices and $k-1$ edges. 
 A non-solution combination would contain duplicate vertices, or edges that contain vertices outside the combination.\nl
 
-Algebraization is reducing a given problem into an algebraic problem, i.e., a question regarding some algebraic property of some algebraic entity. 
+Algebraization is reducing a given problem into an algebraic form, i.e., a question regarding some algebraic property of some algebraic entity. 
 In an algebraization of a combinatorial problem, the algebraic entity can be constructed from algebraic elements defined from the 
 set of objects given as an input. The motivation behind the construction is some algebraic property that, 
 when satisfied, gives a solution to the problem.\nl
 
-(TODO: rewrite this paragraph, explain with generating polynomial or arithmetic circuit and expansion into sum of monomials)
-Multilinear monomial detection has proven to be a useful algebraization. First, we introduce multiple variables that 
-correspond to elements from the set of objects given as input. Then, we construct a multivariate polynomial such that it 
-encodes all solutions and non-solutions as multivariate monomials, with solutions encoded specifically as multilinear monomials. 
+In \cite{Valiant92}, it was observed that multivariate polynomials in certain algebras have natural combinatorial interpretations. 
+Utilizing this idea, \cite{Koutis05} managed to reduce a combinatorial problem into an algebraic form, that is multilinear monomial detection. 
+First, we introduce multiple variables that 
+correspond to elements from the set of objects given as input. 
+Then, we construct an arithmetic circuit representing a multivariate polynomial, such that it 
+encodes all solutions and non-solutions as multivariate monomials, 
+with multilinear monomials corresponding to solutions. 
 Thus, the task of finding a satisfying combination to the combinatorial problem has been reduced to 
 finding a multilinear monomial from the multivariate polynomial. It follows, that a decision problem is answered by 
-the existence of a multilinear monomial and a counting problem by the number of multilinear monomials.\nl
+the existence of a multilinear monomial, and a counting problem by the number of multilinear monomials.\nl
 
-Appropriate definitions for the variables are problem specific. In the following section, this thesis shows a 
-reduction into multilinear monomial detection, introduced in \cite{KouWil15}, 
+Appropriate definitions for the variables are problem specific. In the following section, this thesis gives a 
+reduction into multilinear monomial detection, shown in \cite{KouWil15}, 
 for the $k$-3D matching problem. Another simple example, for the set packing problem, can be found in \cite{Koutis05}.
 
 \subsection{Reducing $k$-3D matching into multilinear monomial detection}
@@ -113,7 +117,7 @@ An example instance of $k$-3D matching with this exact algebraization can be fou
 %non-deterministic algorithm, polynomial ring]
 It is necessary to recall basic algebraic concepts 
 before further discussing multilinear monomial detections and algebraic fingerprinting. 
-In this section, definitions for a group, ring and field are given, and some useful concepts 
+This section gives definitions for a group, ring and field, and some useful concepts 
 regarding them. The second subsection goes through other notation and terminology used 
 throughout the thesis.
 
@@ -168,7 +172,8 @@ TODO: group algebra, polynomial ring, linear dependency
 
 TODO: create a table or like, list terms: 
 multilinearity, multivariety, sum of monomials form \& generating form (arithmetic circuit) of polynomial, 
-degree of multivariate monomial, $\mathcal{O}$, $\Theta$, FPT, $\mathcal{O}$*, determinism \& non-determinism [or use 'Monte Carlo' :)]
+degree of multivariate monomial, $\mathcal{O}$, $\Theta$, FPT, $\mathcal{O}$*, determinism \& non-determinism [or use 'Monte Carlo' :)], 
+Schwartz-Zippel lemma
 
 \section{General multilinear monomial detection}
 
@@ -196,7 +201,7 @@ $k$-multilinear monomial detection. Although color coding is outperformed by the
 purely algebraic technique of fingerprinting, color coding is given as valuable background information, 
 since some ideas carry on to the algebraic methods. Moreover, 
 it appears that most parameterized problems that are solved with color coding can be reduced to 
-multilinear monomial detection, and thus have faster algorithms [TODO: add ref].\nl 
+multilinear monomial detection, and thus have faster algorithms \cite{KouWil15}, \cite{Fomin17}.\nl 
 
 In a later subsection, 
 the thesis covers color coding with matrices as a purely algebraic method, which leads into 
@@ -271,18 +276,41 @@ TODO: end with hints toward algebraic assignment (for example, a non-zero matrix
 \subsection{Color coding with algebra}
 
 TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
-then lead to fingerprinting (fingerprints solve an issue that arises with commutative algebra)
-%\cite{Valiant92} 1992 paper, ideas regarding arithmetic circuits with boolean rings
-\cite{Koutis08} uses commutative group algebras of $\Z^{2}_{k}$ (to have squared variables equal zero) 
-for ODD k-multilinear detection (multilinear monomials have odd coefficients). randomized assignment, no false positives
+then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to charactestic)
 
-
-
-\subsection{Algebraic fingerprinting to prevent unwanted cancellation}
+\subsubsection{Algebraic fingerprinting to prevent unwanted cancellation}
 
 TODO: explain how fingerprints prevent cancellation, 
 give the general algebraic framework that appears in \cite{Williams09}, 
 (also polynomial identity testing)
+
+\cite{Koutis08} uses commutative group algebras of $\Z^{k}_{2}$ (to have squared variables equal zero) 
+for ODD k-multilinear detection (multilinear monomials have odd coefficients). randomized assignment, no false positives
+
+Koutis reduces an algebraization into ODD k-multilinear detection by randomly assigning fingerprints from {0,1} in the hopes 
+of getting odd number of solutions (k-multilinear terms), 
+i.e., hoping that for a pair that cancels each other, one of them gets removed by 0-assignment so that cancelation is prevented
+
+\cite{Williams09} reduces multilinear detection (after assinging variables values from some algebra) 
+to polynomial identity testing for a polynomial P(A) that has fingerprints as variables. 
+Fingerprints are then assigned values from a field that has more elements than P(A) has roots, which 
+means that P(A) evaluates to non-zero with high probability (if there are solutions)
+
+
+
+\subsubsection{Finding the solution}
+
+Multilinear monomial detection has only been given as a detector for a solution, i.e., a decision algorithm. 
+Talk about actually finding the solution.
+
+\cite{Koutis08} gives an algorithm that solves the decision problem for $k$-path. 
+$k$-path is found with \bigOstar{n+min(k^2, m)} applications of the algorithm.
+
+\cite{Williams09} solves the decision problem for $k$-path. \cite{Williams09} also gives an algorithm 
+that finds a path when it is known that a $k$-path exists.
+
+\cite{Björklund17} solves the decision problem for $k$-path starting at some vertex $s$. 
+A $k$-path can be found by just applying the algorithm for every vertex.
 
 \subsection{Limits of general multilinear monomial detection}
 
@@ -290,7 +318,7 @@ TODO: give some cons wrt. color coding (difficult derandomization,
 are we able to add weights for optimization problems?) %(cost-constrained mld?)
 
 TODO: explain the limit in general multilinear detection with this algebraic framework 
-(impossible to find better algebra than what is used for the current fastest k-mld algorithm)
+(impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
 
 TODO: lead to problem specific implementations 
 (we can use fingerprinting cleverly, when we understand the underlying problem well)
