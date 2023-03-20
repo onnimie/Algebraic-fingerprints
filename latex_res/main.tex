@@ -31,6 +31,10 @@
 \usepackage{hyphenat}  % tavutuksen viilaamiseen liittyvä (hyphenpenalty,...)
 \usepackage{supertabular,array}  % useampisivuinen taulukko
 
+\usepackage{microtype}  % better line breaks
+\usepackage{csquotes}   % \enquote{}
+\usepackage{cleveref}   % \cref{}
+
 \usepackage{tabularx,environ,amssymb}
 \usepackage[
 backend=biber,
@@ -38,6 +42,13 @@ style=alphabetic,
 sorting=ynt
 ]{biblatex}
 \addbibresource{sources.bib}
+
+% For comments (remove from final version)
+\usepackage[draft]{fixme}
+\fxusetheme{color}
+\setlength{\marginparwidth}{2cm}
+\FXRegisterAuthor{am}{anam}{AM}
+\FXRegisterAuthor{om}{anom}{OM} % if you want to add comments too
 
 % Koko dokumentin kattavia asetuksia:
 
@@ -331,6 +342,10 @@ sorting=ynt
 % Määritä kaikki bib-tiedostot
 %\bibliography{sources}
 %\bibliography{thesis_sources,ietf_sources}
+\amnote{No need for URL if you have DOIs, also no need for ISSNs\\\mbox{}}
+\amnote{You should use math style in the title of \cite{Williams09}}
+\amnote{use dblp.org}
+\amnote{It is more common to sort by lastname, \emph{then} year}
 \printbibliography
 
 \label{pages:refs}
