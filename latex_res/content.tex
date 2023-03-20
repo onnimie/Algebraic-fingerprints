@@ -6,8 +6,7 @@ In recent years, there have been rapid advances in the algorithms for combinator
 This has been greatly sparked by the development in algebraic techniques for solving the 
 multilinear monomial detection problem, i.e., finding whether a multivariate polynomial contains a multilinear monomial, 
 first introduced by Koutis in \cite{Koutis05}, where the set packing problem is
-reduced to multilinear monomial detection.%\nl
-\amnote{Why \texttt{\textbackslash nl}? remove}
+reduced to multilinear monomial detection.
 
 \amnote*[inline,nomargin]{The}{Namely,} technique of algebraic fingeprinting, first introduced in
 \cite{Koutis08} and further developed in \cite{Williams09}, 
@@ -17,7 +16,7 @@ With algebraic fingerprinting, the $k$-path problem,
 that previously could be solved in \bigOstar{4^{k}} time by Chen et al. in \cite{Chen07}, 
 could be solved in \bigOstar{2^{3k/2}} time in \cite{Koutis08}. 
 \amnote{What is the meaning of \bigOstar{}?}
-This result was quickly improved in \cite{Williams09}, where an \bigOstar{2^k} algorithm was given.\nl
+This result was quickly improved in \cite{Williams09}, where an \bigOstar{2^k} algorithm was given.
 
 \amnote*[inline,nomargin]{This technique was further developed by
 \citeauthor{Björklund14} \cite{Björklund14}, who showed ...}{
@@ -40,18 +39,18 @@ This was a significant improvement on a problem that had seen no progress in nea
 The goals of this thesis are to find out how multilinear monomial detection is relevant in 
 combinatorial problems, and how algebraic fingerprints can be utilized to design faster 
 algorithms for problems that use multilinear monomial detection. Also, interesting ideas 
-regarding algebraic fingerprints are explored for.\nl
+regarding algebraic fingerprints are explored for.
 
 Multilinear monomial detection 
 is a fundamental problem, since many important combinatorial problems can be reduced into it 
 via a problem specific algebraization. Thus, faster algorithms and new ideas for multilinear monomial detection 
-are important.\nl
+are important.
 
 Multilinear monomial detection is essentially searching for solutions among non-solutions, 
 both of which are encoded as monomials in a polynomial. 
 The technique of algebraic fingerprinting is present in multilinear monomial detection. 
 With algebraic fingerprints, unwanted cancelation of solution monomials due to the characteristic of a field can be prevented. 
-Moreover, algebraic fingerprints can be used to cancel non-solution monomials by abusing the characteristic.\nl
+Moreover, algebraic fingerprints can be used to cancel non-solution monomials by abusing the characteristic.
 
 \amnote*{No need for this since you already have ToC}{%
 In the next subsections, the thesis discusses algebraization and reduction into multilinear monomial detection. 
@@ -73,7 +72,7 @@ The solution space for the $k$-path problem
 consists of combinations of $k$ vertices and $k-1$ edges. 
 }
 A non-solution combination would contain duplicate vertices, or edges that
-contain vertices outside the combination.\nl
+contain vertices outside the combination.
 
 \amnote[inline,nomargin]{This sounds like a very simple problem... But I guess
 the catch is that we want an algorithm with complexity depending only on $k$?}
@@ -83,7 +82,7 @@ Algebraization is reducing a given problem into an algebraic form,
 question regarding some algebraic property of some algebraic entity. 
 In an algebraization of a combinatorial problem, the algebraic entity can be constructed from algebraic elements defined from the 
 set of objects given as an input. The motivation behind the construction is some algebraic property that, 
-when satisfied, gives a solution to the problem.\nl
+when satisfied, gives a solution to the problem.
 
 \amnote{Somewhere we need to reference the reader to Sect.~2 for non-familiar
 terms like multivariate, algebras, etc.}
@@ -98,7 +97,7 @@ with multilinear monomials corresponding to solutions.
 Thus, the task of finding a satisfying combination to the combinatorial problem has been reduced to 
 finding a multilinear monomial from the multivariate polynomial.
 It follows\amnote*{drop comma}, that a decision problem is answered by 
-the existence of a multilinear monomial, and a counting problem by the number of multilinear monomials.\nl
+the existence of a multilinear monomial, and a counting problem by the number of multilinear monomials.
 
 Appropriate definitions for the variables are problem specific. In the following section, this thesis gives a 
 reduction into multilinear monomial detection, shown in \cite{KouWil15}, 
@@ -147,14 +146,14 @@ Following this construction, we observe that $P_k$, when expanded into a sum of 
 contains a multilinear term if and only if the original $k$-3D matching instance can be answered in the positive. 
 Furthermore, every multilinear monomial in the expanded $P_k$ corresponds to a solution to the problem, and 
 the solutions can be directly found from the variables in the multilinear monomial. Thus, 
-a successful reduction into multilinear monomial detection has been given for the $k$-3D mapping.\nl
+a successful reduction into multilinear monomial detection has been given for the $k$-3D mapping.
 
-An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. [show the example?]\nl
+An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. [show the example?]
 
 
 %A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
 %other multilinear monomial detection problems [EXAMPLE HERE]. Of course, simply expanding the generating polynomial into 
-%a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]\nl
+%a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]
 
 %When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
 %This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
@@ -181,7 +180,7 @@ $+ \colon G \times G \to G$
 is a binary operation closed under 
 the elements in $G$, $+$ is associative, every element $g\in G$ has an inverse $g^{-1}\in G$, and $G$ contains 
 an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. Moreover, $\textbf G$ is called $Abelian$ if 
-$+$ is also commutative.\nl
+$+$ is also commutative.
 \amnote{I think $e = e^{-1}$ follows from the other requirements (but that is
 not so important)}
 
@@ -202,7 +201,7 @@ Left and right distributive laws hold for rings, i.e.,
   $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
 \end{center}
 $u \in R$ is called $unit$ if it holds that $\exists v \in R$: $u \cdot v = v \cdot u = \textbf 1$, 
-i.e., it has a multiplicative inverse $v \in R$.\nl
+i.e., it has a multiplicative inverse $v \in R$.
 
 A field $\textbf F = (F, +, \cdot)$ is defined with the following conditions:
 \begin{itemize}
@@ -281,7 +280,7 @@ purely algebraic technique of fingerprinting, color coding is given as valuable 
 since some ideas carry on to the algebraic methods. Moreover, 
 it appears that most parameterized problems that are solved with color coding can be reduced to 
 multilinear monomial detection, and thus have faster algorithms
-%\cite{KouWil15}, \cite{Fomin17}.\nl 
+%\cite{KouWil15}, \cite{Fomin17}.
 \amnote*{\texttt{\textbackslash cite} can take multiple parameters, see source}{
 \cite{KouWil15,Fomin17}.
 }
@@ -314,12 +313,12 @@ Multilinear monomial detection can be solved with dynamic programming.
 Dynamic programming, used for e.g. Hamiltonicity in \cite{HelKar62}, is a method where the problem 
 is recursively broken down into smaller subproblems. \cite{Fomin17} gives a dynamic programming algorithm 
 for solving an instance of $k$-multilinear monomial detection in the problem context of 
-\amnote*{??}{representative families for product families}.\nl
+\amnote*{??}{representative families for product families}.
 
 In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
 as soon as they are formed in the arithmetic circuit, since the arithmetic circuit will never decrease the degree of a monomial. 
 Therefore, a smart algorithm can be designed for the expansion that applies an additional rule: 
-any squared variable can be instantly discarded.\nl
+any squared variable can be instantly discarded.
 
 With dynamic programming, this can be implemented by redesigning the arithmetic gates in the arithmetic circuit. 
 In \amnote*[inline,nomargin]{practice}{practise},
@@ -329,7 +328,7 @@ special addition and multiplication gates that discard squared variables.
 Thus, the evaluation of the (sum of monomials form) polynomial is reduced to
 just evaluating the multilinear terms. 
 For a multivariate polynomial with $n$ variables, there are $2^n$ multilinear terms, which implies 
-that the expansion can be ran in \bigOstar{2^n} time \cite{KouWil15}.\nl
+that the expansion can be ran in \bigOstar{2^n} time \cite{KouWil15}.
 }
 
 The rule of discarding squared variables can be written in algebraic form: 
@@ -337,8 +336,7 @@ a squared variable $x^2 \in X$ is set to the additive identity (zero) of the fie
 where $X \subset F$. 
 With this additional rule for multilinear monomial detection, the following is deduced: 
 if there are no solutions to the original problem, 
-the polynomial will identically evaluate to zero.\nl
-
+the polynomial will identically evaluate to zero.
 \amnote[inline,nomargin]{So algebraically we are computing over
 $\mathbf{F}[x]/(x^2)$?}
 
