@@ -95,12 +95,12 @@ encodes all solutions and non-solutions as multivariate monomials,
 with multilinear monomials corresponding to solutions. 
 Thus, the task of finding a satisfying combination to the combinatorial problem has been reduced to 
 finding a multilinear monomial from the multivariate polynomial.
-It follows\amnote*{drop comma}, that a decision problem is answered by 
+It follows that a decision problem is answered by 
 the existence of a multilinear monomial, and a counting problem by the number of multilinear monomials.
 
-Appropriate definitions for the variables are problem specific. In the following section, this thesis gives a 
+Appropriate definitions for the variables are problem-specific. In the following section, this thesis gives a 
 reduction into multilinear monomial detection, shown in \cite{KouWil15}, 
-for the $k$-3D matching problem. Another simple example, for the set packing problem, can be found in \cite{Koutis05}.
+for the $k$-3D matching problem. Another simple example can be found, for the set packing problem, in \cite{Koutis05}.
 
 \amnote[inline,nomargin]{I would merge the two sections and use the $k$-3D
 matching as an example to the explanation above}
@@ -373,9 +373,23 @@ TODO: end with hints toward algebraic assignment (for example, a non-zero matrix
 \subsection{Color coding with algebra}
 
 TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
-then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to charactestic)
+then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to characteristic)
 
 \subsubsection{Algebraic fingerprinting to prevent unwanted cancellation}
+
+Algebraic fingerprints are introduced to solve the problem of unwanted cancellation. 
+To prevent the multilinear monomials from cancelling each other, 
+we augment the polynomial with new unique indeterminates, i.e. fingerprints, 
+such that every multilinear monomial in the expanded polynomial is unique. 
+The squared variables, and thus non-solution monomials, will still vanish, but 
+the multilinear terms will prevail.
+
+However, introducing new indeterminates into the arithmetic circuit raises the dimensions of matrices, which 
+implies much slower matrix multiplications (matrix multiplication is exponential??). 
+\citeauthor{Koutis08} uses random assignment from [\{0, 1\}] in order to find an odd k-mld problem, which 
+can be solved by previous methods, since there is no cancellation (multilinear terms have odd coefficients).
+
+
 
 \amnote{What is cancellation?}
 TODO: explain how fingerprints prevent cancellation, 
@@ -422,8 +436,7 @@ TODO: explain the limit in general multilinear detection with this algebraic fra
 TODO: lead to problem specific implementations 
 (we can use fingerprinting cleverly, when we understand the underlying problem well)
 
-\section{Problem specific implementations of algebraic fingerprints}
-\amnote{Problem-specific}
+\section{Problem-specific applications of algebraic fingerprints}
 
 TODO: add subsections for problem specific implementations with different utilizations of fingerprints
 
