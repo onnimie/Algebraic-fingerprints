@@ -380,13 +380,21 @@ then lead to fingerprinting (fingerprints solve an issue of unwanted cancellatio
 Algebraic fingerprints are introduced to solve the problem of unwanted cancellation. 
 To prevent the multilinear monomials from cancelling each other, 
 we augment the polynomial with new unique indeterminates, i.e. fingerprints, 
-such that every multilinear monomial in the expanded polynomial is unique. 
+such that multilinear monomials in the expanded polynomial are unique. 
 The squared variables, and thus non-solution monomials, will still vanish, but 
 the multilinear terms will prevail.
 
-However, introducing new indeterminates into the arithmetic circuit raises the dimensions of matrices, which 
-implies much slower matrix multiplications (matrix multiplication is exponential??). 
-\citeauthor{Koutis08} uses random assignment from [\{0, 1\}] in order to find an odd k-mld problem, which 
+However, introducing new indeterminates raises the degree of the multilinear monomials. 
+Therefore it may be, that there are not enough matrices to assign such that there would be no 
+duplicates in a multilinear monomial. As a result, higher dimension matrices are needed, which 
+implies exponentially slower matrix multiplication (TODO: check the time complexity of matrix multiplication). 
+Thus, introducing new indeterminates slows the algorithm. (TODO: slower than \bigOstar{2^k}?)
+
+In \cite{Koutis08} instead of uniqueness, \citeauthor{Koutis08} uses random assignment from $\{\mathbf{0}, \mathbf{1}\}$. 
+With this assignment, there is a possibility that a multilinear monomial will have an odd coefficient, 
+thus surviving the cancellation due to characteristic.
+
+\citeauthor{Koutis08} uses random assignment from $\{0, 1\}$ in order to find an odd k-mld problem, which 
 can be solved by previous methods, since there is no cancellation (multilinear terms have odd coefficients).
 
 
