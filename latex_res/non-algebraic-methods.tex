@@ -1,0 +1,95 @@
+Although color coding is outperformed by the 
+purely algebraic technique of fingerprinting, color coding is given as valuable background information, 
+since some ideas carry on to the algebraic methods. Moreover, 
+it appears that most parameterized problems that are solved with color coding can be reduced to 
+multilinear monomial detection, and thus have faster algorithms
+%\cite{KouWil15}, \cite{Fomin17}.
+\amnote*{\texttt{\textbackslash cite} can take multiple parameters, see source}{
+\cite{KouWil15,Fomin17}.
+}
+
+\amnote*{Use \texttt{\textbackslash label} and \texttt{\textbackslash cref}}{
+In a later subsection, 
+the thesis covers color coding with matrices as a purely algebraic method, which leads into 
+the technique of algebraic fingerprinting. Then, a general framework for algebraic fingerprinting is discussed. 
+In the last subsection under this section, 
+the thesis discusses some limits and cons in general multilinear monomial
+detection.
+}
+
+%However, a faster algorithm for some instance of multilinear monomial detection does not directly imply faster 
+%algorithms for other combinatorial problems, since the algebraization into multilinear monomial detection is 
+%problem specific. On the other hand, many multilinear monomial detection problems employ similar techniques [TODO: quick examples (just refs?)]. 
+%As a result, finding new techniques and ideas for some specific multilinear monomial detection is valuable. 
+%This thesis discusses clever utilizations of algebraic fingerprints on specific problems in a later section. 
+
+\subsection{Non-algebraic methods}
+
+Before discussing color coding, the thesis briefly overviews dynamic programming in the context of 
+multilinear monomial detection, since dynamic programming is used in color coding. Furthermore, 
+\amnote*[inline,nomargin]{we discuss}{the thesis introduces}
+an algebraically interesting idea of setting squared variables to zero.
+
+\subsubsection{Dynamic programming for smart expansion of the polynomial}
+
+Multilinear monomial detection can be solved with dynamic programming. 
+Dynamic programming, used for e.g. Hamiltonicity in \cite{HelKar62}, is a method where the problem 
+is recursively broken down into smaller subproblems. \cite{Fomin17} gives a dynamic programming algorithm 
+for solving an instance of $k$-multilinear monomial detection in the problem context of 
+\amnote*{??}{representative families for product families}.
+
+In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
+as soon as they are formed in the arithmetic circuit, since the arithmetic circuit will never decrease the degree of a monomial. 
+Therefore, a smart algorithm can be designed for the expansion that applies an additional rule: 
+any squared variable can be instantly discarded.
+
+With dynamic programming, this can be implemented by redesigning the arithmetic gates in the arithmetic circuit. 
+In \amnote*[inline,nomargin]{practice}{practise},
+\amnote*{I am not quite sure what is going on here}{%
+the algorithm would employ
+special addition and multiplication gates that discard squared variables. 
+Thus, the evaluation of the (sum of monomials form) polynomial is reduced to
+just evaluating the multilinear terms. 
+For a multivariate polynomial with $n$ variables, there are $2^n$ multilinear terms, which implies 
+that the expansion can be ran in \bigOstar{2^n} time \cite{KouWil15}.
+}
+
+The rule of discarding squared variables can be written in algebraic form: 
+a squared variable $x^2 \in X$ is set to the additive identity (zero) of the field $\textbf F$, 
+where $X \subset F$. 
+With this additional rule for multilinear monomial detection, the following is deduced: 
+if there are no solutions to the original problem, 
+the polynomial will identically evaluate to zero.
+\amnote[inline,nomargin]{So algebraically we are computing over
+$\mathbf{F}[x]/(x^2)$?}
+
+Note, however, that the polynomial evaluating to zero does not
+\amnote[inline,nomargin]{necessarily}
+imply that no
+solutions exist. 
+Indeed, we will come across a problem where multilinear monomials cancel each other, 
+and thus evaluate to zero (see Section X.X).
+
+\subsubsection{Non-deterministic color coding for faster evaluation}
+
+\amnote{I am not sure if this is not a too big of a detour}
+
+TODO: go over random assignment with colors, 
+which results a polynomial of smaller domain (less variables), thus 
+making the evaluation faster
+
+Color coding was introduced in \cite{Alon95} as a randomized method for subgraph problems. Among others, 
+a non-deterministic algorithm for the $k$-path problem is given.
+First, the thesis explains the idea behind the algorithm in \cite{Alon95}. 
+After this, the idea is translated into multilinear monomial detection for easier relevance.
+
+\begin{problem}
+  \problemtitle{\textsc{(directed or undirected)} $k$-\textsc{path (decision and search)}}
+  \probleminput{A (directed or undirected) graph $G=(V,E)$.}
+  \problemquestion{Does $G$ contain a simple path on $k$ vertices? If so, give such a path.}
+\end{problem}
+
+TODO: go quickly over the algorithm, translate it in terms of multilinear monomial detection, 
+give focus on the random assignment in order to reduce domain size (adds non-determinism, though)
+
+TODO: end with hints toward algebraic assignment (for example, a non-zero matrix squared can equal zero)

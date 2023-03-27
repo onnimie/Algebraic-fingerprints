@@ -147,22 +147,15 @@ Furthermore, every multilinear monomial in the expanded $P_k$ corresponds to a s
 the solutions can be directly found from the variables in the multilinear monomial. Thus, 
 a successful reduction into multilinear monomial detection has been given for the $k$-3D mapping.
 
-An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. [show the example?]
+An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. 
+TODO: show the example here
 
+\section{Related works} %TODO: maybe change headline?
 
-%A faster algorithm for an instance of multilinear monomial detection is likely to inspire faster algorithms for 
-%other multilinear monomial detection problems [EXAMPLE HERE]. Of course, simply expanding the generating polynomial into 
-%a sum of monomials is not an optimal solution.[Are there any other methods that can be applied generally?]
-
-%When the problem domain has n variables in an N-degree polynomial, the number of possible monomials is \(\binom{n+N}{n}\).
-%This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials, 
-%which will be the topic of the next section.
+TODO: go through publications that utilize this algebraic fingerprinting technique
 
 \section{Preliminaries}
 
-%[TODO: groups, rings, fields, characteristic of field, group algebra, 
-%FPT \& O*, multivariate \& multilinear, generating \& sum of monomials form, 
-%non-deterministic algorithm, polynomial ring]
 It is necessary to recall basic algebraic concepts 
 before further discussing multilinear monomial detections and algebraic fingerprinting. 
 This section gives definitions for a group, ring and field, and some useful concepts 
@@ -239,9 +232,9 @@ Schwartz-Zippel lemma
 \amnote[inline,nomargin]{Standard $\mathcal{O}$ and $\Theta$ notation should be
 known}
 
-\section{General multilinear monomial detection}
+\section{General framework for detecting multilinear monomials}
 
-The detection of multilinear monomials is a fundamental problem, 
+The detection of multilinear monomials in a multivariate polynomial is a fundamental problem, 
 since many important problems can be reduced to it [TODO: quick examples (just refs?)]. 
 Therefore, any progress in general multilinear monomial detection directly implies 
 faster algorithms
@@ -250,7 +243,12 @@ can just call them \enquote{problems from Sect.~X.Y}}{%
 for all problems, that are reduced to and solved with general
 multilinear monomial detection. 
 }
-The general, parameterized multilinear monomial problem is defined as follows: 
+
+TODO: give structure of this section
+
+\subsection{Problem definition}
+
+The general, parameterized multilinear monomial detection problem is defined as follows: 
 
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
@@ -259,118 +257,30 @@ The general, parameterized multilinear monomial problem is defined as follows:
   contain a multilinear monomial of degree $k$?}
 \end{problem}
 
-\amnote*{This gives an upper bound for solving the problem, but it is generally
-not optimal}{
-A naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$ is not optimal: 
-an $N$-degree polynomial will have $2^{\Theta(N)}$ possible monomials, and most 
-problems, that can use this algebraization, have been solved with faster
-algorithms (TODO: quick example?). 
-}
-This motivates the detection of multilinear monomials without fully expanding the polynomial into a sum of monomials.
+Clearly, an upper bound for solving the problem is given by a 
+naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$. However, 
+this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
+possible monomials, and most problems, that can use this algebraization, 
+have been solved with faster algorithms (TODO: quick example?). 
+This motivates the detection of multilinear monomials 
+without fully expanding the polynomial into a sum of monomials.
 
-In the next subsection,
-\amnote*{I am having a hard time figuring out the overall structure}{%
-this thesis quickly overviews dynamic programming and 
-color coding for $k$-path in the context of 
-$k$-multilinear monomial detection.
-}
-Although color coding is outperformed by the 
-purely algebraic technique of fingerprinting, color coding is given as valuable background information, 
-since some ideas carry on to the algebraic methods. Moreover, 
-it appears that most parameterized problems that are solved with color coding can be reduced to 
-multilinear monomial detection, and thus have faster algorithms
-%\cite{KouWil15}, \cite{Fomin17}.
-\amnote*{\texttt{\textbackslash cite} can take multiple parameters, see source}{
-\cite{KouWil15,Fomin17}.
-}
+Since only multilinear terms are important in $P(X)$, 
+any squared variables can be instantly discarded as soons as they are formed in $A$. 
+This can be achieved with dynamic programming to create a polynomial $P'(X)$ that 
+only contains multilinear monomials. Since there are $2^N$ multilinear monomials in $P'(X)$ with 
+$N$ variables, this method results in a faster algorithm than with naive expansion.
 
-\amnote*{Use \texttt{\textbackslash label} and \texttt{\textbackslash cref}}{
-In a later subsection, 
-the thesis covers color coding with matrices as a purely algebraic method, which leads into 
-the technique of algebraic fingerprinting. Then, a general framework for algebraic fingerprinting is discussed. 
-In the last subsection under this section, 
-the thesis discusses some limits and cons in general multilinear monomial
-detection.
-}
+TODO: Rewrite the algebra here (first quickly in English, then in maths)
+However, the underlying problems are usually FPT. This implies that scaling exponentially 
+with the number of variables is far from optimal. In order for the algorithm to scale 
+with the parameter, we can reduce the number of variables by mapping $X$ into $Y$ where 
+$\abs{X} \geq \abs{Y}$ and $\abs{Y} \propto k$, and dynamically evaluate $P(Y)$ instead of $P(X)$. 
 
-%However, a faster algorithm for some instance of multilinear monomial detection does not directly imply faster 
-%algorithms for other combinatorial problems, since the algebraization into multilinear monomial detection is 
-%problem specific. On the other hand, many multilinear monomial detection problems employ similar techniques [TODO: quick examples (just refs?)]. 
-%As a result, finding new techniques and ideas for some specific multilinear monomial detection is valuable. 
-%This thesis discusses clever utilizations of algebraic fingerprints on specific problems in a later section. 
+However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not be multilinear in $P(Y)$. 
+This implies a non-deterministic decision algorithm with no false positives. 
 
-\subsection{Non-algebraic methods}
-
-Before discussing color coding, the thesis briefly overviews dynamic programming in the context of 
-multilinear monomial detection, since dynamic programming is used in color coding. Furthermore, 
-\amnote*[inline,nomargin]{we discuss}{the thesis introduces}
-an algebraically interesting idea of setting squared variables to zero.
-
-\subsubsection{Dynamic programming for smart expansion of the polynomial}
-
-Multilinear monomial detection can be solved with dynamic programming. 
-Dynamic programming, used for e.g. Hamiltonicity in \cite{HelKar62}, is a method where the problem 
-is recursively broken down into smaller subproblems. \cite{Fomin17} gives a dynamic programming algorithm 
-for solving an instance of $k$-multilinear monomial detection in the problem context of 
-\amnote*{??}{representative families for product families}.
-
-In multilinear monomial detection, only the multilinear terms are important. This implies that any non-linear term can be discarded 
-as soon as they are formed in the arithmetic circuit, since the arithmetic circuit will never decrease the degree of a monomial. 
-Therefore, a smart algorithm can be designed for the expansion that applies an additional rule: 
-any squared variable can be instantly discarded.
-
-With dynamic programming, this can be implemented by redesigning the arithmetic gates in the arithmetic circuit. 
-In \amnote*[inline,nomargin]{practice}{practise},
-\amnote*{I am not quite sure what is going on here}{%
-the algorithm would employ
-special addition and multiplication gates that discard squared variables. 
-Thus, the evaluation of the (sum of monomials form) polynomial is reduced to
-just evaluating the multilinear terms. 
-For a multivariate polynomial with $n$ variables, there are $2^n$ multilinear terms, which implies 
-that the expansion can be ran in \bigOstar{2^n} time \cite{KouWil15}.
-}
-
-The rule of discarding squared variables can be written in algebraic form: 
-a squared variable $x^2 \in X$ is set to the additive identity (zero) of the field $\textbf F$, 
-where $X \subset F$. 
-With this additional rule for multilinear monomial detection, the following is deduced: 
-if there are no solutions to the original problem, 
-the polynomial will identically evaluate to zero.
-\amnote[inline,nomargin]{So algebraically we are computing over
-$\mathbf{F}[x]/(x^2)$?}
-
-Note, however, that the polynomial evaluating to zero does not
-\amnote[inline,nomargin]{necessarily}
-imply that no
-solutions exist. 
-Indeed, we will come across a problem where multilinear monomials cancel each other, 
-and thus evaluate to zero (see Section X.X).
-
-\subsubsection{Non-deterministic color coding for faster evaluation}
-
-\amnote{I am not sure if this is not a too big of a detour}
-
-TODO: go over random assignment with colors, 
-which results a polynomial of smaller domain (less variables), thus 
-making the evaluation faster
-
-Color coding was introduced in \cite{Alon95} as a randomized method for subgraph problems. Among others, 
-a non-deterministic algorithm for the $k$-path problem is given.
-First, the thesis explains the idea behind the algorithm in \cite{Alon95}. 
-After this, the idea is translated into multilinear monomial detection for easier relevance.
-
-\begin{problem}
-  \problemtitle{\textsc{(directed or undirected)} $k$-\textsc{path (decision and search)}}
-  \probleminput{A (directed or undirected) graph $G=(V,E)$.}
-  \problemquestion{Does $G$ contain a simple path on $k$ vertices? If so, give such a path.}
-\end{problem}
-
-TODO: go quickly over the algorithm, translate it in terms of multilinear monomial detection, 
-give focus on the random assignment in order to reduce domain size (adds non-determinism, though)
-
-TODO: end with hints toward algebraic assignment (for example, a non-zero matrix squared can equal zero)
-
-\subsection{Color coding with algebra}
+\subsection{Algebraic multilinear monomial detection}
 
 TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
 then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to characteristic)
@@ -417,9 +327,19 @@ to polynomial identity testing for a polynomial P(A) that has fingerprints as va
 Fingerprints are then assigned values from a field that has more elements than P(A) has roots, which 
 means that P(A) evaluates to non-zero with high probability (if there are solutions)
 
+\subsubsection{Limits of general multilinear monomial detection}
+\label{sect:limits}
 
+TODO: give some cons wrt. color coding (difficult derandomization, 
+are we able to add weights for optimization problems?) %(cost-constrained mld?)
 
-\subsubsection{Finding the solution}
+TODO: explain the limit in general multilinear detection with this algebraic framework 
+(impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
+
+TODO: lead to problem specific implementations 
+(we can use fingerprinting cleverly, when we understand the underlying problem well)
+
+\subsection{Finding the solution}
 
 Multilinear monomial detection has only been given as a detector for a solution, i.e., a decision algorithm. 
 Talk about actually finding the solution.
@@ -433,24 +353,38 @@ that finds a path when it is known that a $k$-path exists.
 \cite{Björklund17} solves the decision problem for $k$-path starting at some vertex $s$. 
 A $k$-path can be found by just applying the algorithm for every vertex.
 
-\subsection{Limits of general multilinear monomial detection}
-
-TODO: give some cons wrt. color coding (difficult derandomization, 
-are we able to add weights for optimization problems?) %(cost-constrained mld?)
-
-TODO: explain the limit in general multilinear detection with this algebraic framework 
-(impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
-
-TODO: lead to problem specific implementations 
-(we can use fingerprinting cleverly, when we understand the underlying problem well)
-
 \section{Problem-specific applications of algebraic fingerprints}
+
+As mentioned in \cref{sect:limits}, the algebraic framework proposed by 
+\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Koutis08,Williams09} for 
+$k$-multilinear monomial has a lower bound of \bigOstar{2^k}. 
+However, this framework approaches the abstract multilinear monomial detection without 
+utilizing any information about the underlying problem.
+
+This section showcases how the auxiliary fingerprints can be abused, 
+when the underlying problem is well understood.
 
 TODO: add subsections for problem specific implementations with different utilizations of fingerprints
 
 \subsection{Fingerprinting for cancellation of non-solutions}
 
 TODO: go over Björklund et al. for k-path or Hamiltonicity, managed to design fingerprints such that non-solutions cancel
+
+In the algebraic framework by \citeauthor{Koutis08} and \citeauthor{Williams09}, 
+fingerprints prevent the cancellation of multilinear monomials. 
+Attacking the Hamiltonian path problem, however, \citeauthor{Björklund14} 
+designed fingerprints such that non-multilinear monomials, i.e. non-solution terms, 
+cancel due to characteristic, while the multilinear terms 
+remain with constant probability \cite{Björklund14}.
+
+Before discussing the algebrization and the fingerprints, 
+we define the Hamiltonian path problem.
+
+\begin{problem}
+  \problemtitle{\textsc{Hamiltonian path (Hamiltonicity)}}
+  \probleminput{A directed graph $G = (V,E)$.}
+  \problemquestion{Does $G$ contain a simple path that visits every vertex?}
+\end{problem}
 
 \section{Conclusion}
 
