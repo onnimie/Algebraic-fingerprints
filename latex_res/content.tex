@@ -59,8 +59,7 @@ utilizations of algebraic fingerprints are shown. Section 5 concludes the
 thesis.
 }
 
-\subsection{Algebraization of combinatorial problems}
-\amnote{Algebrization}
+\subsection{Algebrization of combinatorial problems}
 
 A combinatorial problem asks whether a given finite set of objects satisfies some given constraints. 
 For example, the $k$-path problem asks for, given a finite set of vertices and edges, 
@@ -151,18 +150,23 @@ An example instance of $k$-3D matching with this exact algebraization can be fou
 TODO: show the example here
 
 \section{Related works} %TODO: maybe change headline?
+\label{sect:related_works}
 
-TODO: go through publications that utilize this algebraic fingerprinting technique
+TODO: go through publications that utilize this algebraic fingerprinting technique, 
+and problems that reduce to multilinear detection
 
 \section{Preliminaries}
+\label{sect:prelims}
 
 It is necessary to recall basic algebraic concepts 
-before further discussing multilinear monomial detections and algebraic fingerprinting. 
-This section gives definitions for a group, ring and field, and some useful concepts 
-regarding them. The second subsection goes through other notation and terminology used 
+before further discussing multilinear monomial detection and algebraic fingerprinting. 
+\cref{sect:prelims_algebra} gives definitions for a group, ring and field, 
+and some useful concepts regarding them. 
+\cref{sect:prelims_other} goes through other notation and terminology used 
 throughout the thesis.
 
 \subsection{Groups, rings and fields} %polynomial rings, group algebra, char of field
+\label{sect:prelims_algebra}
 
 A group \amnote*{There is also \texttt{\textbackslash mathbf}}{$\textbf G$}
 is a tuple $(G, +)$, where $G$ is a set of elements,
@@ -214,15 +218,16 @@ The $characteristic$ of a field \textbf F is defined as follows:
   \end{equation}
 %\end{center}
 
-Note, that a field \textbf F with
-\amnote*{characteristic}{characeristic} 2 satisfies the following:
+Note, that a field \textbf F with 
+characteristic 2 satisfies the following:
 \begin{center}
   $\forall u \in F$: $u + u = u \cdot (\textbf 1 + \textbf 1) = u \cdot \textbf 0 = \textbf 0$
 \end{center}
 
-TODO: group algebra, polynomial ring, linear dependency
+TODO: group algebra, polynomial ring, linear dependency, "cancelation due to characteristic"
 
 \subsection{Notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
+\label{sect:prelims_other}
 
 TODO: create a table or like, list terms: 
 multilinearity, multivariety, sum of monomials form \& generating form (arithmetic circuit) of polynomial, 
@@ -242,9 +247,13 @@ faster algorithms
 can just call them \enquote{problems from Sect.~X.Y}}{%
 for all problems, that are reduced to and solved with general
 multilinear monomial detection. 
-}
+} TODO: relate to section 2: related works
 
-TODO: give structure of this section
+In this section, we define the parameterized multilinear monomial detection problem, 
+and give some non-algebraic background on solving it. Then, we discuss the 
+algebraic framework by \citeauthor{KouWil15} \cite{Williams09, KouWil15} 
+and its limits. Finally, we briefly touch on finding a solution when 
+its existence is detected.
 
 \subsection{Problem definition}
 
@@ -261,73 +270,143 @@ Clearly, an upper bound for solving the problem is given by a
 naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$. However, 
 this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
 possible monomials, and most problems, that can use this algebraization, 
-have been solved with faster algorithms (TODO: quick example?). 
+have been solved with faster algorithms. %(TODO: quick example?) 
 This motivates the detection of multilinear monomials 
-without fully expanding the polynomial into a sum of monomials.
+without fully expanding $A$ into a sum of monomials.
 
 Since only multilinear terms are important in $P(X)$, 
-any squared variables can be instantly discarded as soons as they are formed in $A$. 
+any squared variable can be instantly discarded as soons as it is formed in $A$. 
 This can be achieved with dynamic programming to create a polynomial $P'(X)$ that 
 only contains multilinear monomials. Since there are $2^N$ multilinear monomials in $P'(X)$ with 
 $N$ variables, this method results in a faster algorithm than with naive expansion.
 
-TODO: Rewrite the algebra here (first quickly in English, then in maths)
+%TODO: Maybe rewrite the algebra here 
+%(first quickly in English, then in maths, and maybe label the mapping functions)
 However, the underlying problems are usually FPT. This implies that scaling exponentially 
-with the number of variables is far from optimal. In order for the algorithm to scale 
-with the parameter, we can reduce the number of variables by mapping $X$ into $Y$ where 
+with the number of variables is far from optimal. In order for the complexity of the algorithm to scale 
+with the parameter $k$, we can reduce the number of variables by mapping $X$ into $Y$, where 
 $\abs{X} \geq \abs{Y}$ and $\abs{Y} \propto k$, and dynamically evaluate $P(Y)$ instead of $P(X)$. 
 
 However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not be multilinear in $P(Y)$. 
-This implies a non-deterministic decision algorithm with no false positives. 
+For an algorithm to detect a multilinear monomial, it is necessary to use different mappings 
+from $X$ into $Y$ until a multilinear monomial survives the mapping. However, the probability 
+that any given multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}.
+This implies that \bigO{e^{\abs{Y}}} random mappings must be tried for a multilinear monomial to survive 
+with a reasonable constant probability. Thus, a $k$-multilinear monomial is detected with a 
+non-deterministic algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
+
+This is essentially the idea behind color coding introduced by \citeauthor{Alon95} \cite{Alon95}. 
+Although here given in this algebraic form for the $k$-multilinear monomial detection, 
+color coding is combinatorial, and does not rely on algebraic techniques. 
+However, since $k$-multilinear monomial detection is a purely algebraic problem, it is reasonable to 
+conjecture that there is an algebraic method for solving it.
+
+\omnote{I think this should maybe be in the introduction section rather than here?}
+Indeed, a faster algebraic method exists; the technique of algebraic fingerprinting 
+first introduced by \citeauthor{Koutis08} \cite{Koutis08} and 
+further developed by \citeauthor{Williams09} \cite{Williams09} 
+solves $k$-multilinear monomial detection in \bigOstar{2^k} time. 
+Since the technique focuses on the abstract $k$-multilinear monomial detection, to which 
+most parameterized problems can be reduced to, it gives a general framework for 
+solving parameterized problems \cite{KouWil15}.
 
 \subsection{Algebraic multilinear monomial detection}
+%TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
+%then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to characteristic)
 
-TODO: go through idea of algebraic assignment and specifications for a suitable algebra, 
-then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to characteristic)
+The idea of discarding squared variables as soon as they are formed in $A$ 
+can be expressed algebraically: any squared variable should be identical to zero. 
+\begin{equation}
+  \label{eq:squared_to_zero}
+\forall x \in X: x^2 = \mathbf{0}
+\end{equation}
+This implies that any non-multilinear monomial will evaluate to zero in $P(X)$. 
+Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
+i.e., there exist no solutions to the original problem.
 
-\subsubsection{Algebraic fingerprinting to prevent unwanted cancellation}
+Assigning values from an algebra $\mathbf{G}$ into $X$ to meet (\ref{eq:squared_to_zero}) 
+while still maintaining multilinear monomials seems to be a powerful idea.
+Particularly matrices prove to be especially useful. Note, for example, that 
+\[
+\begin{bmatrix} 
+  0 & 0 \\ 
+  1 & 0 
+\end{bmatrix}^2 = 
+\begin{bmatrix} 
+  0 & 0 \\ 
+  0 & 0 
+\end{bmatrix}.
+\]
 
-Algebraic fingerprints are introduced to solve the problem of unwanted cancellation. 
-To prevent the multilinear monomials from cancelling each other, 
-we augment the polynomial with new unique indeterminates, i.e. fingerprints, 
-such that multilinear monomials in the expanded polynomial are unique. 
-The squared variables, and thus non-solution monomials, will still vanish, but 
-the multilinear terms will prevail.
+For faster evaluation of $P(X)$, however, $\mathbf{G}$ needs other requirements as well. 
+The binary operations of $\mathbf{G}$ must be fast. With matrices, this means that their 
+dimension must be as small as possible. Moreover, in order to beat color coding, 
+the multilinear monomials must 
+survive the assignment from $G$ into $X$ with a reasonable constant probability. Recall that 
+with color coding, the probability is exponentially small to the parameter $k$.
+
+Such $\mathbf{G}$ is given in \cite{Koutis08}, where \citeauthor{Koutis08} uses the group $\Z_2^k$ 
+and a known \cite{Terras99} 
+isomorphic mapping $\rho \colon \Z_2^k \to M^{2^k \times 2^k}$, where $M^{d \times d}$ is a 
+$d$-dimensional matrix group with matrix multiplication. Note that for (\ref{eq:squared_to_zero}), 
+\[
+\forall a \in \Z_2^k \setminus \{\mathbf{0}\}, i \in [2^k]: \rho(a)_{i,i} = 0\]and \[
+\rho(\mathbf{0}) = \mathbf{0}.
+\]
+
+$\Z_2^k$, however, has a characteristic of 2. (TODO: this implies cancelation... )
+
+
+(will have problem with characteristic 2) 
+--> lead into auxiliary fingerprints (in this case, solved with group algebra $\Z_2[\Z_2^k]$, i.e., 
+multiplying monomials with $\{\mathbf{1}, \mathbf{0}\}$)
+
+%In \cite{Koutis08}, an \bigOstar{2^k} 
+%non-deterministic algorithm for $k$-multilinear monomial detection was given.
+
+
+\subsubsection{Fingerprinting to prevent unwanted cancelation}
+
+To prevent multilinear terms from canceling due to characteristic, we 
+use a set of auxiliary indeterminates $F$. 
+These indeterminates, called fingerprints, are introduced in the algebrization 
+of the combinatorial problem, such that every monomial in $A$ is unique. 
+This results in the uniqueness of multilinear monomials, which prevents cancelation.
 
 However, introducing new indeterminates raises the degree of the multilinear monomials. 
 Therefore it may be, that there are not enough matrices to assign such that there would be no 
 duplicates in a multilinear monomial. As a result, higher dimension matrices are needed, which 
-implies exponentially slower matrix multiplication (TODO: check the time complexity of matrix multiplication). 
-Thus, introducing new indeterminates slows the algorithm. (TODO: slower than \bigOstar{2^k}?)
+results in exponentially slower matrix multiplication. %which has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
+Thus, introducing new indeterminates slows the algorithm significantly. 
 
-In \cite{Koutis08} instead of uniqueness, \citeauthor{Koutis08} uses random assignment from $\{\mathbf{0}, \mathbf{1}\}$. 
-With this assignment, there is a possibility that a multilinear monomial will have an odd coefficient, 
-thus surviving the cancellation due to characteristic.
+In \cite{Koutis08} instead of assigning $F$ and $X$ values from the same algebra, 
+\citeauthor{Koutis08} uses random assignment from $\{\mathbf{0}, \mathbf{1}\}$ into $F$. 
+This is achieved by using the group algebra $\Z_2[\Z_2^k]$, where the field $\Z_2$ can be 
+thought of as the fingerprints. 
+With this assignment, there is a constant probability that a multilinear monomial will have an odd coefficient, 
+thus surviving the cancelation due to characteristic.
 
-\citeauthor{Koutis08} uses random assignment from $\{0, 1\}$ in order to find an odd k-mld problem, which 
-can be solved by previous methods, since there is no cancellation (multilinear terms have odd coefficients).
-
-
-
-\amnote{What is cancellation?}
-TODO: explain how fingerprints prevent cancellation, 
-give the general algebraic framework that appears in \cite{Williams09}, 
-(also polynomial identity testing)
-
-\cite{Koutis08} uses commutative group algebras of $\Z^{k}_{2}$ (to have squared variables equal zero) 
-for ODD k-multilinear detection (multilinear monomials have odd coefficients). randomized assignment, no false positives
-\amnote{ODD $=$ ordered decision diagram?}
-
-Koutis reduces an algebraization into ODD k-multilinear detection by randomly assigning fingerprints from {0,1} in the hopes 
-of getting odd number of solutions (k-multilinear terms), 
-i.e., hoping that for a pair that cancels each other, one of them gets removed by 0-assignment so that cancelation is prevented
+\subsubsection{The algebraic framework for parameterized problems}
 
 \cite{Williams09} reduces multilinear detection (after assinging variables values from some algebra) 
 to polynomial identity testing for a polynomial P(A) that has fingerprints as variables. 
 Fingerprints are then assigned values from a field that has more elements than P(A) has roots, which 
 means that P(A) evaluates to non-zero with high probability (if there are solutions)
 
-\subsubsection{Limits of general multilinear monomial detection}
+The algebraic fingerprinting framework by Koutis and Williams  
+solves $k$-multilinear monomial detection by essentially reducing it to 
+polynomial identity testing. The polynomial identity testing problem is defined 
+as follows:
+
+\begin{problem}
+  \problemtitle{\textsc{Polynomial identity testing}}
+  \probleminput{An arithmetic circuit $A$ that computes the polynomial $P(X)$ in field $\mathbf{X}$.}
+  \problemquestion{Is $P(X)$ identical to the zero polynomial, i.e., $P(X) = \mathbf{0}$?}
+\end{problem}
+
+TODO
+
+\subsubsection{Limits of the framework}
 \label{sect:limits}
 
 TODO: give some cons wrt. color coding (difficult derandomization, 
@@ -335,9 +414,6 @@ are we able to add weights for optimization problems?) %(cost-constrained mld?)
 
 TODO: explain the limit in general multilinear detection with this algebraic framework 
 (impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
-
-TODO: lead to problem specific implementations 
-(we can use fingerprinting cleverly, when we understand the underlying problem well)
 
 \subsection{Finding the solution}
 
@@ -353,29 +429,40 @@ that finds a path when it is known that a $k$-path exists.
 \cite{Björklund17} solves the decision problem for $k$-path starting at some vertex $s$. 
 A $k$-path can be found by just applying the algorithm for every vertex.
 
-\section{Problem-specific applications of algebraic fingerprints}
+\section{Improving algebraic fingerprinting}
 
-As mentioned in \cref{sect:limits}, the algebraic framework proposed by 
-\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Koutis08,Williams09} for 
-$k$-multilinear monomial has a lower bound of \bigOstar{2^k}. 
+As mentioned in \cref{sect:limits}, the algebraic fingerprinting framework proposed by 
+\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil15} for 
+$k$-multilinear monomial detection has a lower bound of \bigOstar{2^k}. 
 However, this framework approaches the abstract multilinear monomial detection without 
-utilizing any information about the underlying problem.
+utilizing the combinatorial properties specific to the underlying problem. 
+The idea of adding auxiliary fingerprint variables in the algebrization, though, 
+has potential for these properties. TODO: rephrase more clearly
 
-This section showcases how the auxiliary fingerprints can be abused, 
-when the underlying problem is well understood.
+Indeed, faster algorithms have been found by designing new algebrizations with techniques 
+similar to algebraic fingerprinting, where the fingerprints are designed to 
+abuse the underlying combinatorial properties. In \cref{sect:cancel_nonsolutions}, 
+we show how \citeauthor{Björklund14} \cite{Björklund14}
+exploited the cancelation due to characteristic to cancel non-solution monomials 
+by clever design of fingerprints. 
 
-TODO: add subsections for problem specific implementations with different utilizations of fingerprints
+Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
+However, the matrix representations of the group algebras used in \cite{Williams09} 
+offer possibilities for parallelization. In \cref{sect:parallelization}, the ideas of 
+\citeauthor{Midas19} behind the distributed multilinear monomial detection \cite{Midas19} are discussed.
 
-\subsection{Fingerprinting for cancellation of non-solutions}
+\subsection{Fingerprinting for cancelation of non-solutions}
+\label{sect:cancel_nonsolutions}
 
 TODO: go over Björklund et al. for k-path or Hamiltonicity, managed to design fingerprints such that non-solutions cancel
 
 In the algebraic framework by \citeauthor{Koutis08} and \citeauthor{Williams09}, 
-fingerprints prevent the cancellation of multilinear monomials. 
+fingerprints prevent the cancelation of multilinear monomials. 
 Attacking the Hamiltonian path problem, however, \citeauthor{Björklund14} 
 designed fingerprints such that non-multilinear monomials, i.e. non-solution terms, 
 cancel due to characteristic, while the multilinear terms 
-remain with constant probability \cite{Björklund14}.
+remain with constant probability \cite{Björklund14}. This resulted in the current 
+fastest algorithm for undirected Hamiltonicity, running in \bigOstar{2^n} time.
 
 Before discussing the algebrization and the fingerprints, 
 we define the Hamiltonian path problem.
@@ -385,6 +472,13 @@ we define the Hamiltonian path problem.
   \probleminput{A directed graph $G = (V,E)$.}
   \problemquestion{Does $G$ contain a simple path that visits every vertex?}
 \end{problem}
+
+TODO: give the algebrization and/or show how it works
+
+\subsection{Parallelizing multilinear monomial detection}
+\label{sect:parallelization}
+
+TODO
 
 \section{Conclusion}
 
