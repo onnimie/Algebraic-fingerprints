@@ -259,6 +259,7 @@ its existence is detected.
 
 The general, parameterized multilinear monomial detection problem is defined as follows: 
 
+\amnote{Arithmetic circuit has bounded or unbounded fan-in / fan-out?}
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
   \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$ representing a polynomial $P(X)$.}
@@ -267,9 +268,9 @@ The general, parameterized multilinear monomial detection problem is defined as 
 \end{problem}
 
 Clearly, an upper bound for solving the problem is given by a 
-naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$. However, 
-this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
-possible monomials, and most problems, that can use this algebraization, 
+naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$.
+However, this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
+possible monomials, and most problems that can use this algebraization, 
 have been solved with faster algorithms. %(TODO: quick example?) 
 This motivates the detection of multilinear monomials 
 without fully expanding $A$ into a sum of monomials.
@@ -278,22 +279,27 @@ Since only multilinear terms are important in $P(X)$,
 any squared variable can be instantly discarded as soons as it is formed in $A$. 
 This can be achieved with dynamic programming to create a polynomial $P'(X)$ that 
 only contains multilinear monomials. Since there are $2^N$ multilinear monomials in $P'(X)$ with 
-$N$ variables, this method results in a faster algorithm than with naive expansion.
+$N$ variables, this method results in a
+\amnote*{but still exponential}{faster} algorithm than with naive expansion.
 
 %TODO: Maybe rewrite the algebra here 
 %(first quickly in English, then in maths, and maybe label the mapping functions)
 However, the underlying problems are usually FPT. This implies that scaling exponentially 
 with the number of variables is far from optimal. In order for the complexity of the algorithm to scale 
 with the parameter $k$, we can reduce the number of variables by mapping $X$ into $Y$, where 
-$\abs{X} \geq \abs{Y}$ and $\abs{Y} \propto k$, and dynamically evaluate $P(Y)$ instead of $P(X)$. 
+$\abs{X} \geq \abs{Y}$ and
+\amnote*{Def?}{$\abs{Y} \propto k$}, and dynamically evaluate $P(Y)$ instead of
+$P(X)$. 
+\amnote{$P$ is unchanged, so it still expects $\abs{X}$ arguments...?}
 
 However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not be multilinear in $P(Y)$. 
 For an algorithm to detect a multilinear monomial, it is necessary to use different mappings 
 from $X$ into $Y$ until a multilinear monomial survives the mapping. However, the probability 
 that any given multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}.
-This implies that \bigO{e^{\abs{Y}}} random mappings must be tried for a multilinear monomial to survive 
-with a reasonable constant probability. Thus, a $k$-multilinear monomial is detected with a 
-non-deterministic algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
+This implies that \bigO{e^{\abs{Y}}} random mappings must be tried for a
+multilinear monomial to survive with a reasonable constant probability. Thus, a
+$k$-multilinear monomial is detected with a 
+\amnote*{randomized}{non-deterministic} algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
 
 This is essentially the idea behind color coding introduced by \citeauthor{Alon95} \cite{Alon95}. 
 Although here given in this algebraic form for the $k$-multilinear monomial detection, 
@@ -302,6 +308,7 @@ However, since $k$-multilinear monomial detection is a purely algebraic problem,
 conjecture that there is an algebraic method for solving it.
 
 \omnote{I think this should maybe be in the introduction section rather than here?}
+\amnote{I agree}
 Indeed, a faster algebraic method exists; the technique of algebraic fingerprinting 
 first introduced by \citeauthor{Koutis08} \cite{Koutis08} and 
 further developed by \citeauthor{Williams09} \cite{Williams09} 
@@ -315,7 +322,9 @@ solving parameterized problems \cite{KouWil15}.
 %then lead to fingerprinting (fingerprints solve an issue of unwanted cancellation due to characteristic)
 
 The idea of discarding squared variables as soon as they are formed in $A$ 
-can be expressed algebraically: any squared variable should be identical to zero. 
+can be expressed algebraically: any squared variable should be identical to
+zero. 
+\amnote{Quotient ring}
 \begin{equation}
   \label{eq:squared_to_zero}
 \forall x \in X: x^2 = \mathbf{0}
@@ -324,7 +333,9 @@ This implies that any non-multilinear monomial will evaluate to zero in $P(X)$.
 Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
 i.e., there exist no solutions to the original problem.
 
-Assigning values from an algebra $\mathbf{G}$ into $X$ to meet (\ref{eq:squared_to_zero}) 
+Assigning values
+\amnote*{The other way around?}{from an algebra $\mathbf{G}$ into $X$}
+to meet (\ref{eq:squared_to_zero}) 
 while still maintaining multilinear monomials seems to be a powerful idea.
 Particularly matrices prove to be especially useful. Note, for example, that 
 \[
@@ -337,6 +348,7 @@ Particularly matrices prove to be especially useful. Note, for example, that
   0 & 0 
 \end{bmatrix}.
 \]
+\amnote{What is the underlying field?}
 
 For faster evaluation of $P(X)$, however, $\mathbf{G}$ needs other requirements as well. 
 The binary operations of $\mathbf{G}$ must be fast. With matrices, this means that their 
@@ -348,7 +360,8 @@ with color coding, the probability is exponentially small to the parameter $k$.
 Such $\mathbf{G}$ is given in \cite{Koutis08}, where \citeauthor{Koutis08} uses the group $\Z_2^k$ 
 and a known \cite{Terras99} 
 isomorphic mapping $\rho \colon \Z_2^k \to M^{2^k \times 2^k}$, where $M^{d \times d}$ is a 
-$d$-dimensional matrix group with matrix multiplication. Note that for (\ref{eq:squared_to_zero}), 
+\amnote*{Any group? Specific one?}{$d$-dimensional matrix group with matrix multiplication.}
+ Note that for (\ref{eq:squared_to_zero}), 
 \[
 \forall a \in \Z_2^k \setminus \{\mathbf{0}\}, i \in [2^k]: \rho(a)_{i,i} = 0\]and \[
 \rho(\mathbf{0}) = \mathbf{0}.
@@ -356,6 +369,7 @@ $d$-dimensional matrix group with matrix multiplication. Note that for (\ref{eq:
 
 $\Z_2^k$, however, has a characteristic of 2. (TODO: this implies cancelation... )
 
+\amnote{Why is char $0$ not an option here?}
 
 (will have problem with characteristic 2) 
 --> lead into auxiliary fingerprints (in this case, solved with group algebra $\Z_2[\Z_2^k]$, i.e., 
@@ -367,15 +381,18 @@ multiplying monomials with $\{\mathbf{1}, \mathbf{0}\}$)
 
 \subsubsection{Fingerprinting to prevent unwanted cancelation}
 
-To prevent multilinear terms from canceling due to characteristic, we 
-use a set of auxiliary indeterminates $F$. 
+To prevent multilinear terms from canceling \amnote[inline,nomargin]{out} due to
+characteristic, we use a set of auxiliary indeterminates $F$. 
 These indeterminates, called fingerprints, are introduced in the algebrization 
 of the combinatorial problem, such that every monomial in $A$ is unique. 
-This results in the uniqueness of multilinear monomials, which prevents cancelation.
+This results in the uniqueness of multilinear monomials, which prevents
+cancelation.
+\amnote{Probably more detail is needed}
 
 However, introducing new indeterminates raises the degree of the multilinear monomials. 
 Therefore it may be, that there are not enough matrices to assign such that there would be no 
-duplicates in a multilinear monomial. As a result, higher dimension matrices are needed, which 
+duplicates in a multilinear monomial. As a result, higher
+\amnote*[inline,nomargin]{dimensional}{dimension} matrices are needed, which 
 results in exponentially slower matrix multiplication. %which has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
 Thus, introducing new indeterminates slows the algorithm significantly. 
 
@@ -389,7 +406,10 @@ thus surviving the cancelation due to characteristic.
 \subsubsection{The algebraic framework for parameterized problems}
 
 \cite{Williams09} reduces multilinear detection (after assinging variables values from some algebra) 
-to polynomial identity testing for a polynomial P(A) that has fingerprints as variables. 
+to
+\amnote*{Text seems to presume reader knows what it is}{polynomial identity testing}
+for a polynomial
+\amnote*{\$ ... \$}{P(A)} that has fingerprints as variables. 
 Fingerprints are then assigned values from a field that has more elements than P(A) has roots, which 
 means that P(A) evaluates to non-zero with high probability (if there are solutions)
 
@@ -403,6 +423,10 @@ as follows:
   \probleminput{An arithmetic circuit $A$ that computes the polynomial $P(X)$ in field $\mathbf{X}$.}
   \problemquestion{Is $P(X)$ identical to the zero polynomial, i.e., $P(X) = \mathbf{0}$?}
 \end{problem}
+\amnote{Field $\mathbf{X}$ fixed in advance?}
+
+\amnote[inline,nomargin]{Motivate why PIT is not a trivial problem.
+(It might well seem like it is!)}
 
 TODO
 
@@ -417,8 +441,10 @@ TODO: explain the limit in general multilinear detection with this algebraic fra
 
 \subsection{Finding the solution}
 
-Multilinear monomial detection has only been given as a detector for a solution, i.e., a decision algorithm. 
-Talk about actually finding the solution.
+Multilinear monomial detection has only been given as a detector for a solution,
+i.e., a decision algorithm. 
+\amnote*{Yes, but probably restrict it to $\sim1$ page (there is enough content
+as it is)}{ Talk about actually finding the solution.  }
 
 \cite{Koutis08} gives an algorithm that solves the decision problem for $k$-path. 
 $k$-path is found with \bigOstar{n+min(k^2, m)} applications of the algorithm.
@@ -433,23 +459,30 @@ A $k$-path can be found by just applying the algorithm for every vertex.
 
 As mentioned in \cref{sect:limits}, the algebraic fingerprinting framework proposed by 
 \citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil15} for 
-$k$-multilinear monomial detection has a lower bound of \bigOstar{2^k}. 
-However, this framework approaches the abstract multilinear monomial detection without 
+$k$-multilinear monomial detection has
+\amnote*{$O$ and \enquote{lower bound} don't go well together}{a lower bound of \bigOstar{2^k}. }
+However, this framework \amnote[inline,nomargin]{is very generic since it}
+approaches the abstract multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
 The idea of adding auxiliary fingerprint variables in the algebrization, though, 
 has potential for these properties. TODO: rephrase more clearly
 
-Indeed, faster algorithms have been found by designing new algebrizations with techniques 
+Indeed,
+\amnote*{for...?}{faster algorithms}
+ have been found by designing new algebrizations with techniques 
 similar to algebraic fingerprinting, where the fingerprints are designed to 
-abuse the underlying combinatorial properties. In \cref{sect:cancel_nonsolutions}, 
+\amnote*{make use of}{abuse}
+the underlying combinatorial properties. In \cref{sect:cancel_nonsolutions}, 
 we show how \citeauthor{Björklund14} \cite{Björklund14}
 exploited the cancelation due to characteristic to cancel non-solution monomials 
 by clever design of fingerprints. 
 
 Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
 However, the matrix representations of the group algebras used in \cite{Williams09} 
-offer possibilities for parallelization. In \cref{sect:parallelization}, the ideas of 
-\citeauthor{Midas19} behind the distributed multilinear monomial detection \cite{Midas19} are discussed.
+offer possibilities for parallelization.
+In \cref{sect:parallelization}, \amnote[inline,nomargin]{we discuss} the ideas of 
+\citeauthor{Midas19} behind the distributed multilinear monomial detection
+\cite{Midas19} \amnote*[inline,nomargin]{}{(are discussed)}.
 
 \subsection{Fingerprinting for cancelation of non-solutions}
 \label{sect:cancel_nonsolutions}
@@ -477,6 +510,11 @@ TODO: give the algebrization and/or show how it works
 
 \subsection{Parallelizing multilinear monomial detection}
 \label{sect:parallelization}
+
+\amnote[inline,nomargin]{Probably very ambitious to describe the full thing
+here... (You already need to focus on getting the details right in Sects. 4 and
+5.1.) Maybe instead just give a broad picture of what other things people have
+considered? (unless this is really the only other thing out there)}
 
 TODO
 
