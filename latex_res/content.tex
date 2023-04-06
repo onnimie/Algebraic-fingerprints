@@ -333,11 +333,26 @@ This implies that any non-multilinear monomial will evaluate to zero in $P(X)$.
 Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
 i.e., there exist no solutions to the original problem.
 
-Assigning values
-\amnote*{The other way around?}{from an algebra $\mathbf{G}$ into $X$}
-to meet (\ref{eq:squared_to_zero}) 
-while still maintaining multilinear monomials seems to be a powerful idea.
-Particularly matrices prove to be especially useful. Note, for example, that 
+This is the basis of algebraic multilinear monomial detection introduced by 
+\citeauthor{Koutis08} \cite{Koutis08}, or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}: 
+we evaluate $P(X)$ over some algebra $\mathbf{G}$, and detect a multilinear monomial from 
+the value returned by this evaluation. Ideally, with any $\gamma \colon X \to G$ and $X'$ representing 
+the image of $\gamma$, 
+$P(X') = \mathbf{0}$ if no multilinear monomials exist, and 
+$P(X') \neq \mathbf{0}$ otherwise, when operating over $\mathbf{G}$.
+
+Thus, we receive an important task: find an algebra $\mathbf{G}$ for 
+the assignment $\gamma \colon X \to G$ to meet (\ref{eq:squared_to_zero}), 
+while still maintaining multilinear monomials in $P(X)$ as multilinear in $P(X')$. 
+Furthermore, 
+$G$ should be commutative in order for non-multilinear monomials to always 
+evaluate to zero due to (\ref{eq:squared_to_zero}).
+
+To maintain multilinearity, 
+it would be enough that $\abs{X} \geq \abs{G}$ and $\gamma$ is injective. 
+However, since 
+For (\ref{eq:squared_to_zero}), for example
+matrices may be especially useful. Note, for example, that 
 \[
 \begin{bmatrix} 
   0 & 0 \\ 
@@ -350,12 +365,19 @@ Particularly matrices prove to be especially useful. Note, for example, that
 \]
 \amnote{What is the underlying field?}
 
-For faster evaluation of $P(X)$, however, $\mathbf{G}$ needs other requirements as well. 
+For faster evaluation of $P(X')$, however, $\mathbf{G}$ needs other requirements as well. 
 The binary operations of $\mathbf{G}$ must be fast. With matrices, this means that their 
-dimension must be as small as possible. Moreover, in order to beat color coding, 
+dimension must be as small as possible, since matrix multiplication scales exponentially.
+
+Moreover, in order to beat color coding, 
 the multilinear monomials must 
-survive the assignment from $G$ into $X$ with a reasonable constant probability. Recall that 
-with color coding, the probability is exponentially small to the parameter $k$.
+survive the assignment $X \to G$ with a reasonable constant probability. Recall that 
+with color coding, the probability is exponentially small to the parameter $k$. However, 
+the problem here is unlike with color coding, where multilinearity was simply not 
+always preserved. Here, a multilinear monomial, although not identical to zero by (\ref{eq:squared_to_zero}), 
+can still evaluate to zero over $\mathbf{G}$. However, if we specify for a constant 
+probability of survival, we can reliably detect multilinear monomials by evaluating 
+$P(X)$ in $\mathbf{G}$ over a constant number of randomized assignments $X \to G$.
 
 Such $\mathbf{G}$ is given in \cite{Koutis08}, where \citeauthor{Koutis08} uses the group $\Z_2^k$ 
 and a known \cite{Terras99} 
