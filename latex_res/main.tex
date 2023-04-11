@@ -124,43 +124,25 @@ sorting=nyt
 % Otsikko nimiölehdelle. Yleensä sama kuin seuraavana oleva \TITLE, 
 % mutta jos nimiölehdellä tarvetta "kaksiosaiselle" kaksiriviselle
 \title{Detecting multilinear monomials with algebraic fingerprints}
-% 2-osainen otsikko:
-%\title{\LaTeX{}-pohja kandidaatintyölle \\[5mm] Pitkiä rivejä kokeilun vuoksi.}
 
 % Otsikko tiivistelmään. Jos lisäksi engl. tiivistelmä, niin viimeisin:
-%\TITLE{\LaTeX{}-pohja kandidaatintyötä varten ohjeiden kera ja varuilta %
-%kokeillaan vähän ylipitkää otsikkoa}
-%\TITLE{\LaTeX{} för kandidatseminariet med jättelång rubrik som fortsätter och
-% fortsätter ännu}
-\ENTITLE{Detecting multilinear monomials with algebraic fingerprints}
-% 2-osainen otsikko korvataan täällä esim. pisteellä:
-%\TITLE{\LaTeX{}-pohja kandidaatintyölle. Pitkiä rivejä kokeilun vuoksi.}
+\TITLE{Detecting multilinear monomials with algebraic fingerprints}
 
-% Ohjaajan laitos suomi/ruotsi ja tarvittaessa eng (tiivistelmän kieli/kielet)
-%\DEPT{Poimi tähän ohjaajasi laitos, DEPT, main.tex}
+\ENTITLE{Detecting multilinear monomials with algebraic fingerprints}
+
 % suomi:
-%\DEPT{Tietotekniikan laitos}               % T
-%\DEPT{Tietojenkäsittelytieteen laitos}     % TKT
-%\DEPT{Mediatekniikan laitos}               % ME
-% ruotsi:
-%\DEPT{Institutionen för datateknik}        % T
-%\DEPT{Institutionen för datavetenskap}     % TKT
-%\DEPT{Institutionen för mediateknik}       % ME
+\DEPT{Tietotekniikan laitos}               
 % englanti:
-\ENDEPT{Department of Computer Science}     % T
-%\ENDEPT{Department of Information and Computer Science} % TKT
-%\ENDEPT{Department of Media Technology}                 % ME
+\ENDEPT{Department of Computer Science}    
 
 % Vuosi ja päivämäärä, jolloin työ on jätetty tarkistettavaksi.
 \YEAR{2023}
-%\DATE{xx. xxxxxkuuta 20xx}
 %\DATE{31. helmikuuta 2011}
-%\DATE{Den 31 februari 2011}
-\ENDATE{deadline date}
+\ENDATE{\today}
 
 % Kurssin vastuuopettaja ja työsi ohjaaja(t)
-%\SUPERVISOR{Prof. Eero Hyvönen}
-%\INSTRUCTOR{Augusto Modanese}
+\SUPERVISOR{Prof. Eero Hyvönen}
+\INSTRUCTOR{D.Sc. Augusto Modanese}
 %\INSTRUCTOR{Ohjaajantitteli Sinun Ohjaajasi, ToinenTitt Matti Meikäläinen}
 % DI       // på svenska DI diplomingenjör
 % TkL      // TkL teknologie licentiat
@@ -180,43 +162,15 @@ sorting=nyt
 % Kirjoita tänne HOPS:ssa vahvistettu pääaineesi.
 % Pääainekoodit TIK-opinto-oppaasta.
 
-\PAAAINE{Computer Science}
-%Tietotekniikka
-%Datateknik
-%Computer Science and Engineering
-\CODE{SCI3027}
+\PAAAINE{Tietotekniikka}
+\ENPAAAINE{Computer Science}
 
-%\PAAAINE{Ohjelmistotuotanto ja -liiketoiminta}
-%\CODE{T3003}
-%
-%\PAAAINE{Tietoliikenneohjelmistot}
-%\CODE{T3005}
-%
-%\PAAAINE{WWW-teknologiat} % vuodesta 2010
-%\CODE{IL3012}
-%
-%\PAAAINE{Mediatekniikka} % vuoteen 2010, kts. seur.
-%\CODE{T3004}
-%
-%\PAAAINE{Mediatekniikka} % vuodesta 2010, kts. edell.
-%\CODE{IL3011}
-%
-%\PAAAINE{Tietojenkäsittelytiede} % vuodesta 2010
-%\CODE{IL3010}
-%
-%\PAAAINE{Informaatiotekniikka} % vuoteen 2010
-%\CODE{T3006}
-%
-%\PAAAINE{Tietojenkäsittelyteoria} % vuoteen 2010
-%\CODE{T3002}
-%
-%\PAAAINE{Ohjelmistotekniikka}
-%\CODE{T3001}
+\CODE{SCI3027}
 
 % Avainsanat tiivistelmään. Tarvittaessa myös englanniksi:
 
-%\KEYWORDS{avain, sanoja, niitäkin, tähän, vielä, useampi, vaikkei, %
-%niitä, niin, montaa, oikeasti, tarvitse}
+\KEYWORDS{avain, sanoja, niitäkin, tähän, vielä, useampi, vaikkei, 
+niitä, niin, montaa, oikeasti, tarvitse}
 \ENKEYWORDS{key, words, the same as in FIN/SWE}
 
 % Tiivistelmään tulee opinnäytteen sivumäärä.
@@ -251,8 +205,9 @@ sorting=nyt
 % (Kauranen, luku 5.2.2). Näin ollen ensimmäisen tiivistelmän sivunumero
 % on 2. \maketitle komento jotenkin kadottaa sivunumeronsa.
 \setcounter{page}{2}    % sivunumeroksi tulee 2
-
-\input{abstract}
+\input{abstractEN}
+\newpage
+\input{abstractFI}
 \newpage                       % pakota sivunvaihto
 
 % -------------- Sisällysluettelo / TOC -------------------------------

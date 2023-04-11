@@ -105,6 +105,7 @@ for the $k$-3D matching problem. Another simple example can be found, for the se
 matching as an example to the explanation above}
 
 \subsection{Reducing $k$-3D matching into multilinear monomial detection}
+\label{sect:reduction_example}
 
 The $k$-3D matching problem is defined as follows:
 
@@ -148,12 +149,13 @@ a successful reduction into multilinear monomial detection has been given for th
 
 An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. 
 TODO: show the example here
-
+\clearpage
 \section{Related works} %TODO: maybe change headline?
 \label{sect:related_works}
 
 TODO: go through publications that utilize this algebraic fingerprinting technique, 
 and problems that reduce to multilinear detection
+\clearpage
 
 \section{Preliminaries}
 \label{sect:prelims}
@@ -223,10 +225,11 @@ characteristic 2 satisfies the following:
   $\forall u \in F$: $u + u = u \cdot (\textbf 1 + \textbf 1) = u \cdot \textbf 0 = \textbf 0$
 \end{center}
 
-TODO: group algebra, polynomial ring, linear dependency, "cancelation due to characteristic"\nl
-%TODO: Cygan, p. 337, "freshmans identity?"
+TODO: group algebra, polynomial ring, linear dependency, "cancelation due to characteristic", 
+Galois field, "multiplicative group"\nl
+%TODO: Cygan, p. 337
 
-\subsection{Notation and other terminology} %FPT, O*, Theta, non-deterministic & deterministic algorithm
+\subsection{Notation and other terminology} 
 \label{sect:prelims_other}
 
 TODO: create a table or like, list terms: 
@@ -236,7 +239,7 @@ Schwartz-Zippel lemma
 
 \amnote[inline,nomargin]{Standard $\mathcal{O}$ and $\Theta$ notation should be
 known}
-
+\clearpage
 \section{General multilinear monomial detection}
 
 The detection of multilinear monomials in a multivariate polynomial is a fundamental problem, 
@@ -249,11 +252,14 @@ for all problems, that are reduced to and solved with general
 multilinear monomial detection. 
 } TODO: relate to section 2: related works
 
-In this section, we define the parameterized multilinear monomial detection problem, 
-and give some non-algebraic background on solving it. Then, we discuss the 
-algebraic framework by \citeauthor{KouWil15} \cite{Williams09, KouWil15} 
-and its limits. Finally, we briefly touch on finding a solution when 
-its existence is detected.
+In this section, we first define the parameterized multilinear monomial detection problem, 
+and give some non-algebraic background on solving it. Then in Section \ref{sect:algebraic_fingerprinting}, 
+we discuss the algebraic ideas by \citeauthor{KouWil15} \cite{Koutis08, Williams09, KouWil15}. 
+Section \ref{sect:algebraic_fingerprinting} is long, but the overall idea as a 
+general framework for parameterized problems is 
+summarized and discussed in Section \ref{sect:algebraic_framework}. 
+Finally, we briefly discuss finding the solution when its 
+existence is detected in Section \ref{sect:finding_the_solution}.
 
 \subsection{Problem definition}
 
@@ -318,6 +324,7 @@ most parameterized problems can be reduced to, it gives a general framework for
 solving parameterized problems \cite{KouWil15}.
 
 \subsection{Algebraic fingerprinting}
+\label{sect:algebraic_fingerprinting}
 
 The idea of discarding squared variables as soon as they are formed in $A$ 
 can be expressed algebraically: any squared variable should be identical to
@@ -327,7 +334,9 @@ zero.
   \label{eq:squared_to_zero}
 \forall x \in X: x^2 = \mathbf{0}
 \end{equation}
-This implies that any non-multilinear monomial will evaluate to zero in $P(X)$. 
+This implies that any non-multilinear monomial will evaluate to zero in $P(X)$, since 
+any non-multilinear monomial $q$, assuming commutativity, can be written as $x^2q'$ 
+for some $x \in X$, and $x^2q' = \mathbf{0}q = \mathbf{0}$. 
 Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
 i.e., there exist no solutions to the original problem.
 
@@ -346,26 +355,29 @@ $P(X)$ over $\mathbf{G}$ by $\gamma$ and $w \neq \mathbf{0}$,
     \end{cases}       
 \end{equation}
 
-In the following section, we specify an appropriate algebra such that 
+In the following subsections, we specify an appropriate algebra such that 
 (\ref{eq:polynomial_identity}) is met, as well as some requirements for efficiency. 
 Then, we discuss the works of \citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Koutis08, Williams09}, 
-and see how these specifications were implemented. 
-This thesis refers to the general framework \cite{KouWil15} by these 
+and see how these specifications were implemented.
+
+This thesis refers to the general framework \cite{KouWil09, KouWil15} by these 
 authors as algebraic fingerprinting. However, algebraic fingerprinting can also 
 be used to refer to the idea behind solving a problem 
 with multilinear monomials canceling out due to characteristic, 
-which is discussed in \cref{sect:fingerprints}.
+which is discussed here in Section \ref{sect:fingerprints}.
 
 \subsubsection{Specifications for the algebra}
 
 We have arrived at an important task for multilinear monomial detection: 
 find a field $\mathbf{G}$ for 
-the assignment $\gamma \colon X \to G$ to meet 
+the assignment $\gamma \colon X \to \mathbf{G}$ to meet 
 (\ref{eq:squared_to_zero}) and thus the first equality in (\ref{eq:polynomial_identity}). 
 We specify for fields since rings are not enough for multilinear monomial detection; 
-$G$ should have commutative multiplication in order for (\ref{eq:squared_to_zero}) 
-to be effective. Since the specific algebrization into multilinear monomial detection 
-is abstracted away, the ordering of indeterminates in monomials is generally unknown.
+$\mathbf{G}$ should have commutative multiplication in order for (\ref{eq:squared_to_zero}) 
+to be effective. The ordering of indeterminates in monomials is generally unknown, 
+since the specific algebrization into multilinear monomial detection 
+is abstracted away. %Specifying for commutativity also makes it significantly 
+%easier to algebrize problems into arithmetic circuits. 
 
 For the second equality in (\ref{eq:polynomial_identity}), it is necessary that multilinear 
 monomials in $P(X)$ can map to multilinear monomials in $P(X')$, i.e., it must be that 
@@ -384,8 +396,10 @@ the probability of survival reached in the original work for algebraic fingerpri
 
 Recall that with color coding, multilinear monomials can be detected with a 
 randomized algorithm in \bigOstar{(2e)^k} time. Thus for (a), we may specify for 
-operations that take \bigOstar{2^k} time. TODO: talk about evaluating the polynomial ($2^k$ evaluations) 
-and how it relates to matrix operations
+the evaluation of $P(X')$ to take \bigOstar{2^k} time. The polynomial $P(X)$ 
+will have at most $2^k$ multilinear monomials. Therefore, 
+it is necessary that the binary operations 
+of $\mathbf{G}$ take polynomial time.
 
 With (b), recall that multilinear monomials 
 survive color coding with probability $e^{-k}$. 
@@ -394,7 +408,7 @@ can still evaluate to zero over $\mathbf{G}$.
 However, if we specify for a constant 
 probability of survival, we can reliably decide whether a multilinear monomial exists 
 by evaluating $P(X)$ in $\mathbf{G}$ over a constant number of 
-randomized assignments $X \to G$. Relating to color coding, 
+randomized assignments $X \to \mathbf{G}$. Relating to color coding, 
 this would essentially remove the 
 $e^k$ factor in \bigOstar{(2e)^k}.
 
@@ -406,7 +420,7 @@ meets the following specifications:
   $P(X')$ should take \bigOstar{2^k} time.
   \item Multilinear monomials should evaluate to non-zero
   through a random assignment 
-  $\gamma \colon X \to G$ with a reasonable constant probability.
+  $\gamma \colon X \to \mathbf{G}$ with a reasonable constant probability.
 \end{itemize}
 
 In the work that introduced 
@@ -434,35 +448,36 @@ Observe that in general, every element in $\Z_2^k$ is its own inverse:
   \label{eq:Z_2^k has char 2}
   \forall z \in \Z_2^k \colon z^2 = \mathbf{0}.
 \end{equation}
-Recall that the elements of a group algebra $F[\Z_2^k]$ are linear combinations of the form 
+Recall that the elements of a group algebra $\mathbf{F}[\Z_2^k]$ are linear combinations of the form 
 \[
   \displaystyle \sum_{v \in \Z_2^k}a_v v,
 \]
-where $a_v \in F$. From here on, we note the identity of $\Z_2^k$ as $v_0$, additive and 
-multiplicative identities of $F$ as $\mathbf{0}_F$ and $\mathbf{1}_F$, respectively, and 
-use $\mathbf{0}$ and $\mathbf{1}$ for $F[\Z_2^k]$. Note that $\mathbf{1} = v_0$, and
-$\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v = \mathbf{0}_F$
+where $a_v \in \mathbf{F}$. From here on, we note the identity of $\Z_2^k$ as $v_0$, additive and 
+multiplicative identities of $\mathbf{F}$ as $\mathbf{0}_F$ and $\mathbf{1}_F$, respectively, and 
+use $\mathbf{0}$ and $\mathbf{1}$ for $\mathbf{F}[\Z_2^k]$. Note that $\mathbf{1} = v_0$, and
+$\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v = \mathbf{0}_F$.
 
-In \cite{Koutis08}, \citeauthor{Koutis08} \omnote*{present or past tense?}{assigns} $X$ 
-with elements of the form $(v_0 + v_i) \in F[\Z_2^k]$, 
-such that for every $x_i \in X$, random $v_i \in \Z_2^k$ are independently picked for the assignment 
-$x_i \leftarrow (v_0 + v_i)$. 
-We note the assigned values as $\overbar{X}$, and the resulting polynomial as $P(\overbar{X}) \in F[\Z_2^k]$. 
+In \cite{Koutis08}, \citeauthor{Koutis08} assigned $X$ 
+to elements of the form $(v_0 + v_i) \in \mathbf{F}[\Z_2^k]$, 
+such that for every $x_i \in X$, a random $v_i \in \Z_2^k$ is independently and uniformly 
+picked for the assignment 
+$x_i \to (v_0 + v_i)$. 
+We note the assigned values as $\overbar{X}$, and the resulting polynomial as $P(\overbar{X}) \in \mathbf{F}[\Z_2^k]$. 
 \citeauthor{Koutis08} observed that 
-due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in F[\Z_2^k]$, 
+due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in \mathbf{F}[\Z_2^k]$, 
 \[
   (v_0 + v)^2 = v_0^2 + v_0v + vv_0 + v^2 = v_0 + v + v + v_0 = 2v_0 + 2v.
 \]
-This implies that if we pick a field $F$ with characteristic 2, 
+This implies that if we pick a field with characteristic 2 for $\mathbf{F}$, 
 $\forall v_i \in \Z_2^k \colon (v_0 + v_i)^2 = \mathbf{0}$. Thus, 
-non-multilinear monomials in $P(X)$ will vanish in $P(\overbar{X})$, and the 
+non-multilinear monomials in $P(X)$ vanish in $P(\overbar{X})$, and the 
 first equation in (\ref{eq:polynomial_identity}) 
 will hold.
 
-However, if $F$ has characteristic 2, the second equation of (\ref{eq:polynomial_identity}) 
-does not necessarily hold, and it may be that $w = \mathbf{0}$. 
-Since multilinear monomials may have even leading coefficients 
-in $P(X)$, they may cancel out in $F[Z_2^k]$ due to characteristic.
+However, if $\mathbf{F}$ has characteristic 2, the second equation of (\ref{eq:polynomial_identity}) 
+does not necessarily hold, and it may be that $w = \mathbf{0}$. Multilinear monomials may 
+cancel each other out in $\mathbf{F}[Z_2^k]$, since they may have even leading 
+coefficients in $P(X)$. Next, we see how \citeauthor{Koutis08} approached this problem.
 
 %Such $\mathbf{G}$ is given in \cite{Koutis08}, where \citeauthor{Koutis08} uses the group $\Z_2^k$ 
 %and a known \cite{Terras99} 
@@ -473,84 +488,171 @@ in $P(X)$, they may cancel out in $F[Z_2^k]$ due to characteristic.
 %\forall a \in \Z_2^k \setminus \{\mathbf{0}\}, i \in [2^k]: \rho(a)_{i,i} = 0\]and \[
 %\rho(\mathbf{0}) = \mathbf{0}.
 %\]
-
 \subsubsection{Fingerprints to prevent unwanted cancelation}
 \label{sect:fingerprints}
 
+Indeed, if we take the example in Section \ref{sect:reduction_example}, 
+we notice that the multilinear monomials have even coefficients, and thus 
+would cancel out in $\mathbf{F}[Z_2^k]$ due to characteristic. TODO: 
+write the example in the section and then 
+add here some   
+example polynomial from there that has even coefficients
 
+In general, when $k$ is even, multilinear monomials will have even coefficients. 
 
+To tackle this issue, one idea is to add auxiliary indeterminates, 
+called \emph{fingerprints} \cite{KouWil15}, to the monomials 
+in order to make them unique. For example, let $S = \{s_1, s_2, \ldots\}$ 
+be the set of an appropriate number of fingerprints 
+and augment them to (EXAMPLE POLYNOMIAL) as follows: 
+(TODO: add fingerprinted polynomial here) 
 
+Then, the algorithm could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
+With this, non-multilinear monomials will still vanish, but multilinear monomials 
+will not identically cancel each other out when $k$ is even. 
 
+However, introducing new indeterminates raises the degree of multilinear monomials. 
+Therefore, it increases the probability that variables in a multilinear monomial are 
+assigned the same value from $\mathbf{F}[Z_2^k]$, which results in the 
+multilinear monomial evaluating to zero with higher probability. 
+Raising the dimension of $\Z_2^k$, however, would  
+exponentially slow down matrix multiplications which are %matrix mulitplication has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
+important for efficiency in the full algebraic framework (see Section \ref{sect:algebraic_framework}).
 
-To prevent multilinear terms from canceling \amnote[inline,nomargin]{out} due to
-characteristic, we use a set of auxiliary indeterminates $F$. 
-These indeterminates, called fingerprints, are introduced in the algebrization 
-of the combinatorial problem, such that every monomial in $A$ is unique. 
-This results in the uniqueness of multilinear monomials, which prevents
-cancelation.
-\amnote{Probably more detail is needed}
+\citeauthor{Koutis08} approached this problem by assigning fingerprints to a 
+different algebra: he used $S \to \Z_2$ and set 
+$\mathbf{F} = \Z_2$ \cite{Koutis08}. Note that $\Z_2$ has characteristic 2. With this, 
+\citeauthor{Koutis08} essentially assigns multilinear monomials a coefficient 
+randomly from $\{\mathbf{0}_F, \mathbf{1}_F\}$. The idea is that a multilinear monomial, 
+assigned with the fingerprint $\mathbf{1}_F$,  
+survives the cancelation due to characteristic if the canceling pair is assigned $\mathbf{0}_F$. 
+With randomized assignments $S \to \Z_2$, there is a constant probability 
+(TODO: what is the probability?) that a multilinear 
+monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
-However, introducing new indeterminates raises the degree of the multilinear monomials. 
-Therefore it may be, that there are not enough matrices to assign such that there would be no 
-duplicates in a multilinear monomial. As a result, higher
-\amnote*[inline,nomargin]{dimensional}{dimension} matrices are needed, which 
-results in exponentially slower matrix multiplication. %which has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
-Thus, introducing new indeterminates slows the algorithm significantly. 
+In practise, fingerprints can be implemented into the algebrization as follows \cite{Williams09}: 
+for every multiplication gate $G_i$ in the arithmetic circuit $A$ for $P(X)$, 
+pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
+as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
+gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
+as $P(X, S)$. Note that here, 
+\citeauthor{Koutis08} picked random elements from $\Z_2$ 
+instead of picking unique fingerprints $s_i$.
 
-In \cite{Koutis08} instead of assigning $F$ and $X$ values from the same algebra, 
-\citeauthor{Koutis08} uses random assignment from $\{\mathbf{0}, \mathbf{1}\}$ into $F$. 
-This is achieved by using the group algebra $\Z_2[\Z_2^k]$, where the field $\Z_2$ can be 
-thought of as the fingerprints. 
-With this assignment, there is a constant probability that a multilinear monomial will have an odd coefficient, 
-thus surviving the cancelation due to characteristic.
+In another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
+That is, we compute $P(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P(\overbar{X}, S)$, i.e., 
+compute until the gates $\overbar{G_i}$. 
+Imagine we stop here in the circuit before assigning the fingerprints $S$ to some algebra 
+and continuing with the multiplication. 
+Now, deciding whether a multilinear monomial exists in $P(X)$ is essentially given by 
+whether the polynomial $P(\overbar{X}, S) \in \mathbf{F}[\Z_2^k]$ is identical to $\mathbf{0}$, 
+i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$, 
+\[
+  \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
+  \colon P(\overbar{X}, \phi(S)) = \mathbf{0}.
+\]
 
-\subsection{The algebraic framework for parameterized problems}
-
-\cite{Williams09} reduces multilinear detection (after assinging variables values from some algebra) 
-to
-\amnote*{Text seems to presume reader knows what it is}{polynomial identity testing}
-for a polynomial
-\amnote*{\$ ... \$}{P(A)} that has fingerprints as variables. 
-Fingerprints are then assigned values from a field that has more elements than P(A) has roots, which 
-means that P(A) evaluates to non-zero with high probability (if there are solutions)
-
-The algebraic fingerprinting framework by Koutis and Williams  
-solves $k$-multilinear monomial detection by essentially reducing it to 
-polynomial identity testing. The polynomial identity testing problem is defined 
-as follows:
+\subsubsection{Polynomial identity testing}
 
 \begin{problem}
   \problemtitle{\textsc{Polynomial identity testing}}
-  \probleminput{An arithmetic circuit $A$ that computes the polynomial $P(X)$ in field $\mathbf{X}$.}
-  \problemquestion{Is $P(X)$ identical to the zero polynomial, i.e., $P(X) = \mathbf{0}$?}
+  \probleminput{An arithmetic circuit $C$ that computes the polynomial $Q(S)$.}
+  \problemquestion{Is $Q(S)$ identical to the zero polynomial?}
 \end{problem}
-\amnote{Field $\mathbf{X}$ fixed in advance?}
 
-\amnote[inline,nomargin]{Motivate why PIT is not a trivial problem.
-(It might well seem like it is!)}
+We frame $P(\overbar{X}, S)$ as $Q(S) \in \mathbf{F}[\Z_2^k]$. 
+Here, it is necessary to test whether $Q(S)$ is identical to \emph{zero modulo 2}, 
+since we used characteristic 2 to eliminate 
+the underlying non-multilinear monomials in $P(\overbar{X}, S)$.
 
-TODO: arithmetic circuit fanin in fan out unbounded, do scalar multiplication (fingerprints) last
+Thus, multilinear monomial detection is reduced via algebraic fingerprinting 
+to polynomial identity testing, where a multilinear monomial is detected if 
+$Q(S) \neq \mathbf{0}$ over $\mathbf{F}[\Z_2^k]$ with any field $\mathbf{F}$ of characteristic 2. 
+We note the family of assignments $S \to \mathbf{F}$ as $\Phi$.
+
+Assume multilinear monomials exist in $P(X)$. 
+\citeauthor{Koutis08} achieved to detect a multilinear monomial 
+with a probability $(1/4 + 1/{4k})$ by testing whether 
+$Q(S) = \mathbf{0}$ over the field $\mathbf{F} = \Z_2$  
+with randomized assignments $S \to \Z_2$ \cite{Koutis08}. 
+\citeauthor{Williams09} developed the technique of algebraic fingerprinting 
+further by observing that due to the Schwartz-Zippel lemma, %(see \cref{sect:prelims}), 
+if we raise the order of the field $\mathbf{F}$ 
+such that the number of different assignments in $\Phi$ is much larger than 
+the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}$, 
+$Q(\delta(S)) \neq \mathbf{0}$ with a high probability over some $\delta \in \Phi$ 
+\cite{Williams09}. 
+
+Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
+used the field $GF(2^{3+log_2k})$ \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
+evaluates to $\mathbf{0}$ over a random assignment $S \to GF(2^{3+log_2k})$ with probability 
+at most $1/2^3$ \cite{Williams09}. For the $k$-path problem, \citeauthor{Koutis08} 
+gave a randomized \bigOstar{2^{3k/2}} time algorithm \cite{Koutis08}, 
+and \citeauthor{Williams09} developed this into a randomized \bigOstar{2^k} 
+time algorithm \cite{Williams09} with the ideas discussed here.
+
+TODO: talk briefly about the other requirement (fast operations), 
+results in a \bigOstar{2^k} time algorithm.
+
+In the following section, we see this as a whole and look further into implementing this stuff. 
+TODO: rephrase
+
+\subsection{Algebraic fingerprinting as a framework for parameterized problems}
+\label{sect:algebraic_framework}
+
+From Section \ref{sect:related_works}, 
+it can be seen  
+that a fast algorithm for $k$-multilinear monomial detection gives a 
+fast algorithm for many parameterized combinatorial problems. Thus, we 
+may say that algebraic fingerprinting gives a general framework for 
+parameterized combinatorial problems. 
+
+In Section \ref{sect:algebraic_fingerprinting}, we discussed the idea behind 
+algebraic fingerprinting: generate a polynomial $P(X)$ from the algebrization of 
+a combinatorial problem, and evaluate $P(X)$ over $GF(2^{3+log_2k})[Z_2^k]$ with 
+randomized assignments $X \to GF(2^{3+log_2k})[Z_2^k]$ of form 
+$x_i \to (v_0 + v_i)$, augmented with scalar multiplications 
+by elements randomly chosen from $GF(2^{3+log_2k})$. This gives a  
+randomized algorithm for $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
+
+This section gives a general overlook on algebraic fingerprinting as a 
+framework for parameterized problems. First, we discuss the \omnote*{give all the numbers here?}
+{time and space complexities} of algebraic fingerprinting. Then, 
+we go over an example implementation 
+of algebraic fingerprinting for the $k$-path problem. 
+Finally, we discuss the limits of 
+this technique: the chosen algebra $GF(2^{3+log_2k})[Z_2^k]$ 
+is optimal for the general multilinear monomial detection.
+
+
+\subsubsection{Time and space complexity}
+\label{sect:complexity}
+
+TODO: Probably something about the circuits (time and space complexity of operations)
+
+TODO (when talking circuits): arithmetic circuits have addition gates with unbounded fan-in, 
+multiplication gates of fan-in two, no scalar multiplication 
+(augment scalar multiplication (fingerprints) "later")
 
 \subsubsection{Implementation}
 
 TODO: give an example how to get an algorithm, e.g., for $k$-path?
 
-\subsubsection{Spatial complexity}
-\label{sect:spatial_complexity}
-
-TODO: talk about spatial complexity of algebraic fingerprinting (we've only talked about time complexity) 
-briefly
-
 \subsubsection{Limits of the framework}
 \label{sect:limits}
 
-TODO: give some cons wrt. color coding (difficult derandomization, 
-are we able to add weights for optimization problems?) %(cost-constrained mld?)
+SHORT SECTION
+
+%TODO: give some cons wrt. color coding (difficult derandomization, 
+%are we able to add weights for optimization problems?) %(cost-constrained mld?)
 
 TODO: explain the limit in general multilinear detection with this algebraic framework 
 (impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
 
 \subsection{Finding the solution}
+\label{sect:finding_the_solution}
+
+SHORT SECTION
 
 Multilinear monomial detection has only been given as a detector for a solution,
 i.e., a decision algorithm. 
@@ -563,12 +665,11 @@ $k$-path is found with \bigOstar{n+min(k^2, m)} applications of the algorithm.
 \cite{Williams09} solves the decision problem for $k$-path. \cite{Williams09} also gives an algorithm 
 that finds a path when it is known that a $k$-path exists.
 
-\cite{Björklund17} solves the decision problem for $k$-path starting at some vertex $s$. 
-A $k$-path can be found by just applying the algorithm for every vertex.
+\clearpage
 
 \section{Improving algebraic fingerprinting}
 
-As mentioned in \cref{sect:limits}, the algebraic fingerprinting framework proposed by 
+As mentioned in Section \ref{sect:limits}, the algebraic fingerprinting framework proposed by 
 \citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil15} for 
 $k$-multilinear monomial detection has
 \amnote*{$O$ and \enquote{lower bound} don't go well together}{a lower bound of \bigOstar{2^k}. }
@@ -628,7 +729,7 @@ here... (You already need to focus on getting the details right in Sects. 4 and
 considered? (unless this is really the only other thing out there)}
 
 TODO
-
+\clearpage
 \section{Conclusion}
 
 TODO: conclude

@@ -13,12 +13,6 @@
 \def\LANG{Finnish}
 \def\REFERENCES{\REFERENCESFI}
 }
-\DeclareOption{swedish}{
-\def\AALTO{\AALTOSV}
-\def\THESIS{\THESISSV}
-\def\LANG{Swedish}
-\def\REFERENCES{\REFERENCESSV}
-}
 \DeclareOption{english}{
 \def\AALTO{\AALTOEN}
 \def\THESIS{\THESISEN}
@@ -117,19 +111,14 @@
 \def\AALTOFI{Aalto-yliopisto \\ 
 Perustieteiden korkeakoulu \\
 Teknistieteellinen kandidaattiohjelma \\}
-\def\AALTOSV{Aalto-universitetet \\ 
-Högskolan för teknikvetenskaper \\
-Kandidatprogram i teknikvetenskap \\}
 \def\AALTOEN{Aalto University \\ 
 School of Science \\
 Bachelor's Programme in Science and Technology \\}
 
 \def\THESISFI{Kandidaatintyö}
-\def\THESISSV{Kandidatarbete}
 \def\THESISEN{Bachelor's Thesis}
 
 \def\REFERENCESFI{Lähteet}
-\def\REFERENCESSV{Referenser}
 \def\REFERENCESEN{References}
 
 \def\YEAR#1{\gdef\@YEAR{#1}}
@@ -248,56 +237,11 @@ Bachelor's Programme in Science and Technology \\}
 \makebox[37mm][l]{\bf Avainsanat:}%
 \parbox[t][\height+4pt]{117.7mm}{\@KEYWORDS \par}\\
 \hline 
-\makebox[37mm][l]{\bf Kieli:}Suomi \\
+\makebox[37mm][l]{\bf Kieli:}Englanti \\
 \hline
 \end{tabular}
 \end{otherlanguage}
 \clearpage}
-
-\newenvironment{svabstract}{
-\begin{otherlanguage}{swedish}
-\makebox[90mm][l]{Aalto-universitetet}%
-\makebox[69.2mm][r]{SAMMANDRAG AV} \\
-\makebox[90mm][l]{Högskolan för teknikvetenskaper}%
-\makebox[69.2mm][r]{KANDIDATARBETET}\\
-\makebox[90mm][l]{Kandidatprogram i teknikvetenskap}
-\vskip 1mm
-\begin{tabular}{|p{154.7mm}|}
-\hline
-\makebox[37mm][l]{\bf Utfört av:}%
-\parbox[t][\height+4pt]{117.7mm}{\@author \par} \\
-\hline
-\makebox[37mm][l]{\bf Arbetets namn:}%
-\parbox[t][\height+4pt]{117.7mm}{\@TITLE \par} \\
-\hline
-\makebox[37mm][l]{\bf Datum:}\@DATE \\
-\hline
-\makebox[37mm][l]{\bf Sidoantal:}\@PAGES \\
-\hline
-\makebox[37mm][l]{\bf Huvudämne:}\@PAAAINE \\
-\makebox[37mm][l]{\bf Kod:}\@CODE \\
-\hline
-\makebox[37mm][l]{\bf Övervakare:}\@SUPERVISOR \\
-\makebox[37mm][l]{\bf Handledare:}%
-\parbox[t][\height+4pt]{117.7mm}{\@INSTRUCTOR \ (\@DEPT) \par} \\
-\hline
-\begin{minipage}{154.7mm}
-\parskip 1ex
-\vskip-1ex
-\vspace{1em}}
-{
-\vspace{1em}
-\end{minipage}\\
-\hline
-\makebox[37mm][l]{\bf Nyckelord:}%
-\parbox[t][\height+4pt]{117.7mm}{\@KEYWORDS \par}\\
-\hline
-\makebox[37mm][l]{\bf Språk:}Svenska \\
-\hline
-\end{tabular}
-\end{otherlanguage}
-\clearpage}
-
 
 \newenvironment{enabstract}{
 \begin{otherlanguage}{english}
@@ -319,7 +263,7 @@ Bachelor's Programme in Science and Technology \\}
 \hline
 \makebox[37mm][l]{\bf Pages:}\@PAGES \\
 \hline
-\makebox[37mm][l]{\bf Major:}\@PAAAINE \\
+\makebox[37mm][l]{\bf Major:}\@ENPAAAINE \\
 \makebox[37mm][l]{\bf Code:}\@CODE \\
 \hline
 \makebox[37mm][l]{\bf Supervisor:}\@ENSUPERVISOR \\
