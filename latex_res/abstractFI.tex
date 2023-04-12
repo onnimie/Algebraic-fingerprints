@@ -6,7 +6,37 @@
 % Avainsanojen lista pitää merkitä main.tex-tiedoston kohtaan \KEYWORDS.
 
 \begin{fiabstract}
-  abstrakti tulee tähän\nl \nl \nl \nl
+  Tässä työssä tutkitaan, kuinka parametrisoituja kombinatorisia ongelmia voidaan 
+  ratkaista löytämällä $k$-asteinen multilineaarinen monomi monimuuttujaisesta 
+  polynomista algebrallisin keinoin. Kandidaatintyö keskittyy tarkemmin 
+  Williamsin ja Koutisin algebrallisia sormenjälkiä hyödyntävään 
+  tekniikkaan, jolla voidaan havaita multilineaarinen monomi tehokkaasti. 
+  Lisäksi tutkitaan tämän tekniikan suomaa yleistä kehystä parametrisoitujen 
+  ongelmien ratkaisemiseksi ja sen mahdollisia rajoja. 
+  Viimeiseksi pohditaan keinoja, joilla kehystä voitaisiin kehittää tai jopa 
+  ohittaa kehyksen 
+  antama aliraja algoritmien tehokkuudelle. 
+
+  Williamsin ja Koutisin algebrallisten sormenjälkien avulla voidaan 
+  havaita $k$-asteen multilineaarinen monomi ajassa \bigO{2^k * poly(n)}, 
+  jossa $n$ on polynomin muuttujien lukumäärä. Tämä johtaa yleiseen 
+  parametrisoitujen ongelmien kehykseen, jolla niitä voidaan ratkaista 
+  tehokkaasti. 
+  Etenkin color-coding—metodiin 
+  nojaavia algoritmeja voidaan nopeuttaa tekijällä $e^k$ hyödyntämällä 
+  algebrallisia sormenjälkiä. Tällä hetkellä algebrallisten sormenjälkien 
+  tekniikka pohjaa nopeimpia algoritmeja monille parametrisoiduille 
+  kombinatorisille ongelmille.
+
+  \bigOmega{2^k * poly(n)} on kuitenkin 
+  kehyksen alaraja: Williamsin ja Koutisin algebrallisten sormenjälkien 
+  avulla ei voida havaita multilineaarisia monomeja nopeammin. Toisaalta 
+  heidän kehys perustuu yleiseen multilineaaristen monomien havaitsemisongelmaan; 
+  jos hyödynnetään ongelmakohtaisia kombinatorisia ominaisuuksia ongelman 
+  redusoinnissa multilineaaristen monomien havaitsemiseksi, 
+  voidaan löytää algoritmi, joka suoriutuu nopeammin kyseisellä ongelmalla. Björklund kykeni 
+  kehittämään algebrallisten sormenjälkien avulla algoritmin, joka 
+  löytää Hamiltonisen polun ajassa \bigO{1.657^n * poly(n)}.
 %
 %Tiivistelmätekstiä tähän (\languagename). Huomaa, että tiivistelmä tehdään %vasta kun koko työ on muuten kirjoitettu.
 

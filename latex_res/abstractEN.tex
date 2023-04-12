@@ -6,7 +6,36 @@
 % Avainsanojen lista pitää merkitä main.tex-tiedoston kohtaan \KEYWORDS.
 
 \begin{enabstract}
-  abstract to be\nl \nl \nl \nl
+  This thesis studies how parameterized combinatorial problems can be 
+  solved by detecting a $k$-multilinear monomial in a multivariate polynomial 
+  by algebraic means. More specifically, the thesis focuses on the technique 
+  of algebraic fingerprinting by Koutis and Williams. Moreover, the thesis 
+  overviews the technique as a general framework for parameterized combinatorial 
+  problems, and discusses its limits. Finally, the thesis collects some ideas 
+  for improving the framework or even surpassing the lower limit of the 
+  general framework.
+
+  With algebraic fingerprints, a $k$-multilinear monomial can be detected 
+  in time \bigO{2^k * poly(n)}, where $n$ is the number of variables in the 
+  multivariate polynomial. This gives a general framework for solving parameterized 
+  combinatorial problems efficiently, since they can in general be reduced to
+  instances of $k$-multilinear 
+  monomial detection problems. 
+  Especially algorithms that rely on color coding can be accelerated in time 
+  by a factor of $e^k$ with the use of algebraic fingerprints. Currently, 
+  this technique underlies fastest algorithms 
+  for many parameterized combinatorial problems. 
+
+  However, \bigOmega{2^k * poly(n)} is the lower limit of the technique: 
+  multilinear monomials cannot be detected faster 
+  with the general technique of algebraic fingerprints by Koutis and Williams. 
+  However, the algebraic framework solves the very general multilinear monomial 
+  detection problem; if the underlying combinatorics of the problem are well understood 
+  and taken use of in the reduction to multilinear monomial detection, 
+  a much faster algorithm based on algebraic fingerprinting may be 
+  found for a specific problem. Using ideas from algebraic fingerprinting, 
+  Björklund managed to find an algorithm that 
+  finds a Hamiltonian path in time \bigO{1.657^n * poly(n)}.
 %
 %Tiivistelmätekstiä tähän (\languagename). Huomaa, että tiivistelmä tehdään %vasta kun koko työ on muuten kirjoitettu.
 \end{enabstract}
