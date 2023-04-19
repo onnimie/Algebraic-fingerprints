@@ -51,13 +51,11 @@ The technique of algebraic fingerprinting is present in multilinear monomial det
 With algebraic fingerprints, unwanted cancelation of solution monomials due to the characteristic of a field can be prevented. 
 Moreover, algebraic fingerprints can be used to cancel non-solution monomials by abusing the characteristic.
 
-\amnote*{No need for this since you already have ToC}{%
 In the next subsections, the thesis discusses algebraization and reduction into multilinear monomial detection. 
 The section 2 covers preliminaries. In section 3, the thesis discusses general multilinear monomial detection. 
 In section 4, some problem specific instances of multilinear monomial detection are given, and clever 
 utilizations of algebraic fingerprints are shown. Section 5 concludes the
 thesis.
-}
 
 \subsection{Algebrization of combinatorial problems}
 
@@ -104,7 +102,9 @@ for the $k$-3D matching problem. Another simple example can be found, for the se
 \amnote[inline,nomargin]{I would merge the two sections and use the $k$-3D
 matching as an example to the explanation above}
 
-\subsection{Reducing $k$-3D matching into multilinear monomial detection}
+\subsection{Reducing $k$-3D matching
+\amnote*[inline,nomargin]{to}{into}
+multilinear monomial detection}
 \label{sect:reduction_example}
 
 The $k$-3D matching problem is defined as follows:
@@ -149,6 +149,7 @@ a successful reduction into multilinear monomial detection has been given for th
 
 An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. 
 TODO: show the example here
+\amnote{Remove clearpage}
 \clearpage
 \section{Related works} %TODO: maybe change headline?
 \label{sect:related_works}
@@ -302,10 +303,11 @@ However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not 
 For an algorithm to detect a multilinear monomial, it is necessary to use different mappings 
 from $X$ into $Y$ until a multilinear monomial survives the mapping. However, the probability 
 that any given multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}.
-This implies that \bigO{e^{\abs{Y}}} random mappings must be tried for a
+This implies that
+\amnote*{$\Omega$}{\bigO{e^{\abs{Y}}}} random mappings must be tried for a
 multilinear monomial to survive with a reasonable constant probability. Thus, a
 $k$-multilinear monomial is detected with a 
-randomized algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
+\amnote*{randomized}{non-deterministic} algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
 
 This is essentially the idea behind color coding introduced by \citeauthor{Alon95} \cite{Alon95}. 
 Although here given in this algebraic form for the $k$-multilinear monomial detection, 
@@ -336,15 +338,21 @@ zero.
 \end{equation}
 This implies that any non-multilinear monomial will evaluate to zero in $P(X)$, since 
 any non-multilinear monomial $q$, assuming commutativity, can be written as $x^2q'$ 
-for some $x \in X$, and $x^2q' = \mathbf{0}q = \mathbf{0}$. 
+for some $x \in X$, and \amnote*{$\mathbf{0}q'$?}{$x^2q' = \mathbf{0}q = \mathbf{0}$}. 
 Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
 i.e., there exist no solutions to the original problem.
 
 This is the basis of algebraic multilinear monomial detection introduced by 
 \citeauthor{Koutis08} \cite{Koutis08}, or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}: 
 we evaluate $P(X)$ over some algebra $\mathbf{G}$, and detect a multilinear monomial from 
-the value returned by this evaluation. Ideally, with any $\gamma \colon X \to G$, $P(X')$ representing 
-$P(X)$ over $\mathbf{G}$ by $\gamma$ and $w \neq \mathbf{0}$, 
+the value returned by this evaluation. Ideally, with any $\gamma \colon X \to
+G$,
+\amnote*{What is $X'$?}{
+$P(X')$ representing $P(X)$ over $\mathbf{G}$ by $\gamma$
+}
+and $w \neq \mathbf{0}$, 
+\amnote{Evaluation under $\gamma$ needs its own notation, e.g.,
+$\varphi_\gamma(P)$}
 
 \begin{equation}
   \label{eq:polynomial_identity}
@@ -367,20 +375,25 @@ with multilinear monomials canceling out due to characteristic,
 which is discussed here in Section \ref{sect:fingerprints}.
 
 \subsubsection{Specifications for the algebra}
+\label{sect:algebra_specs}
 
 We have arrived at an important task for multilinear monomial detection: 
-find a field $\mathbf{G}$ for 
+find a \amnote*{field or algebra?}{field} $\mathbf{G}$ for 
 the assignment $\gamma \colon X \to \mathbf{G}$ to meet 
 (\ref{eq:squared_to_zero}) and thus the first equality in (\ref{eq:polynomial_identity}). 
 We specify for fields since rings are not enough for multilinear monomial detection; 
-$\mathbf{G}$ should have commutative multiplication in order for (\ref{eq:squared_to_zero}) 
+$\mathbf{G}$ should have
+\amnote*{How about a commutative ring then?}{commutative multiplication} in order for (\ref{eq:squared_to_zero}) 
 to be effective. The ordering of indeterminates in monomials is generally unknown, 
 since the specific algebrization into multilinear monomial detection 
 is abstracted away. %Specifying for commutativity also makes it significantly 
 %easier to algebrize problems into arithmetic circuits. 
 
 For the second equality in (\ref{eq:polynomial_identity}), it is necessary that multilinear 
-monomials in $P(X)$ can map to multilinear monomials in $P(X')$, i.e., it must be that 
+monomials in $P(X)$ can map to multilinear monomials in $P(X')$, i.e., it must
+be that 
+\amnote{Isn't $P(X')$ the evaluation of $P(X)$ under $\gamma$? If so, then
+$P(X')$ is just an element of $\mathbf{G}$, not a polynomial}
 $k \leq \abs{G}$, where $k$ is the degree of the monomials. 
 Moreover, multilinear monomials 
 should not evaluate to $\mathbf{0}$ over $\mathbf{G}$, and more specifically, 
@@ -389,8 +402,12 @@ $w$ should not be identical to $\mathbf{0}$.
 These are the necessary specifications for the field $\mathbf{G}$ for algebraic multilinear monomial detection. 
 However, this algebraic detection must be faster than color coding for it to be useful. 
 Therefore, further requirements are necessary: (a) the binary operations of $\mathbf{G}$ 
-must be fast for a fast evaluation of $P(X')$, and (b) multilinear monomials must 
-survive the assignment $\gamma$ with a \emph{reasonable} constant probability. 
+must be
+\amnote*[inline,nomargin]{efficiently computable}{fast}
+for a fast evaluation of $P(X')$, and (b) multilinear monomials must 
+survive the assignment $\gamma$ with a
+\amnote*{Does it really make a difference if the probability is $1/4$ and not
+(say) $1/100$?}{\emph{reasonable} constant probability}. 
 We may specify a reasonable probability as something around at least 1/4, since that is 
 the probability of survival reached in the original work for algebraic fingerprinting \cite{Koutis08}.
 
@@ -427,7 +444,9 @@ In the work that introduced
 this algebraic fingerprinting technique \cite{Koutis08}, 
 \citeauthor{Koutis08} used the group algebra $\Z_2[\Z_2^k]$. 
 \citeauthor{Williams09} developed the technique further, 
-utilizing the algebra $GF(2^{3+log_2(k)})[\Z_2^k]$ \cite{Williams09}. 
+utilizing the algebra
+\amnote*{$2^{\log_2(k)} = k$}{$GF(2^{3+log_2(k)})[\Z_2^k]$}
+\cite{Williams09}. 
 Next, we look at these 
 group algebras of $\Z_2^k$ for $\mathbf{G}$. 
 %TODO: CHECK: and see how \emph{fingerprints} were used to 
@@ -448,21 +467,33 @@ Observe that in general, every element in $\Z_2^k$ is its own inverse:
   \label{eq:Z_2^k has char 2}
   \forall z \in \Z_2^k \colon z^2 = \mathbf{0}.
 \end{equation}
-Recall that the elements of a group algebra $\mathbf{F}[\Z_2^k]$ are linear combinations of the form 
+Recall that the elements of a
+\amnote*{Actually an algebra over a field?}{group algebra}
+$\mathbf{F}[\Z_2^k]$ are linear combinations of the form 
 \[
   \displaystyle \sum_{v \in \Z_2^k}a_v v,
 \]
 where $a_v \in \mathbf{F}$. From here on, we note the identity of $\Z_2^k$ as $v_0$, additive and 
 multiplicative identities of $\mathbf{F}$ as $\mathbf{0}_F$ and $\mathbf{1}_F$, respectively, and 
-use $\mathbf{0}$ and $\mathbf{1}$ for $\mathbf{F}[\Z_2^k]$. Note that $\mathbf{1} = v_0$, and
-$\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v = \mathbf{0}_F$.
+use $\mathbf{0}$ and $\mathbf{1}$ for
+\amnote[inline,nomargin]{the identities of}
+$\mathbf{F}[\Z_2^k]$. Note that $\mathbf{1} = v_0$, and
+$\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v =
+\mathbf{0}_F$.
+\amnote{So if we represent the elements of $\mathbf{F}[\Z_2^k]$ as vectors, we
+get vectors with $2^k$ entries}
+\amnote{Add note that \enquote{$+$} here represents addition over
+$\mathbf{F}[\Z_2^k]$ and \emph{not} addition over $\Z_2^k$ (which is represented
+by a dot)}
 
 In \cite{Koutis08}, \citeauthor{Koutis08} assigned $X$ 
 to elements of the form $(v_0 + v_i) \in \mathbf{F}[\Z_2^k]$, 
 such that for every $x_i \in X$, a random $v_i \in \Z_2^k$ is independently and uniformly 
 picked for the assignment 
-$x_i \to (v_0 + v_i)$. 
-We note the assigned values as $\overbar{X}$, and the resulting polynomial as $P(\overbar{X}) \in \mathbf{F}[\Z_2^k]$. 
+\amnote*[inline,nomargin]{$\gamma(x_i) = v_0 + v_i$}{$x_i \to (v_0 + v_i)$.} 
+We note the assigned values as $\overbar{X}$, and the resulting
+\amnote*{No longer a polynomial}{polynomial}
+as $P(\overbar{X}) \in \mathbf{F}[\Z_2^k]$. 
 \citeauthor{Koutis08} observed that 
 due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in \mathbf{F}[\Z_2^k]$, 
 \[
@@ -527,10 +558,11 @@ randomly from $\{\mathbf{0}_F, \mathbf{1}_F\}$. The idea is that a multilinear m
 assigned with the fingerprint $\mathbf{1}_F$,  
 survives the cancelation due to characteristic if the canceling pair is assigned $\mathbf{0}_F$. 
 With randomized assignments $S \to \Z_2$, there is a constant probability 
-(TODO: what is the probability?) that a multilinear 
+\amnote*{$1/2$? (for every fixed monomial)}{(TODO: what is the probability?)}
+that a multilinear 
 monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
-In practise, fingerprints can be implemented into the algebrization as follows \cite{Williams09}: 
+In \amnote*[inline,nomargin]{practice}{practise}, fingerprints can be implemented into the algebrization as follows \cite{Williams09}: 
 for every multiplication gate $G_i$ in the arithmetic circuit $A$ for $P(X)$, 
 pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
@@ -539,7 +571,8 @@ as $P(X, S)$. Note that here,
 \citeauthor{Koutis08} picked random elements from $\Z_2$ 
 instead of picking unique fingerprints $s_i$.
 
-In another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
+\amnote{Don't these last two paragraphs belong in the next section?}
+\amnote*[inline,nomargin]{From}{In} another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
 That is, we compute $P(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P(\overbar{X}, S)$, i.e., 
 compute until the gates $\overbar{G_i}$. 
 Imagine we stop here in the circuit before assigning the fingerprints $S$ to some algebra 
@@ -551,6 +584,7 @@ i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$,
   \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
   \colon P(\overbar{X}, \phi(S)) = \mathbf{0}.
 \]
+\amnote{You're going to have to explain this to me \texttt{:)}}
 
 \subsubsection{Polynomial identity testing}
 
@@ -582,6 +616,23 @@ such that the number of different assignments in $\Phi$ is much larger than
 the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}$, 
 $Q(\delta(S)) \neq \mathbf{0}$ with a high probability over some $\delta \in \Phi$ 
 \cite{Williams09}. 
+
+\begin{anamnote}[nomargin]{}
+  References for Schwartz-Zippel:
+  \begin{itemize}
+    \item J. T. Schwartz, “Fast probabilistic algorithms for verification of
+    polynomial identities,” Journal of the ACM, vol. 27, no. 4, pp. 701–717,
+    1980.
+    \item  S. Yekhanin, Locally Decodable Codes. Now Publishers, 2012. (To
+    appear).  R. Zippel, “Probabilistic algorithms for sparse polynomials,” in
+    EUROSAM, vol. 72 of Lecture Notes in Computer Science, (E. W. Ng, ed.), pp.
+    216–226, Springer, 1979.
+    \item also maybe  R. A. DeMillo and R. J. Lipton, “A probabilistic remark on
+    algebraic program testing,” Information Processing Letters, vol. 7, no. 4,
+    pp. 193–195, 1978.
+    
+  \end{itemize}
+\end{anamnote}
 
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
 used the field $GF(2^{3+log_2k})$ \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
@@ -633,6 +684,8 @@ TODO: Probably something about the circuits (time and space complexity of operat
 TODO (when talking circuits): arithmetic circuits have addition gates with unbounded fan-in, 
 multiplication gates of fan-in two, no scalar multiplication 
 (augment scalar multiplication (fingerprints) "later")
+
+
 
 \subsubsection{Implementation}
 
