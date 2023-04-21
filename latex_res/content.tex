@@ -102,9 +102,7 @@ for the $k$-3D matching problem. Another simple example can be found, for the se
 \amnote[inline,nomargin]{I would merge the two sections and use the $k$-3D
 matching as an example to the explanation above}
 
-\subsection{Reducing $k$-3D matching
-\amnote*[inline,nomargin]{to}{into}
-multilinear monomial detection}
+\subsection{Reducing $k$-3D matching to multilinear monomial detection}
 \label{sect:reduction_example}
 
 The $k$-3D matching problem is defined as follows:
@@ -154,9 +152,54 @@ TODO: show the example here
 \section{Related works} %TODO: maybe change headline?
 \label{sect:related_works}
 
-TODO: go through publications that utilize this algebraic fingerprinting technique, 
-and problems that reduce to multilinear detection
-\clearpage
+The importance of multilinear monomial detection lies in the fact 
+that many combinatorial problems, as we see in this section, 
+can be reduced to instances of it. Furthermore, solving these parameterized problems 
+efficiently may imply significant improvement for the parent NP-hard problems. 
+Thus, solving the general $k$-multilinear monomial detection problem 
+efficiently has been of great interest. Note that only time complexity is discussed here. 
+%However, though omitted, space complexities have also been improved with algebraic fingerprinting.
+
+Ideas behind representing combinatorial problems with multivariate polynomials have 
+been considered before, e.g., by \citeauthor{Valiant92} \cite{Valiant92} and 
+\citeauthor{Koutis05} \cite{Koutis05}. However, 
+\citeauthor{Koutis08} was the first one to introduce and apply multilinear monomial 
+detection for combinatorial problems, namely the $k$-path and $m$-set $k$-packing problems 
+\cite{Koutis08}. For $k$-path, this improved the runtime from 
+\bigOstar{4^k} \cite{Chen07} to \bigOstar{2^{3k/2}}, and for $m$-set $k$-packing, 
+the runtime was improved from \bigOstar{5.44^{mk}} \cite{Koutis05} to \bigOstar{2^{mk}}.
+
+Soon after, \citeauthor{Williams09} developed this algebraic technique 
+for an \bigOstar{2^k} $k$-path \cite{Williams09}, 
+from which \citeauthor{KouWil09} \cite{KouWil09, KouWil15} 
+gathered and proposed a general 
+\bigOstar{2^k} algebraic framework, 
+\emph{algebraic fingerprinting}, for $k$-multilinear monomial detection 
+as a general technique for 
+parameterized combinatorial problems. In their work \cite{KouWil09}, 
+\citeauthor{KouWil09} gave faster \bigOstar{2^k} algorithms using this technique for the 
+$k$-tree, $k$-leaf spanning tree, and $t$-dominating set problems. %, and an 
+%\bigOstar{2^{(m-1)k}} algorithm for the $m$-dimensional $k$-matching problem. 
+The runtimes of the previously fastest algorithms for these problems, respectively, were   
+\bigOstar{(2e)^k} \cite{Alon95}, \bigOstar{4^k} \cite{Kneis11}, \bigOstar{(4+\varepsilon)^t} \cite{Kneis07}. 
+ 
+Due to the development in algebraic fingerprinting, 
+\citeauthor{Björklund14} \cite{Björklund14} found an \bigOstar{1.657^n} algorithm for 
+Hamiltonicity, improving the runtime from \bigOstar{2^n} \cite{Bellman62, HelKar62}, 
+by clever algebrization and utilizations of algebraic fingerprints. Using similar 
+ideas, \citeauthor{Björklund17} \cite{Björklund17} gave faster algorithms for 
+$k$-path, $m$-set $k$-packing, and its special case of 3-set $k$-packing. 
+The runtimes for these were \bigOstar{1.657^k}, \bigOstar{2^{(m-2)k}} and \bigOstar{1.493^{3k}}, respectively.
+
+$k$-multilinear monomial detection itself was widely studied by 
+\citeauthor{Chen07} \cite{Chen07, Chen11a}, \citeauthor{Chen13a} \cite{Chen13a, Chen11b} 
+and \citeauthor{Chen13b} \cite{Chen13b}. TODO: what did they research (deterministic stuff, primality of the field) 
+(In this thesis though, we focus on the randomized technique of algebraic fingerprinting.)
+
+TODO: constrained multilinear detection (weights? functional motifs for biological networks)
+
+TODO: parallelization (MIDAS?)
+
 
 \section{Preliminaries}
 \label{sect:prelims}
