@@ -648,6 +648,68 @@ results in a \bigOstar{2^k} time algorithm.
 In the following section, we see this as a whole and look further into implementing this stuff. 
 TODO: rephrase
 
+\subsection{Time and space complexity}
+\label{sect:complexity}
+
+In the previous section, we discussed the specifications for an algebra to 
+implement algebraic fingerprinting. For an appropriate algebra, we found 
+$GF(2^{l})[Z_2^k]$. However, we did not discuss the costs related 
+to this algebra. In this section, we briefly discuss the time and space complexity 
+of algebraic fingerprinting.
+
+Define the evaluation of $P_S(X)$ at any $X$ to take $g(n)$ number of  
+arithmetic operations, where $n = \abs{X}$. In general, 
+detecting $k$-degree multilinear monomials in $P(X)$ takes 
+\bigOstar{2^kg} time and \bigO{poly(n,k)} space \cite{Williams09}.
+
+Actually, the complexities given by \citeauthor{Koutis08} \cite{Koutis08} and 
+\citeauthor{Williams09} \cite{Williams09} did not directly come from 
+$\Z_2[Z_2^k]$ or $GF(2^{l})[Z_2^k]$. 
+To make the complexity claims in \cite{Koutis08}, 
+\citeauthor{Koutis08} used a well-known \cite{Terras99} isomorphism 
+$\kappa \colon \Z[\Z_2^k] \to \mathcal{M}$, where $\mathcal{M} = \mathbf{M}^{2^k \times 2^k}$ 
+is an algebra of special permutation matrices with binary entries. To translate $\Z[\Z_2^k]$ to 
+$\Z_2[\Z_2^k]$, it is enough to take the modulo 2 of the coefficients $a_v$ in 
+the elements of $\Z[\Z_2^k]$: 
+\[
+  \displaystyle \sum_{v \in \Z_2^k}a_v v \in \Z[\Z_2^k] \implies 
+  \displaystyle \sum_{v \in \Z_2^k}(a_v \: mod \: 2) v \in \Z_2[\Z_2^k]
+\]
+
+%Thus, if we assign $S$ to $\Z$, it is enough to consider the parity of 
+%the coefficient of $v_0 \in \Z_2^k$ in $P_S(\overbar{X})$ \cite{Koutis08}. 
+Since \citeauthor{Koutis08} 
+used an isomorphism, all the ideas given in 
+Section \ref{sect:algebraic_fingerprinting} still hold for 
+detecting multilinear monomials. That is, 
+the given implementation for (\ref{eq:polynomial_identity}) is valid through $\kappa$.
+
+\omnote*{Maybe don't go further than this}{Using these matrices, }
+\citeauthor{Koutis08} \cite{Koutis08} detected $k$-multilinear monomials 
+by computing the \omnote*{add to prelims?}{trace} of the matrix resulting 
+from the evaluation of $P_S(X)$ over $\mathcal{M}$. The trace can be computed 
+in time \bigO{2^k(nk+t)} and space \bigO{nk+s}, where $t$ and $s$ are the time 
+and space complexity of the $g(n)$ arithmetic operations, respectively. 
+
+For $GF(2^{l})[Z_2^k]$, the same ideas are used, though we omit 
+further discussion into this for the sake of brevity. 
+Thus, we have a general 
+\bigOstar{2^kg} time and \bigO{poly(n,k)} space algorithm for detecting 
+$k$-degree multilinear monomials in $P(X)$, where $g$ is the number of gates in the 
+arithmetic circuit for $P(X)$ and $n = \abs{X}$ \cite{KouWil09}.
+
+It is important to note here that this complexity is for $k$-degree 
+multilinear monomial detection. Whether a parameterized problem with a parameter 
+$k$ receives an \bigOstar{2^k} time algorithm, is determined by the algebrization 
+of said parameterized problem. 
+For example for $k$-path, algebraic fingerprinting gives an \bigOstar{2^k} 
+time algorithm \cite{Williams09}. 
+For $k$-3D-matching however, as given in Section \ref{sect:TODO}, 
+algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm \cite{KouWil15}, since 
+$k$-3D-matching reduces into $3k$-degree multilinear monomial detection.
+
+
+
 \subsection{Algebraic fingerprinting as a framework for parameterized problems}
 \label{sect:algebraic_framework}
 
@@ -676,22 +738,21 @@ this technique: the chosen algebra $GF(2^{3+log_2k})[Z_2^k]$
 is optimal for the general multilinear monomial detection.
 
 
-\subsubsection{Time and space complexity}
-\label{sect:complexity}
+%\subsubsection{Time and space complexity}
 
-TODO: Probably something about the circuits (time and space complexity of operations)
+%TODO: Probably something about the circuits (time and space complexity of operations)
 
-TODO (when talking circuits): arithmetic circuits have addition gates with unbounded fan-in, 
-multiplication gates of fan-in two, no scalar multiplication 
-(augment scalar multiplication (fingerprints) "later")
-
+%TODO (when talking circuits): arithmetic circuits have addition gates with unbounded fan-in, 
+%multiplication gates of fan-in two, no scalar multiplication 
+%(augment scalar multiplication (fingerprints) "later")
 
 
-\subsubsection{Implementation}
 
-TODO: give an example how to get an algorithm, e.g., for $k$-path?
+%\subsubsection{Implementation}
 
-\subsubsection{Limits of the framework}
+%TODO: give an example how to get an algorithm, e.g., for $k$-path?
+
+\subsection{Limits of algebraic fingerprinting}
 \label{sect:limits}
 
 SHORT SECTION
@@ -701,6 +762,39 @@ SHORT SECTION
 
 TODO: explain the limit in general multilinear detection with this algebraic framework 
 (impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
+
+\subsubsection{There are no faster algebras}
+
+In Section \ref{sect:complexity}, it was established that $k$-multilinear monomials 
+in $P(X)$ are detected with 
+algebraic fingerprinting in \bigOstar{2^kg} time, where 
+$g$ is the number of gates in the arithmetic circuit for $P(X)$ \cite{Williams09}. 
+This time was achieved by evaluating the circuit over matrix 
+representations of the algebra $GF(2^l)[\Z_2^k]$.
+
+%Furthermore, 
+\citeauthor{KouWil09} showed that this particular algebra is nearly optimal 
+for time complexity \cite{KouWil09}: there is no significantly faster algebra that 
+is appropriate for the general $k$-multilinear monomial detection. 
+The authors proved that if any commutative algebra $\mathcal{G}$ is 
+used for detecting $k$-multilinear monomials, 
+the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
+
+Thus for the general $k$-multilinear monomial detection, we may say 
+that the algebraic fingerprinting is in some sense optimal. 
+However, 
+ideas from algebraic fingerprints can be utilized for faster algorithms for 
+specific $k$-multilinear monomial detection instances (see Section \ref{sect:TODO}).
+
+\subsubsection{Derandomization seems difficult}
+
+Algebraic fingerprinting gives a randomized algorithm for $k$-multilinear monomial detection. 
+The derandomization of the general framework seems hard, since algebraic fingerprinting 
+uses the fact that polynomial identity testing can be solved in polynomial time with 
+a randomized algorithm \cite{Williams09}. If algebraic fingerprinting can be derandomized 
+in polynomial time, it implies that polynomial identity testing can be solved with a 
+polynomial time deterministic algorithm. This would imply strong circuit lower bounds \cite{TODO}, 
+which is hard??
 
 \subsection{Finding the solution}
 \label{sect:finding_the_solution}
