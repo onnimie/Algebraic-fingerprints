@@ -154,10 +154,12 @@ TODO: show the example here
 
 The importance of multilinear monomial detection lies in the fact 
 that many combinatorial problems, as we see in this section, 
-can be reduced to instances of it. Furthermore, solving these parameterized problems 
-efficiently may imply significant improvement for the parent NP-hard problems. 
+can be reduced to instances of it. 
 Thus, solving the general $k$-multilinear monomial detection problem 
-efficiently has been of great interest. Note that only time complexity is discussed here. 
+efficiently has been of great interest. 
+Moreover, the technique of algebraic fingerprints underlie the fastest algorithms 
+for all the problems mentioned here. 
+Note that only time complexity is discussed here. 
 %However, though omitted, space complexities have also been improved with algebraic fingerprinting.
 
 Ideas behind representing combinatorial problems with multivariate polynomials have 
@@ -182,7 +184,7 @@ $k$-tree, $k$-leaf spanning tree, and $t$-dominating set problems. %, and an
 %\bigOstar{2^{(m-1)k}} algorithm for the $m$-dimensional $k$-matching problem. 
 The runtimes of the previously fastest algorithms for these problems, respectively, were   
 \bigOstar{(2e)^k} \cite{Alon95}, \bigOstar{4^k} \cite{Kneis11}, \bigOstar{(4+\varepsilon)^t} \cite{Kneis07}. 
- 
+
 Due to the development in algebraic fingerprinting, 
 \citeauthor{Björklund14} \cite{Björklund14} found an \bigOstar{1.657^n} algorithm for 
 Hamiltonicity, improving the runtime from \bigOstar{2^n} \cite{Bellman62, HelKar62}, 
@@ -196,82 +198,154 @@ $k$-multilinear monomial detection itself was widely studied by
 and \citeauthor{Chen13b} \cite{Chen13b}. TODO: what did they research (deterministic stuff, primality of the field) 
 (In this thesis though, we focus on the randomized technique of algebraic fingerprinting.)
 
+TODO: deterministic multilinear detection
+
 TODO: constrained multilinear detection (weights? functional motifs for biological networks)
 
 TODO: parallelization (MIDAS?)
+
+Stuff: Fast graph scan statistics, temporal graphs, 
 
 
 \section{Preliminaries}
 \label{sect:prelims}
 
-It is necessary to recall basic algebraic concepts 
+It is necessary to recall basic algebraic concepts and common notation 
 before further discussing multilinear monomial detection and algebraic fingerprinting. 
-\cref{sect:prelims_algebra} gives definitions for a group, ring and field, 
-and some useful concepts regarding them. 
-\cref{sect:prelims_other} goes through other notation and terminology used 
+Section \ref{sect:prelims_algebra} gives definitions for some necessary algebras 
+and algebraic concepts. Section \ref{sect:prelims_circuits} outlines arithmetic circuits. 
+Section \ref{sect:prelims_other} goes through other notation and terminology used 
 throughout the thesis.
 
-\subsection{Groups, rings and fields} %polynomial rings, group algebra, char of field
+\subsection{Algebra} 
 \label{sect:prelims_algebra}
 
-A group \amnote*{There is also \texttt{\textbackslash mathbf}}{$\textbf G$}
-is a tuple $(G, +)$, where $G$ is a set of elements,
-\amnote{See TeX source}
-%$+$ : $G \times G \longrightarrow G$
-$+ \colon G \times G \to G$
+\textbf{Groups.} A \emph{group} $\mathbf G$
+is a tuple $(G, +)$, where $G$ is a set of elements, 
+$+ \colon G \times G \to G$ 
 is a binary operation closed under 
-the elements in $G$, $+$ is associative, every element $g\in G$ has an inverse $g^{-1}\in G$, and $G$ contains 
-an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. Moreover, $\textbf G$ is called $Abelian$ if 
-$+$ is also commutative.
-\amnote{I think $e = e^{-1}$ follows from the other requirements (but that is
-not so important)}
+the elements in $G$, $+$ is associative, every element $g \in G$ 
+has an inverse $g^{-1}\in G$, and $G$ contains 
+an identity element $e$ such that $g + e = g$, $g + g^{-1} = e$ and $e = e^{-1}$. 
+Moreover, $\mathbf G$ is called \emph{Abelian} if 
+$+$ is also commutative. A group is called \emph{multiplicative} if the operation 
+is written as multiplication.
 
-A ring $\textbf R$ is a tuple
-\amnote*[inline,nomargin]{$(R,+,\cdot)$}{$(R, \cdot )$},
-where $R = (G, +)$ is an Abelian group, $\cdot$ : $G \times G \longrightarrow G$ 
-is a binary operation closed under $G$. We call the binary operations $+$ and
-$\cdot$
-%as
-addition and multiplication, respectively. 
-Note, that from here on we use $R$ as the set of elements defined for $\textbf R$. 
-In general, a bold typeface \textbf X represents a group, ring or field and $X$ its set of elements. 
-$R$ must contain a multiplicative identity $\textbf 1 \in R$ such that $\forall a \in R$: $a \cdot \textbf 1 = a$. 
-We notate the additive identity $e$ required for the group as $\textbf 0$ from here on. 
-Observe, that for any $R \neq \{\textbf 0\}$, $\textbf 1 \neq \textbf 0$.  
+\textbf{Rings.} A \emph{ring} $\mathbf R$ is a triple $(R,+,\cdot)$, 
+where $(R, +)$ is an Abelian group, and $\cdot \colon R \times R \to R$ 
+is a binary operation closed under $R$. We call the binary operations $+$ and $\cdot$ 
+addition and multiplication, respectively. A \emph{commutative ring} has commutative multiplication. 
+
+Note, from here on we may use a bold typeface to represent either the set of elements 
+or the algebraic structure itself, i.e., 
+we may use expressions such as $u \in \mathbf{R}$, where $\mathbf{R} = (R,+,\cdot)$ and $u \in R$. 
+Moreover, multiplication may be written with juxtaposition for brevity: $a\cdot b = ab$. 
+
+$\mathbf{R}$ must contain a multiplicative identity 
+$\mathbf{1} \in \mathbf{R}$ such that $\forall a \in \mathbf{R} \colon a \cdot \mathbf{1} = a$. 
+We notate the additive identity $e$ 
+%required for the group%
+as $\mathbf{0}$ from here on. 
+Observe that for any $R \neq \{\mathbf{0}\}$, $\mathbf{1} \neq \mathbf{0}$. 
 Left and right distributive laws hold for rings, i.e., 
-\begin{center}
-  $\forall a, b, c \in R$: $a \cdot (b + c) = (a \cdot b) + (a \cdot c) \land (b + c) \cdot a = (b \cdot a) + (c \cdot a)$.
-\end{center}
-$u \in R$ is called $unit$ if it holds that $\exists v \in R$: $u \cdot v = v \cdot u = \textbf 1$, 
-i.e., it has a multiplicative inverse $v \in R$.
+\[
+  \forall a, b, c \in \mathbf{R} \colon a \cdot (b + c) = (ab) + (ac) \land (b + c) \cdot a = (ba) + (ca).
+\]
+$u \in \mathbf{R}$ is called \emph{unit} if it holds 
+that $\exists v \in \mathbf{R} \colon uv = vu = \mathbf{1}$, 
+i.e., it has a multiplicative inverse $v \in \mathbf{R}$.
 
-A field $\textbf F = (F, +, \cdot)$ is defined with the following conditions:
+\textbf{Fields.} A \emph{field} $\mathbf{F} = (F, +, \cdot)$ is defined with the following conditions:
 \begin{itemize}
   \item $(F, +)$ is an Abelian group
-  \item $(F\backslash \{\textbf 0\}, \cdot )$ is an Abelian group
-  \item Left and right distributive laws hold for \textbf F
+  \item $(F\backslash \{\mathbf{0}\}, \cdot )$ is an Abelian group
+  \item Left and right distributive laws hold for $\mathbf{F}$.
 \end{itemize}
 
-Equivalently, a ring is a field if every non-zero element is unit, $\textbf 1 \neq \textbf 0$, and multiplication is commutative. 
-The $characteristic$ of a field \textbf F is defined as follows:
+Equivalently, a ring is a field if every non-zero element is unit, $\mathbf{1} \neq \mathbf{0}$, 
+and multiplication is commutative. 
+The \emph{characteristic} of a field $\mathbf{F}$ is defined as follows:
 \begin{equation}
-  char(\textbf F) =
+  char(\mathbf{F}) =
     \begin{cases}
-      min\{n \in \N : n \cdot \textbf 1 = \textbf 0 \}\\
+      min\{n \in \N \colon n \cdot \mathbf{1} = \mathbf{0} \}\\
       0 & \text{if such $n$ does not exist}\\
     \end{cases}       
 \end{equation}
 
-
-Note, that a field \textbf F with 
+Note, that a field $\mathbf{F}$ with 
 characteristic 2 satisfies the following:
-\begin{center}
-  $\forall u \in F$: $u + u = u \cdot (\textbf 1 + \textbf 1) = u \cdot \textbf 0 = \textbf 0$
-\end{center}
+\[
+  \forall u \in \mathbf{F} \colon u + u = u \cdot (\mathbf 1 + \mathbf 1) = u \cdot \mathbf 0 = \mathbf 0
+\]
+Throughout the thesis we may use language such as \emph{cancelation due to characteristic} to 
+refer to the fact that an element $f \in \mathbf{F}$ may cancel itself out in an expression if 
+$\mathbf{F}$ has non-zero characteristic. 
+We mainly use characteristic 2 in this thesis, and thus, we may say that 
+$f$ cancels out due to characteristic when 
+it has an even coefficient: 
+$f + f + f + f = 4f = 2f + 2f = \mathbf{0} + \mathbf{0} = \mathbf{0}.$
 
-TODO: group algebra, polynomial ring, linear dependency, "cancelation due to characteristic", 
-Galois field, "multiplicative group"\nl
+Characteristics are prevalent in \emph{finite fields}, where the set of elements is finite. 
+A simple example of a finite field is $\Z_2 = (\{\mathbf{0}, \mathbf{1}\}, +, \cdot)$, where 
+the operations are standard addition modulo 2, and standard multiplication. 
+
+Finite fields can be noted as $GF(p)$, called \emph{Galois fields}, where the field is unique 
+up to \emph{isomorphism} if $p$ is a prime or a power of some prime. 
+An isomorphism $\kappa \colon \mathbf{A} \to \mathbf{B}$ 
+is a bijective mapping that satisfies 
+$\forall u,v \in \mathbf{A} \colon \kappa(uv) = \kappa(u)\kappa(v) \wedge \kappa(u+v) = \kappa(u)+\kappa(v).$ 
+Thus, if we only care for the relations between the elements, we may say that isomorphic algebras are 
+equivalent for us. 
+Note that if $p$ is prime and $k \in \N$, the characteristic of $GF(p^k)$ is $p$. 
+%Moreover, the non-zero elements of a finite field form a multiplicative group.
+
+\textbf{Polynomial rings and multilinearity.} 
+A \emph{polynomial ring} in $X$, noted as $\mathbf{K}[X]$,
+is a ring of polynomials with indeterminates (or variables) from $X$ and 
+coefficients from the commutative ring $\mathbf{K}$. 
+In this thesis, we only handle \emph{multivariate} 
+polynomials, i.e., polynomials that have $\abs{X} = n > 1$. 
+
+A \emph{monomial} in $X$ is of the form 
+$X_1^{a_1}X_2^{a_2}\cdots X_n^{a_n}$, where $X_i \in X$ and $a_i \in \N$ marks the exponent. 
+A monomial is \emph{multilinear} if 
+$\forall i \in \{1, \ldots, n\} \colon a_i = 0 \vee a_i = 1$. 
+The \emph{degree} of a monomial $m$ 
+is the sum of the exponents: $deg(m) = \sum_{i=1}^n a_i$. 
+Any element $P$ of such polynomial ring is a finite linear combination of these monomials 
+with coefficients $k \in \mathbf{K}$: 
+\[
+  P = \displaystyle \sum_p k_p(X_1^{a_{1,p} \cdots X_n^{a_{n,p}}})
+\] 
+Alternatively, a polynomial ring $\mathbf{K}[X]$ can be thought of as a vector space with 
+the all the monomials as a basis. 
+Polynomial rings have three operations: addition, multiplication 
+and scalar multiplication. In terms of vectors, addition and scalar multiplication follow 
+the standard addition and scalar multiplication for vectors. 
+Note that the scalar value must be in $\mathbf{K}$. 
+The multiplication is defined as follows: 
+let $M(X)$ denote the set of all monomials in $X$, and 
+$P_d$ denote a polynomial in $\mathbf{K}[X]$ of the form $P_d = \sum_{m \in M(X)} d_m m$, 
+where $d_m \in \mathbf{K}$. Then, 
+\[
+  \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b = (\displaystyle \sum_{m \in M(X)} a_m m)
+  \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = 
+\]
+
+
+
+Note that $\mathbf{0} \in \mathbf{K}[X]$ corresponds to $P$ with zero-coefficients, and 
+$\mathbf{1} \in \mathbf{K}[X]$ corresponds to 
+
+
+
+TODO: group algebra
+\nl
 %TODO: Cygan, p. 337
+
+\subsection{Arithmetic circuits}
+\label{sect:prelims_circuits}
 
 \subsection{Notation and other terminology} 
 \label{sect:prelims_other}
@@ -518,9 +592,8 @@ $\mathbf{F}[\Z_2^k]$ are linear combinations of the form
 \]
 where $a_v \in \mathbf{F}$. From here on, we note the identity of $\Z_2^k$ as $v_0$, additive and 
 multiplicative identities of $\mathbf{F}$ as $\mathbf{0}_F$ and $\mathbf{1}_F$, respectively, and 
-use $\mathbf{0}$ and $\mathbf{1}$ for
-\amnote[inline,nomargin]{the identities of}
-$\mathbf{F}[\Z_2^k]$. Note that $\mathbf{1} = v_0$, and
+use $\mathbf{0}$ and $\mathbf{1}$ for the identities of 
+$\mathbf{F}[\Z_2^k]$. Recall that $\mathbf{1} = v_0$, and
 $\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v =
 \mathbf{0}_F$.
 \amnote{So if we represent the elements of $\mathbf{F}[\Z_2^k]$ as vectors, we
