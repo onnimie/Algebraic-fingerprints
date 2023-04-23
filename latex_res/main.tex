@@ -43,6 +43,8 @@ style=alphabetic,
 sorting=nyt
 ]{biblatex}
 \addbibresource{sources.bib}
+\usepackage[rightcaption]{sidecap}
+\usepackage{graphicx} % for images
 
 % For comments (remove from final version)
 \usepackage[draft]{fixme}
@@ -52,6 +54,7 @@ sorting=nyt
 \FXRegisterAuthor{om}{anom}{OM} % if you want to add comments too
 
 % Koko dokumentin kattavia asetuksia:
+\graphicspath{ {./images} } % give path to images for use in figures
 
 % Tavutettavia sanoja:
 %\hyphenation{vää-rin me-ne-vi-en eri-kois-ten sa-no-jen tavu-raja-ehdo-tuk-set}
