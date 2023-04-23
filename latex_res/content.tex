@@ -2,20 +2,26 @@
 
 \section{Introduction}
 
-In recent years, there have been rapid advances in the algorithms for combinatorial problems. 
+In the past fifteen years, 
+there have been rapid advances in the algorithms for combinatorial problems. 
 This has been greatly sparked by the development in algebraic techniques for solving the 
-multilinear monomial detection problem, i.e., finding whether a multivariate polynomial contains a multilinear monomial, 
-first introduced by \citeauthor{Koutis05} in \cite{Koutis05}, where the set packing problem is
+multilinear monomial detection problem, that is, 
+deciding whether a multivariate polynomial contains a multilinear monomial.
+Multilinear monomial detection for parameterized combinatorial problems was 
+first introduced by \citeauthor{Koutis05} in an early work 
+\cite{Koutis05}, where a set packing problem is 
 reduced to multilinear monomial detection.
 
-Namely, the technique of algebraic fingeprinting, first introduced in
-\cite{Koutis08} and further developed in \cite{Williams09}, 
+Namely, the technique of algebraic fingeprinting, soon after  
+introduced by \citeauthor{Koutis08} \cite{Koutis08} and further developed by 
+\citeauthor{Williams09} \cite{Williams09}, 
 has found great success for many combinatorial problems. 
-For example, with algebraic fingerprinting, the $k$-path problem 
-that previously could be solved in \bigOstar{4^{k}} time by \citeauthor{Chen07} in \cite{Chen07}, 
-could be solved in \bigOstar{2^{3k/2}} time in \cite{Koutis08}. 
+For example with algebraic fingerprints, the $k$-path problem 
+that previously could be solved in \bigOstar{4^{k}} time by \citeauthor{Chen07} \cite{Chen07}, 
+could be solved in \bigOstar{2^{3k/2}} time \cite{Koutis08}. 
 \amnote{What is the meaning of \bigOstar{}?}
-This result was quickly improved in \cite{Williams09}, where an \bigOstar{2^k} algorithm was given.
+This result was quickly improved by \cite{Williams09} \cite{Williams09}, 
+who gave an \bigOstar{2^k} algorithm.
 
 \amnote*[inline,nomargin]{This technique was further developed by
 \citeauthor{Björklund14} \cite{Björklund14}, who showed ...}{
@@ -147,8 +153,69 @@ a successful reduction into multilinear monomial detection has been given for th
 
 An example instance of $k$-3D matching with this exact algebraization can be found in \cite{KouWil15}. 
 TODO: show the example here
-\amnote{Remove clearpage}
-\clearpage
+
+
+\subsection{Problem definition}
+
+The general, parameterized multilinear monomial detection problem is defined as follows: 
+
+\begin{problem}
+  \problemtitle{$k$-\textsc{multilinear monomial detection}}
+  \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$ representing a polynomial $P(X)$.}
+  \problemquestion{Does the polynomial $P(X)$ extended as a sum of monomials 
+  contain a multilinear monomial of degree $k$?}
+\end{problem}
+
+Clearly, an upper bound for solving the problem is given by a 
+naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$. 
+However, this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
+possible monomials, and most problems that can use this algebraization, 
+have been solved with faster algorithms. %(TODO: quick example?) 
+This motivates the detection of multilinear monomials 
+without fully expanding $A$ into a sum of monomials.
+
+Since only multilinear terms are important in $P(X)$, 
+any squared variable can be instantly discarded as soons as it is formed in $A$. 
+This can be achieved with dynamic programming to create a polynomial $P'(X)$ that 
+only contains multilinear monomials. Since there are $2^N$ multilinear monomials in $P'(X)$ with 
+$N$ variables, this method results in a slightly 
+faster algorithm than with naive expansion.
+
+%TODO: Maybe rewrite the algebra here 
+%(first quickly in English, then in maths, and maybe label the mapping functions)
+However, the underlying problems are usually FPT. This implies that scaling exponentially 
+with the number of variables is far from optimal. In order for the complexity of the algorithm to scale 
+with the parameter $k$, we can reduce the number of variables by mapping $X$ into $Y$, where 
+$\abs{X} \geq \abs{Y}$ and
+\amnote*{Def?}{$\abs{Y} \propto k$}, and dynamically evaluate $P(Y)$ instead of
+$P(X)$. 
+\amnote{$P$ is unchanged, so it still expects $\abs{X}$ arguments...?}
+
+However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not be multilinear in $P(Y)$. 
+For an algorithm to detect a multilinear monomial, it is necessary to use different mappings 
+from $X$ into $Y$ until a multilinear monomial survives the mapping. However, the probability 
+that any given multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}. 
+This implies that 
+\bigOmega{e^{\abs{Y}}} random mappings must be tried for a 
+multilinear monomial to survive with a reasonable constant probability. Thus, a 
+$k$-multilinear monomial is detected with a 
+randomized algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
+
+This is essentially the idea behind color coding introduced by \citeauthor{Alon95} \cite{Alon95}. 
+Although here given in this algebraic form for the $k$-multilinear monomial detection, 
+color coding is combinatorial, and does not rely on algebraic techniques. 
+However, since $k$-multilinear monomial detection is a purely algebraic problem, it is reasonable to 
+conjecture that there is an algebraic method for solving it.
+
+Indeed, a faster algebraic method exists; the technique of algebraic fingerprinting 
+first introduced by \citeauthor{Koutis08} \cite{Koutis08} and 
+further developed by \citeauthor{Williams09} \cite{Williams09} 
+solves $k$-multilinear monomial detection in \bigOstar{2^k} time. 
+Since the technique focuses on the abstract $k$-multilinear monomial detection, 
+to which many parameterized problems can be reduced to, 
+it gives a general framework for 
+solving parameterized problems \cite{KouWil15}.
+
 \section{Related problems} %TODO: maybe change headline?
 \label{sect:related_problems}
 
@@ -425,78 +492,23 @@ as seen in Section \ref{sect:related_problems}.
 Therefore, any progress in general multilinear monomial detection implies 
 faster algorithms for the problems mentioned in Section \ref{sect:related_problems}.
 
-In this section, we first recall the problem definition for the general 
-multilinear monomial detection, 
-and give some non-algebraic background on solving it. Then in Section \ref{sect:algebraic_fingerprinting}, 
-we discuss the algebraic ideas by \citeauthor{KouWil15} \cite{Koutis08, Williams09, KouWil15}. 
-Section \ref{sect:algebraic_fingerprinting} is long, but the overall idea as a 
-general framework for parameterized problems is 
-summarized and discussed in Section \ref{sect:algebraic_framework}. 
-Finally, we briefly discuss finding the solution when its 
-existence is detected in Section \ref{sect:finding_the_solution}.
+In this section, 
+we discuss the algebraic ideas by \citeauthor{KouWil09} \cite{Koutis08, Williams09, KouWil09} 
+for the $k$-multilinear monomial detection. 
+In Section \ref{sect:algebraic_fingerprinting}, 
+we dive into the technique of algebraic fingerprinting, and 
+see the ideas and implementations of \citeauthor{KouWil09}. 
+In Section \ref{sect:complexity} we briefly discuss the time and space complexity 
+of the general algebraic framework given by algebraic fingerprinting. 
+Finally, Section \ref{sect:limits} discusses the limits of algebraic fingerprinting.
 
-\subsection{Problem definition}
-
-The general, parameterized multilinear monomial detection problem is defined as follows: 
-
-\amnote{Arithmetic circuit has bounded or unbounded fan-in / fan-out?}
+As a prelude for the following sections, recall the relevant problem definition: 
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
   \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$ representing a polynomial $P(X)$.}
   \problemquestion{Does the polynomial $P(X)$ extended as a sum of monomials 
   contain a multilinear monomial of degree $k$?}
 \end{problem}
-
-Clearly, an upper bound for solving the problem is given by a 
-naive expansion of $A$ into $P(X)$ and evaluation of $P(X)$.
-However, this is not optimal: an $N$-degree polynomial will have $2^{\Theta(N)}$ 
-possible monomials, and most problems that can use this algebraization, 
-have been solved with faster algorithms. %(TODO: quick example?) 
-This motivates the detection of multilinear monomials 
-without fully expanding $A$ into a sum of monomials.
-
-Since only multilinear terms are important in $P(X)$, 
-any squared variable can be instantly discarded as soons as it is formed in $A$. 
-This can be achieved with dynamic programming to create a polynomial $P'(X)$ that 
-only contains multilinear monomials. Since there are $2^N$ multilinear monomials in $P'(X)$ with 
-$N$ variables, this method results in a
-\amnote*{but still exponential}{faster} algorithm than with naive expansion.
-
-%TODO: Maybe rewrite the algebra here 
-%(first quickly in English, then in maths, and maybe label the mapping functions)
-However, the underlying problems are usually FPT. This implies that scaling exponentially 
-with the number of variables is far from optimal. In order for the complexity of the algorithm to scale 
-with the parameter $k$, we can reduce the number of variables by mapping $X$ into $Y$, where 
-$\abs{X} \geq \abs{Y}$ and
-\amnote*{Def?}{$\abs{Y} \propto k$}, and dynamically evaluate $P(Y)$ instead of
-$P(X)$. 
-\amnote{$P$ is unchanged, so it still expects $\abs{X}$ arguments...?}
-
-However, since $\abs{X} \geq \abs{Y}$, a multilinear monomial in $P(X)$ may not be multilinear in $P(Y)$. 
-For an algorithm to detect a multilinear monomial, it is necessary to use different mappings 
-from $X$ into $Y$ until a multilinear monomial survives the mapping. However, the probability 
-that any given multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}.
-This implies that
-\amnote*{$\Omega$}{\bigO{e^{\abs{Y}}}} random mappings must be tried for a
-multilinear monomial to survive with a reasonable constant probability. Thus, a
-$k$-multilinear monomial is detected with a 
-\amnote*{randomized}{non-deterministic} algorithm in \bigOstar{(2e)^{\abs{Y}}} time, where $\abs{Y} \propto k$.
-
-This is essentially the idea behind color coding introduced by \citeauthor{Alon95} \cite{Alon95}. 
-Although here given in this algebraic form for the $k$-multilinear monomial detection, 
-color coding is combinatorial, and does not rely on algebraic techniques. 
-However, since $k$-multilinear monomial detection is a purely algebraic problem, it is reasonable to 
-conjecture that there is an algebraic method for solving it.
-
-\omnote{I think this should maybe be in the introduction section rather than here?}
-\amnote{I agree}
-Indeed, a faster algebraic method exists; the technique of algebraic fingerprinting 
-first introduced by \citeauthor{Koutis08} \cite{Koutis08} and 
-further developed by \citeauthor{Williams09} \cite{Williams09} 
-solves $k$-multilinear monomial detection in \bigOstar{2^k} time. 
-Since the technique focuses on the abstract $k$-multilinear monomial detection, to which 
-most parameterized problems can be reduced to, it gives a general framework for 
-solving parameterized problems \cite{KouWil15}.
 
 \subsection{Algebraic fingerprinting}
 \label{sect:algebraic_fingerprinting}
@@ -882,60 +894,20 @@ $k$-3D-matching reduces into $3k$-degree multilinear monomial detection.
 
 
 
-\subsection{Algebraic fingerprinting as a framework for parameterized problems}
-\label{sect:algebraic_framework}
-
-From Section \ref{sect:related_works}, 
-it can be seen  
-that a fast algorithm for $k$-multilinear monomial detection gives a 
-fast algorithm for many parameterized combinatorial problems. Thus, we 
-may say that algebraic fingerprinting gives a general framework for 
-parameterized combinatorial problems. 
-
-In Section \ref{sect:algebraic_fingerprinting}, we discussed the idea behind 
-algebraic fingerprinting: generate a polynomial $P(X)$ from the algebrization of 
-a combinatorial problem, and evaluate $P(X)$ over $GF(2^{3+log_2k})[Z_2^k]$ with 
-randomized assignments $X \to GF(2^{3+log_2k})[Z_2^k]$ of form 
-$x_i \to (v_0 + v_i)$, augmented with scalar multiplications 
-by elements randomly chosen from $GF(2^{3+log_2k})$. This gives a  
-randomized algorithm for $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
-
-This section gives a general overlook on algebraic fingerprinting as a 
-framework for parameterized problems. First, we discuss the \omnote*{give all the numbers here?}
-{time and space complexities} of algebraic fingerprinting. Then, 
-we go over an example implementation 
-of algebraic fingerprinting for the $k$-path problem. 
-Finally, we discuss the limits of 
-this technique: the chosen algebra $GF(2^{3+log_2k})[Z_2^k]$ 
-is optimal for the general multilinear monomial detection.
-
-
-%\subsubsection{Time and space complexity}
-
-%TODO: Probably something about the circuits (time and space complexity of operations)
-
-%TODO (when talking circuits): arithmetic circuits have addition gates with unbounded fan-in, 
-%multiplication gates of fan-in two, no scalar multiplication 
-%(augment scalar multiplication (fingerprints) "later")
-
-
-
-%\subsubsection{Implementation}
-
-%TODO: give an example how to get an algorithm, e.g., for $k$-path?
 
 \subsection{Limits of algebraic fingerprinting}
 \label{sect:limits}
 
-SHORT SECTION
+In this section, we discuss some limiting factors to the general 
+algebraic framework given by 
+algebraic fingerprinting for parameterized problems. First, 
+we discuss the lower bound for the runtime. Then, we discuss 
+the difficulties for derandomization. Finally, we touch on 
+finding a solution for the underlying combinatorial problem 
+whereas algebraic fingerprinting only detects one.
 
-%TODO: give some cons wrt. color coding (difficult derandomization, 
-%are we able to add weights for optimization problems?) %(cost-constrained mld?)
-
-TODO: explain the limit in general multilinear detection with this algebraic framework 
-(impossible to find better algebra than what is used for the current fastest k-mld algorithm), \cite{KouWil09}
-
-\subsubsection{There are no faster algebras}
+\subsubsection{Algebra optimization}
+\label{sect:algebra_is_optimal}
 
 In Section \ref{sect:complexity}, it was established that $k$-multilinear monomials 
 in $P(X)$ are detected with 
@@ -958,42 +930,48 @@ However,
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
 specific $k$-multilinear monomial detection instances (see Section \ref{sect:TODO}).
 
-\subsubsection{Derandomization seems difficult}
+\subsubsection{Derandomization}
 
 Algebraic fingerprinting gives a randomized algorithm for $k$-multilinear monomial detection. 
 The derandomization of the general framework seems hard, since algebraic fingerprinting 
 uses the fact that polynomial identity testing can be solved in polynomial time with 
-a randomized algorithm \cite{Williams09}. If algebraic fingerprinting can be derandomized 
+a randomized algorithm \cite{Williams09}.
+
+If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
-polynomial time deterministic algorithm. This would imply strong circuit lower bounds \cite{TODO}, 
+polynomial time deterministic algorithm. This would imply strong circuit lower bounds \\cite{TODO}, 
 which is hard??
 
-\subsection{Finding the solution}
+\subsubsection{Finding the solution}
 \label{sect:finding_the_solution}
 
-SHORT SECTION
+In many instances of multilinear monomial detection, 
+a solution to the underlying problem can be directly found 
+from the multilinear monomials by reverse engineering the algebrization. 
+However in algebraic fingerprinting, we do not have this information on the monomials: 
+when we assign the variables values and evaluate the polynomial, we may only detect the 
+presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
-Multilinear monomial detection has only been given as a detector for a solution,
-i.e., a decision algorithm. 
-\amnote*{Yes, but probably restrict it to $\sim1$ page (there is enough content
-as it is)}{ Talk about actually finding the solution.  }
+However, finding a solution when its presence is detected seems easy. 
+Moreover, since most of the problems in Section \ref{sect:related_problems} 
+have search problems in FPT (TODO: check), a solution is found in polynomial time when its 
+existence is detected.
 
-\cite{Koutis08} gives an algorithm that solves the decision problem for $k$-path. 
-$k$-path is found with \bigOstar{n+min(k^2, m)} applications of the algorithm.
-
-\cite{Williams09} solves the decision problem for $k$-path. \cite{Williams09} also gives an algorithm 
-that finds a path when it is known that a $k$-path exists.
+For example, in \cite{Koutis08}, 
+\cite{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
+$k$-path can be found by \bigOstar{n+min(k^2, m)} applications of the given algorithm. 
+In general for subgraph problems, we may find a solution by calling the decision 
+algorithm a polynomial number of times for different subgraphs of the original input graph.
 
 \clearpage
-
 \section{Improving algebraic fingerprinting}
 
-As mentioned in Section \ref{sect:limits}, the algebraic fingerprinting framework proposed by 
-\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil15} for 
-$k$-multilinear monomial detection has
-\amnote*{$O$ and \enquote{lower bound} don't go well together}{a lower bound of \bigOstar{2^k}. }
-However, this framework \amnote[inline,nomargin]{is very generic since it}
-approaches the abstract multilinear monomial detection without 
+As mentioned in Section \ref{sect:algebra_is_optimal}, 
+the algebraic fingerprinting framework %proposed by 
+%\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil09, KouWil15} 
+for $k$-multilinear monomial detection has a lower bound of \bigOmega{2^k}. 
+However, this framework is very generic since it 
+approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
 The idea of adding auxiliary fingerprint variables in the algebrization, though, 
 has potential for these properties. TODO: rephrase more clearly
@@ -1050,5 +1028,31 @@ considered? (unless this is really the only other thing out there)}
 TODO
 \clearpage
 \section{Conclusion}
+
+From Section \ref{sect:related_works}, 
+it can be seen  
+that a fast algorithm for $k$-multilinear monomial detection gives a 
+fast algorithm for many parameterized combinatorial problems. 
+We found that algebraic fingerprinting solves this problem by 
+evaluating the given multivariate polynomial over a specific algebra. 
+Thus, we 
+may say that algebraic fingerprinting gives a general framework for 
+parameterized combinatorial problems. 
+
+In Section \ref{sect:algebraic_fingerprinting}, we discussed the idea behind 
+algebraic fingerprinting: generate a polynomial $P(X)$ from the algebrization of 
+a combinatorial problem, and evaluate $P(X)$ over $GF(2^{l})[Z_2^k]$ with 
+randomized assignments $X \to GF(2^{l})[Z_2^k]$ of form 
+$x_i \to (v_0 + v_i)$, augmented with scalar multiplications 
+by elements randomly chosen from $GF(2^{l}) \setminus \{\mathbf{0}\}$. 
+This gives a  
+randomized algorithm for $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
+
+Moreover, as seen in Section \ref{sect:cancel_nonsolutions}, 
+the technique of algebraic fingerprints can be utilized for even 
+faster algorithms. In particular, a near fifty-year stagnation 
+in improvements for the well-studied Hamiltonian path problem saw 
+a significant development by \citeauthor{Björklund14} right after 
+the novel algebraic technique \cite{Koutis08} saw publication.
 
 TODO: conclude
