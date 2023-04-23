@@ -239,7 +239,7 @@ addition and multiplication, respectively. A \emph{commutative ring} has commuta
 Note, from here on we may use a bold typeface to represent either the set of elements 
 or the algebraic structure itself, i.e., 
 we may use expressions such as $u \in \mathbf{R}$, where $\mathbf{R} = (R,+,\cdot)$ and $u \in R$. 
-Moreover, multiplication may be written with juxtaposition for brevity: $a\cdot b = ab$. 
+Moreover, multiplication may be denoted by juxtaposition for brevity: $a\cdot b = ab$. 
 
 $\mathbf{R}$ must contain a multiplicative identity 
 $\mathbf{1} \in \mathbf{R}$ such that $\forall a \in \mathbf{R} \colon a \cdot \mathbf{1} = a$. 
@@ -333,15 +333,27 @@ where $d_m \in \mathbf{K}$. Then,
   \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = 
 \]
 
+\emph{Evaluation of a polynomial} $P$ at $Z$ is denoted $P(Z)$, where 
+$Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing $\mathbf{K}$. 
+Evaluating at $Z$, i.e., assigning indeterminates $X$ to $Z$, defines an 
+element from the ring $\mathbf{R}$, as $P(Z) \in \mathbf{R}$. We may note the unevaluated 
+polynomial as $P(X)$ to highlight the set of indeterminates. 
+Moreover, in this thesis we mainly use elements of \emph{group algebras} 
+for evaluation; $\mathbf{R} = \mathbf{K}[\mathbf{G}]$, where $\mathbf{G}$ is a 
+multiplicative group.
 
+\textbf{Group algebras.} A group algebra is very similar to a polynomial ring, and 
+is also noted as $\mathbf{R}[\mathbf{G}]$, where $\mathbf{R}$ is a commutative ring and 
+$\mathbf{G}$ is a multiplicative group. A group algebra may be thought of as a 
+polynomial ring $\mathbf{R}[X]$, where the indeterminates $X$ form a multiplicative group. 
+The elements and operations in a group algebra have the same form as those in a polynomial ring, 
+with the exception that instead of summing over monomials in $X$, 
+we sum over the elements of $\mathbf{G}$.
 
-Note that $\mathbf{0} \in \mathbf{K}[X]$ corresponds to $P$ with zero-coefficients, and 
-$\mathbf{1} \in \mathbf{K}[X]$ corresponds to 
+Note that $\mathbf{0} \in \mathbf{R}[\mathbf{G}]$ corresponds to a 
+polynomial $P \in \mathbf{R}[\mathbf{G}]$ with zero-coefficients, and 
+$\mathbf{1} \in \mathbf{R}[\mathbf{G}]$ corresponds to the identity element of $\mathbf{G}$. 
 
-
-
-TODO: group algebra
-\nl
 %TODO: Cygan, p. 337
 
 \subsection{Arithmetic circuits}
