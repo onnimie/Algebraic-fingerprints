@@ -161,7 +161,7 @@ The general, parameterized multilinear monomial detection problem is defined as 
 
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
-  \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$ representing a polynomial $P(X)$.}
+  \probleminput{A commutative arithmetic circuit $A$ representing a polynomial $P(X)$.}
   \problemquestion{Does the polynomial $P(X)$ extended as a sum of monomials 
   contain a multilinear monomial of degree $k$?}
 \end{problem}
@@ -404,11 +404,15 @@ $Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing 
 Evaluating at $Z$, i.e., assigning indeterminates $X$ to $Z$, defines an 
 element from the ring $\mathbf{R}$, as $P(Z) \in \mathbf{R}$. We may note the unevaluated 
 polynomial as $P(X)$ to highlight the set of indeterminates. 
-Moreover, in this thesis we mainly use elements of \emph{group algebras} 
-for evaluation; $\mathbf{R} = \mathbf{K}[\mathbf{G}]$, where $\mathbf{G}$ is a 
+A polynomial is identical to $\mathbf{0}$, or \emph{identically 
+evaluates} to $\mathbf{0}$, if $\forall W \in \mathbf{R} \colon P(W) = \mathbf{0}$.
+
+In this thesis, we mainly use elements of \emph{group algebras} 
+for evaluation, i.e., $\mathbf{R} = \mathbf{K}[\mathbf{G}]$, where $\mathbf{G}$ is a 
 multiplicative group.
 
-\textbf{Group algebras.} A group algebra is very similar to a polynomial ring, and 
+\textbf{Group algebras.} A group algebra is an algebraic structure 
+very similar to a polynomial ring, and 
 is also noted as $\mathbf{R}[\mathbf{G}]$, where $\mathbf{R}$ is a commutative ring and 
 $\mathbf{G}$ is a multiplicative group. A group algebra may be thought of as a 
 polynomial ring $\mathbf{R}[X]$, where the indeterminates $X$ form a multiplicative group $\mathbf{G}$. 
@@ -441,6 +445,8 @@ If the underlying algebra is commutative, we may call the arithmetic circuit a \
 
 For example, an abstract evaluation of a polynomial $P$ in $\Z[\{a,b,c,d\}]$ of the form 
 $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:circuit_example}. 
+Note that we use the same symbols for addition and multiplication gates as seen in the figure 
+in all arithmetic circuit diagrams in this thesis.
 
 \begin{SCfigure}[0.5][h]
   \caption{A circuit for evaluating $(ab+cd)^2$. 
@@ -496,7 +502,7 @@ In this section,
 we discuss the algebraic ideas by \citeauthor{KouWil09} \cite{Koutis08, Williams09, KouWil09} 
 for the $k$-multilinear monomial detection. 
 In Section \ref{sect:algebraic_fingerprinting}, 
-we dive into the technique of algebraic fingerprinting, and 
+we dive into the technique of \emph{algebraic fingerprinting}, and 
 see the ideas and implementations of \citeauthor{KouWil09}. 
 In Section \ref{sect:complexity} we briefly discuss the time and space complexity 
 of the general algebraic framework given by algebraic fingerprinting. 
@@ -505,7 +511,7 @@ Finally, Section \ref{sect:limits} discusses the limits of algebraic fingerprint
 As a prelude for the following sections, recall the relevant problem definition: 
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
-  \probleminput{A commutative arithmetic circuit $A$ over a set of variables $X$ representing a polynomial $P(X)$.}
+  \probleminput{A commutative arithmetic circuit $A$ representing a polynomial $P(X)$.}
   \problemquestion{Does the polynomial $P(X)$ extended as a sum of monomials 
   contain a multilinear monomial of degree $k$?}
 \end{problem}
@@ -513,113 +519,111 @@ As a prelude for the following sections, recall the relevant problem definition:
 \subsection{Algebraic fingerprinting}
 \label{sect:algebraic_fingerprinting}
 
-The idea of discarding squared variables as soon as they are formed in $A$ 
-can be expressed algebraically: any squared variable should be identical to
+In Section \ref{sect:problem_definition}, we discussed non-algebraic methods 
+for approaching $k$-multilinear monomial detection. In particular, we mention
+an interesting idea of discarding squared variables when dynamically 
+computing the circuit. From this, we build towards algebraic fingerprinting. 
+
+This idea of discarding squared variables as soon as they are formed in $A$ 
+can be expressed mathematically: any squared variable should be identical to
 zero. 
-\amnote{Quotient ring}
 \begin{equation}
   \label{eq:squared_to_zero}
 \forall x \in X: x^2 = \mathbf{0}
 \end{equation}
-This implies that any non-multilinear monomial will evaluate to zero in $P(X)$, since 
+This implies that any non-multilinear monomial in $X$ will evaluate to zero in $P(X)$, since 
 any non-multilinear monomial $q$, assuming commutativity, can be written as $x^2q'$ 
-for some $x \in X$, and \amnote*{$\mathbf{0}q'$?}{$x^2q' = \mathbf{0}q = \mathbf{0}$}. 
+for some $x \in X$, and $x^2q' = \mathbf{0}q' = \mathbf{0}$ over any algebra. 
 Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear monomials, 
 i.e., there exist no solutions to the original problem.
 
 This is the basis of algebraic multilinear monomial detection introduced by 
-\citeauthor{Koutis08} \cite{Koutis08}, or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}: 
-we evaluate $P(X)$ over some algebra $\mathbf{G}$, and detect a multilinear monomial from 
-the value returned by this evaluation. Ideally, with any $\gamma \colon X \to
-G$,
-\amnote*{What is $X'$?}{
-$P(X')$ representing $P(X)$ over $\mathbf{G}$ by $\gamma$
-}
-and $w \neq \mathbf{0}$, 
-\amnote{Evaluation under $\gamma$ needs its own notation, e.g.,
-$\varphi_\gamma(P)$}
-
+\citeauthor{Koutis08} \cite{Koutis08}, 
+or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}: 
+we evaluate $P(X)$ over some algebraic structure $\mathbf{G}$, 
+and detect a multilinear monomial from 
+the value returned by this evaluation. Ideally, with any 
+evaluation of $P$ at any $Z \subset \mathbf{G}$ 
+where $w \neq \mathbf{0}$, 
 \begin{equation}
   \label{eq:polynomial_identity}
-  P(X') =
+  P(Z) =
     \begin{cases}
       \mathbf{0} & \text{if no multilinear monomials exist}\\
       w & \text{otherwise}\\
     \end{cases}       
 \end{equation}
 
-In the following subsections, we specify an appropriate algebra such that 
+In the following subsections, we specify an appropriate algebraic structure such that 
 (\ref{eq:polynomial_identity}) is met, as well as some requirements for efficiency. 
-Then, we discuss the works of \citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Koutis08, Williams09}, 
+Then, we discuss the works of \citeauthor{Koutis08} 
+and \citeauthor{Williams09} \cite{Koutis08, Williams09}, 
 and see how these specifications were implemented.
 
-This thesis refers to the general framework \cite{KouWil09, KouWil15} by these 
-authors as algebraic fingerprinting. However, algebraic fingerprinting can also 
-be used to refer to the idea behind solving a problem 
-with multilinear monomials canceling out due to characteristic, 
-which is discussed here in Section \ref{sect:fingerprints}.
+This thesis refers to the general framework provided 
+by this algebraic technique for parameterized problems \cite{KouWil09, KouWil15} as 
+algebraic fingerprinting. However, algebraic fingerprinting can also 
+be used to refer specifically to the idea behind solving a problem 
+with multilinear monomials canceling out due to characteristic,  
+which is discussed in Section \ref{sect:fingerprints}.
 
 \subsubsection{Specifications for the algebra}
 \label{sect:algebra_specs}
 
 We have arrived at an important task for multilinear monomial detection: 
-find a \amnote*{field or algebra?}{field} $\mathbf{G}$ for 
-the assignment $\gamma \colon X \to \mathbf{G}$ to meet 
+find an appropriate algebraic structure $\mathbf{G}$ for 
+the evaluation of $P$ over $\mathbf{G}$ to meet 
 (\ref{eq:squared_to_zero}) and thus the first equality in (\ref{eq:polynomial_identity}). 
-We specify for fields since rings are not enough for multilinear monomial detection; 
-$\mathbf{G}$ should have
-\amnote*{How about a commutative ring then?}{commutative multiplication} in order for (\ref{eq:squared_to_zero}) 
+We specify for completely commutative algebraic structures such as 
+commutative rings for multilinear monomial detection; 
+$\mathbf{G}$ should have commutative multiplication in order for (\ref{eq:squared_to_zero}) 
 to be effective. The ordering of indeterminates in monomials is generally unknown, 
 since the specific algebrization into multilinear monomial detection 
 is abstracted away. %Specifying for commutativity also makes it significantly 
 %easier to algebrize problems into arithmetic circuits. 
 
 For the second equality in (\ref{eq:polynomial_identity}), it is necessary that multilinear 
-monomials in $P(X)$ can map to multilinear monomials in $P(X')$, i.e., it must
-be that 
-\amnote{Isn't $P(X')$ the evaluation of $P(X)$ under $\gamma$? If so, then
-$P(X')$ is just an element of $\mathbf{G}$, not a polynomial}
-$k \leq \abs{G}$, where $k$ is the degree of the monomials. 
-Moreover, multilinear monomials 
-should not evaluate to $\mathbf{0}$ over $\mathbf{G}$, and more specifically, 
-$w$ should not be identical to $\mathbf{0}$.
+monomials in $P(X)$ are not identical to $\mathbf{0}$ over $\mathbf{G}$. 
+More specifically, 
+$w$ should not be identical to $\mathbf{0}$. 
+Thus, it must be that $k \leq \abs{G}$, where $k$ is the degree of the monomials. 
+Although this is not enough to ensure that $w \neq \mathbf{0}$ (as seen in the following section), 
+we leave the issue for now.
 
-These are the necessary specifications for the field $\mathbf{G}$ for algebraic multilinear monomial detection. 
-However, this algebraic detection must be faster than color coding for it to be useful. 
+These are the necessary specifications for $\mathbf{G}$ for algebraic multilinear monomial detection. 
+However, this algebraic detection must be efficient for it to be useful. 
 Therefore, further requirements are necessary: (a) the binary operations of $\mathbf{G}$ 
-must be
-\amnote*[inline,nomargin]{efficiently computable}{fast}
-for a fast evaluation of $P(X')$, and (b) multilinear monomials must 
-survive the assignment $\gamma$ with a
-\amnote*{Does it really make a difference if the probability is $1/4$ and not
-(say) $1/100$?}{\emph{reasonable} constant probability}. 
-We may specify a reasonable probability as something around at least 1/4, since that is 
-the probability of survival reached in the original work for algebraic fingerprinting \cite{Koutis08}.
+must be efficiently computable %fast
+for a fast evaluation of $P(X)$, and (b) multilinear monomials in $P(X)$ must 
+survive the evaluation of $P$ under an assignment $\gamma \colon X \to \mathbf{G}$ 
+with a constant probability. We reason the 
+sudden appearance of \emph{survivability} soon.
 
-Recall that with color coding, multilinear monomials can be detected with a 
+Recall from Section \ref{sect:problem_defintion} 
+that with color coding, multilinear monomials can be detected with a 
 randomized algorithm in \bigOstar{(2e)^k} time. Thus for (a), we may specify for 
-the evaluation of $P(X')$ to take \bigOstar{2^k} time. The polynomial $P(X)$ 
+an evaluation of $P(X)$ to take \bigOstar{2^k} time. The polynomial $P(X)$ 
 will have at most $2^k$ multilinear monomials. Therefore, 
 it is necessary that the binary operations 
 of $\mathbf{G}$ take polynomial time.
 
 With (b), recall that multilinear monomials 
 survive color coding with probability $e^{-k}$. 
-With algebraic fingerprinting, although not identical to zero, a multilinear monomial 
-can still evaluate to zero over $\mathbf{G}$. 
+With algebraic fingerprinting, although not identical to zero, a multilinear monomial in $P(X)$ 
+can still evaluate to $\mathbf{0} \in \mathbf{G}$ under some assignment $\gamma \colon X \to \mathbf{G}$. 
 However, if we specify for a constant 
-probability of survival, we can reliably decide whether a multilinear monomial exists 
+probability of survival under random $\gamma$, we can reliably decide whether a multilinear monomial exists 
 by evaluating $P(X)$ in $\mathbf{G}$ over a constant number of 
 randomized assignments $X \to \mathbf{G}$. Relating to color coding, 
 this would essentially remove the 
 $e^k$ factor in \bigOstar{(2e)^k}.
 
-To restate, we now have to find such a field $\mathbf{G}$ that 
+To restate, we now have to find such a commutative ring $\mathbf{G}$ that 
 meets the following specifications: 
 \begin{itemize}
   \item $\forall g \in \mathbf{G} \colon g^2 = \mathbf{0}$
   \item Operating over $\mathbf{G}$ should be fast, i.e., evaluating 
-  $P(X')$ should take \bigOstar{2^k} time.
+  $P(X)$ should take \bigOstar{2^k} time.
   \item Multilinear monomials should evaluate to non-zero
   through a random assignment 
   $\gamma \colon X \to \mathbf{G}$ with a reasonable constant probability.
@@ -629,13 +633,8 @@ In the work that introduced
 this algebraic fingerprinting technique \cite{Koutis08}, 
 \citeauthor{Koutis08} used the group algebra $\Z_2[\Z_2^k]$. 
 \citeauthor{Williams09} developed the technique further, 
-utilizing the algebra
-\amnote*{$2^{\log_2(k)} = k$}{$GF(2^{3+log_2(k)})[\Z_2^k]$}
-\cite{Williams09}. 
-Next, we look at these 
-group algebras of $\Z_2^k$ for $\mathbf{G}$. 
-%TODO: CHECK: and see how \emph{fingerprints} were used to 
-%solve a problem with the characteristic of $\Z_2^k$.
+generalizing the algebra to $GF(2^{l})[\Z_2^k]$ \cite{Williams09}. 
+Next, we look at these group algebras of $\Z_2^k$ for $\mathbf{G}$. 
 
 \subsubsection{Using group algebras of $\Z_2^k$}
 
@@ -663,20 +662,19 @@ multiplicative identities of $\mathbf{F}$ as $\mathbf{0}_F$ and $\mathbf{1}_F$, 
 use $\mathbf{0}$ and $\mathbf{1}$ for the identities of 
 $\mathbf{F}[\Z_2^k]$. Recall that $\mathbf{1} = v_0$, and
 $\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v =
-\mathbf{0}_F$.
-\amnote{So if we represent the elements of $\mathbf{F}[\Z_2^k]$ as vectors, we
-get vectors with $2^k$ entries}
-\amnote{Add note that \enquote{$+$} here represents addition over
-$\mathbf{F}[\Z_2^k]$ and \emph{not} addition over $\Z_2^k$ (which is represented
-by a dot)}
+\mathbf{0}_F$. Note that + represents addition over $\mathbf{F}[\Z_2^k]$ and not 
+addition over $\Z_2^k$ which is a multiplicative group.
+%\amnote{So if we represent the elements of $\mathbf{F}[\Z_2^k]$ as vectors, we
+%get vectors with $2^k$ entries}
 
-In \cite{Koutis08}, \citeauthor{Koutis08} assigned $X$ 
+In his introductory work for this technique \cite{Koutis08}, 
+\citeauthor{Koutis08} assigned $X$ 
 to elements of the form $(v_0 + v_i) \in \mathbf{F}[\Z_2^k]$, 
 such that for every $x_i \in X$, a random $v_i \in \Z_2^k$ is independently and uniformly 
 picked for the assignment 
-\amnote*[inline,nomargin]{$\gamma(x_i) = v_0 + v_i$}{$x_i \to (v_0 + v_i)$.} 
-We note the assigned values as $\overbar{X}$, and the resulting
-\amnote*{No longer a polynomial}{polynomial}
+$\gamma(x_i) = v_0 + v_i$. %{$x_i \to (v_0 + v_i)$.} 
+We note the assigned values as $\overbar{X}$, and the resulting element  
+from the polynomial evaluation 
 as $P(\overbar{X}) \in \mathbf{F}[\Z_2^k]$. 
 \citeauthor{Koutis08} observed that 
 due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in \mathbf{F}[\Z_2^k]$, 
@@ -727,36 +725,36 @@ With this, non-multilinear monomials will still vanish, but multilinear monomial
 will not identically cancel each other out when $k$ is even. 
 
 However, introducing new indeterminates raises the degree of multilinear monomials. 
-Therefore, it increases the probability that variables in a multilinear monomial are 
+Therefore, it increases the probability that indeterminates in a multilinear monomial are 
 assigned the same value from $\mathbf{F}[Z_2^k]$, which results in the 
 multilinear monomial evaluating to zero with higher probability. 
-Raising the dimension of $\Z_2^k$, however, would  
-exponentially slow down matrix multiplications which are %matrix mulitplication has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
-important for efficiency in the full algebraic framework (see Section \ref{sect:algebraic_framework}).
+Counteractively raising the dimension of $\Z_2^k$, however, would  
+exponentially slow down matrix multiplications which prove to be %matrix mulitplication has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
+important for efficiency in algebraic fingerprinting (see Section \ref{sect:complexity}).
 
-\citeauthor{Koutis08} approached this problem by assigning fingerprints to a 
-different algebra: he used $S \to \Z_2$ and set 
-$\mathbf{F} = \Z_2$ \cite{Koutis08}. Note that $\Z_2$ has characteristic 2. With this, 
+\citeauthor{Koutis08} approached this problem by assigning fingerprints to elements 
+from a different algebraic structure: he used $S \to \Z_2$ and set 
+$\mathbf{F} = \Z_2$ \cite{Koutis08}. In this sense, 
+fingerprints are defined to be auxiliary coefficients instead of auxiliary indeterminates. 
+Note that $\Z_2$ has characteristic 2. With this, 
 \citeauthor{Koutis08} essentially assigns multilinear monomials a coefficient 
 randomly from $\{\mathbf{0}_F, \mathbf{1}_F\}$. The idea is that a multilinear monomial, 
 assigned with the fingerprint $\mathbf{1}_F$,  
 survives the cancelation due to characteristic if the canceling pair is assigned $\mathbf{0}_F$. 
-With randomized assignments $S \to \Z_2$, there is a constant probability 
-\amnote*{$1/2$? (for every fixed monomial)}{(TODO: what is the probability?)}
-that a multilinear 
+With randomized assignments $S \to \Z_2$, 
+there is a constant probability that a multilinear 
 monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
-In \amnote*[inline,nomargin]{practice}{practise}, fingerprints can be implemented into the algebrization as follows \cite{Williams09}: 
+In practice, fingerprints can be implemented into the algebrization as follows: 
 for every multiplication gate $G_i$ in the arithmetic circuit $A$ for $P(X)$, 
 pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
 gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
 as $P(X, S)$. Note that here, 
-\citeauthor{Koutis08} picked random elements from $\Z_2$ 
-instead of picking unique fingerprints $s_i$.
+\citeauthor{Koutis08} picked random elements from $\Z_2$ for $s_i$.
 
 \amnote{Don't these last two paragraphs belong in the next section?}
-\amnote*[inline,nomargin]{From}{In} another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
+From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
 That is, we compute $P(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P(\overbar{X}, S)$, i.e., 
 compute until the gates $\overbar{G_i}$. 
 Imagine we stop here in the circuit before assigning the fingerprints $S$ to some algebra 
