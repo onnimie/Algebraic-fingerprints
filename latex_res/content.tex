@@ -156,7 +156,7 @@ The $k$-3D matching problem is defined as follows:
 
 We begin by defining new indeterminates corresponding to the elements in $A$, $B$ and $C$, 
 labeled as $a_i$, $b_j$ and $c_k$, respectively, where $i\in [\:\abs{A}\:]$, $j\in
-[\:\abs{B}\:]$ and $k\in [\:\abs{C}\:]$ and [\:n\:] = \{1,\ldots,n\}. 
+[\:\abs{B}\:]$ and $k\in [\:\abs{C}\:]$ such that [\:n\:] = \{1,\ldots,n\}. 
 
 For every triple $t \in T$, we define a multilinear monomial $x$ that is a
 product of the elements in $t$. 
@@ -194,7 +194,7 @@ We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
 indeed disjoint, as seen in Figure TODO.
 
-\subsection{Problem definition}
+\subsection{Detecting a multilinear monomial}
 \label{sect:problem_definition}
 
 We have now reached multilinear monomial detection from the perspective 
@@ -293,33 +293,21 @@ Note that only time complexity is discussed here.
 %However, though omitted, space complexities have also been improved with algebraic fingerprinting.
 
 \citeauthor{Koutis08} was the first one to introduce and apply multilinear monomial 
-detection for combinatorial problems, namely the $k$-path and $m$-set $k$-packing problems 
+detection for combinatorial problems, namely the \emph{$k$-path} and \emph{$m$-set $k$-packing} problems 
 \cite{Koutis08}. 
 In their work \cite{KouWil09}, \citeauthor{KouWil09} reduced 
-the $k$-tree, $k$-leaf spanning tree, and $t$-dominating set problems 
+the \emph{$k$-tree}, \emph{$k$-leaf spanning tree}, and \emph{$t$-dominating set} problems 
 to $k$-multilinear monomial detection, and 
 gave \bigOstar{2^k} algorithms for these problems.  
 
-Due to the development in algebraic fingerprinting, 
-\citeauthor{Björklund14} \cite{Björklund14} found an \bigOstar{1.657^n} algorithm for 
-Hamiltonicity, improving the runtime from \bigOstar{2^n} \cite{Bellman62, HelKar62}, 
-by clever algebrization and utilizations of algebraic fingerprints. Using similar 
-ideas, \citeauthor{Björklund17} \cite{Björklund17} gave faster algorithms for 
-$k$-path, $m$-set $k$-packing, and its special case of 3-set $k$-packing. 
-The runtimes for these were \bigOstar{1.657^k}, \bigOstar{2^{(m-2)k}} and \bigOstar{1.493^{3k}}, respectively.
-
-$k$-multilinear monomial detection itself was widely studied by 
-\citeauthor{Chen07} \cite{Chen07, Chen11a}, \citeauthor{Chen13a} \cite{Chen13a, Chen11b} 
-and \citeauthor{Chen13b} \cite{Chen13b}. TODO: what did they research (deterministic stuff, primality of the field) 
-(In this thesis though, we focus on the randomized technique of algebraic fingerprinting.)
-
-TODO: deterministic multilinear detection
-
-TODO: constrained multilinear detection (weights? functional motifs for biological networks)
-
-TODO: parallelization (MIDAS?)
-
-Stuff: Fast graph scan statistics, temporal graphs, 
+\citeauthor{Björklund16} \cite{Björklund16} showed reductions for the 
+\emph{$k$-sized graph motif} problem and for
+several optimization variants such as \emph{closest graph motif} 
+and \emph{maximum graph motif} problems which are relevant in e.g. bioinformatics. 
+\citeauthor{Cadena17} \cite{Cadena17} 
+applied algebraic fingerprinting to general \emph{graph scan statistics} 
+which is a methodology that detects anomalies in a graph. This is relevant in 
+general network design problems.
 
 \section{Preliminaries}
 \label{sect:prelims}
@@ -333,6 +321,10 @@ throughout the thesis.
 
 \subsection{Algebra} 
 \label{sect:prelims_algebra}
+
+We generally refer to the following algebraic objects 
+as \emph{algebraic structures}, i.e., objects that contain a 
+set of elements and operations on them.
 
 \textbf{Groups.} A \emph{group} $\mathbf G$
 is a tuple $(G, +)$, where $G$ is a set of elements, 
@@ -409,7 +401,8 @@ up to \emph{isomorphism} if $p$ is a prime or a power of some prime.
 An isomorphism $\kappa \colon \mathbf{A} \to \mathbf{B}$ 
 is a bijective mapping that satisfies 
 $\forall u,v \in \mathbf{A} \colon \kappa(uv) = \kappa(u)\kappa(v) \wedge \kappa(u+v) = \kappa(u)+\kappa(v).$ 
-Thus, if we only care for the relations between the elements, we may say that isomorphic algebras are 
+Thus, if we only care for the relations between the elements, 
+we may say that algebraic structures that isomorphic are 
 equivalent for us. 
 Note that if $p$ is prime and $k \in \N$, the characteristic of $GF(p^k)$ is $p$. 
 %Moreover, the non-zero elements of a finite field form a multiplicative group.
@@ -444,8 +437,11 @@ $P_d$ denote a polynomial in $\mathbf{K}[X]$ of the form $P_d = \sum_{m \in M(X)
 where $d_m \in \mathbf{K}$. Then, 
 \[
   \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b = (\displaystyle \sum_{m \in M(X)} a_m m)
-  \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = 
+  \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
 \]
+Note that the definition for the coefficient $k_m$ essentially 
+decides whether a monomial $g \in M(X)$ appears in a polynomial. If a polynomial $P$ 
+does not contain the monomial $g$, then it must be that $k_g = \mathbf{0} \in \mathbf{K}$.
 
 \emph{Evaluation of a polynomial} $P$ at $Z$ is denoted $P(Z)$, where 
 $Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing $\mathbf{K}$. 
@@ -539,7 +535,15 @@ The terms and notation are given on the left, and their definitions on the right
  \hline
 \end{tabularx}
 
-%\clearpage
+Schwartz-Zippel ref:
+
+J. T. Schwartz, “Fast probabilistic algorithms for verification of
+polynomial identities,” Journal of the ACM, vol. 27, no. 4, pp. 701–717,
+1980.
+
+
+
+\clearpage
 \section{General multilinear monomial detection}
 \label{sect:general_mld}
 
@@ -594,7 +598,7 @@ or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}:
 we evaluate $P(X)$ over some algebraic structure $\mathbf{G}$, 
 and detect a multilinear monomial from 
 the value returned by this evaluation. Ideally, with any 
-evaluation of $P$ at any $Z \subset \mathbf{G}$ 
+evaluation of $P(X)$ at any $Z \subset \mathbf{G}, \abs{Z} = \abs{X}$ 
 where $w \neq \mathbf{0}$, 
 \begin{equation}
   \label{eq:polynomial_identity}
@@ -618,7 +622,7 @@ be used to refer specifically to the idea behind solving a problem
 with multilinear monomials canceling out due to characteristic,  
 which is discussed in Section \ref{sect:fingerprints}.
 
-\subsubsection{Specifications for the algebra}
+\subsubsection{Specifications for the algebraic structure}
 \label{sect:algebra_specs}
 
 We have arrived at an important task for multilinear monomial detection: 
@@ -650,7 +654,7 @@ survive the evaluation of $P$ under an assignment $\gamma \colon X \to \mathbf{G
 with a constant probability. We reason the 
 sudden appearance of \emph{survivability} and probabilities soon.
 
-Recall from Section \ref{sect:problem_defintion} 
+Recall from Section \ref{sect:problem_definition} 
 that with color coding, multilinear monomials can be detected with a 
 randomized algorithm in \bigOstar{(2e)^k} time. Thus for (a), we may specify for 
 an evaluation of $P(X)$ to take \bigOstar{2^k} time. The polynomial $P(X)$ 
@@ -874,27 +878,13 @@ the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}_F$,
 $Q(\delta(S)) \neq \mathbf{0}_F$ with a high probability over some $\delta \in \Phi$ 
 \cite{Williams09}. 
 
-\begin{anamnote}[nomargin]{}
-  References for Schwartz-Zippel:
-  \begin{itemize}
-    \item J. T. Schwartz, “Fast probabilistic algorithms for verification of
-    polynomial identities,” Journal of the ACM, vol. 27, no. 4, pp. 701–717,
-    1980.
-    \item  S. Yekhanin, Locally Decodable Codes. Now Publishers, 2012. (To
-    appear).  R. Zippel, “Probabilistic algorithms for sparse polynomials,” in
-    EUROSAM, vol. 72 of Lecture Notes in Computer Science, (E. W. Ng, ed.), pp.
-    216–226, Springer, 1979.
-    \item also maybe  R. A. DeMillo and R. J. Lipton, “A probabilistic remark on
-    algebraic program testing,” Information Processing Letters, vol. 7, no. 4,
-    pp. 193–195, 1978.
-    
-  \end{itemize}
-\end{anamnote}
-
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
 used the field $GF(2^{l})$ with $l \in \N$. \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
 evaluates to $\mathbf{0}_F$ over a random assignment $S \to GF(2^{3+log_2k})$ with probability 
-at most $k/\abs{\mathbf{F}} = 1/{2^l}$ \cite{Williams09}. 
+at most $k/\abs{\mathbf{F}}$ \cite{Williams09}. For example with $k$-path, 
+\citeauthor{Williams09} used $l = 3+ log_2k$, 
+which sets the probability of a false-negative evaluation 
+to at most $k/\abs{\mathbf{F}} = 1/2^3$. 
 For the $k$-path problem, \citeauthor{Koutis08} 
 gave a randomized \bigOstar{2^{3k/2}} time algorithm \cite{Koutis08}, 
 and \citeauthor{Williams09} developed this into a randomized \bigOstar{2^k} 
@@ -976,7 +966,7 @@ the difficulties for derandomization. Finally, we touch on
 finding a solution for the underlying combinatorial problem 
 whereas algebraic fingerprinting only detects one.
 
-\subsubsection{Algebra optimization}
+\subsubsection{Algebraic optimization}
 \label{sect:algebra_is_optimal}
 
 In Section \ref{sect:complexity}, it was established that $k$-multilinear monomials 
@@ -995,10 +985,10 @@ used for detecting $k$-multilinear monomials,
 the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
 
 Thus for the general $k$-multilinear monomial detection, we may say 
-that the algebraic fingerprinting is in some sense optimal. 
+that algebraic fingerprinting is in some sense optimized. 
 However, 
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
-specific $k$-multilinear monomial detection instances (see Section \ref{sect:TODO}).
+specific $k$-multilinear monomial detection instances (see Section \ref{sect:improvements}).
 
 \subsubsection{Derandomization}
 
@@ -1009,8 +999,8 @@ a randomized algorithm \cite{Williams09}.
 
 If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
-polynomial time deterministic algorithm. This would imply strong circuit lower bounds \\cite{TODO}, 
-which is hard??
+polynomial time deterministic algorithm. This would imply strong circuit lower bounds 
+TODO: this is apparently significant
 
 \subsubsection{Finding the solution}
 \label{sect:finding_the_solution}
@@ -1024,7 +1014,7 @@ presence of a solution. As such, algebraic fingerprinting applies to decision al
 
 However, finding a solution when its presence is detected seems easy. 
 Moreover, since most of the problems in Section \ref{sect:related_problems} 
-have search problems in FPT (TODO: check), a solution is found in polynomial time when its 
+have search problems in FPT, a solution is found in polynomial time when its 
 existence is detected.
 
 For example, in \cite{Koutis08}, 
@@ -1085,7 +1075,7 @@ we define the Hamiltonian path problem.
 \subsection{Other research in improving algebraic fingerprinting}
 \label{sect:other_improvements}
 
-- constrained multilinear detection (weighted problems?)
+- constrained multilinear detection (weighted problems?), temporal graphs
 
 - deterministic multilinear detection (partial differentials of polynomials)
 
