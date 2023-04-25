@@ -21,7 +21,7 @@ introduced by \citeauthor{Koutis08} \cite{Koutis08} and further developed by
 has found great success for many combinatorial problems. 
 For instance with algebraic fingerprinting, the $k$-path problem 
 that previously could be solved in \bigOstar{4^{k}}
-\footnote{$\mathcal{O}$* hides factors polynomial to input size. 
+\footnote{$\mathcal{O}$* may hide factors polynomial to input size. 
 See Section \ref{sect:prelims_other}} 
 time by \citeauthor{Chen07} \cite{Chen07}, 
 could be solved in \bigOstar{2^{3k/2}} time \cite{Koutis08}. 
@@ -141,8 +141,7 @@ briefly overviews actually finding a solution}.
 
 Appropriate definitions for the indeterminates for $M$ are problem-specific. 
 In what follows, this thesis gives another example 
-reduction into multilinear monomial detection: we algebrize the $k$-3D matching problem. 
-Another simple example for the set packing problem can be found in \cite{Koutis05}.
+reduction into multilinear monomial detection: we algebrize the $k$-3D matching problem.
 
 %\subsection{Reducing $k$-3D matching to multilinear monomial detection}
 %\label{sect:reduction_example}
@@ -186,9 +185,11 @@ multilinear monomial detection for the $k$-3D matching.
 $T = \{(a_1, b_1, c_1), (a_1, b_2. c_2), (a_2, b_2, c_3)\}$ 
 (see Figure TODO: diagram of the 3D matching problem with the matchings), 
 we have $P_1 = a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3$. For $k=2$, we get 
-$P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 = \allowbreak
-a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + \allowbreak
-2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3$. 
+\begin{multline*}
+  P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 = \\
+  a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
+  2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3.
+\end{multline*}
 We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds 
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
 indeed disjoint, as seen in Figure TODO.
@@ -540,6 +541,8 @@ The terms and notation are given on the left, and their definitions on the right
  FPT & A class of \emph{fixed parameter tractable} problems, i.e., parameterized problems that 
  can be solved in polynomial time if the parameter is fixed \\
  \hline
+ $poly(n)$ & a polynomial function in $n$, e.g., $an^4 + bn + c$ \\
+ \hline
  Deterministic algorithm & Given a fixed input, a \emph{deterministic} algorithm always gives the same output \\
  \hline
  Randomized algorithm & A \emph{randomized} algorithm relies on pseudorandom 
@@ -770,11 +773,11 @@ coefficients in $P(X)$. Next, we see how \citeauthor{Koutis08} approached this p
 Indeed, if we take the $k$-3D matching instance from Section \ref{sect:algebrization}, 
 we notice that the multilinear monomials in $P_2$ have even coefficients, and thus 
 would cancel out in $\mathbf{F}[Z_2^k]$ due to characteristic.
-\[
-  P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 = \allowbreak
-  a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + \allowbreak
+\begin{multline*}
+  P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2  \\
+  = a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + %\allowbreak
   2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3. 
-\]
+\end{multline*}
 In general, when $k$ is even, multilinear monomials will have even coefficients. 
 
 To tackle this issue, one idea is to add auxiliary indeterminates, 
@@ -782,14 +785,15 @@ called \emph{fingerprints} \cite{KouWil15}, to the monomials
 in order to make them unique. For example, let $S = \{s_1, s_2, \ldots\}$ 
 be the set of an appropriate number of fingerprints 
 and augment them to $P_k$ as follows: 
-\[
-  P_2 = (s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \allowbreak = 
-  s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 + \allowbreak
-  s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 + \allowbreak
+\begin{multline*}
+  P'_2 = (s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
+  = s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 + \\
+  s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 + \\
   s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
-\]
+\end{multline*}
 
-Then, the algorithm could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
+Then, the multilinear monomial detection algorithm 
+could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
 With this, non-multilinear monomials will still vanish, but multilinear monomials 
 will not identically cancel each other out when $k$ is even. 
 
@@ -814,30 +818,45 @@ With randomized assignments $S \to \Z_2$,
 there is a constant probability that a multilinear 
 monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
-In practice, fingerprints can be implemented into the algebrization as follows: 
-for every multiplication gate $G_i$ in the arithmetic circuit $A$ for $P(X)$, 
+In practice, fingerprints can be implemented 
+into the algebrization as follows (see also Figure \ref{fig:circuit_fingerprints}): 
+for every multiplication gate $G_i$ feeding from the terminals in the arithmetic circuit $A$ for $P(X)$, 
 pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
 gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
-as $P(X, S)$. Note that here, 
+as $P'(X, S)$. Note that here, 
 \citeauthor{Koutis08} picked random elements from $\Z_2$ for $s_i$.
 
-\amnote{Don't these last two paragraphs belong in the next section?}
-From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
-That is, we compute $P(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P(\overbar{X}, S)$, i.e., 
-compute until the gates $\overbar{G_i}$. 
-Imagine we stop here in the circuit before assigning the fingerprints $S$ to some algebra 
-and continuing with the multiplication. 
-Now, deciding whether a multilinear monomial exists in $P(X)$ is essentially given by 
-whether the polynomial $P(\overbar{X}, S) \in \mathbf{F}[\Z_2^k]$ is identical to $\mathbf{0}$, 
-i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$, 
-\[
-  \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
-  \colon P(\overbar{X}, \phi(S)) = \mathbf{0}.
-\]
-\amnote{You're going to have to explain this to me \texttt{:)}}
+\begin{figure}[h]
+  \includegraphics[width=\textwidth, height=7cm]{arithmetic_circuit_FINGERPRINTS.png}
+  \centering
+  \caption{A fingerprinted circuit for evaluating $(ab+cd)^2$. 
+  Note the added terminals on the right circuit.}
+  \label{fig:circuit_fingerprints}
+\end{figure}
 
 \subsubsection{Polynomial identity testing}
+
+From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
+That is, we compute $P'(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P'(\overbar{X}, S)$, i.e., 
+compute until the gates $\overbar{G_i}$. 
+Imagine we stop here in the circuit before assigning the fingerprints $S$  
+and continuing with the multiplication. 
+Currently, we may see $P'(\overbar{X}, S) \in \mathbf{K}[S]$ as a polynomial 
+with indeterminates from $S$ and coefficients from $\mathbf{K} = \mathbf{F}[\Z_2^k]$. 
+In a sense, we switch the roles of coefficients and indeterminates in $P'(X, S)$ 
+to find a new polynomial $Q(S) \in \mathbf{K}[S]$. 
+
+Now, deciding whether a multilinear monomial exists in $P(X)$ is essentially given by 
+whether the polynomial $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$, 
+i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$ 
+and $\phi(S)$ representing the assigned values of $S$ with $\phi$,  
+\[
+  \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
+  \colon P'(\overbar{X}, \phi(S)) = \mathbf{0}.
+\]
+Therefore, we formulate algebraic fingerprinting as polynomial identity testing, i.e., 
+we test wheter $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$.
 
 \begin{problem}
   \problemtitle{\textsc{Polynomial identity testing}}
@@ -845,14 +864,16 @@ i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$,
   \problemquestion{Is $Q(S)$ identical to the zero polynomial?}
 \end{problem}
 
-We frame $P(\overbar{X}, S)$ as $Q(S) \in \mathbf{F}[\Z_2^k]$. 
+We frame $P'(\overbar{X}, S)$ as $Q(S) \in \mathbf{K}[S]$. 
 Here, it is necessary to test whether $Q(S)$ is identical to \emph{zero modulo 2}, 
 since we used characteristic 2 to eliminate 
-the underlying non-multilinear monomials in $P(\overbar{X}, S)$.
+the underlying non-multilinear monomials in $P'(\overbar{X}, S)$.
 
 Thus, multilinear monomial detection is reduced via algebraic fingerprinting 
-to polynomial identity testing, where a multilinear monomial is detected if 
-$Q(S) \neq \mathbf{0}$ over $\mathbf{F}[\Z_2^k]$ with any field $\mathbf{F}$ of characteristic 2. 
+to polynomial identity testing. A multilinear monomial is detected if 
+$Q(f) \neq \mathbf{0}_F \in \mathbf{F}$, where $Q(f)$ 
+represents evaluation under an assignment $S \to \mathbf{F}$, 
+with any field $\mathbf{F}$ of characteristic 2. 
 We note the family of assignments $S \to \mathbf{F}$ as $\Phi$.
 
 Assume multilinear monomials exist in $P(X)$. 
@@ -864,8 +885,8 @@ with randomized assignments $S \to \Z_2$ \cite{Koutis08}.
 further by observing that due to the Schwartz-Zippel lemma, %(see \cref{sect:prelims}), 
 if we raise the order of the field $\mathbf{F}$ 
 such that the number of different assignments in $\Phi$ is much larger than 
-the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}$, 
-$Q(\delta(S)) \neq \mathbf{0}$ with a high probability over some $\delta \in \Phi$ 
+the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}_F$, 
+$Q(\delta(S)) \neq \mathbf{0}_F$ with a high probability over some $\delta \in \Phi$ 
 \cite{Williams09}. 
 
 \begin{anamnote}[nomargin]{}
@@ -886,29 +907,28 @@ $Q(\delta(S)) \neq \mathbf{0}$ with a high probability over some $\delta \in \Ph
 \end{anamnote}
 
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
-used the field $GF(2^{3+log_2k})$ \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
-evaluates to $\mathbf{0}$ over a random assignment $S \to GF(2^{3+log_2k})$ with probability 
-at most $1/2^3$ \cite{Williams09}. For the $k$-path problem, \citeauthor{Koutis08} 
+used the field $GF(2^{l})$ with $l \in \N$. \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
+evaluates to $\mathbf{0}_F$ over a random assignment $S \to GF(2^{3+log_2k})$ with probability 
+at most $k/\abs{\mathbf{F}} = 1/{2^l}$ \cite{Williams09}. 
+For the $k$-path problem, \citeauthor{Koutis08} 
 gave a randomized \bigOstar{2^{3k/2}} time algorithm \cite{Koutis08}, 
 and \citeauthor{Williams09} developed this into a randomized \bigOstar{2^k} 
 time algorithm \cite{Williams09} with the ideas discussed here.
 
-TODO: talk briefly about the other requirement (fast operations), 
-results in a \bigOstar{2^k} time algorithm.
-
-In the following section, we see this as a whole and look further into implementing this stuff. 
-TODO: rephrase
+In the following section, we briefly touch on the complexities of the 
+algebras given here. 
 
 \subsection{Time and space complexity}
 \label{sect:complexity}
 
-In the previous section, we discussed the specifications for an algebra to 
-implement algebraic fingerprinting. For an appropriate algebra, we found 
-$GF(2^{l})[Z_2^k]$. However, we did not discuss the costs related 
+In the previous section, we discussed the specifications 
+for an algebraic stucture to implement algebraic fingerprinting. 
+For an appropriate algebra, we found $GF(2^{l})[Z_2^k]$. 
+However, we did not discuss the costs related 
 to this algebra. In this section, we briefly discuss the time and space complexity 
 of algebraic fingerprinting.
 
-Define the evaluation of $P_S(X)$ at any $X$ to take $g(n)$ number of  
+Define the evaluation of $P'(X, S)$ at any $X$ and $S$ to take $g(n)$ number of  
 arithmetic operations, where $n = \abs{X}$. In general, 
 detecting $k$-degree multilinear monomials in $P(X)$ takes 
 \bigOstar{2^kg} time and \bigO{poly(n,k)} space \cite{Williams09}.
@@ -955,11 +975,9 @@ $k$ receives an \bigOstar{2^k} time algorithm, is determined by the algebrizatio
 of said parameterized problem. 
 For example for $k$-path, algebraic fingerprinting gives an \bigOstar{2^k} 
 time algorithm \cite{Williams09}. 
-For $k$-3D-matching however, as given in Section \ref{sect:TODO}, 
-algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm \cite{KouWil15}, since 
+For $k$-3D-matching however, as given in Section \ref{sect:algebrization}, 
+algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm, since 
 $k$-3D-matching reduces into $3k$-degree multilinear monomial detection.
-
-
 
 
 \subsection{Limits of algebraic fingerprinting}
@@ -1031,35 +1049,29 @@ In general for subgraph problems, we may find a solution by calling the decision
 algorithm a polynomial number of times for different subgraphs of the original input graph.
 
 \clearpage
-\section{Improving algebraic fingerprinting}
+\section{Improving from algebraic fingerprinting}
 \label{sect:improvements}
 
 As mentioned in Section \ref{sect:algebra_is_optimal}, 
-the algebraic fingerprinting framework %proposed by 
+algebraic fingerprinting as a framework %proposed by 
 %\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil09, KouWil15} 
 for $k$-multilinear monomial detection has a lower bound of \bigOmega{2^k}. 
 However, this framework is very generic since it 
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
 The idea of adding auxiliary fingerprint variables in the algebrization, though, 
-has potential for these properties. TODO: rephrase more clearly
+has potential for these properties.
 
-Indeed,
-\amnote*{for...?}{faster algorithms}
- have been found by designing new algebrizations with techniques 
-similar to algebraic fingerprinting, where the fingerprints are designed to 
-\amnote*{make use of}{abuse}
-the underlying combinatorial properties. In \cref{sect:cancel_nonsolutions}, 
-we show how \citeauthor{Björklund14} \cite{Björklund14}
+Indeed, faster algorithms for specific combinatorial problems 
+have been found by designing new algebrizations with techniques 
+similar to algebraic fingerprinting, where the fingerprints are designed to make use of 
+the underlying combinatorial properties. In Section \ref{sect:cancel_nonsolutions}, 
+we see how \citeauthor{Björklund14} \cite{Björklund14} 
 exploited the cancelation due to characteristic to cancel non-solution monomials 
 by clever design of fingerprints. 
 
-Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
-However, the matrix representations of the group algebras used in \cite{Williams09} 
-offer possibilities for parallelization.
-In \cref{sect:parallelization}, \amnote[inline,nomargin]{we discuss} the ideas of 
-\citeauthor{Midas19} behind the distributed multilinear monomial detection
-\cite{Midas19} \amnote*[inline,nomargin]{}{(are discussed)}.
+Section \ref{sect:other_improvements} briefly overviews other ideas or 
+improvements in utilizing the general framework of algebraic fingerprints.
 
 \subsection{Fingerprinting for cancelation of non-solutions}
 \label{sect:cancel_nonsolutions}
@@ -1083,22 +1095,28 @@ we define the Hamiltonian path problem.
   \problemquestion{Does $G$ contain a simple path that visits every vertex?}
 \end{problem}
 
-TODO: give the algebrization and/or show how it works
+\omnote*{Probably really brief}{TODO: give the algebrization and/or show how it works}
 
-\subsection{Parallelizing multilinear monomial detection}
-\label{sect:parallelization}
+\subsection{Other research in improving algebraic fingerprinting}
+\label{sect:other_improvements}
 
-\amnote[inline,nomargin]{Probably very ambitious to describe the full thing
-here... (You already need to focus on getting the details right in Sects. 4 and
-5.1.) Maybe instead just give a broad picture of what other things people have
-considered? (unless this is really the only other thing out there)}
+- constrained multilinear detection (weighted problems?)
 
-TODO
-\clearpage
+- deterministic multilinear detection (partial differentials of polynomials)
+
+- distributed multilinear detection (MIDAS-paper)
+%Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
+%However, the matrix representations of the group algebras used in \cite{Williams09} 
+%offer possibilities for parallelization.
+%In \cref{sect:parallelization}, \amnote[inline,nomargin]{we discuss} the ideas of 
+%\citeauthor{Midas19} behind the distributed multilinear monomial detection
+%\cite{Midas19} \amnote*[inline,nomargin]{}{(are discussed)}.
+
+%\clearpage
 \section{Conclusion}
 \label{sect:conclusion}
 
-From Section \ref{sect:related_works}, 
+From Section \ref{sect:related_problems}, 
 it can be seen  
 that a fast algorithm for $k$-multilinear monomial detection gives a 
 fast algorithm for many parameterized combinatorial problems. 
@@ -1114,7 +1132,7 @@ a combinatorial problem, and evaluate $P(X)$ over $GF(2^{l})[Z_2^k]$ with
 randomized assignments $X \to GF(2^{l})[Z_2^k]$ of form 
 $x_i \to (v_0 + v_i)$, augmented with scalar multiplications 
 by elements randomly chosen from $GF(2^{l}) \setminus \{\mathbf{0}\}$. 
-This gives a  
+This gives a 
 randomized algorithm for $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
 
 Moreover, as seen in Section \ref{sect:cancel_nonsolutions}, 
