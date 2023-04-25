@@ -279,41 +279,26 @@ to which many parameterized problems can be reduced to,
 it gives a general framework for 
 solving parameterized problems \cite{KouWil15}.
 
-\section{Related problems} %TODO: maybe change headline?
+\section{Related problems}
 \label{sect:related_problems}
 
 The importance of multilinear monomial detection lies in the fact 
-that many combinatorial problems, as we see in this section, 
+that many parameterized combinatorial problems, as we see in this section, 
 can be reduced to instances of it. 
 Thus, solving the general $k$-multilinear monomial detection problem 
 efficiently has great interest. 
-Moreover, the technique of algebraic fingerprints underlie the fastest algorithms 
+Currently, the technique of algebraic fingerprints underlies the fastest algorithms 
 for all the problems mentioned here. 
 Note that only time complexity is discussed here. 
 %However, though omitted, space complexities have also been improved with algebraic fingerprinting.
 
-Ideas behind representing combinatorial problems with multivariate polynomials have 
-been considered before, e.g., by \citeauthor{Valiant92} \cite{Valiant92} and 
-\citeauthor{Koutis05} \cite{Koutis05}. However, 
 \citeauthor{Koutis08} was the first one to introduce and apply multilinear monomial 
 detection for combinatorial problems, namely the $k$-path and $m$-set $k$-packing problems 
-\cite{Koutis08}. For $k$-path, this improved the runtime from 
-\bigOstar{4^k} \cite{Chen07} to \bigOstar{2^{3k/2}}, and for $m$-set $k$-packing, 
-the runtime was improved from \bigOstar{5.44^{mk}} \cite{Koutis05} to \bigOstar{2^{mk}}.
-
-Soon after, \citeauthor{Williams09} developed this algebraic technique 
-for an \bigOstar{2^k} $k$-path \cite{Williams09}, 
-from which \citeauthor{KouWil09} \cite{KouWil09, KouWil15} 
-gathered and proposed a general 
-\bigOstar{2^k} algebraic framework, 
-\emph{algebraic fingerprinting}, for $k$-multilinear monomial detection 
-as a general technique for 
-parameterized combinatorial problems. In their work \cite{KouWil09}, 
-\citeauthor{KouWil09} gave faster \bigOstar{2^k} algorithms using this technique for the 
-$k$-tree, $k$-leaf spanning tree, and $t$-dominating set problems. %, and an 
-%\bigOstar{2^{(m-1)k}} algorithm for the $m$-dimensional $k$-matching problem. 
-The runtimes of the previously fastest algorithms for these problems, respectively, were   
-\bigOstar{(2e)^k} \cite{Alon95}, \bigOstar{4^k} \cite{Kneis11}, \bigOstar{(4+\varepsilon)^t} \cite{Kneis07}. 
+\cite{Koutis08}. 
+In their work \cite{KouWil09}, \citeauthor{KouWil09} reduced 
+the $k$-tree, $k$-leaf spanning tree, and $t$-dominating set problems 
+to $k$-multilinear monomial detection, and 
+gave \bigOstar{2^k} algorithms for these problems.  
 
 Due to the development in algebraic fingerprinting, 
 \citeauthor{Björklund14} \cite{Björklund14} found an \bigOstar{1.657^n} algorithm for 
