@@ -10,34 +10,45 @@ deciding whether a multivariate (multiple variables)
 polynomial contains a multilinear monomial\footnote{ 
 i.e., a term of multiple variables where each variable appears at most once. 
 See also Section \ref{sect:prelims_algebra}}. 
+\amnote{I do see this style of footnotes from time to time, but some people are
+not fond of it. Parentheses might be a better choice.}
 Multilinear monomial detection for parameterized combinatorial problems was 
 first introduced by \citeauthor{Koutis05} in an early work 
 \cite{Koutis05}, where a set packing problem is 
 reduced to multilinear monomial detection.
 
-Namely, the technique of \emph{algebraic fingeprinting},   
+\amnote[inline,nomargin]{(Namely,)} the technique of \emph{algebraic fingeprinting},   
 introduced by \citeauthor{Koutis08} \cite{Koutis08} and further developed by 
 \citeauthor{Williams09} \cite{Williams09}, 
 has found great success for many combinatorial problems. 
 For instance with algebraic fingerprinting, the $k$-path problem 
-that previously could be solved in \bigOstar{4^{k}}
+that previously could be solved in
+\amnote*{Move footnote elsewhere}{\bigOstar{4^{k}}}
 \footnote{$\mathcal{O}$* may hide factors polynomial to input size. 
 See Section \ref{sect:prelims_other}} 
 time by \citeauthor{Chen07} \cite{Chen07}, 
-could be solved in \bigOstar{2^{3k/2}} time \cite{Koutis08}. 
-This result was quickly improved by \cite{Williams09} \cite{Williams09}, 
+\amnote*[inline,nomargin]{can now}{could be} solved in \bigOstar{2^{3k/2}} time \cite{Koutis08}. 
+This result was quickly improved by \textcite{Williams09}, %\cite{Williams09}, 
+\amnote{Tip: use \texttt{\textbackslash textcite} and friends}
 who gave an \bigOstar{2^k} algorithm.
 
 Most famously, 
 \citeauthor{Björklund14} \cite{Björklund14} published an algorithm 
 that solved the famous Hamiltonian problem (Hamiltonicity) in \bigOstar{1.657^n} time 
 with clever utilizations of this novel algebraic technique. 
-The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} time, 
-and were known since 1962 \cite{HelKar62}, \cite{Bellman62}. 
+The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} time
+\amnote*[inline,nomargin]{and date from \citeyear{HelKar62}}{%
+, and were known since 1962
+}
+\cite{HelKar62}, \cite{Bellman62}. 
 This was a significant improvement on a problem 
 that had seen no progress in nearly fifty years! 
-Soon enough for $k$-path, 
-an \bigOstar{1.657^k} algorithm was found \cite{Björklund17}.
+Soon
+\amnote*[inline,nomargin]{thereafter, a \bigOstar{1.657^k} algorithm was found
+for the related (?) $k$-path problem}{
+enough for $k$-path, 
+an \bigOstar{1.657^k} algorithm was found
+} \cite{Björklund17}.
 
 \subsection{Research scope and thesis structure}
 
@@ -48,8 +59,8 @@ algorithms for these problems. For the reader with background in computer scienc
 this thesis overviews a clever use of algebra in theoretical computer science, 
 that is the technique of algebraic fingerprinting.
 
-In the next subsections, we discuss the relation of combinatorics and 
-polynomials, discuss the algebrization of combinatorial problems, and 
+In the \amnote*[inline,nomargin]{rest of this introduction}{next subsections}, we discuss the relation of combinatorics and 
+polynomials, \amnote*{used twice}{discuss} the algebrization of combinatorial problems, and 
 define the multilinear monomial detection problem as a prelude for the thesis. 
 
 In Section \ref{sect:related_problems}, we overview the area of problems where 
@@ -89,7 +100,7 @@ to combinatorial problems can be thought of as
 combinations of the given objects. 
 The solution candidate space for the $k$-path problem 
 consists of combinations of $k-1$ edges, where 
-a solution combination contains only disjoint edges.
+a \amnote[inline,nomargin]{valid (?)} solution combination contains only disjoint edges.
 %
 %\amnote[inline,nomargin]{This sounds like a very simple problem... But I guess
 %the catch is that we want an algorithm with complexity depending only on $k$?}
@@ -108,19 +119,31 @@ We may think of a polynomial in its sum of monomials
 form\footnote{an expression where there is no multiplication 
 after addition of monomials. See also Section \ref{sect:prelims_other}} 
 as a set of combinations. For instance, imagine a set of elements $M = \{a, b, c\}$. 
-A polynomial $C = a+b+c$ represents all the possible choices 
+\amnote*[inline,nomargin]{The}{A} polynomial $C = a+b+c$ represents all the possible choices 
 if we are to pick an element from $M$. Following the standard idea behind polynomial 
 multiplication, we see that a polynomial 
-$C^2 = (a+b+c)(a+b+c) = aa + ab + ac + ba + bb + bc + ca + cb + cc$ represents 
+\[
+  C^2 = (a+b+c)(a+b+c) = aa + ab + ac + ba + bb + bc + ca + cb + cc
+\]
+\amnote{(display math)}
+represents 
 all the possible combinations if we are to pick twice from $M$. 
 Indeed, a polynomial $C^k$ represents all combinations of $k$ elements from $M$.
 
 Utilizing this idea, \citeauthor{Koutis05} \cite{Koutis05} 
 managed to reduce a combinatorial problem 
-into an algebraic form, that is, multilinear monomial detection. 
+into an algebraic \amnote*[inline,nomargin]{one}{form}, that is, multilinear monomial detection. 
 In multilinear monomial detection, we represent the combinatorial problem 
 as a polynomial where the solution candidates are encoded as follows: 
 the non-solutions are non-multilinear and solutions are multilinear terms. 
+
+\begin{anamnote}[nomargin]{}
+  You already discuss it in \cref{sect:problem_definition}, but you should also
+  mention somewhere around here that complexity of problem is sensitive to how
+  the polynomial is presented (e.g., in sum of monomials form it is trivial) and
+  that the presentation is going to be very succinct (namely algebraic circuit).
+  1 sentence is enough.
+\end{anamnote}
 
 For an instance of $k$-path problem, we may use the set of edges as $M$ where 
 an edge is a product of two indeterminates defined uniquely for each vertex. 
@@ -135,13 +158,17 @@ finding a multilinear monomial from the multivariate polynomial.
 It follows that a decision problem is answered by 
 the existence of a multilinear monomial, 
 and a counting problem by the number of multilinear monomials. 
+\amnote*[inline,nomargin]{This thesis focuses on the former (although we give a
+brief overview of actually finding a solution in \cref{sect:finding_the_solution})}{
 This thesis, however, focuses on the decision problem
 \footnote{Section \ref{sect:finding_the_solution} 
 briefly overviews actually finding a solution}.
+}
+\amnote{Tip: use \texttt{\textbackslash cref}}
 
 Appropriate definitions for the indeterminates for $M$ are problem-specific. 
 In what follows, this thesis gives another example 
-reduction into multilinear monomial detection: we algebrize the $k$-3D matching problem.
+reduction \amnote*[inline,nomargin]{to}{into} multilinear monomial detection: we algebrize the $k$-3D matching problem.
 
 %\subsection{Reducing $k$-3D matching to multilinear monomial detection}
 %\label{sect:reduction_example}
@@ -156,7 +183,7 @@ The $k$-3D matching problem is defined as follows:
 
 We begin by defining new indeterminates corresponding to the elements in $A$, $B$ and $C$, 
 labeled as $a_i$, $b_j$ and $c_k$, respectively, where $i\in [\:\abs{A}\:]$, $j\in
-[\:\abs{B}\:]$ and $k\in [\:\abs{C}\:]$ such that [\:n\:] = \{1,\ldots,n\}. 
+[\:\abs{B}\:]$ and $k\in [\:\abs{C}\:]$ such that $[\:n\:] = \{1,\ldots,n\}$. 
 
 For every triple $t \in T$, we define a multilinear monomial $x$ that is a
 product of the elements in $t$. 
@@ -167,7 +194,10 @@ ring $\Z[X]$ (i.e., polynomials that have coefficients from $\Z$ and variables f
 See also Section \ref{sect:prelims_algebra}). \omnote{I'm not sure what to put for $\Z$ here, 
 since we don't have any coefficients here yet}
 
-Next, we define multivariate polynomials $P_1, P_k \in \Z[X]$ as follows: 
+Next, we define multivariate polynomials
+\amnote*[inline,nomargin]{$P_k \in \Z[X]$ for $k \in \N$ iteratively}
+{$P_1, P_k \in \Z[X]$}
+as follows: 
 \[
   P_1 = \displaystyle \sum_{x \in X}x, \: \: \: P_k = P_1^k
 \]
@@ -181,15 +211,23 @@ multilinear monomial detection for the $k$-3D matching.
 %$P_k$ corresponds to a solution to the problem, and 
 %the solutions can be directly found from the indeterminates in the multilinear monomial. 
 
-\sloppy For instance with $A = \{a_1, a_2\}, B = \{b_1, b_2\}, C = \{c_1, c_2, c_3\}$ and 
-$T = \{(a_1, b_1, c_1), (a_1, b_2. c_2), (a_2, b_2, c_3)\}$ 
+%\sloppy
+For instance with $A = \{a_1, a_2\}$, $B = \{b_1, b_2\}$, $C = \{c_1, c_2,
+c_3\}$ and 
+\[
+  T = \{(a_1, b_1, c_1), (a_1, b_2. c_2), (a_2, b_2, c_3)\}
+\]
+\amnote{(added displaymath)}
 (see Figure TODO: diagram of the 3D matching problem with the matchings), 
 we have $P_1 = a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3$. For $k=2$, we get 
-\begin{multline*}
-  P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 = \\
-  a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
+\amnote{$=$ after line break}
+%\begin{multline*}
+\begin{align*}
+  P_2 &= (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 \\%= \\
+  &= a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
   2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3.
-\end{multline*}
+\end{align*}
+%\end{multline*}
 We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds 
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
 indeed disjoint, as seen in Figure TODO.
@@ -207,10 +245,11 @@ The general, parameterized multilinear monomial detection problem is defined as 
 \begin{problem}
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
   \probleminput{A polynomial $P_1 \in \Z[X]$ with the solution candidates encoded as monomials.}
-  \problemquestion{Does the polynomial $P_k$ extended as a sum of monomials 
+  \problemquestion{Does the polynomial $P_k = P_1^k$ extended as a sum of monomials 
   contain a multilinear monomial of degree $k$
   \footnote{a multilinear monomial with degree $k$ has $k$ indeterminates, 
   see also Section \ref{sect:prelims_algebra}}?}
+  \amnote{footnote after question mark}
 \end{problem}
 
 Clearly, an upper bound for solving the problem is given by a 
@@ -224,7 +263,9 @@ This motivates the detection of multilinear monomials
 without fully expanding $P_k$ into a sum of monomials.
 
 Since only multilinear terms are important in $P_k$, 
-any squared variable can be instantly discarded as soons as it is formed 
+any squared variable can be instantly discarded as
+\amnote*[inline,nomargin]{soon}{soons}
+as it is formed 
 during the computation of $P_1^k$. 
 This can be achieved with dynamic programming 
 to create a polynomial $P'_k$ that 
@@ -243,17 +284,27 @@ with the parameter $k$, we can reduce the number of variables
 by mapping $\rho \colon X \to Y$, where 
 $\abs{X} \geq \abs{Y}$ and $\abs{Y} =$ \bigTheta{k}, 
 and dynamically expand $(P'_1)^k \in \Z[Y]$ instead of
-$P_k$, where $P'_1 \in \Z[Y]$ represents $P_1 \in \Z[X]$ mapped with $\rho$. 
+$P_k$, where
+\amnote*[inline,nomargin]{$P_1' = \Phi_\rho(P_1) \in \Z[Y]$ and $\Phi_\rho$ is
+the canonical extension of $\rho$ to a ring homomorphism $\Z[X] \to \Z[Y]$
+(i.e., simply replacing every $x \in X$ in $P_1$ with $\rho(x)$)}{
+$P'_1 \in \Z[Y]$ represents $P_1 \in \Z[X]$ mapped with $\rho$. 
+}
 
 However, since $\abs{X} \geq \abs{Y}$, 
-a multilinear monomial in $P_k$ may not be multilinear in $P'_k$, 
-i.e., we may map two different variables of a multilinear monomial in $X$ 
+a multilinear monomial in $P_k$ may not be multilinear in $P'_k$
+\amnote*[inline,nomargin]{since}{, i.e., }
+we may map two different variables of a multilinear monomial in $X$ 
 to the same variable in $Y$. 
 For an algorithm to reliably detect a multilinear monomial, 
 it is necessary to use different mappings 
 from $X$ into $Y$ until a multilinear monomial survives the mapping. 
 However, the probability that any given 
-multilinear monomial survives this mapping is around $e^{-\abs{Y}}$ \cite{KouWil15}. 
+multilinear monomial survives
+\amnote*[inline,nomargin]{a uniformly chosen mapping (?)}{
+this mapping
+}
+is around $e^{-\abs{Y}}$ \cite{KouWil15}. 
 This implies that 
 \bigOmega{e^{\abs{Y}}} random mappings must be tried for a 
 multilinear monomial to survive with a reasonable constant probability. Thus, a 
@@ -281,6 +332,7 @@ solving parameterized problems \cite{KouWil15}.
 
 \section{Related problems}
 \label{sect:related_problems}
+\amnote{Section looks very short, so merge it with intro}
 
 The importance of multilinear monomial detection lies in the fact 
 that many parameterized combinatorial problems, as we see in this section, 
@@ -374,10 +426,11 @@ The \emph{characteristic} of a field $\mathbf{F}$ is defined as follows:
 \begin{equation}
   char(\mathbf{F}) =
     \begin{cases}
-      min\{n \in \N \colon n \cdot \mathbf{1} = \mathbf{0} \}\\
+      \min\{n \in \N \colon n \cdot \mathbf{1} = \mathbf{0} \}\\
       0 & \text{if such $n$ does not exist}\\
     \end{cases}       
 \end{equation}
+\amnote{Use \texttt{\textbackslash min}}
 
 Note, that a field $\mathbf{F}$ with 
 characteristic 2 satisfies the following:
@@ -390,7 +443,10 @@ $\mathbf{F}$ has non-zero characteristic.
 We mainly use characteristic 2 in this thesis, and thus, we may say that 
 $f$ cancels out due to characteristic when 
 it has an even coefficient: 
+\amnote*[inline,nomargin]{For every $k \ge 0$, $2kf = k(2f) = k \cdot \mathbf{0}
+= \mathbf{0}$}{
 $f + f + f + f = 4f = 2f + 2f = \mathbf{0} + \mathbf{0} = \mathbf{0}.$
+}
 
 Characteristics are prevalent in \emph{finite fields}, where the set of elements is finite. 
 A simple example of a finite field is $\Z_2 = (\{\mathbf{0}, \mathbf{1}\}, +, \cdot)$, where 
@@ -408,6 +464,7 @@ Note that if $p$ is prime and $k \in \N$, the characteristic of $GF(p^k)$ is $p$
 %Moreover, the non-zero elements of a finite field form a multiplicative group.
 
 \textbf{Polynomial rings and multilinearity.} 
+\amnote[inline,nomargin]{For a (finite) set $X$,}
 A \emph{polynomial ring} in $X$, noted as $\mathbf{K}[X]$,
 is a ring of polynomials with indeterminates (or variables) from $X$ and 
 coefficients from the commutative ring $\mathbf{K}$. 
@@ -419,14 +476,23 @@ $X_1^{a_1}X_2^{a_2}\cdots X_n^{a_n}$, where $X_i \in X$ and $a_i \in \N$ marks t
 A monomial is \emph{multilinear} if 
 $\forall i \in \{1, \ldots, n\} \colon a_i = 0 \vee a_i = 1$. 
 The \emph{degree} of a monomial $m$ 
-is the sum of the exponents: $deg(m) = \sum_{i=1}^n a_i$. 
+is the sum of the exponents: $\deg(m) = \sum_{i=1}^n a_i$. 
+\amnote{use \texttt{\textbackslash deg}}
 Any element $P$ of such polynomial ring is a finite linear combination of these monomials 
 with coefficients $k \in \mathbf{K}$: 
 \[
   P = \displaystyle \sum_p k_p(X_1^{a_{1,p}} \cdots X_n^{a_{n,p}})
 \] 
-Alternatively, a polynomial ring $\mathbf{K}[X]$ can be thought of as a vector space with 
-the all the monomials as a basis. 
+\amnote[inline,nomargin]{
+\[
+  P = \sum_{p_1,\dots,p_n \ge 0} k_{p_1,\dots,p_n} X_1^{a_{p_1}} \cdots X_n^{a_{p_n}}
+\] 
+}
+Alternatively, a polynomial ring $\mathbf{K}[X]$ can be thought of as a vector
+space
+\amnote[inline,nomargin]{over $\mathbf{K}$ of infinite dimension}
+with 
+the \amnote[inline,nomargin]{set of} all the monomials as a basis. 
 Polynomial rings have three operations: addition, multiplication 
 and scalar multiplication. In terms of vectors, addition and scalar multiplication follow 
 the standard addition and scalar multiplication for vectors. 
@@ -444,7 +510,10 @@ decides whether a monomial $g \in M(X)$ appears in a polynomial. If a polynomial
 does not contain the monomial $g$, then it must be that $k_g = \mathbf{0} \in \mathbf{K}$.
 
 \emph{Evaluation of a polynomial} $P$ at $Z$ is denoted $P(Z)$, where 
-$Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing $\mathbf{K}$. 
+\amnote*{I think $Z$ must be a map $X \to \mathbf{R}$}{
+$Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing
+$\mathbf{K}$. 
+}
 Evaluating at $Z$, i.e., assigning indeterminates $X$ to $Z$, defines an 
 element from the ring $\mathbf{R}$, as $P(Z) \in \mathbf{R}$. We may note the unevaluated 
 polynomial as $P(X)$ to highlight the set of indeterminates. 
@@ -492,6 +561,7 @@ $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:
 Note that we use the same symbols for addition and multiplication gates as seen in the figure 
 in all arithmetic circuit diagrams in this thesis.
 
+\amnote{Caption should be below image}
 \begin{SCfigure}[0.5][h]
   \caption{A circuit for evaluating $(ab+cd)^2$. 
   Note that the input terminals have been copied for clarity.}
@@ -504,7 +574,9 @@ in all arithmetic circuit diagrams in this thesis.
 \label{sect:prelims_other}
 
 The following table holds useful notation and their definitions. 
-The terms and notation are given on the left, and their definitions on the right.
+The terms and notation are given on the left, and their definitions on the
+right.
+\amnote{The \texttt{longtable} seems useful here}
 
 \begin{tabularx}{\textwidth} { 
   %| 
@@ -534,6 +606,10 @@ The terms and notation are given on the left, and their definitions on the right
  term & def \\
  \hline
 \end{tabularx}
+\amnote{Drop example for polynomial in $n$}
+\amnote{No need to define deterministic / randomized algorithm}
+\amnote{S-Z lemma in text seems better}
+\amnote{$k$-multilinear monomial is better defined before in context}
 
 Schwartz-Zippel ref:
 
@@ -771,9 +847,13 @@ In general, when $k$ is even, multilinear monomials will have even coefficients.
 
 To tackle this issue, one idea is to add auxiliary indeterminates, 
 called \emph{fingerprints} \cite{KouWil15}, to the monomials 
-in order to make them unique. For example, let $S = \{s_1, s_2, \ldots\}$ 
+in order to make them unique. For example, let
+\amnote*{Actually $S = \{ s_1,\dots,s_6 \}$?}{
+$S = \{s_1, s_2, \ldots\}$ 
 be the set of an appropriate number of fingerprints 
+}
 and augment them to $P_k$ as follows: 
+\amnote{Use \texttt{\textbackslash align}}
 \begin{multline*}
   P'_2 = (s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
   = s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 + \\
@@ -781,15 +861,23 @@ and augment them to $P_k$ as follows:
   s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
 \end{multline*}
 
+\amnote*[inline,nomargin]{Now the multilinear monomial $a_1a_2b_1b_2c_1c_3$ only
+cancels itself out in $\rho(P'_2)$ ($P'_2(Z)$? unsure about notation) if
+$\rho(s_1)\rho(s_6) = \rho(s_3)\rho(s_4)$ under the assignment $\rho$ ....
+We can control depending on how the $\rho(s_i)$ are chosen...}{
 Then, the multilinear monomial detection algorithm 
 could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
+}
 With this, non-multilinear monomials will still vanish, but multilinear monomials 
 will not identically cancel each other out when $k$ is even. 
 
-However, introducing new indeterminates raises the degree of multilinear monomials. 
+However, introducing new indeterminates raises the degree of multilinear
+monomials. 
+\amnote*{??}{
 Therefore, it increases the probability that indeterminates in a multilinear monomial are 
 assigned the same value from $\mathbf{F}[Z_2^k]$, which results in the 
 multilinear monomial evaluating to zero with higher probability. 
+}
 Counteractively raising the dimension of $\Z_2^k$, however, would  
 exponentially slow down matrix multiplications which prove to be %matrix mulitplication has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
 important for efficiency in algebraic fingerprinting (see Section \ref{sect:complexity}).
@@ -804,12 +892,13 @@ randomly from $\{\mathbf{0}_F, \mathbf{1}_F\}$. The idea is that a multilinear m
 assigned with the fingerprint $\mathbf{1}_F$,  
 survives the cancelation due to characteristic if the canceling pair is assigned $\mathbf{0}_F$. 
 With randomized assignments $S \to \Z_2$, 
-there is a constant probability that a multilinear 
+there is a constant \amnote[inline,nomargin]{positive} probability that a multilinear 
 monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
 In practice, fingerprints can be implemented 
 into the algebrization as follows (see also Figure \ref{fig:circuit_fingerprints}): 
-for every multiplication gate $G_i$ feeding from the terminals in the arithmetic circuit $A$ for $P(X)$, 
+for every multiplication gate $G_i$ feeding from the
+\amnote*{inputs}{terminals} in the arithmetic circuit $A$ for $P(X)$, 
 pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
 gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
@@ -866,8 +955,8 @@ with any field $\mathbf{F}$ of characteristic 2.
 We note the family of assignments $S \to \mathbf{F}$ as $\Phi$.
 
 Assume multilinear monomials exist in $P(X)$. 
-\citeauthor{Koutis08} achieved to detect a multilinear monomial 
-with a probability $(1/4 + 1/{4k})$ by testing whether 
+\citeauthor{Koutis08} \amnote*[inline,nomargin]{managed}{achieved} to detect a multilinear monomial 
+with \amnote[inline,nomargin]{(a)} probability $(1/4 + 1/{4k})$ by testing whether 
 $Q(S) = \mathbf{0}$ over the field $\mathbf{F} = \Z_2$  
 with randomized assignments $S \to \Z_2$ \cite{Koutis08}. 
 \citeauthor{Williams09} developed the technique of algebraic fingerprinting 
@@ -882,6 +971,7 @@ Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Willia
 used the field $GF(2^{l})$ with $l \in \N$. \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
 evaluates to $\mathbf{0}_F$ over a random assignment $S \to GF(2^{3+log_2k})$ with probability 
 at most $k/\abs{\mathbf{F}}$ \cite{Williams09}. For example with $k$-path, 
+\amnote{Use \texttt{\textbackslash log}}
 \citeauthor{Williams09} used $l = 3+ log_2k$, 
 which sets the probability of a false-negative evaluation 
 to at most $k/\abs{\mathbf{F}} = 1/2^3$. 
@@ -917,10 +1007,14 @@ $\kappa \colon \Z[\Z_2^k] \to \mathcal{M}$, where $\mathcal{M} = \mathbf{M}^{2^k
 is an algebra of special permutation matrices with binary entries. To translate $\Z[\Z_2^k]$ to 
 $\Z_2[\Z_2^k]$, it is enough to take the modulo 2 of the coefficients $a_v$ in 
 the elements of $\Z[\Z_2^k]$: 
+\amnote{No need for displaystyle}
 \[
-  \displaystyle \sum_{v \in \Z_2^k}a_v v \in \Z[\Z_2^k] \implies 
-  \displaystyle \sum_{v \in \Z_2^k}(a_v \: mod \: 2) v \in \Z_2[\Z_2^k]
+  %\displaystyle
+  \sum_{v \in \Z_2^k}a_v v \in \Z[\Z_2^k] \implies 
+  %\displaystyle \sum_{v \in \Z_2^k}(a_v \: mod \: 2) v \in \Z_2[\Z_2^k]
+  \displaystyle \sum_{v \in \Z_2^k}(a_v \bmod 2) v \in \Z_2[\Z_2^k]
 \]
+\amnote{Use \texttt{\textbackslash bmod}}
 
 %Thus, if we assign $S$ to $\Z$, it is enough to consider the parity of 
 %the coefficient of $v_0 \in \Z_2^k$ in $P_S(\overbar{X})$ \cite{Koutis08}. 
@@ -931,6 +1025,7 @@ detecting multilinear monomials. That is,
 the given implementation for (\ref{eq:polynomial_identity}) is valid through $\kappa$.
 
 \omnote*{Maybe don't go further than this}{Using these matrices, }
+\amnote{I would rather expand in Sect. 5 than here}
 \citeauthor{Koutis08} \cite{Koutis08} detected $k$-multilinear monomials 
 by computing the \omnote*{add to prelims?}{trace} of the matrix resulting 
 from the evaluation of $P_S(X)$ over $\mathcal{M}$. The trace can be computed 
@@ -962,9 +1057,11 @@ In this section, we discuss some limiting factors to the general
 algebraic framework given by 
 algebraic fingerprinting for parameterized problems. First, 
 we discuss the lower bound for the runtime. Then, we discuss 
-the difficulties for derandomization. Finally, we touch on 
+the difficulties for derandomization. Finally, we touch on
+\amnote[inline,nomargin]{the issue of}
 finding a solution for the underlying combinatorial problem 
-whereas algebraic fingerprinting only detects one.
+whereas algebraic fingerprinting only detects
+\amnote*[inline,nomargin]{that one exists}{one}.
 
 \subsubsection{Algebraic optimization}
 \label{sect:algebra_is_optimal}
@@ -1002,28 +1099,39 @@ in polynomial time, it implies that polynomial identity testing can be solved wi
 polynomial time deterministic algorithm. This would imply strong circuit lower bounds 
 TODO: this is apparently significant
 
+\begin{anamnote}[nomargin]
+  If this gets into too hairy complexity theory territory, just say it would
+  imply \enquote{surprising results} in complexity theory.
+  People usually can imagine what that means...
+\end{anamnote}
+
 \subsubsection{Finding the solution}
 \label{sect:finding_the_solution}
 
 In many instances of multilinear monomial detection, 
 a solution to the underlying problem can be directly found 
-from the multilinear monomials by reverse engineering the algebrization. 
+from the multilinear monomials by
+\amnote*{reverse-engineering}{reverse engineering} the algebrization. 
 However in algebraic fingerprinting, we do not have this information on the monomials: 
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
-However, finding a solution when its presence is detected seems easy. 
+However, finding a solution when its presence is detected
+\amnote*{??}{seems easy}. 
 Moreover, since most of the problems in Section \ref{sect:related_problems} 
 have search problems in FPT, a solution is found in polynomial time when its 
 existence is detected.
 
 For example, in \cite{Koutis08}, 
 \cite{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
-$k$-path can be found by \bigOstar{n+min(k^2, m)} applications of the given algorithm. 
+$k$-path can be found by \bigOstar{n+min(k^2, m)} applications of the given
+algorithm. 
+\amnote{What are $n$ and $m$ here? (I can imagine, but some other reader probably won't)}
 In general for subgraph problems, we may find a solution by calling the decision 
 algorithm a polynomial number of times for different subgraphs of the original input graph.
 
-\clearpage
+\amnote{dropped clearpage}
+%\clearpage
 \section{Improving from algebraic fingerprinting}
 \label{sect:improvements}
 
@@ -1051,7 +1159,13 @@ improvements in utilizing the general framework of algebraic fingerprints.
 \subsection{Fingerprinting for cancelation of non-solutions}
 \label{sect:cancel_nonsolutions}
 
-TODO: go over Björklund et al. for k-path or Hamiltonicity, managed to design fingerprints such that non-solutions cancel
+TODO: go over Björklund et al. for k-path or Hamiltonicity, managed to design
+fingerprints such that non-solutions cancel
+
+\begin{anamnote}[nomargin]{}
+  We already have plenty of content.
+  Either cut some content before or keep things here very brief!
+\end{anamnote}
 
 In the algebraic framework by \citeauthor{Koutis08} and \citeauthor{Williams09}, 
 fingerprints prevent the cancelation of multilinear monomials. 
@@ -1118,3 +1232,8 @@ a significant development by \citeauthor{Björklund14} right after
 the novel algebraic technique \cite{Koutis08} saw publication.
 
 TODO: conclude
+
+\begin{anamnote}[nomargin]{}
+  What about further work?
+  What do people intend to work on in the near future?
+\end{anamnote}

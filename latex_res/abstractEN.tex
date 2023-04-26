@@ -5,6 +5,12 @@
 %
 % Avainsanojen lista pitää merkitä main.tex-tiedoston kohtaan \KEYWORDS.
 
+\amnote{prefer \texttt{\textbackslash cdot}, $\ast$ usually indicates some other
+operation \\[1em]} 
+\amnote{use $\poly$ from complexity package}
+\amnote{First sentence of abstract uses a bit too much jargon}
+\amnote{two \enquote{howevers} in third paragraph}
+
 \begin{enabstract}
   This thesis studies how parameterized combinatorial problems can be 
   solved by detecting a $k$-multilinear monomial in a multivariate polynomial 
@@ -16,7 +22,7 @@
   general framework.
 
   With algebraic fingerprints, a $k$-multilinear monomial can be detected 
-  in time \bigO{2^k * poly(n)}, where $n$ is the number of variables in the 
+  in time \bigO{2^k * \poly(n)}, where $n$ is the number of variables in the 
   multivariate polynomial. This gives a general framework for solving parameterized 
   combinatorial problems efficiently, since they can in general be reduced to
   instances of $k$-multilinear 
