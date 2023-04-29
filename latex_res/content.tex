@@ -545,7 +545,7 @@ If the underlying algebra is commutative, we may call the arithmetic circuit a \
 %However, since we are using mainly commutative algebras in this thesis, we may define the 
 %gates for binary operations to have unbounded fan-in. 
 
-For example, an abstract evaluation of a polynomial $P$ in $\Z[\{a,b,c,d\}]$ of the form 
+For example, an abstract evaluation of a polynomial $P \in \Z[\{a,b,c,d\}]$ of the form 
 $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:circuit_example}. 
 Note that we use the same symbols for addition and multiplication gates as seen in the figure 
 in all arithmetic circuit diagrams in this thesis.
@@ -880,17 +880,17 @@ randomly from $\{\mathbf{0}_F, \mathbf{1}_F\}$. The idea is that a multilinear m
 assigned with the fingerprint $\mathbf{1}_F$,  
 survives the cancelation due to characteristic if the canceling pair is assigned $\mathbf{0}_F$. 
 With randomized assignments $S \to \Z_2$, 
-there is a constant \amnote[inline,nomargin]{positive} probability that a multilinear 
+there is a constant positive probability that a multilinear 
 monomial will have an odd coefficient, and thus survive the assignment \cite{Koutis08}.
 
 In practice, fingerprints can be implemented 
 into the algebrization as follows (see also Figure \ref{fig:circuit_fingerprints}): 
-for every multiplication gate $G_i$ feeding from the
-\amnote*{inputs}{terminals} in the arithmetic circuit $A$ for $P(X)$, 
+for every multiplication gate $G_i$ feeding into an addition gate 
+in the arithmetic circuit $A$ for $P(X)$, 
 pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
 gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
-as $P'(X, S)$. Note that here, 
+as $P'(X, S)$. Note that here 
 \citeauthor{Koutis08} picked random elements from $\Z_2$ for $s_i$.
 
 \begin{figure}[h]
@@ -1044,11 +1044,9 @@ In this section, we discuss some limiting factors to the general
 algebraic framework given by 
 algebraic fingerprinting for parameterized problems. First, 
 we discuss the lower bound for the runtime. Then, we discuss 
-the difficulties for derandomization. Finally, we touch on
-\amnote[inline,nomargin]{the issue of}
+the difficulties for derandomization. Finally, we touch on the issue of 
 finding a solution for the underlying combinatorial problem 
-whereas algebraic fingerprinting only detects
-\amnote*[inline,nomargin]{that one exists}{one}.
+whereas algebraic fingerprinting only detects that one exists.
 
 \subsubsection{Algebraic optimization}
 \label{sect:algebra_is_optimal}
@@ -1084,22 +1082,25 @@ a randomized algorithm \cite{Williams09}.
 
 If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
-polynomial time deterministic algorithm. This would imply strong circuit lower bounds 
-TODO: this is apparently significant
+polynomial time deterministic algorithm. However, this implies proving superpolynomial 
+lower bounds for arithmetic circuit sizes, which is notoriously hard \cite{Kabanets03}. 
+Therefore, with respect to the several decades of 
+sustained effort directed at circuit lower bounds \cite{Kabanets03}, 
+it seems unlikely that someone discovers a derandomization of polynomial identity testing.
 
-\begin{anamnote}[nomargin]
-  If this gets into too hairy complexity theory territory, just say it would
-  imply \enquote{surprising results} in complexity theory.
-  People usually can imagine what that means...
-\end{anamnote}
-
+%\begin{anamnote}[nomargin]
+%  If this gets into too hairy complexity theory territory, just say it would
+%  imply \enquote{surprising results} in complexity theory.
+%  People usually can imagine what that means...
+%\end{anamnote}
+%
 \subsubsection{Finding the solution}
 \label{sect:finding_the_solution}
 
 In many instances of multilinear monomial detection, 
 a solution to the underlying problem can be directly found 
-from the multilinear monomials by
-\amnote*{reverse-engineering}{reverse engineering} the algebrization. 
+from the multilinear monomials by 
+reverse-engineering the algebrization. 
 However in algebraic fingerprinting, we do not have this information on the monomials: 
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
@@ -1137,34 +1138,32 @@ Indeed, faster algorithms for specific combinatorial problems
 have been found by designing new algebrizations with techniques 
 similar to algebraic fingerprinting, where the fingerprints are designed to make use of 
 the underlying combinatorial properties. In \Cref{sect:cancel_nonsolutions}, 
-we see how \textcite{Björklund14},
+we see how \textcite{Björklund14} 
 exploited the cancelation due to characteristic to cancel non-solution monomials 
 by clever design of fingerprints. 
 
 \Cref{sect:other_improvements} briefly overviews other ideas or 
-improvements in utilizing the general framework of algebraic fingerprints.
+improvements in utilizing the \emph{general} framework of algebraic fingerprints.
 
 \subsection{Fingerprinting for cancelation of non-solutions}
 \label{sect:cancel_nonsolutions}
 
-TODO: go over Björklund et al. for k-path or Hamiltonicity, managed to design
-fingerprints such that non-solutions cancel
+In the algebraic framework by \citeauthor{KouWil09}, 
+characteristic 2 is essentially a by-product of implementing 
+the idea of discarding squared elements, and fingerprints are merely 
+introduced to prevent multilinear terms from canceling out. 
 
-\begin{anamnote}[nomargin]{}
-  We already have plenty of content.
-  Either cut some content before or keep things here very brief!
-\end{anamnote}
+\textcite{Björklund14}, however, approached the elimination of 
+non-solutions from a different angle: instead of focusing on squared elements, 
+he focused on the coefficients, and used fingerprints to pair non-solution 
+monomials together to cancel them. To prevent canceling valid solutions, 
+\citeauthor{Björklund14} used the same high-level idea of randomization 
+by \citeauthor{KouWil09} to disrupt the pairing of solution monomials by 
+making them unique.
 
-In the algebraic framework by \citeauthor{Koutis08} and \citeauthor{Williams09}, 
-fingerprints prevent the cancelation of multilinear monomials. 
-Attacking the Hamiltonian path problem, however, \citeauthor{Björklund14} 
-designed fingerprints such that non-multilinear monomials, i.e. non-solution terms, 
-cancel due to characteristic, while the multilinear terms 
-remain with constant probability \cite{Björklund14}. This resulted in the current 
-fastest algorithm for undirected Hamiltonicity, running in \bigOstar{2^n} time.
-
-Before discussing the algebrization and the fingerprints, 
-we define the Hamiltonian path problem.
+For Hamiltonicity, this approach allowed \citeauthor{Björklund14} to utilize 
+fast algorithms for computing determinants of matrices, which resulted in an 
+\bigOstar{1.657^n} time randomized algorithm.
 
 \begin{problem}
   \problemtitle{\textsc{Hamiltonian path (Hamiltonicity)}}
@@ -1177,12 +1176,33 @@ we define the Hamiltonian path problem.
 \subsection{Other research in improving algebraic fingerprinting}
 \label{sect:other_improvements}
 
-- constrained multilinear detection (weighted problems?), temporal graphs
-
 - deterministic multilinear detection (partial differentials of polynomials)
 
 As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
-gives randomized algorithms, and the derandomization is hard. 
+gives randomized algorithms, and derandomizing the technique is hard. 
+Since the runtime of algebraic fingerprinting is arguably optimized for 
+the general multilinear monomial detection, 
+much effort has been directed into matching the 
+deterministic runtime to the randomized one, 
+although there still is a significant gap between them.
+
+The state-of-the-art deterministic algorithm uses 
+the partial differentials of the polynomial, though 
+a combinatorial set representation approach has been proven as equivalent.
+
+- constrained multilinear detection (weighted problems?), temporal graphs
+
+On another front, there has been research into 
+extending the application domain of algebraic fingerprinting. 
+In specific, 
+research on how more information can be taken 
+into the algebrization has found success. 
+With \emph{constrained} multilinear monomial detection \\cite{TODO}, 
+a solution that is otherwise valid would not correspond to a multilinear 
+monomial unless it satisfies some extra constraint, i.e., we detect only solutions that satisfy 
+the constraint that is a weight or a cost etc. 
+with a specific constraint, i.e., a cost or a counter. Moreover, multilinear monomial 
+detection has been extended to temporal graphs (constraints).
 
 - distributed multilinear detection (MIDAS-paper)
 %Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
