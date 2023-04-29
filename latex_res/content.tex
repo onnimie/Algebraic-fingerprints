@@ -33,7 +33,7 @@ who gave an \bigOstar{2^k} algorithm.
 
 Most famously, 
 \textcite{Björklund14} published an algorithm 
-that solved the famous Hamiltonian problem (Hamiltonicity) in \bigOstar{1.657^n} time 
+that solved the famous Hamiltonian path problem (Hamiltonicity) in \bigOstar{1.657^n} time 
 with clever utilizations of this novel algebraic technique. 
 The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} time
 \amnote*[inline,nomargin]{and date from \citeyear{HelKar62}}{%
@@ -1143,23 +1143,23 @@ exploited the cancelation due to characteristic to cancel non-solution monomials
 by clever design of fingerprints. 
 
 \Cref{sect:other_improvements} briefly overviews other ideas or 
-improvements in utilizing the \emph{general} framework of algebraic fingerprints.
+improvements in the domain of $k$-multilinear monomial detection.
 
 \subsection{Fingerprinting for cancelation of non-solutions}
 \label{sect:cancel_nonsolutions}
 
 In the algebraic framework by \citeauthor{KouWil09}, 
 characteristic 2 is essentially a by-product of implementing 
-the idea of discarding squared elements, and fingerprints are merely 
-introduced to prevent multilinear terms from canceling out. 
+the idea of discarding squared variables, and fingerprints are merely 
+introduced to prevent valid solutions from canceling out. 
 
 \textcite{Björklund14}, however, approached the elimination of 
 non-solutions from a different angle: instead of focusing on squared elements, 
 he focused on the coefficients, and used fingerprints to pair non-solution 
-monomials together to cancel them. To prevent canceling valid solutions, 
-\citeauthor{Björklund14} used the same high-level idea of randomization 
-by \citeauthor{KouWil09} to disrupt the pairing of solution monomials by 
-making them unique.
+monomials together to cancel them. %To prevent canceling valid solutions, 
+%\citeauthor{Björklund14} used the same high-level idea of randomization 
+%by \citeauthor{KouWil09} to disrupt the pairing of solution monomials by 
+%making them unique.
 
 For Hamiltonicity, this approach allowed \citeauthor{Björklund14} to utilize 
 fast algorithms for computing determinants of matrices, which resulted in an 
@@ -1167,50 +1167,58 @@ fast algorithms for computing determinants of matrices, which resulted in an
 
 \begin{problem}
   \problemtitle{\textsc{Hamiltonian path (Hamiltonicity)}}
-  \probleminput{A directed graph $G = (V,E)$.}
+  \probleminput{An undirected graph $G = (V,E)$.}
   \problemquestion{Does $G$ contain a simple path that visits every vertex?}
 \end{problem}
 
 \omnote*{Probably really brief}{TODO: give the algebrization and/or show how it works}
 
-\subsection{Other research in improving algebraic fingerprinting}
+\subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
 
-- deterministic multilinear detection (partial differentials of polynomials)
-
-As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
-gives randomized algorithms, and derandomizing the technique is hard. 
 Since the runtime of algebraic fingerprinting is arguably optimized for 
-the general multilinear monomial detection, 
-much effort has been directed into matching the 
-deterministic runtime to the randomized one, 
-although there still is a significant gap between them.
+the general multilinear monomial detection, much research has been 
+done on specific settings. In their series of papers \cite{Chen11a, Chen11b, Chen10, Chen13a}, 
+\citeauthor{Chen13a} studied complexities for different types of multivariate polynomials, and
+detecting different types of monomials, i.e., 
+\emph{q-monomials}\footnote{a $d$ degree monomial where every exponent is smaller than $d$}, 
+which were further studied by \textcite{Chen14}.
 
-The state-of-the-art deterministic algorithm uses 
-the partial differentials of the polynomial, though 
-a combinatorial set representation approach has been proven as equivalent.
+%As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
+%gives randomized algorithms, and derandomizing the technique is hard. 
+Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22}  
+has been directed into deterministic algorithms for 
+instances of multilinear monomial detection, and 
+closing the gap between the deterministic and the randomized algorithms. 
+The general $k$-multilinear monomial detection is solved in
+in \bigOstar{3.84^k} time \cite{Fomin14}, though methods that result in 
+much faster algorithms for specific problems 
+have been found. For example, the state-of-the-art deterministic algorithm for $k$-path 
+runs in \bigOstar{2.55^k} time by computing partial differentials of multivariate polynomials \cite{Brand21}.
 
-- constrained multilinear detection (weighted problems?), temporal graphs
-
-On another front, there has been research into 
+%- constrained multilinear detection (weighted problems?), temporal graphs
+%
+On another front, there has been research in 
 extending the application domain of algebraic fingerprinting. 
 In specific, 
 research on how more information can be taken 
 into the algebrization has found success. 
-With \emph{constrained} multilinear monomial detection \\cite{TODO}, 
-a solution that is otherwise valid would not correspond to a multilinear 
-monomial unless it satisfies some extra constraint, i.e., we detect only solutions that satisfy 
-the constraint that is a weight or a cost etc. 
-with a specific constraint, i.e., a cost or a counter. Moreover, multilinear monomial 
-detection has been extended to temporal graphs (constraints).
+With \emph{constrained multilinear monomial detection} \cite{Koutis12, Björklund16}, 
+we detect only multilinear monomials that satisfy an additional constraint, 
+e.g., a proper coloring
+\footnote{the number of occurrences of each color in a multilinear monomial is below some maximum}. 
+This can be extended to detect solutions with a specific cost \cite{Björklund16} 
+and/or temporal properties
+\footnote{i.e., we can solve constrained problems that exist in graphs with timestamped and colored vertices} 
+\cite{Thejaswi20}.
 
-- distributed multilinear detection (MIDAS-paper)
-%Furthermore, the evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
-%However, the matrix representations of the group algebras used in \cite{Williams09} 
-%offer possibilities for parallelization.
-%In \cref{sect:parallelization}, \amnote[inline,nomargin]{we discuss} the ideas of 
-%\citeauthor{Midas19} behind the distributed multilinear monomial detection
-%\cite{Midas19} \amnote*[inline,nomargin]{}{(are discussed)}.
+%- distributed multilinear detection (MIDAS-paper)
+The evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
+However, the matrix representations of the group algebras used 
+offer possibilities for parallelization. \textcite{Midas19} observed this and designed 
+an optimized distributed algorithm for multilinear monomial detection. 
+The authors showed applications of this method that outperform previously 
+fastest algorithms for several network scan statistics problems.
 
 %\clearpage
 \section{Conclusion}
