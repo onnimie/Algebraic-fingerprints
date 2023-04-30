@@ -322,9 +322,8 @@ to which many parameterized problems can be reduced to,
 it gives a general framework for 
 solving parameterized problems \cite{KouWil15}.
 
-\section{Related problems}
+\subsection{Related problems}
 \label{sect:related_problems}
-\amnote{Section looks very short, so merge it with intro}
 
 The importance of multilinear monomial detection lies in the fact 
 that many parameterized combinatorial problems, as we see in this section, 
@@ -360,8 +359,15 @@ It is necessary to recall basic algebraic concepts and common notation
 before further discussing multilinear monomial detection and algebraic fingerprinting. 
 \Cref{sect:prelims_algebra} gives definitions for some necessary algebras 
 and algebraic concepts. \Cref{sect:prelims_circuits} outlines arithmetic circuits. 
-\Cref{sect:prelims_other} gives a table of other notation and terminology used 
-throughout the thesis.
+%\Cref{sect:prelims_other} gives a table of other notation and terminology used 
+%throughout the thesis.
+
+Some lesser-known notation is also used. FPT or \emph{fixed parameter tractable} 
+is a class of parameterized problems that 
+can be solved in polynomial time if the parameter is fixed. 
+\poly(n) refers to a polymial function in $n$. 
+$\mathcal O$* hides factors polynomial to the input size, e.g., 
+\bigO{n^3k^n} = \bigOstar{k^n}.
 
 \subsection{Algebra} 
 \label{sect:prelims_algebra}
@@ -902,6 +908,7 @@ as $P'(X, S)$. Note that here
 \end{figure}
 
 \subsubsection{Polynomial identity testing}
+\label{sect:polynomial_identity_testing}
 
 From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
 That is, we compute $P'(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P'(\overbar{X}, S)$, i.e., 
@@ -1037,7 +1044,7 @@ algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm, since
 $k$-3D-matching reduces into $3k$-degree multilinear monomial detection.
 
 
-\subsection{Limits of algebraic fingerprinting}
+\section{Limits of algebraic fingerprinting}
 \label{sect:limits}
 
 In this section, we discuss some limiting factors to the general 
@@ -1048,7 +1055,7 @@ the difficulties for derandomization. Finally, we touch on the issue of
 finding a solution for the underlying combinatorial problem 
 whereas algebraic fingerprinting only detects that one exists.
 
-\subsubsection{Algebraic optimization}
+\subsection{Algebraic optimization}
 \label{sect:algebra_is_optimal}
 
 In \Cref{sect:complexity}, it was established that $k$-multilinear monomials 
@@ -1072,7 +1079,7 @@ However,
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
 specific $k$-multilinear monomial detection instances (see \Cref{sect:improvements}).
 
-\subsubsection{Derandomization}
+\subsection{Derandomization}
 \label{sect:derandomization}
 
 Algebraic fingerprinting gives a randomized algorithm for $k$-multilinear monomial detection. 
@@ -1094,7 +1101,7 @@ it seems unlikely that someone discovers a derandomization of polynomial identit
 %  People usually can imagine what that means...
 %\end{anamnote}
 %
-\subsubsection{Finding the solution}
+\subsection{Finding the solution}
 \label{sect:finding_the_solution}
 
 In many instances of multilinear monomial detection, 
@@ -1125,8 +1132,7 @@ algorithm a polynomial number of times for different subgraphs of the original i
 \label{sect:improvements}
 
 As mentioned in \Cref{sect:algebra_is_optimal}, 
-algebraic fingerprinting as a framework %proposed by 
-%\citeauthor{Koutis08} and \citeauthor{Williams09} \cite{Williams09, KouWil09, KouWil15} 
+algebraic fingerprinting as a framework 
 for $k$-multilinear monomial detection has a lower bound of \bigOmega{2^k}. 
 However, this framework is very generic since it 
 approaches the abstracted multilinear monomial detection without 
@@ -1151,27 +1157,51 @@ improvements in the domain of $k$-multilinear monomial detection.
 In the algebraic framework by \citeauthor{KouWil09}, 
 characteristic 2 is essentially a by-product of implementing 
 the idea of discarding squared variables, and fingerprints are merely 
-introduced to prevent valid solutions from canceling out. 
+introduced to prevent valid solutions from canceling out.
 
 \textcite{Björklund14}, however, approached the elimination of 
 non-solutions from a different angle: instead of focusing on squared elements, 
-he focused on the coefficients, and used fingerprints to pair non-solution 
-monomials together to cancel them. %To prevent canceling valid solutions, 
-%\citeauthor{Björklund14} used the same high-level idea of randomization 
-%by \citeauthor{KouWil09} to disrupt the pairing of solution monomials by 
-%making them unique.
-
+he focused on the coefficients, 
+and used characteristic 2 and fingerprints to pair non-solution 
+monomials together to cancel them. 
 For Hamiltonicity, this approach allowed \citeauthor{Björklund14} to utilize 
-fast algorithms for computing determinants of matrices, which resulted in an 
+fast algorithms for computing matrix determinants, which resulted in an 
 \bigOstar{1.657^n} time randomized algorithm.
 
+Before we briefly overview the idea behind this algorithm, we define the 
+relevant problem:
 \begin{problem}
   \problemtitle{\textsc{Hamiltonian path (Hamiltonicity)}}
   \probleminput{An undirected graph $G = (V,E)$.}
   \problemquestion{Does $G$ contain a simple path that visits every vertex?}
 \end{problem}
 
-\omnote*{Probably really brief}{TODO: give the algebrization and/or show how it works}
+\citeauthor{Björklund14} approached this problem by considering \emph{cycle covers}, i.e., 
+sets of cycles on $G$ such that TODO. In terms of algebrization, 
+\citeauthor{Björklund14} essentially formed 
+a multivariate polynomial $P$ of cycle cover monomials, where some monomials correspond to 
+Hamiltonian cycle covers. Evaluating $P$ over a suitable ring, 
+non-Hamiltonian cycle covers cancel out, and we detect 
+only Hamiltonian cycle covers, i.e., valid solutions.
+
+\citeauthor{Björklund14} achieved this by labeling, i.e. fingerprinting, cycle covers such 
+that all non-Hamiltonian cycle covers receive a label identical to another non-Hamiltonian cycle cover, 
+and Hamiltonian cycle covers receive unique labels. Thus with characteristic 2, 
+the non-solution monomials cancel out. 
+It is necessary that $G$ is undirected, since 
+the uniqueness of the labels of Hamiltonian cycle covers 
+is achieved by introducing direction.
+
+For detecting whether $P$ is identical to zero (no solutions exist), \citeauthor{Björklund14} 
+employed the same idea of polynomial identity testing as in \Cref{sect:polynomial_identity_testing}.
+For achieving the time complexity of \bigOstar{1.657^n}, \citeauthor{Björklund14} 
+utilized the natural interpretation of matrix permanents 
+as a sum of labeled cycle covers \cite{Björklund14}. 
+Moreover, the determinant of a matrix over a ring of characteristic 2 
+is identical to the 
+permanent \cite{Björklund14}, 
+which essentially allowed \citeauthor{Björklund14} to compute a determinant 
+to detect a Hamiltonian path.
 
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
@@ -1181,7 +1211,7 @@ the general multilinear monomial detection, much research has been
 done on specific settings. In their series of papers \cite{Chen11a, Chen11b, Chen10, Chen13a}, 
 \citeauthor{Chen13a} studied complexities for different types of multivariate polynomials, and
 detecting different types of monomials, i.e., 
-\emph{q-monomials}\footnote{a $d$ degree monomial where every exponent is smaller than $d$}, 
+\emph{q-monomials}\footnote{a $d$-degree monomial where every exponent is smaller than $d$} 
 which were further studied by \textcite{Chen14}.
 
 %As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
@@ -1190,7 +1220,7 @@ Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22}
 has been directed into deterministic algorithms for 
 instances of multilinear monomial detection, and 
 closing the gap between the deterministic and the randomized algorithms. 
-The general $k$-multilinear monomial detection is solved in
+The general deterministic $k$-multilinear monomial detection is solved in
 in \bigOstar{3.84^k} time \cite{Fomin14}, though methods that result in 
 much faster algorithms for specific problems 
 have been found. For example, the state-of-the-art deterministic algorithm for $k$-path 
@@ -1206,7 +1236,7 @@ into the algebrization has found success.
 With \emph{constrained multilinear monomial detection} \cite{Koutis12, Björklund16}, 
 we detect only multilinear monomials that satisfy an additional constraint, 
 e.g., a proper coloring
-\footnote{the number of occurrences of each color in a multilinear monomial is below some maximum}. 
+\footnote{the number of occurrences of each color tied to a variable in a multilinear monomial is below some maximum}. 
 This can be extended to detect solutions with a specific cost \cite{Björklund16} 
 and/or temporal properties
 \footnote{i.e., we can solve constrained problems that exist in graphs with timestamped and colored vertices} 
@@ -1229,9 +1259,9 @@ it can be seen
 that a fast algorithm for $k$-multilinear monomial detection gives a 
 fast algorithm for many parameterized combinatorial problems. 
 We found that algebraic fingerprinting solves this problem by 
-evaluating the given multivariate polynomial over a specific algebra. 
+evaluating the given multivariate polynomial over a specific algebraic structure. 
 Thus, we 
-may say that algebraic fingerprinting gives a general framework for 
+may say that algebraic fingerprinting gives a general framework for solving 
 parameterized combinatorial problems. 
 
 In \Cref{sect:algebraic_fingerprinting}, we discussed the idea behind 
@@ -1243,16 +1273,30 @@ by elements randomly chosen from $GF(2^{l}) \setminus \{\mathbf{0}\}$.
 This gives a randomized algorithm for 
 $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
 
-Moreover, as seen in \Cref{sect:cancel_nonsolutions}, 
+As discussed in \Cref{sect:other_improvements}, algebraic fingerprints 
+have been studied for deterministic algorithms as well; closing 
+the gap between the runtimes of deterministic and randomized algorithms 
+has seen great effort, and the gaps for several problems are still bound for improvements.
+Furthermore, \Cref{sect:other_improvements} showcases possibilites for extending the 
+application domain of algebraic fingerprinting. Applying the general algebraic framework 
+to different problem areas is a significant field of interest.
+
+As seen in \Cref{sect:cancel_nonsolutions}, 
 the technique of algebraic fingerprints can be utilized for even 
-faster algorithms. In particular, a near fifty-year stagnation 
+faster randomized algorithms for specific problems. 
+In particular, a near fifty-year stagnation 
 in improvements for the well-studied Hamiltonian path problem saw 
 a significant development by \citeauthor{Björklund14} right after 
-the novel algebraic technique \cite{Koutis08} saw publication.
+the novel algebraic technique \cite{Koutis08} saw publication. 
+This sparked developments for several other 
+problems as well \cite{Björklund17}, all of which were greatly inspired by 
+the general technique of algebraic fingerprints and 
+follow similar utilizations of fingerprints as in Hamiltonicity.
 
-TODO: conclude
-
-\begin{anamnote}[nomargin]{}
-  What about further work?
-  What do people intend to work on in the near future?
-\end{anamnote}
+However, most of the problems in \Cref{sect:related_problems} are still 
+solved most efficiently by the general algebraic framework. Solving these 
+specific problems faster is still an open problem. 
+It may be that 
+finding faster algorithms that beat the general algebraic framework requires 
+one to design different algebrizations (as in Hamiltonicity) 
+or come up with completely new ideas.
