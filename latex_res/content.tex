@@ -629,7 +629,10 @@ we discuss the algebraic ideas by \citeauthor{KouWil09} \cite{Koutis08, Williams
 for the $k$-multilinear monomial detection. 
 In \Cref{sect:algebraic_fingerprinting}, 
 we dive into the technique of \emph{algebraic fingerprinting}, and 
-see the ideas and implementations of \citeauthor{KouWil09}. 
+see the ideas and implementation of \textcite{Koutis08}. 
+\Cref{sect:polynomial_identity_testing} covers how 
+\textcite{Williams09} developed this idea  
+in the perspective of polynomial identity testing. 
 In \Cref{sect:complexity} we briefly discuss the time and space complexity 
 of the general algebraic framework given by algebraic fingerprinting. 
 Finally, \Cref{sect:limits} discusses the limits of algebraic fingerprinting.
@@ -664,7 +667,7 @@ Therefore, $P(X)$ will identically evaluate to zero if there are no multilinear 
 i.e., there exist no solutions to the original problem.
 
 This is the basis of algebraic multilinear monomial detection introduced by 
-\citeauthor{Koutis08} \cite{Koutis08}, 
+\textcite{Koutis08}, 
 or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}: 
 we evaluate $P(X)$ over some algebraic structure $\mathbf{G}$, 
 and detect a multilinear monomial from 
@@ -682,8 +685,7 @@ where $w \neq \mathbf{0}$,
 
 In the following subsections, we specify an appropriate algebraic structure such that 
 (\ref{eq:polynomial_identity}) is met, as well as some requirements for efficiency. 
-Then, we discuss the works of \citeauthor{Koutis08} 
-and \citeauthor{Williams09} \cite{Koutis08, Williams09}, 
+Then, we discuss the works of \textcite{Koutis08}, 
 and see how these specifications were implemented.
 
 This thesis refers to the general framework provided 
@@ -760,7 +762,9 @@ this algebraic fingerprinting technique \cite{Koutis08},
 \citeauthor{Koutis08} used the group algebra $\Z_2[\Z_2^k]$. 
 \citeauthor{Williams09} developed the technique further, 
 generalizing the algebra to $GF(2^{l})[\Z_2^k]$ \cite{Williams09}. 
-Next, we look at these group algebras of $\Z_2^k$ for $\mathbf{G}$. 
+Next, we look at these group algebras of $\Z_2^k$ for $\mathbf{G}$, 
+though the ideas of \citeauthor{Williams09} is discussed only 
+later in \Cref{sect:polynomial_identity_testing}.
 
 \subsubsection{Using group algebras of $\Z_2^k$}
 
@@ -907,7 +911,7 @@ as $P'(X, S)$. Note that here
   \label{fig:circuit_fingerprints}
 \end{figure}
 
-\subsubsection{Polynomial identity testing}
+\subsection{Polynomial identity testing}
 \label{sect:polynomial_identity_testing}
 
 From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
@@ -947,7 +951,18 @@ to polynomial identity testing. A multilinear monomial is detected if
 $Q(f) \neq \mathbf{0}_F \in \mathbf{F}$, where $Q(f)$ 
 represents evaluation under an assignment $S \to \mathbf{F}$, 
 with any field $\mathbf{F}$ of characteristic 2. 
-We note the family of assignments $S \to \mathbf{F}$ as $\Phi$.
+We note the family of assignments $S \to \mathbf{F}$ as $\Phi$. 
+Polynomial identity testing is a well-studied problem, and can be efficiently 
+solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Saxena09}.
+
+\newtheorem*{lemmaSZ}{Schwartz-Zippel Lemma}
+\begin{lemmaSZ}
+  Let $P \in F[X]$ be a non-zero polynomial of degree $d$ over a field $F$. 
+  Let $Z$ be a uniformly chosen random mapping $Z \colon X \to F$. Then, 
+  \[
+    Probability[P(Z) = \mathbf{0}] \leq d/{\abs{F}}.  
+  \]
+\end{lemmaSZ}
 
 Assume multilinear monomials exist in $P(X)$. 
 \citeauthor{Koutis08} achieved to detect a multilinear monomial 
@@ -955,7 +970,7 @@ with a probability $(1/4 + 1/{4k})$ by testing whether
 $Q(S) = \mathbf{0}$ over the field $\mathbf{F} = \Z_2$  
 with randomized assignments $S \to \Z_2$ \cite{Koutis08}. 
 \citeauthor{Williams09} developed the technique of algebraic fingerprinting 
-further by observing that due to the Schwartz-Zippel lemma, %(see \cref{sect:prelims}), 
+further by observing that due to the Schwartz-Zippel Lemma, %(see \cref{sect:prelims}), 
 if we raise the order of the field $\mathbf{F}$ 
 such that the number of different assignments in $\Phi$ is much larger than 
 the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}_F$, 
@@ -963,9 +978,9 @@ $Q(\delta(S)) \neq \mathbf{0}_F$ with a high probability over some $\delta \in \
 \cite{Williams09}. 
 
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
-used the field $GF(2^{l})$ with $l \in \N$. \cite{Williams09}. By Schwartz-Zippel lemma, $Q(S)$ 
+used the field $GF(2^{l})$ with $l \in \N$ \cite{Williams09}. By Schwartz-Zippel, $Q(S)$ 
 evaluates to $\mathbf{0}_F$ over a random assignment $S \to GF(2^{l})$ with probability 
-at most $k/{2^l}$ \cite{Williams09}. For example with $k$-path, 
+at most $k/{2^l}$. For example with $k$-path, 
 \citeauthor{Williams09} used $l = 3 + \log_2k$, 
 which sets the probability of a false-negative evaluation 
 to at most $1/2^3$. 
@@ -974,23 +989,20 @@ gave a randomized \bigOstar{2^{3k/2}} time algorithm \cite{Koutis08},
 and \citeauthor{Williams09} developed this into a randomized \bigOstar{2^k} 
 time algorithm \cite{Williams09} with the ideas discussed here.
 
-In the following section, we briefly touch on the complexities of the 
-algebras given here. 
-
 \subsection{Time and space complexity}
 \label{sect:complexity}
 
-In the previous section, we discussed the specifications 
+In the previous sections, we discussed the specifications 
 for an algebraic stucture to implement algebraic fingerprinting. 
-For an appropriate algebra, we found $GF(2^{l})[Z_2^k]$. 
+For an appropriate algebraic structure, we found $GF(2^{l})[Z_2^k]$. 
 However, we did not discuss the costs related 
 to this algebra. In this section, we briefly discuss the time and space complexity 
 of algebraic fingerprinting.
-
-Define the evaluation of $P'(X, S)$ at any $X$ and $S$ to take $g(n)$ number of  
-arithmetic operations, where $n = \abs{X}$. In general, 
-detecting $k$-degree multilinear monomials in $P(X)$ takes 
-\bigOstar{2^kg} time and \bigO{poly(n,k)} space \cite{Williams09}.
+%
+%Define the evaluation of $P'(X, S)$ at any $X$ and $S$ to take $g(n)$ number of  
+%arithmetic operations, where $n = \abs{X}$. In general, 
+%detecting $k$-degree multilinear monomials in $P(X)$ takes 
+%\bigOstar{2^kg} time and \bigO{poly(n,k)} space \cite{Williams09}.
 
 Actually, the complexities given by \textcite{Koutis08} and 
 \textcite{Williams09} did not directly come from 
@@ -1001,14 +1013,10 @@ $\kappa \colon \Z[\Z_2^k] \to \mathcal{M}$, where $\mathcal{M} = \mathbf{M}^{2^k
 is an algebra of special permutation matrices with binary entries. To translate $\Z[\Z_2^k]$ to 
 $\Z_2[\Z_2^k]$, it is enough to take the modulo 2 of the coefficients $a_v$ in 
 the elements of $\Z[\Z_2^k]$: 
-\amnote{No need for displaystyle}
 \[
-  %\displaystyle
   \sum_{v \in \Z_2^k}a_v v \in \Z[\Z_2^k] \implies 
-  %\displaystyle \sum_{v \in \Z_2^k}(a_v \: mod \: 2) v \in \Z_2[\Z_2^k]
-  \displaystyle \sum_{v \in \Z_2^k}(a_v \bmod 2) v \in \Z_2[\Z_2^k]
+  \sum_{v \in \Z_2^k}(a_v \bmod 2) v \in \Z_2[\Z_2^k]
 \]
-\amnote{Use \texttt{\textbackslash bmod}}
 
 %Thus, if we assign $S$ to $\Z$, it is enough to consider the parity of 
 %the coefficient of $v_0 \in \Z_2^k$ in $P_S(\overbar{X})$ \cite{Koutis08}. 
@@ -1016,32 +1024,30 @@ Since \citeauthor{Koutis08}
 used an isomorphism, all the ideas given in 
 \Cref{sect:algebraic_fingerprinting} still hold for 
 detecting multilinear monomials. That is, 
-the given implementation for (\ref{eq:polynomial_identity}) is valid through $\kappa$.
+the given implementation for (\ref{eq:polynomial_identity}) 
+is valid through $\kappa$.
 
-\omnote*{Maybe don't go further than this}{Using these matrices, }
-\amnote{I would rather expand in Sect. 5 than here}
+Computing on these matrices, 
 \textcite{Koutis08} detected $k$-multilinear monomials 
-by computing the \omnote*{add to prelims?}{trace} of the matrix resulting 
-from the evaluation of $P_S(X)$ over $\mathcal{M}$. The trace can be computed 
+%by computing the \omnote*{add to prelims?}{trace} of the matrix resulting 
+%from the evaluation of $P_S(X)$ over $\mathcal{M}$. The trace can be computed 
 in time \bigO{2^k(nk+t)} and space \bigO{nk+s}, where $t$ and $s$ are the time 
 and space complexity of the $g(n)$ arithmetic operations, respectively. 
-
 For $GF(2^{l})[Z_2^k]$, the same ideas are used, though we omit 
 further discussion into this for the sake of brevity. 
 Thus, we have a general 
-\bigOstar{2^kg} time and \bigO{poly(n,k)} space algorithm for detecting 
-$k$-degree multilinear monomials in $P(X)$, where $g$ is the number of gates in the 
-arithmetic circuit for $P(X)$ and $n = \abs{X}$ \cite{KouWil09}.
+\bigOstar{2^k} time and \bigO{\poly(n,k)} space algorithm for detecting 
+$k$-degree multilinear monomials in $P(X)$, where $n = \abs{X}$ \cite{KouWil09}.
 
 It is important to note here that this complexity is for $k$-degree 
 multilinear monomial detection. Whether a parameterized problem with a parameter 
-$k$ receives an \bigOstar{2^k} time algorithm, is determined by the algebrization 
+$k$ receives an \bigOstar{2^k} time algorithm is determined by the algebrization 
 of said parameterized problem. 
-For example for $k$-path, algebraic fingerprinting gives an \bigOstar{2^k} 
+For instance with $k$-path, algebraic fingerprinting gives an \bigOstar{2^k} 
 time algorithm \cite{Williams09}. 
-For $k$-3D-matching however, as given in \Cref{sect:algebrization}, 
+For $k$-3D matching however, as given in \Cref{sect:algebrization}, 
 algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm, since 
-$k$-3D-matching reduces into $3k$-degree multilinear monomial detection.
+$k$-3D matching reduces into $3k$-degree multilinear monomial detection.
 
 
 \section{Limits of algebraic fingerprinting}
@@ -1110,14 +1116,13 @@ presence of a solution. As such, algebraic fingerprinting applies to decision al
 However, finding a solution when its presence is detected
 \amnote*{??}{seems easy}. 
 Moreover, since most of the problems in \Cref{sect:related_problems} 
-have search problems in FPT, a solution is found in polynomial time when its 
+have search problems in FPT, a solution can be found in polynomial time when its 
 existence is detected.
 
 For example, in \cite{Koutis08}, 
 \cite{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
-$k$-path can be found by \bigOstar{n+min(k^2, m)} applications of the given
-algorithm. 
-\amnote{What are $n$ and $m$ here? (I can imagine, but some other reader probably won't)}
+$k$-path can be found by \bigOstar{n+\min(k^2, m)} applications of the given
+algorithm, where $n$ is the number of vertices and $m$ the number of edges in the input graph. 
 In general for subgraph problems, we may find a solution by calling the decision 
 algorithm a polynomial number of times for different subgraphs of the original input graph.
 
