@@ -1052,7 +1052,7 @@ algebraic framework given by
 algebraic fingerprinting for parameterized problems. First, 
 we discuss the lower bound for the runtime. Then, we discuss 
 the difficulties for derandomization. Finally, we touch on the issue of 
-finding a solution for the underlying combinatorial problem 
+\emph{finding} a solution for the underlying combinatorial problem 
 whereas algebraic fingerprinting only detects that one exists.
 
 \subsection{Algebraic optimization}
@@ -1093,14 +1093,9 @@ polynomial time deterministic algorithm. However, this implies proving superpoly
 lower bounds for arithmetic circuit sizes, which is notoriously hard \cite{Kabanets03}. 
 Therefore, with respect to the several decades of 
 sustained effort directed at circuit lower bounds \cite{Kabanets03}, 
-it seems unlikely that someone discovers a derandomization of polynomial identity testing.
+it seems unlikely that someone discovers a derandomization of polynomial identity testing 
+in the near future.
 
-%\begin{anamnote}[nomargin]
-%  If this gets into too hairy complexity theory territory, just say it would
-%  imply \enquote{surprising results} in complexity theory.
-%  People usually can imagine what that means...
-%\end{anamnote}
-%
 \subsection{Finding the solution}
 \label{sect:finding_the_solution}
 
@@ -1126,7 +1121,6 @@ algorithm.
 In general for subgraph problems, we may find a solution by calling the decision 
 algorithm a polynomial number of times for different subgraphs of the original input graph.
 
-\amnote{dropped clearpage}
 %\clearpage
 \section{Improving from algebraic fingerprinting}
 \label{sect:improvements}
@@ -1137,18 +1131,19 @@ for $k$-multilinear monomial detection has a lower bound of \bigOmega{2^k}.
 However, this framework is very generic since it 
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
-The idea of adding auxiliary fingerprint variables in the algebrization, though, 
-has potential for these properties.
+Creative algebrizations, though, 
+have potential for these properties.
 
 Indeed, faster algorithms for specific combinatorial problems 
-have been found by designing new algebrizations with techniques 
-similar to algebraic fingerprinting, where the fingerprints are designed to make use of 
-the underlying combinatorial properties. In \Cref{sect:cancel_nonsolutions}, 
+have been found by designing new algebrizations utilizing techniques 
+similar to algebraic fingerprinting. In \Cref{sect:cancel_nonsolutions}, 
 we see how \textcite{Björklund14} 
 exploited the cancelation due to characteristic to cancel non-solution monomials 
-by clever design of fingerprints. 
+by clever design of algebrization. 
 
-\Cref{sect:other_improvements} briefly overviews other ideas or 
+For parameterized problems in general, 
+\Cref{sect:other_improvements} 
+briefly overviews other ideas and 
 improvements in the domain of $k$-multilinear monomial detection.
 
 \subsection{Fingerprinting for cancelation of non-solutions}
@@ -1161,9 +1156,9 @@ introduced to prevent valid solutions from canceling out.
 
 \textcite{Björklund14}, however, approached the elimination of 
 non-solutions from a different angle: instead of focusing on squared elements, 
-he focused on the coefficients, 
-and used characteristic 2 and fingerprints to pair non-solution 
-monomials together to cancel them. 
+\citeauthor{Björklund14} focused on the coefficients, 
+and used characteristic 2 to eliminate non-solutions by designing 
+the algebrization such that non-solution monomials pair up in the polynomial. 
 For Hamiltonicity, this approach allowed \citeauthor{Björklund14} to utilize 
 fast algorithms for computing matrix determinants, which resulted in an 
 \bigOstar{1.657^n} time randomized algorithm.
@@ -1176,31 +1171,49 @@ relevant problem:
   \problemquestion{Does $G$ contain a simple path that visits every vertex?}
 \end{problem}
 
-\citeauthor{Björklund14} approached this problem by considering \emph{cycle covers}, i.e., 
-sets of cycles on $G$ such that TODO. In terms of algebrization, 
-\citeauthor{Björklund14} essentially formed 
-a multivariate polynomial $P$ of cycle cover monomials, where some monomials correspond to 
-Hamiltonian cycle covers. Evaluating $P$ over a suitable ring, 
-non-Hamiltonian cycle covers cancel out, and we detect 
-only Hamiltonian cycle covers, i.e., valid solutions.
+\citeauthor{Björklund14} approached this problem by considering \emph{cycle covers}. 
+A cycle cover in a directed graph $D = (V, A)$ is a 
+subset $C \subseteq A$ such that for every $v \in V$ there is exactly one arc $a_1 \in C$ ending in $v$ 
+and one arc $a_2 \in C$ starting from $v$. One can think of a cycle cover as a set of disjoint 
+cycles that cover the entire graph (see Figure \ref{fig:cycle_covers}). 
+A \emph{Hamiltonian cycle cover} consists of a single cycle that covers every vertex. 
+Note that a Hamiltonian cycle cover trivially implies a Hamiltonian path.
 
-\citeauthor{Björklund14} achieved this by labeling, i.e. fingerprinting, cycle covers such 
-that all non-Hamiltonian cycle covers receive a label identical to another non-Hamiltonian cycle cover, 
-and Hamiltonian cycle covers receive unique labels. Thus with characteristic 2, 
-the non-solution monomials cancel out. 
-It is necessary that $G$ is undirected, since 
-the uniqueness of the labels of Hamiltonian cycle covers 
-is achieved by introducing direction.
+\begin{figure}[h]
+  \includegraphics[width=0.8\textwidth, height=5cm]{cycle_covers.png}
+  \centering
+  \caption{(A) is an undirected graph $G$. (B) showcases an example cycle cover for $G$. 
+  Note that an undirected graph can be trivially transformed into a directed graph. 
+  (C) is a Hamiltonian cycle cover.}
+  \label{fig:cycle_covers}
+\end{figure}
+
+In terms of algebrization, 
+\citeauthor{Björklund14} essentially formed 
+a multivariate polynomial $P$, where the monomials are 
+\emph{labels} corresponding 
+to cycle covers of the input graph. Evaluating $P$ over a suitable ring, 
+non-Hamiltonian cycle covers cancel out, and we detect 
+only Hamiltonian cycle covers, i.e., valid solutions to the underlying problem.
+
+\citeauthor{Björklund14} achieved this by labeling cycle covers such 
+that all non-Hamiltonian cycle covers receive a label identical 
+to another non-Hamiltonian cycle cover, 
+and Hamiltonian cycle covers receive unique labels. 
+Thus, every non-solution monomial has a pair and therefore 
+cancels out in characteristic 2, while valid solution monomials survive. 
+The design of such labels requires, however, that $G$ be undirected. 
+Therefore, this approach can only solve Hamiltonicity for undirected graphs.
 
 For detecting whether $P$ is identical to zero (no solutions exist), \citeauthor{Björklund14} 
 employed the same idea of polynomial identity testing as in \Cref{sect:polynomial_identity_testing}.
 For achieving the time complexity of \bigOstar{1.657^n}, \citeauthor{Björklund14} 
-utilized the natural interpretation of matrix permanents 
-as a sum of labeled cycle covers \cite{Björklund14}. 
-Moreover, the determinant of a matrix over a ring of characteristic 2 
-is identical to the 
-permanent \cite{Björklund14}, 
-which essentially allowed \citeauthor{Björklund14} to compute a determinant 
+utilized the natural interpretation of a sum of labeled cycle covers as 
+a matrix permanent \cite{Björklund14}. 
+Moreover, the matrix permanent
+is identical to the determinant of the matrix 
+over a ring of characteristic 2 \cite{Björklund14}, 
+which essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
 to detect a Hamiltonian path.
 
 \subsection{Other research in detecting multilinear monomials}
