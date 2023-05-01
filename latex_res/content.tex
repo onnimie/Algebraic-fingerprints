@@ -365,7 +365,7 @@ and algebraic concepts. \Cref{sect:prelims_circuits} outlines arithmetic circuit
 Some lesser-known notation is also used. FPT or \emph{fixed parameter tractable} 
 is a class of parameterized problems that 
 can be solved in polynomial time if the parameter is fixed. 
-\poly(n) refers to a polymial function in $n$. 
+\poly($n$) refers to a polymial function in $n$. 
 $\mathcal O$* hides factors polynomial to the input size, e.g., 
 \bigO{n^3k^n} = \bigOstar{k^n}.
 
@@ -395,7 +395,9 @@ addition and multiplication, respectively. A \emph{commutative ring} has commuta
 Note, from here on we may use a bold typeface to represent either the set of elements 
 or the algebraic structure itself, i.e., 
 we may use expressions such as $u \in \mathbf{R}$, where $\mathbf{R} = (R,+,\cdot)$ and $u \in R$. 
-Moreover, multiplication may be denoted by juxtaposition for brevity: $a\cdot b = ab$. 
+Moreover, multiplication may be denoted by juxtaposition for brevity: $a \cdot b = ab$. 
+Also note that we use coefficients and exponents to denote repeated operations of 
+addition and multiplication, respectively: $a+a = 2a, \: a \cdot a=a^2$.
 
 $\mathbf{R}$ must contain a multiplicative identity 
 $\mathbf{1} \in \mathbf{R}$ such that $\forall a \in \mathbf{R} \colon a \cdot \mathbf{1} = a$. 
@@ -438,11 +440,7 @@ refer to the fact that an element $f \in \mathbf{F}$ may cancel itself out in an
 $\mathbf{F}$ has non-zero characteristic. 
 We mainly use characteristic 2 in this thesis, and thus, we may say that 
 $f$ cancels out due to characteristic when 
-it has an even coefficient: 
-\amnote*[inline,nomargin]{For every $k \ge 0$, $2kf = k(2f) = k \cdot \mathbf{0}
-= \mathbf{0}$}{
-$f + f + f + f = 4f = 2f + 2f = \mathbf{0} + \mathbf{0} = \mathbf{0}.$
-}
+it has an even coefficient: $\forall k \ge 0$, $2kf = k(2f) = k\mathbf{0}=\mathbf{0}$
 
 Characteristics are prevalent in \emph{finite fields}, where the set of elements is finite. 
 A simple example of a finite field is $\Z_2 = (\{\mathbf{0}, \mathbf{1}\}, +, \cdot)$, where 
@@ -454,13 +452,13 @@ An isomorphism $\kappa \colon \mathbf{A} \to \mathbf{B}$
 is a bijective mapping that satisfies 
 $\forall u,v \in \mathbf{A} \colon \kappa(uv) = \kappa(u)\kappa(v) \wedge \kappa(u+v) = \kappa(u)+\kappa(v).$ 
 Thus, if we only care for the relations between the elements, 
-we may say that algebraic structures that isomorphic are 
+we may say that two algebraic structures that are isomorphic are 
 equivalent for us. 
 Note that if $p$ is prime and $k \in \N$, the characteristic of $GF(p^k)$ is $p$. 
 %Moreover, the non-zero elements of a finite field form a multiplicative group.
 
 \textbf{Polynomial rings and multilinearity.} 
-\amnote[inline,nomargin]{For a (finite) set $X$,}
+For a finite set $X$, 
 A \emph{polynomial ring} in $X$, noted as $\mathbf{K}[X]$,
 is a ring of polynomials with indeterminates (or variables) from $X$ and 
 coefficients from the commutative ring $\mathbf{K}$. 
@@ -471,6 +469,7 @@ A \emph{monomial} in $X$ is of the form
 $X_1^{a_1}X_2^{a_2}\cdots X_n^{a_n}$, where $X_i \in X$ and $a_i \in \N$ marks the exponent. 
 A monomial is \emph{multilinear} if 
 $\forall i \in \{1, \ldots, n\} \colon a_i = 0 \vee a_i = 1$. 
+A $k$-multilinear monomial has $k$ indeterminates. 
 The \emph{degree} of a monomial $m$ 
 is the sum of the exponents: $\deg(m) = \sum_{i=1}^n a_i$. 
 Any element $P$ of such polynomial ring is a finite linear combination of these monomials 
@@ -483,11 +482,11 @@ with coefficients $k \in \mathbf{K}$:
   P = \sum_{p_1,\dots,p_n \ge 0} k_{p_1,\dots,p_n} X_1^{a_{p_1}} \cdots X_n^{a_{p_n}}
 \] 
 }
+If a polynomial is in such form, we may say that it is in \emph{sum of monomials form}.
+
 Alternatively, a polynomial ring $\mathbf{K}[X]$ can be thought of as a vector
-space
-\amnote[inline,nomargin]{over $\mathbf{K}$ of infinite dimension}
-with 
-the \amnote[inline,nomargin]{set of} all the monomials as a basis. 
+space over $\mathbf{K}$ of infinite dimension with 
+the set of all monomials in $X$ as a basis. 
 Polynomial rings have three operations: addition, multiplication 
 and scalar multiplication. In terms of vectors, addition and scalar multiplication follow 
 the standard addition and scalar multiplication for vectors. 
@@ -565,56 +564,7 @@ in all arithmetic circuit diagrams in this thesis.
   \label{fig:circuit_example}
 \end{SCfigure}
 
-\subsection{Notation and other terminology} 
-\label{sect:prelims_other}
-
-The following table holds useful notation and their definitions. 
-The terms and notation are given on the left, and their definitions on the
-right.
-\amnote{The \texttt{longtable} seems useful here}
-
-\begin{tabularx}{\textwidth} { 
-  %| 
-  X %|
-  X %| 
-  }
- \hline
- $k$-multilinear monomial & a multilinear monomial that has a degree of $k$ \\
- \hline
- sum of monomials form & an expression for a polynomial $P(X)$ where there are no 
- polynomial multiplications present, i.e., the expression consists of only additions between monomials \\
- \hline
- $\mathcal{O}$* & hides factors polynomial to the input size, e.g., \bigO{n^3k^n} = \bigOstar{k^n} \\
- \hline
- FPT & A class of \emph{fixed parameter tractable} problems, i.e., parameterized problems that 
- can be solved in polynomial time if the parameter is fixed \\
- \hline
- $poly(n)$ & a polynomial function in $n$, e.g., $an^4 + bn + c$ \\
- \hline
- Deterministic algorithm & Given a fixed input, a \emph{deterministic} algorithm always gives the same output \\
- \hline
- Randomized algorithm & A \emph{randomized} algorithm relies on pseudorandom 
- functions, and may not produce the same outputs for a fixed input\\
- \hline
- Schwartz-Zippel lemma & TODO: give here or in the context? \\
- \hline
- term & def \\
- \hline
-\end{tabularx}
-\amnote{Drop example for polynomial in $n$}
-\amnote{No need to define deterministic / randomized algorithm}
-\amnote{S-Z lemma in text seems better}
-\amnote{$k$-multilinear monomial is better defined before in context}
-
-Schwartz-Zippel ref:
-
-J. T. Schwartz, “Fast probabilistic algorithms for verification of
-polynomial identities,” Journal of the ACM, vol. 27, no. 4, pp. 701–717,
-1980.
-
-
-
-\clearpage
+%\clearpage
 \section{General multilinear monomial detection}
 \label{sect:general_mld}
 
@@ -793,8 +743,6 @@ $\mathbf{F}[\Z_2^k]$. Recall that $\mathbf{1} = v_0$, and
 $\mathbf{0}$ corresponds to the element $\sum_{v \in \Z_2^k}a_v v$, where $a_v =
 \mathbf{0}_F$. Note that + represents addition over $\mathbf{F}[\Z_2^k]$ and not 
 addition over $\Z_2^k$ which is a multiplicative group.
-%\amnote{So if we represent the elements of $\mathbf{F}[\Z_2^k]$ as vectors, we
-%get vectors with $2^k$ entries}
 
 In his introductory work for this technique \cite{Koutis08}, 
 \citeauthor{Koutis08} assigned $X$ 
@@ -821,43 +769,30 @@ does not necessarily hold, and it may be that $w = \mathbf{0}$. Multilinear mono
 cancel each other out in $\mathbf{F}[Z_2^k]$, since they may have even leading 
 coefficients in $P(X)$. Next, we see how \citeauthor{Koutis08} approached this problem.
 
-%Such $\mathbf{G}$ is given in \cite{Koutis08}, where \citeauthor{Koutis08} uses the group $\Z_2^k$ 
-%and a known \cite{Terras99} 
-%isomorphic mapping $\rho \colon \Z_2^k \to M^{2^k \times 2^k}$, where $M^{d \times d}$ is a 
-%\amnote*{Any group? Specific one?}{$d$-dimensional matrix group with matrix multiplication.}
-% Note that for (\ref{eq:squared_to_zero}), 
-%\[
-%\forall a \in \Z_2^k \setminus \{\mathbf{0}\}, i \in [2^k]: \rho(a)_{i,i} = 0\]and \[
-%\rho(\mathbf{0}) = \mathbf{0}.
-%\]
 \subsubsection{Fingerprints to prevent unwanted cancelation}
 \label{sect:fingerprints}
 
 Indeed, if we take the $k$-3D matching instance from Section \ref{sect:algebrization}, 
 we notice that the multilinear monomials in $P_2$ have even coefficients, and thus 
 would cancel out in $\mathbf{F}[Z_2^k]$ due to characteristic.
-\begin{multline*}
-  P_2 = (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2  \\
-  = a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + %\allowbreak
+\begin{align*}
+  P_2 &= (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2  \\
+  &= a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
   2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3. 
-\end{multline*}
+\end{align*}
 In general, when $k$ is even, multilinear monomials will have even coefficients. 
 
 To tackle this issue, one idea is to add auxiliary indeterminates, 
 called \emph{fingerprints} \cite{KouWil15}, to the monomials 
-in order to make them unique. For example, let
-\amnote*{Actually $S = \{ s_1,\dots,s_6 \}$?}{
-$S = \{s_1, s_2, \ldots\}$ 
+in order to make them unique. For example, let $S = \{s_1, \ldots, s_6\}$ 
 be the set of an appropriate number of fingerprints 
-}
 and augment them to $P_k$ as follows: 
-\amnote{Use \texttt{\textbackslash align}}
-\begin{multline*}
-  P'_2 = (s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
-  = s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 + \\
-  s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 + \\
-  s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
-\end{multline*}
+\begin{align*}
+  P'_2 = &\:(s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
+  = &\:s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 \:+ \\
+  &\:s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 \:+ \\
+  &\:s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
+\end{align*}
 
 \amnote*[inline,nomargin]{Now the multilinear monomial $a_1a_2b_1b_2c_1c_3$ only
 cancels itself out in $\rho(P'_2)$ ($P'_2(Z)$? unsure about notation) if
@@ -867,7 +802,7 @@ Then, the multilinear monomial detection algorithm
 could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
 }
 With this, non-multilinear monomials will still vanish, but multilinear monomials 
-will not identically cancel each other out when $k$ is even. 
+will not \emph{identically} cancel each other out when $k$ is even. 
 
 However, introducing new indeterminates raises the degree of multilinear
 monomials. 
