@@ -58,12 +58,14 @@ algorithms for these problems. For the reader with background in computer scienc
 this thesis overviews a clever use of algebra in theoretical computer science, 
 that is the technique of algebraic fingerprinting.
 
-In the \amnote*[inline,nomargin]{rest of this introduction}{next subsections}, we discuss the relation of combinatorics and 
+In the \amnote*[inline,nomargin]{rest of this introduction}{next subsections}, 
+we discuss the relation of combinatorics and 
 polynomials, \amnote*{used twice}{discuss} the algebrization of combinatorial problems, and 
 define the multilinear monomial detection problem as a prelude for the thesis. 
+Finally in \Cref{sect:related_problems}, 
+we overview the area of problems where this technique proves useful.
 
-In \Cref{sect:related_problems}, we overview the area of problems where 
-this technique proves useful. \Cref{sect:prelims} gives necessary 
+\Cref{sect:prelims} gives necessary 
 preliminaries for the reader. In \Cref{sect:general_mld}, we 
 dive into the technique of algebraic fingerprints, and solve the 
 multilinear monomial detection problem with algebraic means. 
@@ -71,22 +73,6 @@ multilinear monomial detection problem with algebraic means.
 improvement from the general algebraic technique. 
 \Cref{sect:conclusion} concludes the thesis.
 
-%Multilinear monomial detection 
-%is a fundamental problem, since many important combinatorial problems can be reduced into it 
-%via a problem specific algebraization. Thus, faster algorithms and new ideas for multilinear monomial detection 
-%are important.
-
-%Multilinear monomial detection is essentially searching for solutions among non-solutions, 
-%both of which are encoded as monomials in a polynomial. 
-%The technique of algebraic fingerprinting is present in multilinear monomial detection. 
-%With algebraic fingerprints, unwanted cancelation of solution monomials due to the characteristic of a field can be prevented. 
-%Moreover, algebraic fingerprints can be used to cancel non-solution monomials by abusing the characteristic.
-
-%In the next subsections, the thesis discusses algebraization and reduction into multilinear monomial detection. 
-%The section 2 covers preliminaries. In section 3, the thesis discusses general multilinear monomial detection. 
-%In section 4, some problem specific instances of multilinear monomial detection are given, and clever 
-%utilizations of algebraic fingerprints are shown. Section 5 concludes the
-%thesis.
 \subsection{Algebrization of combinatorial problems}
 \label{sect:algebrization}
 
@@ -100,25 +86,15 @@ combinations of the given objects.
 The solution candidate space for the $k$-path problem 
 consists of combinations of $k-1$ edges, where 
 a valid solution combination contains only disjoint edges.
-%
-%\amnote[inline,nomargin]{This sounds like a very simple problem... But I guess
-%the catch is that we want an algorithm with complexity depending only on $k$?}
-
-%Algebraization is reducing a given problem into an algebraic form,
-%\amnote*[inline,nomargin]{that is}{i.e.}, a
-%question regarding some algebraic property of some algebraic entity. 
-%In an algebraization of a combinatorial problem, the algebraic entity can be constructed from algebraic elements defined from the 
-%set of objects given as an input. The motivation behind the construction is some algebraic property that, 
-%when satisfied, gives a solution to the problem.
 
 \textcite{Valiant92} observed that 
 multivariate polynomials have natural combinatorial interpretations. 
 Now, we see how combinatorics may be represented with multivariate polynomials. 
 We may think of a polynomial in its sum of monomials 
 form\footnote{an expression where there is no multiplication 
-after addition of monomials. See also \Cref{sect:prelims_other}} 
+after addition of monomials. See also \Cref{sect:prelims}} 
 as a set of combinations. For instance, imagine a set of elements $M = \{a, b, c\}$. 
-\amnote*[inline,nomargin]{The}{A} polynomial $C = a+b+c$ represents all the possible choices 
+The polynomial $C = a+b+c$ represents all the possible choices 
 if we are to pick an element from $M$. Following the standard idea behind polynomial 
 multiplication, we see that a polynomial 
 \[
@@ -164,7 +140,7 @@ briefly overviews actually finding a solution}.
 }
 
 Appropriate definitions for the indeterminates for $M$ are problem-specific. 
-In what follows, this thesis gives another example 
+In what follows, we give another example 
 reduction to multilinear monomial detection: we algebrize the $k$-3D matching problem.
 
 %\subsection{Reducing $k$-3D matching to multilinear monomial detection}
@@ -188,12 +164,10 @@ We denote the set of those monomials as $X$.
 Thus, $(a,b,c) \in T \implies abc \in X$.
 From an algebraic perspective, we form monomials in the commutative polynomial 
 ring $\Z[X]$ (i.e., polynomials that have coefficients from $\Z$ and variables from $X$. 
-See also \Cref{sect:prelims_algebra}). \omnote{I'm not sure what to put for $\Z$ here, 
-since we don't have any coefficients here yet}
+See also \Cref{sect:prelims_algebra}).
 
-Next, we define multivariate polynomials
-\amnote*[inline,nomargin]{$P_k \in \Z[X]$ for $k \in \N$ iteratively}
-{$P_1, P_k \in \Z[X]$}
+Next, we define the multivariate polynomial 
+$P_k \in \Z[X]$ for $k \in \N$ iteratively(? TODO)
 as follows: 
 \[
   P_1 = \displaystyle \sum_{x \in X}x, \: \: \: P_k = P_1^k
@@ -208,15 +182,13 @@ multilinear monomial detection for the $k$-3D matching.
 %$P_k$ corresponds to a solution to the problem, and 
 %the solutions can be directly found from the indeterminates in the multilinear monomial. 
 
-%\sloppy
 For instance with $A = \{a_1, a_2\}$, $B = \{b_1, b_2\}$, $C = \{c_1, c_2,
 c_3\}$ and 
 \[
-  T = \{(a_1, b_1, c_1), (a_1, b_2. c_2), (a_2, b_2, c_3)\}
+  T = \{(a_1, b_1, c_1), (a_1, b_2, c_2), (a_2, b_2, c_3)\}
 \]
-(see Figure TODO: diagram of the 3D matching problem with the matchings), 
+(see Figure \ref{fig:3D_matching}), 
 we have $P_1 = a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3$. For $k=2$, we get 
-\amnote{$=$ after line break}
 \begin{align*}
   P_2 &= (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2 \\
   &= a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
@@ -224,7 +196,16 @@ we have $P_1 = a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3$. For $k=2$, we get
 \end{align*}
 We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds 
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
-indeed disjoint, as seen in Figure TODO.
+indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
+%
+\begin{figure}[0.5][h]
+  \includegraphics[width=0.5\textwidth, height=4cm]{3D_matching.png}
+  \centering
+  \caption{An example instance of $k$-3D matching, with inputs defined 
+  as above. 
+  Note that the input terminals have been copied for clarity.}
+  \label{fig:3D_matching}
+\end{figure}
 
 \subsection{Detecting a multilinear monomial}
 \label{sect:problem_definition}
@@ -269,7 +250,7 @@ faster algorithm than with naive expansion.
 
 However, the underlying problems are usually FPT
 \footnote{fixed parameter tractable, i.e., 
-polynomial to $n$ in time if $k$ is fixed. See \Cref{sect:prelims_other}}. 
+polynomial to $n$ in time if $k$ is fixed. See \Cref{sect:prelims}}. 
 This implies that scaling exponentially 
 with the number of variables is far from optimal. 
 In order for the complexity of the algorithm to scale 
@@ -292,10 +273,7 @@ For an algorithm to reliably detect a multilinear monomial,
 it is necessary to use different mappings 
 from $X$ into $Y$ until a multilinear monomial survives the mapping. 
 However, the probability that any given 
-multilinear monomial survives
-\amnote*[inline,nomargin]{a uniformly chosen mapping (?)}{
-this mapping
-}
+multilinear monomial survives a uniformly chosen random mapping
 is around $e^{-\abs{Y}}$ \cite{KouWil15}. 
 This implies that 
 \bigOmega{e^{\abs{Y}}} random mappings must be tried for a 
@@ -359,8 +337,6 @@ It is necessary to recall basic algebraic concepts and common notation
 before further discussing multilinear monomial detection and algebraic fingerprinting. 
 \Cref{sect:prelims_algebra} gives definitions for some necessary algebras 
 and algebraic concepts. \Cref{sect:prelims_circuits} outlines arithmetic circuits. 
-%\Cref{sect:prelims_other} gives a table of other notation and terminology used 
-%throughout the thesis.
 
 Some lesser-known notation is also used. FPT or \emph{fixed parameter tractable} 
 is a class of parameterized problems that 
@@ -531,8 +507,6 @@ Note that $\mathbf{0} \in \mathbf{R}[\mathbf{G}]$ corresponds to a
 polynomial $P \in \mathbf{R}[\mathbf{G}]$ with zero-coefficients, and 
 $\mathbf{1} \in \mathbf{R}[\mathbf{G}]$ corresponds to the identity element of $\mathbf{G}$. 
 
-%TODO: Cygan, p. 337
-
 \subsection{Arithmetic circuits}
 \label{sect:prelims_circuits}
 
@@ -541,7 +515,7 @@ can be represented by \emph{arithmetic circuits}, that is,
 connected acyclic directed graphs, where terminal vertices correspond to initial and output values, 
 and other vertices correspond to \emph{arithmetic gates}, i.e., arithmetic operations. 
 
-In this thesis, we only consider \emph{addition} and \emph{multiplication} gates. 
+In this thesis, we consider \emph{addition} and \emph{multiplication} gates. 
 These gates correspond to the binary operations of the underlying algebraic structure 
 which the arithmetic expression is evaluated over and given initial values from. Thus, 
 the addition and multiplication gates may have \emph{fan-in two} and \emph{fan-out one}, 
@@ -553,7 +527,9 @@ If the underlying algebra is commutative, we may call the arithmetic circuit a \
 For example, an abstract evaluation of a polynomial $P \in \Z[\{a,b,c,d\}]$ of the form 
 $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:circuit_example}. 
 Note that we use the same symbols for addition and multiplication gates as seen in the figure 
-in all arithmetic circuit diagrams in this thesis.
+in all arithmetic circuit diagrams in this thesis. 
+Note that in \Cref{sect:fingerprints}, we augment a circuit with \emph{scalar multiplication}, 
+though we denote them with standard multiplication gates.
 
 \amnote{Caption should be below image}
 \begin{SCfigure}[0.5][h]
