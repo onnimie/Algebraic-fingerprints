@@ -7,26 +7,23 @@ there have been rapid advances in the algorithms for combinatorial problems.
 This has been greatly sparked by the development in algebraic techniques for solving the 
 multilinear monomial detection problem, that is, 
 deciding whether a multivariate (multiple variables) 
-polynomial contains a multilinear monomial\footnote{ 
-i.e., a term of multiple variables where each variable appears at most once. 
-See also \Cref{sect:prelims_algebra}}. 
-\amnote{I do see this style of footnotes from time to time, but some people are
-not fond of it. Parentheses might be a better choice.}
-Multilinear monomial detection for parameterized combinatorial problems was 
+polynomial contains a multilinear monomial 
+(i.e., a term with multiple variables where each variable appears at most once. 
+See also \Cref{sect:prelims_algebra}). 
+The idea of multilinear monomial detection 
+for parameterized combinatorial problems was 
 first introduced by \citeauthor{Koutis05} in an early work 
 \cite{Koutis05}, where a set packing problem is 
 reduced to multilinear monomial detection.
 
-\amnote[inline,nomargin]{(Namely,)} the technique of \emph{algebraic fingeprinting},   
+The technique of \emph{algebraic fingeprinting},   
 introduced by \textcite{Koutis08} and further developed by 
-\textcite{Williams09}, 
-has found great success for many combinatorial problems. 
+\textcite{Williams09}. This technique is used for detecting multilinear monomials,  
+and has thus found great success for many combinatorial problems. 
 For instance with algebraic fingerprinting, the $k$-path problem 
-that previously could be solved in
-\amnote*{Move footnote elsewhere}{\bigOstar{4^{k}}}
-\footnote{$\mathcal{O}$* may hide factors polynomial to input size. 
-See \Cref{sect:prelims_other}} 
-time by \textcite{Chen07}, 
+that previously could be solved in \bigOstar{4^{k}} 
+time\footnote{$\mathcal{O}$* may hide factors polynomial to input size.} 
+by \textcite{Chen07}, 
 can now be solved in \bigOstar{2^{3k/2}} time \cite{Koutis08}. 
 This result was quickly improved by \textcite{Williams09}, 
 who gave an \bigOstar{2^k} algorithm.
@@ -35,19 +32,13 @@ Most famously,
 \textcite{Björklund14} published an algorithm 
 that solved the famous Hamiltonian path problem (Hamiltonicity) in \bigOstar{1.657^n} time 
 with clever utilizations of this novel algebraic technique. 
-The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} time
-\amnote*[inline,nomargin]{and date from \citeyear{HelKar62}}{%
-, and were known since 1962
-}
-\cite{HelKar62}, \cite{Bellman62}. 
-This was a significant improvement on a problem 
+The fastest algorithms for Hamiltonicity before this ran in \bigOstar{2^n} time 
+and date from \citeyear{HelKar62} \cite{HelKar62, Bellman62}. 
+This was a significant improvement on a well-studied problem 
 that had seen no progress in nearly fifty years! 
-Soon
-\amnote*[inline,nomargin]{thereafter, a \bigOstar{1.657^k} algorithm was found
-for the related (?) $k$-path problem}{
-enough for $k$-path, 
-an \bigOstar{1.657^k} algorithm was found
-} \cite{Björklund17}.
+Soon thereafter, an \bigOstar{1.657^k} algorithm was found
+for the parameterized version of the problem, the $k$-path problem, 
+using similar ideas as with Hamiltonicity \cite{Björklund17}.
 
 \subsection{Research scope and thesis structure}
 
@@ -58,9 +49,9 @@ algorithms for these problems. For the reader with background in computer scienc
 this thesis overviews a clever use of algebra in theoretical computer science, 
 that is the technique of algebraic fingerprinting.
 
-In the \amnote*[inline,nomargin]{rest of this introduction}{next subsections}, 
+In the rest of this introduction, 
 we discuss the relation of combinatorics and 
-polynomials, \amnote*{used twice}{discuss} the algebrization of combinatorial problems, and 
+polynomials, build into the algebrization of combinatorial problems, and 
 define the multilinear monomial detection problem as a prelude for the thesis. 
 Finally in \Cref{sect:related_problems}, 
 we overview the area of problems where this technique proves useful.
@@ -70,7 +61,7 @@ preliminaries for the reader. In \Cref{sect:general_mld}, we
 dive into the technique of algebraic fingerprints, and solve the 
 multilinear monomial detection problem with algebraic means. 
 \Cref{sect:improvements} briefly overviews ideas for 
-improvement from the general algebraic technique. 
+improvement in the domain of the general algebraic technique. 
 \Cref{sect:conclusion} concludes the thesis.
 
 \subsection{Algebrization of combinatorial problems}
