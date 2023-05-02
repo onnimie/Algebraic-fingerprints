@@ -711,10 +711,21 @@ non-multilinear monomials in $P(X)$ vanish in $P(\gamma)$, and the
 first equation in (\ref{eq:polynomial_identity}) 
 will hold.
 
-However, if $\mathbf{F}$ has characteristic 2, the second equation of (\ref{eq:polynomial_identity}) 
-does not necessarily hold, and it may be that $w = \mathbf{0}$. Multilinear monomials may 
-cancel each other out in $\mathbf{F}[Z_2^k]$, since they may have even leading 
-coefficients in $P(X)$. Next, we see how \citeauthor{Koutis08} approached this problem.
+However, the second equation of (\ref{eq:polynomial_identity}) 
+does not necessarily hold, and it may be that $w = \mathbf{0}$. 
+A multilinear monomial may evaluate to zero if two variables  
+are assigned the same value from $\mathbf{F}[\Z_2^k]$. 
+This itself is not too concerning here: 
+a monomial $X_1 \cdots X_k$ assigned to the product 
+$(v_0 + v_1) \cdots (v_0 + v_k)$ survives a uniform random assignment, i.e. 
+evaluates to non-zero, with probability at least $1/4$ \cite{Koutis08}.
+
+Since $\mathbf{F}$ has characteristic 2 however, 
+multilinear monomials may still cancel each other out 
+in $\mathbf{F}[Z_2^k]$ if they have even leading 
+coefficients in $P(X)$. In such case, multilinear monomials do not 
+survive under any assignment $X \to \mathbf{F}[\Z_2^k]$. 
+Next, we see how \citeauthor{Koutis08} approached this problem.
 
 \subsubsection{Fingerprints to prevent unwanted cancelation}
 \label{sect:fingerprints}
@@ -741,24 +752,19 @@ and augment them to $P_k$ as follows:
   &\:s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
 \end{align*}
 
-\amnote*[inline,nomargin]{Now the multilinear monomial $a_1a_2b_1b_2c_1c_3$ only
-cancels itself out in $\rho(P'_2)$ ($P'_2(Z)$? unsure about notation) if
-$\rho(s_1)\rho(s_6) = \rho(s_3)\rho(s_4)$ under the assignment $\rho$ ....
-We can control depending on how the $\rho(s_i)$ are chosen...}{
 Then, the multilinear monomial detection algorithm 
 could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
-}
 With this, non-multilinear monomials will still vanish, but multilinear monomials 
 will not \emph{identically} cancel each other out when $k$ is even. 
 
 However, introducing new indeterminates raises the degree of multilinear
 monomials. 
-\amnote*{??}{
 Therefore, it increases the probability that indeterminates in a multilinear monomial are 
 assigned the same value from $\mathbf{F}[Z_2^k]$, which results in the 
 multilinear monomial evaluating to zero with higher probability. 
-}
-Counteractively raising the dimension of $\Z_2^k$, however, would  
+This can be countered by increasing the number of elements to assign to, i.e., 
+increasing the number of distinct elements of form $(v_0 + v_i) \in \mathbf{F}[Z_2^k]$. 
+Counteractively raising the dimension of $\Z_2^k$, however, would 
 exponentially slow down matrix multiplications which prove to be %matrix mulitplication has a time complexity of \bigO{n^2.31788} \cite{DuanZhouWu22}. 
 important for efficiency in algebraic fingerprinting (see \Cref{sect:complexity}).
 
@@ -994,10 +1000,10 @@ However in algebraic fingerprinting, we do not have this information on the mono
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
-However, finding a solution when its presence is detected
-\amnote*{??}{seems easy}. 
+However, finding a solution (assuming existence) 
+has often proven to be significantly easier than detecting if one exists. 
 Moreover, since most of the problems in \Cref{sect:related_problems} 
-have search problems in FPT, a solution can be found in polynomial time when its 
+have search problems in FPT, it is known that a solution can be found in polynomial time when its 
 existence is detected.
 
 For example, in \cite{Koutis08}, 
