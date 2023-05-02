@@ -8,8 +8,8 @@ This has been greatly sparked by the development in algebraic techniques for sol
 multilinear monomial detection problem, that is, 
 deciding whether a multivariate (multiple variables) 
 polynomial contains a multilinear monomial 
-(i.e., a term with multiple variables where each variable appears at most once. 
-See also \Cref{sect:prelims_algebra}). 
+(i.e., a term with multiple variables where each variable appears at most once, 
+see also \Cref{sect:prelims_algebra}). 
 The idea of multilinear monomial detection 
 for parameterized combinatorial problems was 
 first introduced by \citeauthor{Koutis05} in an early work 
@@ -18,7 +18,7 @@ reduced to multilinear monomial detection.
 
 The technique of \emph{algebraic fingeprinting},   
 introduced by \textcite{Koutis08} and further developed by 
-\textcite{Williams09}. This technique is used for detecting multilinear monomials,  
+\textcite{Williams09}, is used for detecting multilinear monomials,  
 and has thus found great success for many combinatorial problems. 
 For instance with algebraic fingerprinting, the $k$-path problem 
 that previously could be solved in \bigOstar{4^{k}} 
@@ -38,14 +38,14 @@ This was a significant improvement on a well-studied problem
 that had seen no progress in nearly fifty years! 
 Soon thereafter, an \bigOstar{1.657^k} algorithm was found
 for the parameterized version of the problem, the $k$-path problem, 
-using similar ideas as with Hamiltonicity \cite{Björklund17}.
+by using similar ideas as with Hamiltonicity \cite{Björklund17}.
 
 \subsection{Research scope and thesis structure}
 
 The goals of this bachelor's thesis are 
 to find out how multilinear monomial detection is relevant in combinatorial problems, 
 and how algebraic fingerprints can be utilized to design faster 
-algorithms for these problems. For the reader with background in computer science, 
+algorithms for these problems. For the reader new to this field of study, 
 this thesis overviews a clever use of algebra in theoretical computer science, 
 that is the technique of algebraic fingerprinting.
 
@@ -70,20 +70,21 @@ improvement in the domain of the general algebraic technique.
 A combinatorial problem asks whether a given 
 finite set of objects satisfies some given constraints. 
 For example, the $k$-path problem asks for, given a finite set of vertices and edges, 
-a simple\footnote{i.e., a path where each vertex is visited only once} path of $k$ vertices. 
+a simple path (i.e., a path where each vertex is visited only once) of $k$ vertices. 
 The solutions and non-solutions (solution candidate space) 
 to combinatorial problems can be thought of as 
 combinations of the given objects. 
 The solution candidate space for the $k$-path problem 
 consists of combinations of $k-1$ edges, where 
-a valid solution combination contains only disjoint edges.
+a valid solution combination consists of edges that are joint but 
+share a vertex with at most one other edge.
 
 \textcite{Valiant92} observed that 
 multivariate polynomials have natural combinatorial interpretations. 
 Now, we see how combinatorics may be represented with multivariate polynomials. 
 We may think of a polynomial in its sum of monomials 
 form\footnote{an expression where there is no multiplication 
-after addition of monomials. See also \Cref{sect:prelims}} 
+after addition of monomials. See also \Cref{sect:prelims_algebra}} (TODO) 
 as a set of combinations. For instance, imagine a set of elements $M = \{a, b, c\}$. 
 The polynomial $C = a+b+c$ represents all the possible choices 
 if we are to pick an element from $M$. Following the standard idea behind polynomial 
@@ -100,42 +101,21 @@ managed to reduce a combinatorial problem
 into an algebraic one, that is, multilinear monomial detection. 
 In multilinear monomial detection, we represent the combinatorial problem 
 as a polynomial where the solution candidates are encoded as follows: 
-the non-solutions are non-multilinear and solutions are multilinear terms. 
+the non-solutions correspond to non-multilinear and valid solutions to multilinear terms. 
 
-\begin{anamnote}[nomargin]{}
-  You already discuss it in \Cref{sect:problem_definition}, but you should also
-  mention somewhere around here that complexity of problem is sensitive to how
-  the polynomial is presented (e.g., in sum of monomials form it is trivial) and
-  that the presentation is going to be very succinct (namely algebraic circuit).
-  1 sentence is enough.
-\end{anamnote}
+Note, however, that detecting a multilinear monomial is not trivial: 
+we are not given the polynomial (the problem input) as a sum of monomials. 
+Instead, we are given an \emph{arithmetic circuit}
+\footnote{see \Cref{sect:prelims_circuits} for information on circuits} 
+representing the polynomial, 
+i.e., merely the expression $C^2$ in the example above.
 
-For an instance of $k$-path problem, we may use the set of edges as $M$ where 
-an edge is a product of two indeterminates defined uniquely for each vertex. 
-If we look for $k-1$ combinations of elements from $M$, we see that a 
-multilinear term in the resulting polynomial $C^{k-1}$ corresponds to a 
-solution to the $k$-path problem: as the edges are disjoint, each indeterminate 
-appears only once.
+Appropriate definitions for the indeterminates for $M$,
+i.e. proper algebrizations, are problem-specific. 
+In what follows, we give an example 
+reduction to multilinear monomial detection: 
+we algebrize the $k$-3D matching problem.
 
-Thus, the task of finding a satisfying combination 
-to the combinatorial problem has been reduced to 
-finding a multilinear monomial from the multivariate polynomial.
-It follows that a decision problem is answered by 
-the existence of a multilinear monomial, 
-and a counting problem by the number of multilinear monomials. 
-\amnote*[inline,nomargin]{This thesis focuses on the former (although we give a
-brief overview of actually finding a solution in \Cref{sect:finding_the_solution})}{
-This thesis, however, focuses on the decision problem
-\footnote{\Cref{sect:finding_the_solution} 
-briefly overviews actually finding a solution}.
-}
-
-Appropriate definitions for the indeterminates for $M$ are problem-specific. 
-In what follows, we give another example 
-reduction to multilinear monomial detection: we algebrize the $k$-3D matching problem.
-
-%\subsection{Reducing $k$-3D matching to multilinear monomial detection}
-%\label{sect:reduction_example}
 The $k$-3D matching problem is defined as follows:
 \begin{problem}
   \problemtitle{$k$-\textsc{3D matching}}
@@ -158,7 +138,7 @@ ring $\Z[X]$ (i.e., polynomials that have coefficients from $\Z$ and variables f
 See also \Cref{sect:prelims_algebra}).
 
 Next, we define the multivariate polynomial 
-$P_k \in \Z[X]$ for $k \in \N$ iteratively(? TODO)
+$P_k \in \Z[X]$ for $k \in \N$ iteratively 
 as follows: 
 \[
   P_1 = \displaystyle \sum_{x \in X}x, \: \: \: P_k = P_1^k
@@ -169,9 +149,6 @@ contains a multilinear term if and only if the original
 $k$-3D matching instance can be answered in the positive. 
 Thus, we have a successful reduction to 
 multilinear monomial detection for the $k$-3D matching. 
-%Furthermore, every multilinear monomial in the expanded 
-%$P_k$ corresponds to a solution to the problem, and 
-%the solutions can be directly found from the indeterminates in the multilinear monomial. 
 
 For instance with $A = \{a_1, a_2\}$, $B = \{b_1, b_2\}$, $C = \{c_1, c_2,
 c_3\}$ and 
@@ -189,14 +166,21 @@ We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
 indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
 %
-\begin{figure}[0.5][h]
-  \includegraphics[width=0.5\textwidth, height=4cm]{3D_matching.png}
+\begin{figure}[h]
+  \includegraphics[width=0.3\textwidth, height=3.5cm]{3D_matching.png}
   \centering
   \caption{An example instance of $k$-3D matching, with inputs defined 
   as above. 
   Note that the input terminals have been copied for clarity.}
   \label{fig:3D_matching}
 \end{figure}
+
+Thus, we have succesfully recuded a combinatorial problem to an 
+algebraic form that is multilinear monomial detection. 
+Note that in the scope of this thesis, we 
+are indeed satisfied by merely \emph{detecting} a solution, i.e., deciding whether 
+the underlying problem has a solution (although we briefly overview 
+actually finding a solution in \Cref{sect:finding_the_solution}).
 
 \subsection{Detecting a multilinear monomial}
 \label{sect:problem_definition}
@@ -212,17 +196,17 @@ The general, parameterized multilinear monomial detection problem is defined as 
   \problemtitle{$k$-\textsc{multilinear monomial detection}}
   \probleminput{A polynomial $P_1 \in \Z[X]$ with the solution candidates encoded as monomials.}
   \problemquestion{Does the polynomial $P_k = P_1^k$ extended as a sum of monomials 
-  contain a multilinear monomial of degree $k$
+  contain a multilinear monomial of degree $k$?
   \footnote{a multilinear monomial with degree $k$ has $k$ indeterminates, 
-  see also \Cref{sect:prelims_algebra}}?}
-  \amnote{footnote after question mark}
+  see also \Cref{sect:prelims_algebra}}}
 \end{problem}
 
 Clearly, an upper bound for solving the problem is given by a 
 naive expansion of $P_1^k$ into a sum of monomials and scanning all the terms. 
-However, this is not optimal: an $N$-degree polynomial will have $e^N$
+However, this is not optimal: an $N$-degree polynomial will have $e^N$ 
+possible monomials
 \footnote{$e^N$ is an approximation from $\binom{n+N}{N}$, where n is the number of variables} 
-possible monomials, and most problems using this algebrization 
+, and most problems using this algebrization 
 (see \Cref{sect:related_problems}) 
 have been solved with faster algorithms. 
 This motivates the detection of multilinear monomials 
@@ -239,9 +223,9 @@ Since there are $2^n$ multilinear monomials given $n$ variables,
 this method results in a slightly 
 faster algorithm than with naive expansion.
 
-However, the underlying problems are usually FPT
-\footnote{fixed parameter tractable, i.e., 
-polynomial to $n$ in time if $k$ is fixed. See \Cref{sect:prelims}}. 
+However, the underlying problems are usually FPT 
+(\emph{fixed parameter tractable}, i.e., 
+solvable in time polynomial to $n$ if $k$ is fixed). 
 This implies that scaling exponentially 
 with the number of variables is far from optimal. 
 In order for the complexity of the algorithm to scale 
@@ -440,15 +424,14 @@ A $k$-multilinear monomial has $k$ indeterminates.
 The \emph{degree} of a monomial $m$ 
 is the sum of the exponents: $\deg(m) = \sum_{i=1}^n a_i$. 
 Any element $P$ of such polynomial ring is a finite linear combination of these monomials 
-with coefficients $k \in \mathbf{K}$: 
+with coefficients $c \in \mathbf{K}$: 
+%\[
+%  P = \displaystyle \sum_p k_p(X_1^{a_{1,p}} \cdots X_n^{a_{n,p}})
+%\] 
 \[
-  P = \displaystyle \sum_p k_p(X_1^{a_{1,p}} \cdots X_n^{a_{n,p}})
+  P = \sum_{p_1,\dots,p_n \ge 0} c_{p_1,\dots,p_n} X_1^{a_{p_1}} \cdots X_n^{a_{p_n}}
 \] 
-\amnote[inline,nomargin]{
-\[
-  P = \sum_{p_1,\dots,p_n \ge 0} k_{p_1,\dots,p_n} X_1^{a_{p_1}} \cdots X_n^{a_{p_n}}
-\] 
-}
+
 If a polynomial is in such form, we may say that it is in \emph{sum of monomials form}.
 
 Alternatively, a polynomial ring $\mathbf{K}[X]$ can be thought of as a vector
@@ -466,16 +449,13 @@ where $d_m \in \mathbf{K}$. Then,
   \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b = (\displaystyle \sum_{m \in M(X)} a_m m)
   \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
 \]
-Note that the definition for the coefficient $k_m$ essentially 
+Note that the definition for the coefficient $c_m$ essentially 
 decides whether a monomial $g \in M(X)$ appears in a polynomial. If a polynomial $P$ 
-does not contain the monomial $g$, then it must be that $k_g = \mathbf{0} \in \mathbf{K}$.
+does not contain the monomial $g$, then it must be that $c_g = \mathbf{0} \in \mathbf{K}$.
 
 \emph{Evaluation of a polynomial} $P$ at $Z$ is denoted $P(Z)$, where 
-\amnote*{I think $Z$ must be a map $X \to \mathbf{R}$}{
-$Z \subset \mathbf{R}$ is a set of elements from a ring $\mathbf{R}$ containing
-$\mathbf{K}$. 
-}
-Evaluating at $Z$, i.e., assigning indeterminates $X$ to $Z$, defines an 
+$Z$ is a map $X \to \mathbf{R}$ and $\mathbf{R}$ is a ring containing $\mathbf{K}$. 
+Evaluating at $Z$, i.e., assigning indeterminates $X$ to $R$, defines an 
 element from the ring $\mathbf{R}$, as $P(Z) \in \mathbf{R}$. We may note the unevaluated 
 polynomial as $P(X)$ to highlight the set of indeterminates. 
 A polynomial is identical to $\mathbf{0}$, or \emph{identically 
@@ -523,13 +503,13 @@ Note that in \Cref{sect:fingerprints}, we augment a circuit with \emph{scalar mu
 though we denote them with standard multiplication gates.
 
 \amnote{Caption should be below image}
-\begin{SCfigure}[0.5][h]
+\begin{figure}[h]
+  \includegraphics[width=0.7\textwidth, height=5.9cm]{arithmetic_circuit_EXAMPLE.png}
+  \centering
   \caption{A circuit for evaluating $(ab+cd)^2$. 
   Note that the input terminals have been copied for clarity.}
-  \includegraphics[width=0.7\textwidth, height=5.5cm]{arithmetic_circuit_EXAMPLE.png}
-  \centering
   \label{fig:circuit_example}
-\end{SCfigure}
+\end{figure}
 
 %\clearpage
 \section{General multilinear monomial detection}
@@ -589,7 +569,7 @@ or later referred to as \emph{algebraic fingerprinting} \cite{KouWil15}:
 we evaluate $P(X)$ over some algebraic structure $\mathbf{G}$, 
 and detect a multilinear monomial from 
 the value returned by this evaluation. Ideally, with any 
-evaluation of $P(X)$ at any $Z \subset \mathbf{G}, \abs{Z} = \abs{X}$ 
+chosen mapping $Z \colon X \to \mathbf{G}$ 
 where $w \neq \mathbf{0}$, 
 \begin{equation}
   \label{eq:polynomial_identity}
@@ -641,7 +621,7 @@ Therefore, further requirements are necessary: (a) the binary operations of $\ma
 must be efficiently computable 
 for a fast evaluation of $P(X)$, and (b) multilinear monomials in $P(X)$ must 
 survive the evaluation of $P$ under an assignment $\gamma \colon X \to \mathbf{G}$ 
-with a constant probability. We reason the 
+with a constant positive probability. We reason the 
 sudden appearance of \emph{survivability} and probabilities soon.
 
 Recall from \Cref{sect:problem_definition} 
@@ -671,7 +651,7 @@ meets the following specifications:
   $P(X)$ should take \bigOstar{2^k} time.
   \item Multilinear monomials should evaluate to non-zero
   through a random assignment 
-  $\gamma \colon X \to \mathbf{G}$ with a reasonable constant probability.
+  $\gamma \colon X \to \mathbf{G}$ with constant positive probability.
 \end{itemize}
 
 In the work that introduced 
@@ -680,7 +660,7 @@ this algebraic fingerprinting technique \cite{Koutis08},
 \citeauthor{Williams09} developed the technique further, 
 generalizing the algebra to $GF(2^{l})[\Z_2^k]$ \cite{Williams09}. 
 Next, we look at these group algebras of $\Z_2^k$ for $\mathbf{G}$, 
-though the ideas of \citeauthor{Williams09} is discussed only 
+although the ideas of \citeauthor{Williams09} are discussed only 
 later in \Cref{sect:polynomial_identity_testing}.
 
 \subsubsection{Using group algebras of $\Z_2^k$}
@@ -717,9 +697,9 @@ to elements of the form $(v_0 + v_i) \in \mathbf{F}[\Z_2^k]$,
 such that for every $x_i \in X$, a random $v_i \in \Z_2^k$ is independently and uniformly 
 picked for the assignment 
 $\gamma(x_i) = v_0 + v_i$. %{$x_i \to (v_0 + v_i)$.} 
-We note the assigned values as $\overbar{X}$, and the resulting element  
+We note the mapping as $\gamma$, and the resulting element  
 from the polynomial evaluation 
-as $P(\overbar{X}) \in \mathbf{F}[\Z_2^k]$. 
+as $P(\gamma) \in \mathbf{F}[\Z_2^k]$. 
 \citeauthor{Koutis08} observed that 
 due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in \mathbf{F}[\Z_2^k]$, 
 \[
@@ -727,7 +707,7 @@ due to (\ref{eq:Z_2^k has char 2}), for all $v \in \Z_2^k$ and $(v_0 + v) \in \m
 \]
 This implies that if we pick a field with characteristic 2 for $\mathbf{F}$, 
 $\forall v_i \in \Z_2^k \colon (v_0 + v_i)^2 = \mathbf{0}$. Thus, 
-non-multilinear monomials in $P(X)$ vanish in $P(\overbar{X})$, and the 
+non-multilinear monomials in $P(X)$ vanish in $P(\gamma)$, and the 
 first equation in (\ref{eq:polynomial_identity}) 
 will hold.
 
@@ -817,9 +797,10 @@ as $P'(X, S)$. Note that here
 \label{sect:polynomial_identity_testing}
 
 From another perspective, we may look at algebraic fingerprinting as \emph{polynomial identity testing}. 
-That is, we compute $P'(X, S)$ over assignments $X \to \mathbf{F}[\Z_2^k]$ into $P'(\overbar{X}, S)$, i.e., 
+That is, we compute $P'(X, S)$ over assignments 
+$\overbar{X} \colon X \to \mathbf{F}[\Z_2^k]$ into $P'(\overbar{X}, S)$, i.e., 
 compute until the gates $\overbar{G_i}$. 
-Imagine we stop here in the circuit before assigning the fingerprints $S$  
+Imagine we stop here in the circuit before assigning the fingerprints $S$ 
 and continuing with the multiplication. 
 Currently, we may see $P'(\overbar{X}, S) \in \mathbf{K}[S]$ as a polynomial 
 with indeterminates from $S$ and coefficients from $\mathbf{K} = \mathbf{F}[\Z_2^k]$. 
@@ -828,14 +809,13 @@ to find a new polynomial $Q(S) \in \mathbf{K}[S]$.
 
 Now, deciding whether a multilinear monomial exists in $P(X)$ is essentially given by 
 whether the polynomial $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$, 
-i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$ 
-and $\phi(S)$ representing the assigned values of $S$ with $\phi$,  
+i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$, 
 \[
   \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
-  \colon P'(\overbar{X}, \phi(S)) = \mathbf{0}.
+  \colon P'(\overbar{X}, \phi) = \mathbf{0}.
 \]
 Therefore, we formulate algebraic fingerprinting as polynomial identity testing, i.e., 
-we test wheter $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$.
+we test whether $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$.
 
 \begin{problem}
   \problemtitle{\textsc{Polynomial identity testing}}
@@ -849,11 +829,11 @@ since we used characteristic 2 to eliminate
 the underlying non-multilinear monomials in $P'(\overbar{X}, S)$.
 
 Thus, multilinear monomial detection is reduced via algebraic fingerprinting 
-to polynomial identity testing. A multilinear monomial is detected if 
-$Q(f) \neq \mathbf{0}_F \in \mathbf{F}$, where $Q(f)$ 
-represents evaluation under an assignment $S \to \mathbf{F}$, 
-with any field $\mathbf{F}$ of characteristic 2. 
+to polynomial identity testing. 
 We note the family of assignments $S \to \mathbf{F}$ as $\Phi$. 
+A multilinear monomial is detected if 
+$\exists f \in \Phi \colon Q(f) \neq \mathbf{0}_F \in \mathbf{F}$, 
+where $\mathbf{F}$ is a field of characteristic 2. 
 Polynomial identity testing is a well-studied problem, and can be efficiently 
 solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Saxena09}.
 
@@ -875,8 +855,8 @@ with randomized assignments $S \to \Z_2$ \cite{Koutis08}.
 further by observing that due to the Schwartz-Zippel Lemma, %(see \cref{sect:prelims}), 
 if we raise the order of the field $\mathbf{F}$ 
 such that the number of different assignments in $\Phi$ is much larger than 
-the number of assignments $\phi \in \Phi$ that have $Q(\phi(S)) = \mathbf{0}_F$, 
-$Q(\delta(S)) \neq \mathbf{0}_F$ with a high probability over some $\delta \in \Phi$ 
+the number of assignments $\phi \in \Phi$ that have $Q(\phi) = \mathbf{0}_F$, 
+$Q(\delta) \neq \mathbf{0}_F$ with a high probability over an arbitrary $\delta \in \Phi$ 
 \cite{Williams09}. 
 
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
@@ -968,16 +948,15 @@ whereas algebraic fingerprinting only detects that one exists.
 
 In \Cref{sect:complexity}, it was established that $k$-multilinear monomials 
 in $P(X)$ are detected with 
-algebraic fingerprinting in \bigOstar{2^kg} time, where 
-$g$ is the number of gates in the arithmetic circuit for $P(X)$ \cite{Williams09}. 
+algebraic fingerprinting in \bigOstar{2^k} time. 
 This time was achieved by evaluating the circuit over matrix 
-representations of the algebra $GF(2^l)[\Z_2^k]$.
+representations of the group algebra $GF(2^l)[\Z_2^k]$.
 
 %Furthermore, 
 \citeauthor{KouWil09} showed that this particular algebra is nearly optimal 
 for time complexity \cite{KouWil09}: there is no significantly faster algebra that 
 is appropriate for the general $k$-multilinear monomial detection. 
-The authors proved that if any commutative algebra $\mathcal{G}$ is 
+The authors proved that if any commutative algebraic structure $\mathcal{G}$ is 
 used for detecting $k$-multilinear monomials, 
 the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
 
