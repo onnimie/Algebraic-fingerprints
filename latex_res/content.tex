@@ -106,17 +106,15 @@ the non-solutions correspond to non-multilinear and valid solutions to multiline
 Note, however, that detecting a multilinear monomial is not trivial: 
 we are not given the polynomial (the problem input) as a sum of monomials. 
 Instead, we are given an \emph{arithmetic circuit}
-\footnote{see \Cref{sect:prelims_circuits} for information on circuits} 
+\footnote{see \Cref{sect:prelims_circuits} for information on arithmetic circuits} 
 representing the polynomial, 
-i.e., merely the expression $C^2$ in the example above.
+e.g., merely the expression $C^2$ in the example above.
 
 Appropriate definitions for the indeterminates for $M$,
 i.e. proper algebrizations, are problem-specific. 
 In what follows, we give an example 
-reduction to multilinear monomial detection: 
-we algebrize the $k$-3D matching problem.
-
-The $k$-3D matching problem is defined as follows:
+reduction to multilinear monomial detection; 
+we algebrize the $k$-3D matching problem which is defined as follows:
 \begin{problem}
   \problemtitle{$k$-\textsc{3D matching}}
   \probleminput{Three disjoint sets $A$, $B$ and $C$, 
@@ -167,7 +165,7 @@ to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ ar
 indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
 %
 \begin{figure}[h]
-  \includegraphics[width=0.3\textwidth, height=3.5cm]{3D_matching.png}
+  \includegraphics[width=0.3\textwidth, height=3.7cm]{3D_matching.png}
   \centering
   \caption{An example instance of $k$-3D matching, with inputs defined 
   as above.}
@@ -175,7 +173,7 @@ indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
 \end{figure}
 
 Thus, we have succesfully recuded a combinatorial problem to an 
-algebraic form that is multilinear monomial detection. 
+algebraic one that is multilinear monomial detection. 
 Note that in the scope of this thesis, we 
 are indeed satisfied by merely \emph{detecting} a solution, i.e., deciding whether 
 the underlying problem has a solution (although we briefly overview 
@@ -204,8 +202,8 @@ Clearly, an upper bound for solving the problem is given by a
 naive expansion of $P_1^k$ into a sum of monomials and scanning all the terms. 
 However, this is not optimal: an $N$-degree polynomial will have $e^N$ 
 possible monomials
-\footnote{$e^N$ is an approximation from $\binom{n+N}{N}$, where n is the number of variables} 
-, and most problems using this algebrization 
+\footnote{$e^N$ is an approximation from $\binom{n+N}{N}$, where n is the number of variables}, 
+and most problems using this algebrization 
 (see \Cref{sect:related_problems}) 
 have been solved with faster algorithms. 
 This motivates the detection of multilinear monomials 
