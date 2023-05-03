@@ -174,6 +174,7 @@ indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
   TODO: change from edges to bubbles or something similar without relying on colors.}
   \label{fig:3D_matching}
 \end{figure}
+\amnote{TeX-internal tool for diagrams: TikZ}
 
 Thus, we have succesfully recuded a combinatorial problem to an 
 algebraic one that is multilinear monomial detection. 
@@ -447,9 +448,11 @@ let $M(X)$ denote the set of all monomials in $X$, and
 $P_d$ denote a polynomial in $\mathbf{K}[X]$ of the form $P_d = \sum_{m \in M(X)} d_m m$, 
 where $d_m \in \mathbf{K}$. Then, 
 \[
-  \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b = (\displaystyle \sum_{m \in M(X)} a_m m)
+  \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b
+  = \left( \sum_{m \in M(X)} a_m m\right)
   \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
 \]
+\amnote{added \texttt{\textbackslash left ... \textbackslash right}}
 Note that the definition for the coefficient $c_m$ essentially 
 decides whether a monomial $m \in M(X)$ appears in a polynomial. If a polynomial $P$ 
 does not contain the monomial $g$, then it must be that $c_g = \mathbf{0} \in \mathbf{K}$.
@@ -496,7 +499,8 @@ If the underlying algebra is commutative, we may call the arithmetic circuit a \
 %However, since we are using mainly commutative algebras in this thesis, we may define the 
 %gates for binary operations to have unbounded fan-in. 
 
-For example, an abstract evaluation of a polynomial $P \in \Z[\{a,b,c,d\}]$ of the form 
+For example, an abstract evaluation of a polynomial
+\amnote*{you can drop the set braces}{$P \in \Z[\{a,b,c,d\}]$} of the form 
 $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:circuit_example}. 
 Note that we use the same symbols for addition and multiplication gates as seen in the figure 
 in all arithmetic circuit diagrams in this thesis. 
@@ -747,10 +751,11 @@ be the set of an appropriate number of fingerprints
 and augment them to $P_k$ as follows: 
 \begin{align*}
   P'_2 = &\:(s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
-  = &\:s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 \:+ \\
-  &\:s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 \:+ \\
-  &\:s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
+  = &\:s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 \: \\
+  &\:+s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 \: \\
+  &\:+s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
 \end{align*}
+\amnote{(moved trailing $+$ to beginning of line)}
 
 Then, the multilinear monomial detection algorithm 
 could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
@@ -848,8 +853,11 @@ solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Sa
   Let $P \in F[X]$ be a non-zero polynomial of degree $d$ over a field $F$. 
   Let $Z$ be a uniformly chosen random mapping $Z \colon X \to F$. Then, 
   \[
-    Probability[P(Z) = \mathbf{0}] \leq d/{\abs{F}}.  
+    %Probability[P(Z) = \mathbf{0}] \leq d/{\abs{F}}.  
+    \Pr[P(Z) = \mathbf{0}] \leq \frac{d}{\abs{F}}.  
   \]
+  \amnote{use $\Pr$ for probability}%
+  \amnote{use \texttt{\textbackslash frac} in display math}%
 \end{lemmaSZ}
 
 Assume multilinear monomials exist in $P(X)$. 
@@ -967,7 +975,8 @@ used for detecting $k$-multilinear monomials,
 the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
 
 Thus for the general $k$-multilinear monomial detection, we may say 
-that algebraic fingerprinting is in some sense optimized. 
+that algebraic fingerprinting is in some sense
+\amnote*[inline,nomargin]{optimal (and cannot be improved upon)}{optimized}. 
 However, 
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
 specific $k$-multilinear monomial detection instances (see \Cref{sect:improvements}).
@@ -976,13 +985,19 @@ specific $k$-multilinear monomial detection instances (see \Cref{sect:improvemen
 \label{sect:derandomization}
 
 Algebraic fingerprinting gives a randomized algorithm for $k$-multilinear monomial detection. 
-The derandomization of the general framework seems hard, since algebraic fingerprinting 
+The derandomization of the general framework seems hard\amnote*{no comma before \enquote{since}}, since algebraic fingerprinting 
 uses the fact that polynomial identity testing can be solved in polynomial time with 
 a randomized algorithm \cite{Williams09}.
 
+\begin{anamnote}[nomargin]{}
+  Couldn't someone improve the framework so it doesn't rely on PIT at all?
+  This would get rid of the derandomization barrier
+\end{anamnote}
+
 If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
-polynomial time deterministic algorithm. However, this implies proving superpolynomial 
+polynomial time deterministic algorithm. However, this
+\amnote*{doubled word, choose one}{implies proving} superpolynomial 
 lower bounds for arithmetic circuit sizes, which is notoriously hard \cite{Kabanets03}. 
 Therefore, with respect to the several decades of 
 sustained effort directed at circuit lower bounds \cite{Kabanets03}, 
@@ -1000,14 +1015,16 @@ However in algebraic fingerprinting, we do not have this information on the mono
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
-However, finding a solution (assuming existence) 
+However, finding a solution 
+\amnote*{assuming an algorithm that decides existence (I suppose)?}{(assuming existence) }
 has often proven to be significantly easier than detecting if one exists. 
 Moreover, since most of the problems in \Cref{sect:related_problems} 
 have search problems in FPT, it is known that a solution can be found in polynomial time when its 
-existence is detected.
+existence 
+\amnote*[inline,nomargin]{can be detected efficiently}{is detected}.
 
 For example, in \cite{Koutis08}, 
-\cite{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
+\citeauthor{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
 $k$-path can be found by \bigOstar{n+\min(k^2, m)} applications of the given
 algorithm, where $n$ is the number of vertices and $m$ the number of edges in the input graph. 
 In general for subgraph problems, we may find a solution by calling the decision 
@@ -1024,7 +1041,7 @@ However, this framework is very generic since it
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
 Creative algebrizations, though, 
-have potential for these properties.
+have potential for \amnote[inline,nomargin]{exploiting} these properties.
 
 Indeed, faster algorithms for specific combinatorial problems 
 have been found by designing new algebrizations utilizing techniques 
@@ -1087,6 +1104,7 @@ a multivariate polynomial $P$, where the monomials are
 to cycle covers of the input graph. Evaluating $P$ over a suitable ring, 
 non-Hamiltonian cycle covers cancel out, and we detect 
 only Hamiltonian cycle covers, i.e., valid solutions to the underlying problem.
+\amnote{This all sounds like magic to me \texttt{:)}}
 
 \citeauthor{Björklund14} achieved this by labeling cycle covers such 
 that all non-Hamiltonian cycle covers receive a label identical 
@@ -1107,6 +1125,8 @@ is identical to the determinant of the matrix
 over a ring of characteristic 2 \cite{Björklund14}, 
 which essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
 to detect a Hamiltonian path.
+\amnote{Aha... Side note: computing the permanent in general is very hard!}
+\amnote{Maybe add quick note about what permanent is}
 
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
@@ -1119,9 +1139,16 @@ detecting different types of monomials, i.e.,
 \emph{q-monomials}\footnote{a $d$-degree monomial where every exponent is smaller than $d$} 
 which were further studied by \textcite{Chen14}.
 
+\begin{anamnote}[nomargin]{}
+  I would avoid the footnotes in this section.
+  In the intro is OK because the definitions come later, but the defs here can
+  (should) be integrated into the text.
+\end{anamnote}
+
 %As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
 %gives randomized algorithms, and derandomizing the technique is hard. 
 Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22}  
+\amnote{added \texttt{sortcites} option in preamble}
 has been directed into deterministic algorithms for 
 instances of multilinear monomial detection, and 
 closing the gap between the deterministic and the randomized algorithms. 
@@ -1135,9 +1162,11 @@ runs in \bigOstar{2.55^k} time by computing partial differentials of multivariat
 %
 On another front, there has been research in 
 extending the application domain of algebraic fingerprinting. 
+\amnote*{Specifically, one line of research that has been particularly fruitful ...}{
 In specific, 
 research on how more information can be taken 
 into the algebrization has found success. 
+}
 With \emph{constrained multilinear monomial detection} \cite{Koutis12, Björklund16}, 
 we detect only multilinear monomials that satisfy an additional constraint, 
 e.g., a proper coloring
@@ -1153,7 +1182,7 @@ However, the matrix representations of the group algebras used
 offer possibilities for parallelization. \textcite{Midas19} observed this and designed 
 an optimized distributed algorithm for multilinear monomial detection. 
 The authors showed applications of this method that outperform previously 
-fastest algorithms for several network scan statistics problems.
+fastest algorithms for several \amnote*{?}{network scan statistics} problems.
 
 %\clearpage
 \section{Conclusion}
@@ -1189,10 +1218,15 @@ to different problem areas is a significant field of interest.
 As seen in \Cref{sect:cancel_nonsolutions}, 
 the technique of algebraic fingerprints can be utilized for even 
 faster randomized algorithms for specific problems. 
+\amnote{Avoid passive esp. in long sentences}
+\amnote*[inline,nomargin]{The work of \citeauthor{Björklund14}, which came right
+after the novel algebraic technique of \cite{Koutis08}, ended a stagnation of
+nearly fifty years ...}{
 In particular, a near fifty-year stagnation 
 in improvements for the well-studied Hamiltonian path problem saw 
 a significant development by \citeauthor{Björklund14} right after 
 the novel algebraic technique \cite{Koutis08} saw publication. 
+}
 This sparked developments for several other 
 problems as well \cite{Björklund17}, all of which were greatly inspired by 
 the general technique of algebraic fingerprints and 
@@ -1200,8 +1234,14 @@ follow similar utilizations of fingerprints as in Hamiltonicity.
 
 However, most of the problems in \Cref{sect:related_problems} are still 
 solved most efficiently by the general algebraic framework. Solving these 
-specific problems faster is still an open problem. 
+specific problems faster \amnote[inline,nomargin]{(or proving that no
+improvement is possible ... ?)}
+is still an open problem. 
 It may be that 
 finding faster algorithms that beat the general algebraic framework requires 
 one to design different algebrizations (as in Hamiltonicity) 
 or come up with completely new ideas.
+
+\begin{anamnote}[nomargin]{}
+  Any such idea in particular to note?  (even if pure speculation)
+\end{anamnote}
