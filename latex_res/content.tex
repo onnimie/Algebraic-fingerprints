@@ -10,6 +10,8 @@ deciding whether a multivariate (multiple variables)
 polynomial contains a multilinear monomial 
 (i.e., a term with multiple variables where each variable appears at most once, 
 see also \Cref{sect:prelims_algebra}). 
+This particular problem has proven to be fundamental since many combinatorial 
+problems can be reduced to it. 
 The idea of multilinear monomial detection 
 for parameterized combinatorial problems was 
 first introduced by \citeauthor{Koutis05} in an early work 
@@ -19,7 +21,7 @@ reduced to multilinear monomial detection.
 The technique of \emph{algebraic fingeprinting},   
 introduced by \textcite{Koutis08} and further developed by 
 \textcite{Williams09}, is used for detecting multilinear monomials,  
-and has thus found great success for many combinatorial problems. 
+and has found great success for many combinatorial problems. 
 For instance with algebraic fingerprinting, the $k$-path problem 
 that previously could be solved in \bigOstar{4^{k}} 
 time\footnote{$\mathcal{O}$* may hide factors polynomial to input size.} 
@@ -83,32 +85,33 @@ share a vertex with at most one other edge.
 multivariate polynomials have natural combinatorial interpretations. 
 Now, we see how combinatorics may be represented with multivariate polynomials. 
 We may think of a polynomial in its sum of monomials 
-form\footnote{an expression where there is no multiplication 
-after addition of monomials. See also \Cref{sect:prelims_algebra}} (TODO) 
+form (i.e., an expression with only additions of products) 
 as a set of combinations. For instance, imagine a set of elements $M = \{a, b, c\}$. 
 The polynomial $C = a+b+c$ represents all the possible choices 
 if we are to pick an element from $M$. Following the standard idea behind polynomial 
-multiplication, we see that a polynomial 
+multiplication, we see that the polynomial 
 \[
   C^2 = (a+b+c)(a+b+c) = aa + ab + ac + ba + bb + bc + ca + cb + cc
 \]
 represents 
-all the possible combinations if we are to pick twice from $M$. 
-Indeed, a polynomial $C^k$ represents all combinations of $k$ elements from $M$.
+all possible combinations if we are to pick twice from $M$. 
+Indeed, the polynomial $C^k$ represents all combinations of $k$ elements from $M$.
 
 Utilizing this idea, \textcite{Koutis05} 
 managed to reduce a combinatorial problem 
 into an algebraic one, that is, multilinear monomial detection. 
 In multilinear monomial detection, we represent the combinatorial problem 
 as a polynomial where the solution candidates are encoded as follows: 
-the non-solutions correspond to non-multilinear and valid solutions to multilinear terms. 
+the non-solutions correspond to non-multilinear terms, 
+and valid solutions to multilinear terms. 
 
 Note, however, that detecting a multilinear monomial is not trivial: 
 we are not given the polynomial (the problem input) as a sum of monomials. 
 Instead, we are given an \emph{arithmetic circuit}
 \footnote{see \Cref{sect:prelims_circuits} for information on arithmetic circuits} 
 representing the polynomial, 
-e.g., merely the expression $C^2$ in the example above.
+e.g., merely the expression $C^2$ in the example above. 
+As we see in the next section, this is significant for the detection complexity.
 
 Appropriate definitions for the indeterminates for $M$,
 i.e. proper algebrizations, are problem-specific. 
@@ -132,8 +135,8 @@ product of the elements in $t$.
 We denote the set of those monomials as $X$. 
 Thus, $(a,b,c) \in T \implies abc \in X$.
 From an algebraic perspective, we form monomials in the commutative polynomial 
-ring $\Z[X]$ (i.e., polynomials that have coefficients from $\Z$ and variables from $X$. 
-See also \Cref{sect:prelims_algebra}).
+ring $\Z[X]$ (i.e., polynomials that have coefficients from $\Z$ and variables from $X$, 
+see also \Cref{sect:prelims_algebra}).
 
 Next, we define the multivariate polynomial 
 $P_k \in \Z[X]$ for $k \in \N$ iteratively 
@@ -145,10 +148,9 @@ Following this construction, we observe that $P_k$,
 when expanded into a sum of multivariate monomials, 
 contains a multilinear term if and only if the original 
 $k$-3D matching instance can be answered in the positive. 
-Thus, we have a successful reduction to 
-multilinear monomial detection for the $k$-3D matching. 
+We confirm by a simple example. 
 
-For instance with $A = \{a_1, a_2\}$, $B = \{b_1, b_2\}$, $C = \{c_1, c_2,
+For an instance with $A = \{a_1, a_2\}$, $B = \{b_1, b_2\}$, $C = \{c_1, c_2,
 c_3\}$ and 
 \[
   T = \{(a_1, b_1, c_1), (a_1, b_2, c_2), (a_2, b_2, c_3)\}
@@ -168,7 +170,8 @@ indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
   \includegraphics[width=0.3\textwidth, height=3.7cm]{3D_matching.png}
   \centering
   \caption{An example instance of $k$-3D matching, with inputs defined 
-  as above.}
+  as above. 
+  TODO: change from edges to bubbles or something similar without relying on colors.}
   \label{fig:3D_matching}
 \end{figure}
 
@@ -202,7 +205,7 @@ Clearly, an upper bound for solving the problem is given by a
 naive expansion of $P_1^k$ into a sum of monomials and scanning all the terms. 
 However, this is not optimal: an $N$-degree polynomial will have $e^N$ 
 possible monomials
-\footnote{$e^N$ is an approximation from $\binom{n+N}{N}$, where n is the number of variables}, 
+\footnote{$e^N$ is an approximation from $\binom{n+N}{N}$, where $n$ is the number of variables}, 
 and most problems using this algebrization 
 (see \Cref{sect:related_problems}) 
 have been solved with faster algorithms. 
@@ -278,8 +281,8 @@ solving parameterized problems \cite{KouWil15}.
 The importance of multilinear monomial detection lies in the fact 
 that many parameterized combinatorial problems, as we see in this section, 
 can be reduced to instances of it. 
-Thus, solving the general $k$-multilinear monomial detection problem 
-efficiently has great interest. 
+Thus, there is great interest in efficiently solving the 
+general $k$-multilinear monomial detection problem. 
 Currently, the technique of algebraic fingerprints underlies the fastest algorithms 
 for all the problems mentioned here. 
 Note that only time complexity is discussed here. 
@@ -300,15 +303,15 @@ and \emph{maximum graph motif} problems which are relevant in e.g. bioinformatic
 \textcite{Cadena17} 
 applied algebraic fingerprinting to general \emph{graph scan statistics} 
 which is a methodology that detects anomalies in a graph. This is relevant in 
-general network design problems.
+general network design problems, and e.g. social network analysis.
 
 \section{Preliminaries}
 \label{sect:prelims}
 
 It is necessary to recall basic algebraic concepts and common notation 
 before further discussing multilinear monomial detection and algebraic fingerprinting. 
-\Cref{sect:prelims_algebra} gives definitions for some necessary algebras 
-and algebraic concepts. \Cref{sect:prelims_circuits} outlines arithmetic circuits. 
+\Cref{sect:prelims_algebra} gives definitions for some necessary algebraic structures 
+and concepts. \Cref{sect:prelims_circuits} gives a brief cover on arithmetic circuits. 
 
 Some lesser-known notation is also used. FPT or \emph{fixed parameter tractable} 
 is a class of parameterized problems that 
@@ -322,7 +325,7 @@ $\mathcal O$* hides factors polynomial to the input size, e.g.,
 
 We generally refer to the following algebraic objects 
 as \emph{algebraic structures}, i.e., objects that contain a 
-set of elements and operations on them.
+set of elements and operations on these elements.
 
 \textbf{Groups.} A \emph{group} $\mathbf G$
 is a tuple $(G, +)$, where $G$ is a set of elements, 
@@ -344,7 +347,7 @@ Note, from here on we may use a bold typeface to represent either the set of ele
 or the algebraic structure itself, i.e., 
 we may use expressions such as $u \in \mathbf{R}$, where $\mathbf{R} = (R,+,\cdot)$ and $u \in R$. 
 Moreover, multiplication may be denoted by juxtaposition for brevity: $a \cdot b = ab$. 
-Also note that we use coefficients and exponents to denote repeated operations of 
+Furthermore, we use coefficients and exponents in $\N$ to denote repeated operations of 
 addition and multiplication, respectively: $a+a = 2a, \: a \cdot a=a^2$.
 
 $\mathbf{R}$ must contain a multiplicative identity 
@@ -360,7 +363,7 @@ $u \in \mathbf{R}$ is called \emph{unit} if it holds
 that $\exists v \in \mathbf{R} \colon uv = vu = \mathbf{1}$, 
 i.e., it has a multiplicative inverse $v \in \mathbf{R}$.
 
-\textbf{Fields.} A \emph{field} $\mathbf{F} = (F, +, \cdot)$ is defined with the following conditions:
+\textbf{Fields.} A \emph{field} $\mathbf{F} = (F, +, \cdot)$ is defined by the following conditions:
 \begin{itemize}
   \item $(F, +)$ is an Abelian group
   \item $(F\setminus \{\mathbf{0}\}, \cdot )$ is an Abelian group
@@ -373,7 +376,7 @@ The \emph{characteristic} of a field $\mathbf{F}$ is defined as follows:
 \begin{equation}
   \texttt{char}(\mathbf{F}) =
     \begin{cases}
-      \min\{n \in \N \colon n \cdot \mathbf{1} = \mathbf{0} \}\\
+      \min\{n \in \N \colon n\mathbf{1} = \mathbf{0} \}\\
       0 & \text{if such $n$ does not exist}\\
     \end{cases}       
 \end{equation}
@@ -388,7 +391,7 @@ refer to the fact that an element $f \in \mathbf{F}$ may cancel itself out in an
 $\mathbf{F}$ has non-zero characteristic. 
 We mainly use characteristic 2 in this thesis, and thus, we may say that 
 $f$ cancels out due to characteristic when 
-it has an even coefficient: $\forall k \ge 0$, $2kf = k(2f) = k\mathbf{0}=\mathbf{0}$
+it has an even coefficient: $\forall k \in \N$, $2kf = k(2f) = k\mathbf{0}=\mathbf{0}$
 
 Characteristics are prevalent in \emph{finite fields}, where the set of elements is finite. 
 A simple example of a finite field is $\Z_2 = (\{\mathbf{0}, \mathbf{1}\}, +, \cdot)$, where 
@@ -400,8 +403,9 @@ An isomorphism $\kappa \colon \mathbf{A} \to \mathbf{B}$
 is a bijective mapping that satisfies 
 $\forall u,v \in \mathbf{A} \colon \kappa(uv) = \kappa(u)\kappa(v) \wedge \kappa(u+v) = \kappa(u)+\kappa(v).$ 
 Thus, if we only care for the relations between the elements, 
-we may say that two algebraic structures that are isomorphic are 
-equivalent for us. 
+we may say that two isomorphic algebraic structures 
+(i.e., there exists an isomorphism between them) 
+are equivalent for us. 
 Note that if $p$ is prime and $k \in \N$, the characteristic of $GF(p^k)$ is $p$. 
 %Moreover, the non-zero elements of a finite field form a multiplicative group.
 
@@ -447,7 +451,7 @@ where $d_m \in \mathbf{K}$. Then,
   \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
 \]
 Note that the definition for the coefficient $c_m$ essentially 
-decides whether a monomial $g \in M(X)$ appears in a polynomial. If a polynomial $P$ 
+decides whether a monomial $m \in M(X)$ appears in a polynomial. If a polynomial $P$ 
 does not contain the monomial $g$, then it must be that $c_g = \mathbf{0} \in \mathbf{K}$.
 
 \emph{Evaluation of a polynomial} $P$ at $Z$ is denoted $P(Z)$, where 
@@ -456,7 +460,7 @@ Evaluating at $Z$, i.e., assigning indeterminates $X$ to $R$, defines an
 element from the ring $\mathbf{R}$, as $P(Z) \in \mathbf{R}$. We may note the unevaluated 
 polynomial as $P(X)$ to highlight the set of indeterminates. 
 A polynomial is identical to $\mathbf{0}$, or \emph{identically 
-evaluates} to $\mathbf{0}$, if $\forall W \in \mathbf{R} \colon P(W) = \mathbf{0}$.
+evaluates} to $\mathbf{0}$, if for every mapping $W \colon X \to \mathbf{R}$ $P(W) = \mathbf{0}$.
 
 In this thesis, we mainly use elements of \emph{group algebras} 
 for evaluation, i.e., $\mathbf{R} = \mathbf{K}[\mathbf{G}]$, where $\mathbf{G}$ is a 
