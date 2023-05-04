@@ -234,12 +234,10 @@ with the parameter $k$, we can reduce the number of variables
 by mapping $\rho \colon X \to Y$, where 
 $\abs{X} \geq \abs{Y}$ and $\abs{Y} =$ \bigTheta{k}, 
 and dynamically expand $(P'_1)^k \in \Z[Y]$ instead of
-$P_k$, where
-\amnote*[inline,nomargin]{$P_1' = \Phi_\rho(P_1) \in \Z[Y]$ and $\Phi_\rho$ is
-the canonical extension of $\rho$ to a ring homomorphism $\Z[X] \to \Z[Y]$
-(i.e., simply replacing every $x \in X$ in $P_1$ with $\rho(x)$)}{
-$P'_1 \in \Z[Y]$ represents $P_1 \in \Z[X]$ mapped with $\rho$. 
-}
+$P_k$, where $P'_1 \in \Z[Y]$ represents
+\footnote{in algebraic terms, $P_1' = \Phi_\rho(P_1) \in \Z[Y]$ and $\Phi_\rho$ is
+the canonical extension of $\rho$ to a ring homomorphism $\Z[X] \to \Z[Y]$}. 
+$P_1 \in \Z[X]$ with every $x \in X$ replaced with $\rho(x)$
 
 However, since $\abs{X} \geq \abs{Y}$, 
 a multilinear monomial in $P_k$ may not be multilinear in $P'_k$ since 
@@ -304,7 +302,7 @@ and \emph{maximum graph motif} problems which are relevant in e.g. bioinformatic
 \textcite{Cadena17} 
 applied algebraic fingerprinting to general \emph{graph scan statistics} 
 which is a methodology that detects anomalies in a graph. This is relevant in 
-general network design problems, and e.g. social network analysis.
+general network design problems and e.g. social network analysis.
 
 \section{Preliminaries}
 \label{sect:prelims}
@@ -845,8 +843,8 @@ where $\mathbf{F}$ is a field of characteristic 2.
 Polynomial identity testing is a well-studied problem, and can be efficiently 
 solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Saxena09}. 
 Essentially, the lemma gives an upper bound for the probability of false-negatives 
-and, subsequently, a number of random test evaluations 
-enough for a satisfactory result on polynomial identity. 
+and, subsequently, the number of necessary random test evaluations 
+for a satisfactory result on polynomial identity.
 
 \newtheorem*{lemmaSZ}{Schwartz-Zippel Lemma}
 \begin{lemmaSZ}
@@ -942,7 +940,6 @@ For $k$-3D matching however, as given in \Cref{sect:algebrization},
 algebraic fingerprinting gives an \bigOstar{2^{3k}} algorithm, since 
 $k$-3D matching reduces into $3k$-degree multilinear monomial detection.
 
-
 \section{Limits of algebraic fingerprinting}
 \label{sect:limits}
 
@@ -1012,13 +1009,15 @@ However in algebraic fingerprinting, we do not have this information on the mono
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
-However, finding a solution 
-\amnote*{assuming an algorithm that decides existence (I suppose)?}{(assuming existence) }
-has often proven to be significantly easier than detecting if one exists. 
+However, while constructing such a decision algorithm is generally hard for 
+many combinatorial problems (e.g. problems in \Cref{sect:related_problems}), 
+finding the solution using such an algorithm 
+(i.e., constructing a \emph{search} algorithm) is often easy. 
+For example, it is widely known that decision and search algorithms 
+for NP-complete problems are essentially equivalent in complexities \cite{Bellare94}. 
 Moreover, since most of the problems in \Cref{sect:related_problems} 
 have search problems in FPT, it is known that a solution can be found in polynomial time when its 
-existence 
-\amnote*[inline,nomargin]{can be detected efficiently}{is detected}.
+existence can be detected efficiently.
 
 For example, in \cite{Koutis08}, 
 \citeauthor{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
@@ -1132,20 +1131,11 @@ Since the runtime of algebraic fingerprinting is arguably optimized for
 the general multilinear monomial detection, much research has been 
 done on specific settings. In their series of papers \cite{Chen11a, Chen11b, Chen10, Chen13a}, 
 \citeauthor{Chen13a} studied complexities for different types of multivariate polynomials, and
-detecting different types of monomials, i.e., 
-\emph{q-monomials}\footnote{a $d$-degree monomial where every exponent is smaller than $d$} 
-which were further studied by \textcite{Chen14}.
+detecting different types of monomials, i.e., \emph{q-monomials}. 
+$q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
+were also further studied by \textcite{Chen14}.
 
-\begin{anamnote}[nomargin]{}
-  I would avoid the footnotes in this section.
-  In the intro is OK because the definitions come later, but the defs here can
-  (should) be integrated into the text.
-\end{anamnote}
-
-%As briefly discussed in \Cref{sect:derandomization}, algebraic fingerprinting 
-%gives randomized algorithms, and derandomizing the technique is hard. 
-Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22}  
-\amnote{added \texttt{sortcites} option in preamble}
+Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22} 
 has been directed into deterministic algorithms for 
 instances of multilinear monomial detection, and 
 closing the gap between the deterministic and the randomized algorithms. 
@@ -1155,31 +1145,27 @@ much faster algorithms for specific problems
 have been found. For example, the state-of-the-art deterministic algorithm for $k$-path 
 runs in \bigOstar{2.55^k} time by computing partial differentials of multivariate polynomials \cite{Brand21}.
 
-%- constrained multilinear detection (weighted problems?), temporal graphs
-%
 On another front, there has been research in 
 extending the application domain of algebraic fingerprinting. 
-\amnote*{Specifically, one line of research that has been particularly fruitful ...}{
-In specific, 
-research on how more information can be taken 
-into the algebrization has found success. 
-}
-With \emph{constrained multilinear monomial detection} \cite{Koutis12, Björklund16}, 
+Specifically, one line of research that has been particularly fruitful 
+is \emph{constrained multilinear monomial detection}. 
+With constrained multilinear monomial detection \cite{Koutis12, Björklund16}, 
 we detect only multilinear monomials that satisfy an additional constraint, 
-e.g., a proper coloring
-\footnote{the number of occurrences of each color tied to a variable in a multilinear monomial is below some maximum}. 
+e.g., a \emph{proper coloring}. 
+In coloring, we essentially tie colors to variables. 
+A multilinear monomial then satisfies proper coloring 
+if the number of occurrences of each color is below some maximum. 
 This can be extended to detect solutions with a specific cost \cite{Björklund16} 
-and/or temporal properties
-\footnote{i.e., we can solve constrained problems that exist in graphs with timestamped and colored vertices} 
+and/or temporal properties 
+(i.e., we can solve constrained problems that exist in graphs with weights and timestamped vertices) 
 \cite{Thejaswi20}.
 
-%- distributed multilinear detection (MIDAS-paper)
 The evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
 However, the matrix representations of the group algebras used 
 offer possibilities for parallelization. \textcite{Midas19} observed this and designed 
 an optimized distributed algorithm for multilinear monomial detection. 
-The authors showed applications of this method that outperform previously 
-fastest algorithms for several \amnote*{?}{network scan statistics} problems.
+The authors showed applications of this method that outperform the previously 
+fastest parallel algorithms for several \amnote*{?}{network scan statistics} problems.
 
 %\clearpage
 \section{Conclusion}
@@ -1215,15 +1201,9 @@ to different problem areas is a significant field of interest.
 As seen in \Cref{sect:cancel_nonsolutions}, 
 the technique of algebraic fingerprints can be utilized for even 
 faster randomized algorithms for specific problems. 
-\amnote{Avoid passive esp. in long sentences}
-\amnote*[inline,nomargin]{The work of \citeauthor{Björklund14}, which came right
-after the novel algebraic technique of \cite{Koutis08}, ended a stagnation of
-nearly fifty years ...}{
-In particular, a near fifty-year stagnation 
-in improvements for the well-studied Hamiltonian path problem saw 
-a significant development by \citeauthor{Björklund14} right after 
-the novel algebraic technique \cite{Koutis08} saw publication. 
-}
+In particular, the work of \citeauthor{Björklund14}, which came right
+after the novel algebraic technique of \cite{Koutis08}, ended a stagnation of 
+nearly fifty years for the well-studied Hamiltonian path problem. 
 This sparked developments for several other 
 problems as well \cite{Björklund17}, all of which were greatly inspired by 
 the general technique of algebraic fingerprints and 
@@ -1231,8 +1211,8 @@ follow similar utilizations of fingerprints as in Hamiltonicity.
 
 However, most of the problems in \Cref{sect:related_problems} are still 
 solved most efficiently by the general algebraic framework. Solving these 
-specific problems faster \amnote[inline,nomargin]{(or proving that no
-improvement is possible ... ?)}
+specific problems faster or proving that no
+improvement is possible 
 is still an open problem. 
 It may be that 
 finding faster algorithms that beat the general algebraic framework requires 
