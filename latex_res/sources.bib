@@ -1,180 +1,189 @@
 @article{KouWil15,
-author = {Koutis, Ioannis and Williams, Ryan},
-title = {Algebraic Fingerprints for Faster Algorithms},
-year = {2015},
-issue_date = {January 2016},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {59},
-number = {1},
-issn = {0001-0782},
-url = {https://doi.org/10.1145/2742544},
-doi = {10.1145/2742544},
-abstract = {Algorithmic solutions to tough computational problems are making an impressive comeback.},
-journal = {Commun. ACM},
-month = dec,
-pages = {98–105},
-numpages = {8}
+author       = {Ioannis Koutis and
+                  Ryan Williams},
+  title        = {Algebraic fingerprints for faster algorithms},
+  journal      = {Commun. {ACM}},
+  volume       = {59},
+  number       = {1},
+  pages        = {98--105},
+  year         = {2016},
+  url          = {https://doi.org/10.1145/2742544},
+  doi          = {10.1145/2742544},
+  timestamp    = {Tue, 06 Nov 2018 12:51:34 +0100},
+  biburl       = {https://dblp.org/rec/journals/cacm/KoutisW16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @InProceedings{Koutis08,
-author="Koutis, Ioannis",
-editor="Aceto, Luca
-and Damg{\aa}rd, Ivan
-and Goldberg, Leslie Ann
-and Halld{\'o}rsson, Magn{\'u}s M.
-and Ing{\'o}lfsd{\'o}ttir, Anna
-and Walukiewicz, Igor",
-title="Faster Algebraic Algorithms for Path and Packing Problems",
-booktitle="Automata, Languages and Programming",
-year="2008",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="575--586",
-abstract="We study the problem of deciding whether an n-variate polynomial, presented as an arithmetic circuit G, contains a degree k square-free term with an odd coefficient. We show that if G can be evaluated over the integers modulo 2k{\thinspace}+{\thinspace}1 in time t and space s, the problem can be decided with constant probability in O((kn{\thinspace}+{\thinspace}t)2k) time and O(kn{\thinspace}+{\thinspace}s) space. Based on this, we present new and faster algorithms for two well studied problems: (i) an O*(2mk) algorithm for the m-set k-packing problem and (ii) an O*(23k/2) algorithm for the simple k-path problem, or an O*(2k) algorithm if the graph has an induced k-subgraph with an odd number of Hamiltonian paths. Our algorithms use poly(n) random bits, comparing to the 2O(k) random bits required in prior algorithms, while having similar low space requirements.",
-isbn="978-3-540-70575-8"
+author       = {Ioannis Koutis},
+  editor       = {Luca Aceto and
+                  Ivan Damg{\aa}rd and
+                  Leslie Ann Goldberg and
+                  Magn{\'{u}}s M. Halld{\'{o}}rsson and
+                  Anna Ing{\'{o}}lfsd{\'{o}}ttir and
+                  Igor Walukiewicz},
+  title        = {Faster Algebraic Algorithms for Path and Packing Problems},
+  booktitle    = {Automata, Languages and Programming, 35th International Colloquium,
+                  {ICALP} 2008, Reykjavik, Iceland, July 7-11, 2008, Proceedings, Part
+                  {I:} Tack {A:} Algorithms, Automata, Complexity, and Games},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {5125},
+  pages        = {575--586},
+  publisher    = {Springer},
+  year         = {2008},
+  url          = {https://doi.org/10.1007/978-3-540-70575-8\_47},
+  doi          = {10.1007/978-3-540-70575-8\_47},
+  timestamp    = {Fri, 27 Mar 2020 09:02:59 +0100},
+  biburl       = {https://dblp.org/rec/conf/icalp/Koutis08.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Koutis05,
-title = {A faster parameterized algorithm for set packing},
-journal = {Information Processing Letters},
-volume = {94},
-number = {1},
-pages = {7-9},
-year = {2005},
-issn = {0020-0190},
-doi = {https://doi.org/10.1016/j.ipl.2004.12.005},
-url = {https://www.sciencedirect.com/science/article/pii/S0020019004003655},
-author = {Ioannis Koutis},
-keywords = {Algorithms, Analysis of algorithms, Parameterized computation, Set packing},
-abstract = {We present an efficient parameterized algorithm for the (k,t)-set packing problem, in which we are looking for a collection of k disjoint sets whose union consists of t elements. The complexity of the algorithm is O(2O(t)nNlogN). For the special case of sets of bounded size, this improves the O((ck)kn) algorithm of Jia et al. [J. Algorithms 50 (1) (2004) 106].}
+author       = {Ioannis Koutis},
+  title        = {A faster parameterized algorithm for set packing},
+  journal      = {Inf. Process. Lett.},
+  volume       = {94},
+  number       = {1},
+  pages        = {7--9},
+  year         = {2005},
+  url          = {https://doi.org/10.1016/j.ipl.2004.12.005},
+  doi          = {10.1016/j.ipl.2004.12.005},
+  timestamp    = {Fri, 26 May 2017 22:54:46 +0200},
+  biburl       = {https://dblp.org/rec/journals/ipl/Koutis05.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Björklund14,
-author = {Bj\"{o}rklund, Andreas},
-title = {Determinant Sums for Undirected Hamiltonicity},
-journal = {SIAM Journal on Computing},
-volume = {43},
-number = {1},
-pages = {280-299},
-year = {2014},
-doi = {10.1137/110839229},
-URL = { 
-        https://doi.org/10.1137/110839229
-},
-eprint = {   
-        https://doi.org/10.1137/110839229
-}
-,
-    abstract = { We present a Monte Carlo algorithm for Hamiltonicity detection in an \$n\$-vertex undirected graph running in \$O(1.657^{n})\$ time. To the best of our knowledge, this is the first superpolynomial improvement on the worst case runtime for the problem since the \$O^*(2^n)\$ bound established for the traveling salesman problem (TSP) over 50 years ago [R. Bellman, J. Assoc. Comput. Mach., 9 (1962), pp. 61--63], [M. Held and R. M. Karp, J. Soc. Indust. Appl. Math., 10 (1962), pp. 196--210]. (\$O^*(f(n))\$ suppresses polylogarithmic functions in \$f(n)\$). It answers in part the first open problem in Woeginger's 2003 survey on exact algorithms for NP-hard problems. For bipartite graphs, we improve the bound to \$O^*(\sqrt{2}^n)\subset O(1.415^{n})\$ time. Both the bipartite and the general algorithm can be implemented to use space polynomial in \$n\$. We combine several recently resurrected ideas to get the results. Our main technical contribution is a new algebraic characterization of Hamiltonian graphs. We introduce an extension of Hamiltonicity called Labeled Hamiltonicity and relate it to a Labeled Cycle Cover Sum in which we are set to count weighted arc labeled cycle covers over a finite field of characteristic two. The Labeled Cycle Cover Sum can be evaluated efficiently via determinants. }
+author       = {Andreas Bj{\"{o}}rklund},
+  title        = {Determinant Sums for Undirected Hamiltonicity},
+  booktitle    = {51th Annual {IEEE} Symposium on Foundations of Computer Science, {FOCS}
+                  2010, October 23-26, 2010, Las Vegas, Nevada, {USA}},
+  pages        = {173--182},
+  publisher    = {{IEEE} Computer Society},
+  year         = {2010},
+  url          = {https://doi.org/10.1109/FOCS.2010.24},
+  doi          = {10.1109/FOCS.2010.24},
+  timestamp    = {Thu, 23 Mar 2023 23:57:55 +0100},
+  biburl       = {https://dblp.org/rec/conf/focs/Bjorklund10.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Williams09,
-title = {Finding paths of length $k$ in $O\*(2^k)$ time},
-journal = {Information Processing Letters},
-volume = {109},
-number = {6},
-pages = {315-318},
-year = {2009},
-issn = {0020-0190},
-doi = {https://doi.org/10.1016/j.ipl.2008.11.004},
-url = {https://www.sciencedirect.com/science/article/pii/S0020019008003396},
-author = {Ryan Williams},
-keywords = {Randomized algorithms, Parameterized algorithms, Graph algorithms, Group algebra},
-abstract = {We give a randomized algorithm that determines if a given graph has a simple path of length at least k in O(2k⋅poly(n)) time. Our method extends a recent O(23k/2⋅poly(n))⩽O(2.83k⋅poly(n)) algorithm of Koutis.}
+author       = {Ryan Williams},
+  title        = {Finding paths of length $k$ in O*($2^k$) time},
+  journal      = {CoRR},
+  volume       = {abs/0807.3026},
+  year         = {2008},
+  url          = {http://arxiv.org/abs/0807.3026},
+  eprinttype    = {arXiv},
+  eprint       = {0807.3026},
+  timestamp    = {Mon, 13 Aug 2018 16:47:58 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-0807-3026.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Alon95,
-author = {Alon, Noga and Yuster, Raphael and Zwick, Uri},
-title = {Color-Coding},
-year = {1995},
-issue_date = {July 1995},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {42},
-number = {4},
-issn = {0004-5411},
-url = {https://doi.org/10.1145/210332.210337},
-doi = {10.1145/210332.210337},
-journal = {J. ACM},
-month = jul,
-pages = {844–856},
-numpages = {13},
-keywords = {derandomization, subgraph isomorphism, perfect hashing, tree-width}
+author       = {Noga Alon and
+                  Raphael Yuster and
+                  Uri Zwick},
+  title        = {Color-Coding},
+  journal      = {J. {ACM}},
+  volume       = {42},
+  number       = {4},
+  pages        = {844--856},
+  year         = {1995},
+  url          = {https://doi.org/10.1145/210332.210337},
+  doi          = {10.1145/210332.210337},
+  timestamp    = {Wed, 14 Nov 2018 10:35:26 +0100},
+  biburl       = {https://dblp.org/rec/journals/jacm/AlonYZ95.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Chen07,
-author = {Chen, Jianer and Lu, Songjian and Sze, Sing-Hoi and Zhang, Fenghui},
-title = {Improved Algorithms for Path, Matching, and Packing Problems},
-year = {2007},
-isbn = {9780898716245},
-publisher = {Society for Industrial and Applied Mathematics},
-address = {USA},
-abstract = {Improved randomized and deterministic algorithms are presented for PATH, MATCHING, and PACKING problems. Our randomized algorithms are based on the divide-and-conquer technique, and improve previous best algorithms for these problems. For example, for the k-PATH problem, our randomized algorithm runs in time O(4kk3.42m) and space O(nklogk + m), improving the previous best randomized algorithm for the problem that runs in time O(5.44kkm) and space O(2kkn + m). To achieve improved deterministic algorithms, we study a number of previously proposed de-randomization schemes, and also develop a new derandomization scheme. These studies result in a number of deterministic algorithms: one of time O(4k+o(k)m) for the k-PATH problem, one of time O(2.803kk nlog2 n) for the 3-D MATCHING problem, and one of time O(43k+o(k)n) for the 3-SET PACKING problem. All these significantly improve previous best algorithms for the problems.},
-booktitle = {Proceedings of the Eighteenth Annual ACM-SIAM Symposium on Discrete Algorithms},
-pages = {298–307},
-numpages = {10},
-location = {New Orleans, Louisiana},
-series = {SODA '07}
+author       = {Jianer Chen and
+                  Songjian Lu and
+                  Sing{-}Hoi Sze and
+                  Fenghui Zhang},
+  editor       = {Nikhil Bansal and
+                  Kirk Pruhs and
+                  Clifford Stein},
+  title        = {Improved algorithms for path, matching, and packing problems},
+  booktitle    = {Proceedings of the Eighteenth Annual {ACM-SIAM} Symposium on Discrete
+                  Algorithms, {SODA} 2007, New Orleans, Louisiana, USA, January 7-9,
+                  2007},
+  pages        = {298--307},
+  publisher    = {{SIAM}},
+  year         = {2007},
+  url          = {http://dl.acm.org/citation.cfm?id=1283383.1283415},
+  timestamp    = {Tue, 15 Feb 2022 07:54:27 +0100},
+  biburl       = {https://dblp.org/rec/conf/soda/ChenLSZ07.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{HelKar62,
-author = {Held, Michael and Karp, Richard M.},
-title = {A Dynamic Programming Approach to Sequencing Problems},
-journal = {Journal of the Society for Industrial and Applied Mathematics},
-volume = {10},
-number = {1},
-pages = {196-210},
-year = {1962},
-doi = {10.1137/0110015},
-URL = {https://doi.org/10.1137/0110015},
-eprint = {https://doi.org/10.1137/0110015}
+author       = {Michael Held and
+                  Richard M. Karp},
+  editor       = {Thomas C. Rowan},
+  title        = {A dynamic programming approach to sequencing problems},
+  booktitle    = {Proceedings of the 16th {ACM} national meeting, {ACM} 1961, {USA}},
+  pages        = {71},
+  publisher    = {{ACM}},
+  year         = {1961},
+  url          = {https://doi.org/10.1145/800029.808532},
+  doi          = {10.1145/800029.808532},
+  timestamp    = {Wed, 21 Apr 2021 15:31:15 +0200},
+  biburl       = {https://dblp.org/rec/conf/acm/HeldK61.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Bellman62,
-  title={Dynamic programming treatment of the travelling salesman problem},
-  author={Bellman, Richard},
-  journal={Journal of the ACM (JACM)},
-  volume={9},
-  number={1},
-  pages={61--63},
-  year={1962},
-  publisher={ACM New York, NY, USA}
+  author       = {Richard Bellman},
+  title        = {Dynamic Programming Treatment of the Travelling Salesman Problem},
+  journal      = {J. {ACM}},
+  volume       = {9},
+  number       = {1},
+  pages        = {61--63},
+  year         = {1962},
+  url          = {https://doi.org/10.1145/321105.321111},
+  doi          = {10.1145/321105.321111},
+  timestamp    = {Wed, 14 Nov 2018 10:35:23 +0100},
+  biburl       = {https://dblp.org/rec/journals/jacm/Bellman62.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Björklund17,
-	abstract = {We present parameterized algorithms for the k-path problem, the p-packing of q-sets problem, and the q-dimensional p-matching problem. Our algorithms solve these problems with high probability in time exponential only in the parameter (k, p, q) and using polynomial space. The constant bases of the exponentials are significantly smaller than in previous works; for example, for the k-path problem the improvement is from 2 to 1.66. We also show how to detect if a d-regular graph admits an edge coloring with d colors in time within a polynomial factor of 2(d−1)n/2. Our techniques generalize an algebraic approach studied in various recent works.},
-	affiliation = {Lund University, Department of Computer Science, PO Box 118, SE-22100 Lund, Sweden; IT University of Copenhagen, 2300 Copenhagen S, Denmark; Helsinki Institute for Information Technology HIIT, Aalto University, Department of Information and Computer Science, PO Box 15400, FI-00076 Aalto, Finland; Helsinki Institute for Information Technology HIIT, Department of Computer Science, University of Helsinki, PO Box 68, FI-00014 University of Helsinki, Finland},
-	author = {Björklund, Andreas and Husfeldt, Thore and Kaski, Petteri and Koivisto, Mikko},
-	doi = {10.1016/j.jcss.2017.03.003},
-	journal = {Journal of Computer and System Sciences},
-	keywords = {Determinant; Edge coloring; Graph algorithm; k-Path; Multidimensional matching; Sieve; Set packing; Polynomial identity testing; Randomized algorithm},
-	language = {English},
-	number = {C},
-	pages = {119-139},
-	title = {Narrow sieves for parameterized paths and packings},
-	volume = {87},
-	year = {2017},
+	author       = {Andreas Bj{\"{o}}rklund and
+                  Thore Husfeldt and
+                  Petteri Kaski and
+                  Mikko Koivisto},
+  title        = {Narrow sieves for parameterized paths and packings},
+  journal      = {J. Comput. Syst. Sci.},
+  volume       = {87},
+  pages        = {119--139},
+  year         = {2017},
+  url          = {https://doi.org/10.1016/j.jcss.2017.03.003},
+  doi          = {10.1016/j.jcss.2017.03.003},
+  timestamp    = {Wed, 14 Jun 2017 20:37:37 +0200},
+  biburl       = {https://dblp.org/rec/journals/jcss/BjorklundHKK17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Fomin17,
-author = {Fomin, Fedor V. and Lokshtanov, Daniel and Panolan, Fahad and Saurabh, Saket},
-title = {Representative Families of Product Families},
-year = {2017},
-issue_date = {July 2017},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {13},
-number = {3},
-issn = {1549-6325},
-url = {https://doi.org/10.1145/3039243},
-doi = {10.1145/3039243},
-abstract = {A subfamily F′ of a set family F is said to q-represent F if for every A ∈ F and B of size q such that A∩B = ∅ there exists a set A′ ∈ F′ such that A′ ∩ B = ∅. Recently, we provided an algorithm that, for a given family F of sets of size p together with an integer q, efficiently computes a q-representative family F′ of F of size approximately (p+q p). In this article, we consider the efficient computation of q-representative families for product families F. A family F is a product family if there exist families A and B such that F = { A, ∪, B : A ∈ A, B ∈ B, A, ∩, B = ∅}. Our main technical contribution is an algorithm that, given A, B and q, computes a q-representative family F′ of F. The running time of our algorithm is sublinear in |F| for many choices of A, B, and q that occur naturally in several dynamic programming algorithms. We also give an algorithm for the computation of q-representative families for product families F in the more general setting where q-representation also involves independence in a matroid in addition to disjointness. This algorithm considerably outperforms the naive approach where one first computes F from A and B and then computes the q-representative family F′ from F.We give two applications of our new algorithms for computing q-representative families for product families. The first is a 3.8408knO(1) deterministic algorithm for the Multilinear Monomial Detection (k-MlD) problem. The second is a significant improvement of deterministic dynamic programming algorithms for “connectivity problems” on graphs of bounded treewidth.},
-journal = {ACM Trans. Algorithms},
-month = mar,
-articleno = {36},
-numpages = {29},
-keywords = {multi-linear monomial detection, tree-width bounded graphs, representative families, Matroids, parameterized algorithms}
+author       = {Fedor V. Fomin and
+                  Daniel Lokshtanov and
+                  Fahad Panolan and
+                  Saket Saurabh},
+  title        = {Representative Families of Product Families},
+  journal      = {{ACM} Trans. Algorithms},
+  volume       = {13},
+  number       = {3},
+  pages        = {36:1--36:29},
+  year         = {2017},
+  url          = {https://doi.org/10.1145/3039243},
+  doi          = {10.1145/3039243},
+  timestamp    = {Fri, 27 Dec 2019 21:12:48 +0100},
+  biburl       = {https://dblp.org/rec/journals/talg/FominLPS17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Valiant92,
@@ -188,40 +197,45 @@ keywords = {multi-linear monomial detection, tree-width bounded graphs, represen
 }
 
 @InProceedings{KouWil09,
-author="Koutis, Ioannis
-and Williams, Ryan",
-editor="Albers, Susanne
-and Marchetti-Spaccamela, Alberto
-and Matias, Yossi
-and Nikoletseas, Sotiris
-and Thomas, Wolfgang",
-title="Limits and Applications of Group Algebras for Parameterized Problems",
-booktitle="Automata, Languages and Programming",
-year="2009",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="653--664",
-abstract="The algebraic framework introduced in [Koutis, Proc. of the 35thICALP 2008] reduces several combinatorial problems in parameterized complexity to the problem of detecting multilinear degree-k monomials in polynomials presented as circuits. The best known (randomized) algorithm for this problem requires only O*(2k) time and oracle access to an arithmetic circuit, i.e. the ability to evaluate the circuit on elements from a suitable group algebra. This algorithm has been used to obtain the best known algorithms for several parameterized problems. In this paper we use communication complexity to show that the O*(2k) algorithm is essentially optimal within this evaluation oracle framework. On the positive side, we give new applications of the method: finding a copy of a given tree on k nodes, a spanning tree with at least k leaves, a minimum set of nodes that dominate at least t nodes, and an m-dimensional k-matching. In each case we achieve a faster algorithm than what was known. We also apply the algebraic method to problems in exact counting. Among other results, we show that a combination of dynamic programming and a variation of the algebraic method can break the trivial upper bounds for exact parameterized counting in fairly general settings.",
-isbn="978-3-642-02927-1"
+author       = {Ioannis Koutis and
+                  Ryan Williams},
+  editor       = {Susanne Albers and
+                  Alberto Marchetti{-}Spaccamela and
+                  Yossi Matias and
+                  Sotiris E. Nikoletseas and
+                  Wolfgang Thomas},
+  title        = {Limits and Applications of Group Algebras for Parameterized Problems},
+  booktitle    = {Automata, Languages and Programming, 36th International Colloquium,
+                  {ICALP} 2009, Rhodes, Greece, July 5-12, 2009, Proceedings, Part {I}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {5555},
+  pages        = {653--664},
+  publisher    = {Springer},
+  year         = {2009},
+  url          = {https://doi.org/10.1007/978-3-642-02927-1\_54},
+  doi          = {10.1007/978-3-642-02927-1\_54},
+  timestamp    = {Tue, 14 May 2019 10:00:44 +0200},
+  biburl       = {https://dblp.org/rec/conf/icalp/KoutisW09.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 
 
 @article{DuanZhouWu22,
-  author    = {Ran Duan and
-               Hongxun Wu and
-               Renfei Zhou},
-  title     = {Faster Matrix Multiplication via Asymmetric Hashing},
-  journal   = {CoRR},
-  volume    = {abs/2210.10173},
-  year      = {2022},
-  url       = {https://doi.org/10.48550/arXiv.2210.10173},
-  doi       = {10.48550/arXiv.2210.10173},
-  eprinttype = {arXiv},
-  eprint    = {2210.10173},
-  timestamp = {Mon, 24 Oct 2022 18:10:06 +0200},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-2210-10173.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+  author       = {Ran Duan and
+                  Hongxun Wu and
+                  Renfei Zhou},
+  title        = {Faster Matrix Multiplication via Asymmetric Hashing},
+  journal      = {CoRR},
+  volume       = {abs/2210.10173},
+  year         = {2022},
+  url          = {https://doi.org/10.48550/arXiv.2210.10173},
+  doi          = {10.48550/arXiv.2210.10173},
+  eprinttype    = {arXiv},
+  eprint       = {2210.10173},
+  timestamp    = {Mon, 24 Oct 2022 18:10:06 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2210-10173.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @book{Terras99,
@@ -233,214 +247,401 @@ isbn="978-3-642-02927-1"
 }
 
 @article{Midas19,
-  author    = {Saliya Ekanayake and
-               Jose Cadena and
-               Udayanga Wickramasinghe and
-               Anil Vullikanti},
-  title     = {{MIDAS:} Multilinear detection at scale},
-  journal   = {J. Parallel Distributed Comput.},
-  volume    = {132},
-  pages     = {363--382},
-  year      = {2019},
-  url       = {https://doi.org/10.1016/j.jpdc.2019.04.006},
-  doi       = {10.1016/j.jpdc.2019.04.006},
-  timestamp = {Sun, 02 Oct 2022 15:42:20 +0200},
-  biburl    = {https://dblp.org/rec/journals/jpdc/EkanayakeCWV19.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+  author       = {Saliya Ekanayake and
+                  Jose Cadena and
+                  Udayanga Wickramasinghe and
+                  Anil Vullikanti},
+  title        = {{MIDAS:} Multilinear detection at scale},
+  journal      = {J. Parallel Distributed Comput.},
+  volume       = {132},
+  pages        = {363--382},
+  year         = {2019},
+  url          = {https://doi.org/10.1016/j.jpdc.2019.04.006},
+  doi          = {10.1016/j.jpdc.2019.04.006},
+  timestamp    = {Sun, 02 Oct 2022 15:42:20 +0200},
+  biburl       = {https://dblp.org/rec/journals/jpdc/EkanayakeCWV19.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Kneis11,
-  title={A new algorithm for finding trees with many leaves},
-  author={Kneis, Joachim and Langer, Alexander and Rossmanith, Peter},
-  journal={Algorithmica},
-  volume={61},
-  pages={882--897},
-  year={2011},
-  publisher={Springer}
+  author       = {Joachim Kneis and
+                  Alexander Langer and
+                  Peter Rossmanith},
+  title        = {A New Algorithm for Finding Trees with Many Leaves},
+  journal      = {Algorithmica},
+  volume       = {61},
+  number       = {4},
+  pages        = {882--897},
+  year         = {2011},
+  url          = {https://doi.org/10.1007/s00453-010-9454-5},
+  doi          = {10.1007/s00453-010-9454-5},
+  timestamp    = {Wed, 17 May 2017 14:25:14 +0200},
+  biburl       = {https://dblp.org/rec/journals/algorithmica/KneisLR11.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Kneis07,
-  title={Partial vs. complete domination: t-dominating set},
-  author={Kneis, Joachim and M{\"o}lle, Daniel and Rossmanith, Peter},
-  booktitle={SOFSEM 2007: Theory and Practice of Computer Science: 33rd Conference on Current Trends in Theory and Practice of Computer Science, Harrachov, Czech Republic, January 20-26, 2007. Proceedings 33},
-  pages={367--376},
-  year={2007},
-  organization={Springer}
+  author       = {Joachim Kneis and
+                  Daniel M{\"{o}}lle and
+                  Peter Rossmanith},
+  editor       = {Jan van Leeuwen and
+                  Giuseppe F. Italiano and
+                  Wiebe van der Hoek and
+                  Christoph Meinel and
+                  Harald Sack and
+                  Frantisek Pl{\'{a}}sil},
+  title        = {Partial vs. Complete Domination: t-Dominating Set},
+  booktitle    = {{SOFSEM} 2007: Theory and Practice of Computer Science, 33rd Conference
+                  on Current Trends in Theory and Practice of Computer Science, Harrachov,
+                  Czech Republic, January 20-26, 2007, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {4362},
+  pages        = {367--376},
+  publisher    = {Springer},
+  year         = {2007},
+  url          = {https://doi.org/10.1007/978-3-540-69507-3\_31},
+  doi          = {10.1007/978-3-540-69507-3\_31},
+  timestamp    = {Fri, 21 Oct 2022 16:47:28 +0200},
+  biburl       = {https://dblp.org/rec/conf/sofsem/KneisMR07.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Chen10,
-  title={Approximating multilinear monomial coefficients and maximum multilinear monomials in multivariate polynomials},
-  author={Chen, Zhixiang and Fu, Bin},
-  booktitle={Combinatorial Optimization and Applications: 4th International Conference, COCOA 2010, Kailua-Kona, HI, USA, December 18-20, 2010, Proceedings, Part I 4},
-  pages={309--323},
-  year={2010},
-  organization={Springer}
+  author       = {Zhixiang Chen and
+                  Bin Fu},
+  editor       = {Weili Wu and
+                  Ovidiu Daescu},
+  title        = {Approximating Multilinear Monomial Coefficients and Maximum Multilinear
+                  Monomials in Multivariate Polynomials},
+  booktitle    = {Combinatorial Optimization and Applications - 4th International Conference,
+                  {COCOA} 2010, Kailua-Kona, HI, USA, December 18-20, 2010, Proceedings,
+                  Part {I}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {6508},
+  pages        = {309--323},
+  publisher    = {Springer},
+  year         = {2010},
+  url          = {https://doi.org/10.1007/978-3-642-17458-2\_26},
+  doi          = {10.1007/978-3-642-17458-2\_26},
+  timestamp    = {Wed, 04 May 2022 11:45:33 +0200},
+  biburl       = {https://dblp.org/rec/conf/cocoa/ChenF10.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Chen11a,
-  title={The complexity of testing monomials in multivariate polynomials},
-  author={Chen, Zhixiang and Fu, Bin},
-  booktitle={Combinatorial Optimization and Applications: 5th International Conference, COCOA 2011, Zhangjiajie, China, August 4-6, 2011. Proceedings 5},
-  pages={1--15},
-  year={2011},
-  organization={Springer}
+  author       = {Zhixiang Chen and
+                  Bin Fu},
+  editor       = {Weifan Wang and
+                  Xuding Zhu and
+                  Ding{-}Zhu Du},
+  title        = {The Complexity of Testing Monomials in Multivariate Polynomials},
+  booktitle    = {Combinatorial Optimization and Applications - 5th International Conference,
+                  {COCOA} 2011, Zhangjiajie, China, August 4-6, 2011. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {6831},
+  pages        = {1--15},
+  publisher    = {Springer},
+  year         = {2011},
+  url          = {https://doi.org/10.1007/978-3-642-22616-8\_1},
+  doi          = {10.1007/978-3-642-22616-8\_1},
+  timestamp    = {Wed, 04 May 2022 11:45:33 +0200},
+  biburl       = {https://dblp.org/rec/conf/cocoa/ChenF11.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Chen13a,
-  title={On testing monomials in multivariate polynomials},
-  author={Chen, Zhixiang and Fu, Bin and Liu, Yang and Schweller, Robert},
-  journal={Theoretical Computer Science},
-  volume={497},
-  pages={39--54},
-  year={2013},
-  publisher={Elsevier}
+  author       = {Zhixiang Chen and
+                  Bin Fu and
+                  Yang Liu and
+                  Robert T. Schweller},
+  title        = {On testing monomials in multivariate polynomials},
+  journal      = {Theor. Comput. Sci.},
+  volume       = {497},
+  pages        = {39--54},
+  year         = {2013},
+  url          = {https://doi.org/10.1016/j.tcs.2012.03.038},
+  doi          = {10.1016/j.tcs.2012.03.038},
+  timestamp    = {Wed, 04 May 2022 11:45:33 +0200},
+  biburl       = {https://dblp.org/rec/journals/tcs/ChenFLS13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Chen11b,
-  title={Algorithms for testing monomials in multivariate polynomials},
-  author={Chen, Zhixiang and Fu, Bin and Liu, Yang and Schweller, Robert},
-  booktitle={Combinatorial Optimization and Applications: 5th International Conference, COCOA 2011, Zhangjiajie, China, August 4-6, 2011. Proceedings 5},
-  pages={16--30},
-  year={2011},
-  organization={Springer}
+  author       = {Zhixiang Chen and
+                  Bin Fu and
+                  Yang Liu and
+                  Robert T. Schweller},
+  editor       = {Weifan Wang and
+                  Xuding Zhu and
+                  Ding{-}Zhu Du},
+  title        = {Algorithms for Testing Monomials in Multivariate Polynomials},
+  booktitle    = {Combinatorial Optimization and Applications - 5th International Conference,
+                  {COCOA} 2011, Zhangjiajie, China, August 4-6, 2011. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {6831},
+  pages        = {16--30},
+  publisher    = {Springer},
+  year         = {2011},
+  url          = {https://doi.org/10.1007/978-3-642-22616-8\_2},
+  doi          = {10.1007/978-3-642-22616-8\_2},
+  timestamp    = {Wed, 04 May 2022 11:45:33 +0200},
+  biburl       = {https://dblp.org/rec/conf/cocoa/ChenFLS11.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Chen13b,
-  title={Monomial testing and applications},
-  author={Chen, Shenshi},
-  booktitle={Frontiers in Algorithmics and Algorithmic Aspects in Information and Management: Third Joint International Conference, FAW-AAIM 2013, Dalian, China, June 26-28, 2013. Proceedings},
-  pages={106--117},
-  year={2013},
-  organization={Springer}
+  author       = {Shenshi Chen},
+  editor       = {Michael R. Fellows and
+                  Xuehou Tan and
+                  Binhai Zhu},
+  title        = {Monomial Testing and Applications},
+  booktitle    = {Frontiers in Algorithmics \emph{and} Algorithmic Aspects in Information
+                  and Management, Third Joint International Conference, {FAW-AAIM} 2013,
+                  Dalian, China, June 26-28, 2013. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7924},
+  pages        = {106--117},
+  publisher    = {Springer},
+  year         = {2013},
+  url          = {https://doi.org/10.1007/978-3-642-38756-2\_13},
+  doi          = {10.1007/978-3-642-38756-2\_13},
+  timestamp    = {Tue, 14 May 2019 10:00:41 +0200},
+  biburl       = {https://dblp.org/rec/conf/aaim/Chen13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Cadena17,
-  title={Fast graph scan statistics optimization using algebraic fingerprints},
-  author={Cadena, Jose and Ekanayake, Saliya and Vullikanti, Anil},
-  booktitle={2017 IEEE International Conference on Big Data (Big Data)},
-  pages={905--910},
-  year={2017},
-  organization={IEEE}
+  author       = {Jose Cadena and
+                  Saliya Ekanayake and
+                  Anil Vullikanti},
+  editor       = {Jian{-}Yun Nie and
+                  Zoran Obradovic and
+                  Toyotaro Suzumura and
+                  Rumi Ghosh and
+                  Raghunath Nambiar and
+                  Chonggang Wang and
+                  Hui Zang and
+                  Ricardo Baeza{-}Yates and
+                  Xiaohua Hu and
+                  Jeremy Kepner and
+                  Alfredo Cuzzocrea and
+                  Jian Tang and
+                  Masashi Toyoda},
+  title        = {Fast graph scan statistics optimization using algebraic fingerprints},
+  booktitle    = {2017 {IEEE} International Conference on Big Data {(IEEE} BigData 2017),
+                  Boston, MA, USA, December 11-14, 2017},
+  pages        = {905--910},
+  publisher    = {{IEEE} Computer Society},
+  year         = {2017},
+  url          = {https://doi.org/10.1109/BigData.2017.8258007},
+  doi          = {10.1109/BigData.2017.8258007},
+  timestamp    = {Fri, 19 Nov 2021 16:08:20 +0100},
+  biburl       = {https://dblp.org/rec/conf/bigdataconf/CadenaEV17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Kabanets03,
-  title={Derandomizing polynomial identity tests means proving circuit lower bounds},
-  author={Kabanets, Valentine and Impagliazzo, Russell},
-  booktitle={Proceedings of the thirty-fifth annual ACM symposium on Theory of computing},
-  pages={355--364},
-  year={2003}
+  author       = {Valentine Kabanets and
+                  Russell Impagliazzo},
+  editor       = {Lawrence L. Larmore and
+                  Michel X. Goemans},
+  title        = {Derandomizing polynomial identity tests means proving circuit lower
+                  bounds},
+  booktitle    = {Proceedings of the 35th Annual {ACM} Symposium on Theory of Computing,
+                  June 9-11, 2003, San Diego, CA, {USA}},
+  pages        = {355--364},
+  publisher    = {{ACM}},
+  year         = {2003},
+  url          = {https://doi.org/10.1145/780542.780595},
+  doi          = {10.1145/780542.780595},
+  timestamp    = {Tue, 06 Nov 2018 11:07:04 +0100},
+  biburl       = {https://dblp.org/rec/conf/stoc/KabanetsI03.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Chen13c,
-  title={Faster Deterministic Algorithms for Packing, Matching and $ t $-Dominating Set Problems},
-  author={Chen, Shenshi and Chen, Zhixiang},
-  journal={arXiv preprint arXiv:1306.3602},
-  year={2013}
+  author       = {Shenshi Chen and
+                  Zhixiang Chen},
+  title        = {Faster Deterministic Algorithms for Packing, Matching and t-Dominating
+                  Set Problems},
+  journal      = {CoRR},
+  volume       = {abs/1306.3602},
+  year         = {2013},
+  url          = {http://arxiv.org/abs/1306.3602},
+  eprinttype    = {arXiv},
+  eprint       = {1306.3602},
+  timestamp    = {Wed, 04 May 2022 11:45:33 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/ChenC13.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Chen14,
-  title={TOWARD RANDOMIZED TESTING OF q-MONOMIALS IN MULTIVARIATE POLYNOMIALS},
-  author={Chen, Shenshi and Chen, Yaqing and Yang, Quanhai},
-  journal={Discrete Mathematics, Algorithms and Applications},
-  volume={6},
-  number={02},
-  pages={1450016},
-  year={2014},
-  publisher={World Scientific}
+  author       = {Shenshi Chen and
+                  Yaqing Chen and
+                  Quanhai Yang},
+  title        = {Toward Randomized Testing of Q-Monomials in multivariate polynomials},
+  journal      = {Discret. Math. Algorithms Appl.},
+  volume       = {6},
+  number       = {2},
+  year         = {2014},
+  url          = {https://doi.org/10.1142/S1793830914500165},
+  doi          = {10.1142/S1793830914500165},
+  timestamp    = {Wed, 12 Aug 2020 10:35:12 +0200},
+  biburl       = {https://dblp.org/rec/journals/dmaa/ChenCY14.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Pratt19,
-  title={Waring rank, parameterized and exact algorithms},
-  author={Pratt, Kevin},
-  booktitle={2019 IEEE 60th Annual Symposium on Foundations of Computer Science (FOCS)},
-  pages={806--823},
-  year={2019},
-  organization={IEEE}
+  author       = {Kevin Pratt},
+  editor       = {David Zuckerman},
+  title        = {Waring Rank, Parameterized and Exact Algorithms},
+  booktitle    = {60th {IEEE} Annual Symposium on Foundations of Computer Science, {FOCS}
+                  2019, Baltimore, Maryland, USA, November 9-12, 2019},
+  pages        = {806--823},
+  publisher    = {{IEEE} Computer Society},
+  year         = {2019},
+  url          = {https://doi.org/10.1109/FOCS.2019.00053},
+  doi          = {10.1109/FOCS.2019.00053},
+  timestamp    = {Tue, 07 Jan 2020 13:31:39 +0100},
+  biburl       = {https://dblp.org/rec/conf/focs/Pratt19.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Fomin14,
-  title={Representative sets of product families},
-  author={Fomin, Fedor V and Lokshtanov, Daniel and Panolan, Fahad and Saurabh, Saket},
-  booktitle={Algorithms-ESA 2014: 22th Annual European Symposium, Wroclaw, Poland, September 8-10, 2014. Proceedings 21},
-  pages={443--454},
-  year={2014},
-  organization={Springer}
+  author       = {Fedor V. Fomin and
+                  Daniel Lokshtanov and
+                  Fahad Panolan and
+                  Saket Saurabh},
+  editor       = {Andreas S. Schulz and
+                  Dorothea Wagner},
+  title        = {Representative Sets of Product Families},
+  booktitle    = {Algorithms - {ESA} 2014 - 22th Annual European Symposium, Wroclaw,
+                  Poland, September 8-10, 2014. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {8737},
+  pages        = {443--454},
+  publisher    = {Springer},
+  year         = {2014},
+  url          = {https://doi.org/10.1007/978-3-662-44777-2\_37},
+  doi          = {10.1007/978-3-662-44777-2\_37},
+  timestamp    = {Fri, 27 Dec 2019 21:21:48 +0100},
+  biburl       = {https://dblp.org/rec/conf/esa/FominLPS14.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @inproceedings{Brand19,
-  title={Patching colors with tensors},
-  author={Brand, Cornelius},
-  booktitle={27th Annual European Symposium on Algorithms (ESA 2019)},
-  year={2019},
-  organization={Schloss Dagstuhl-Leibniz-Zentrum fuer Informatik}
+  author       = {Cornelius Brand},
+  editor       = {Michael A. Bender and
+                  Ola Svensson and
+                  Grzegorz Herman},
+  title        = {Patching Colors with Tensors},
+  booktitle    = {27th Annual European Symposium on Algorithms, {ESA} 2019, September
+                  9-11, 2019, Munich/Garching, Germany},
+  series       = {LIPIcs},
+  volume       = {144},
+  pages        = {25:1--25:16},
+  publisher    = {Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik},
+  year         = {2019},
+  url          = {https://doi.org/10.4230/LIPIcs.ESA.2019.25},
+  doi          = {10.4230/LIPIcs.ESA.2019.25},
+  timestamp    = {Sun, 02 Oct 2022 16:00:33 +0200},
+  biburl       = {https://dblp.org/rec/conf/esa/Brand19.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Brand22,
-  title={A note on algebraic techniques for subgraph detection},
-  author={Brand, Cornelius},
-  journal={Information Processing Letters},
-  volume={176},
-  pages={106242},
-  year={2022},
-  publisher={Elsevier}
+  author       = {Cornelius Brand},
+  title        = {A note on algebraic techniques for subgraph detection},
+  journal      = {Inf. Process. Lett.},
+  volume       = {176},
+  pages        = {106242},
+  year         = {2022},
+  url          = {https://doi.org/10.1016/j.ipl.2021.106242},
+  doi          = {10.1016/j.ipl.2021.106242},
+  timestamp    = {Wed, 23 Feb 2022 11:17:49 +0100},
+  biburl       = {https://dblp.org/rec/journals/ipl/Brand22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @InProceedings{Brand21,
-  author =	{Brand, Cornelius and Pratt, Kevin},
-  title =	{{Parameterized Applications of Symbolic Differentiation of (Totally) Multilinear Polynomials}},
-  booktitle =	{48th International Colloquium on Automata, Languages, and Programming (ICALP 2021)},
-  pages =	{38:1--38:19},
-  series =	{Leibniz International Proceedings in Informatics (LIPIcs)},
-  ISBN =	{978-3-95977-195-5},
-  ISSN =	{1868-8969},
-  year =	{2021},
-  volume =	{198},
-  editor =	{Bansal, Nikhil and Merelli, Emanuela and Worrell, James},
-  publisher =	{Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik},
-  address =	{Dagstuhl, Germany},
-  URL =		{https://drops.dagstuhl.de/opus/volltexte/2021/14107},
-  URN =		{urn:nbn:de:0030-drops-141079},
-  doi =		{10.4230/LIPIcs.ICALP.2021.38},
-  annote =	{Keywords: Parameterized Algorithms, Algebraic Algorithms, Longest Cycle, Matroid Parity}
+  author       = {Cornelius Brand and
+                  Kevin Pratt},
+  editor       = {Nikhil Bansal and
+                  Emanuela Merelli and
+                  James Worrell},
+  title        = {Parameterized Applications of Symbolic Differentiation of (Totally)
+                  Multilinear Polynomials},
+  booktitle    = {48th International Colloquium on Automata, Languages, and Programming,
+                  {ICALP} 2021, July 12-16, 2021, Glasgow, Scotland (Virtual Conference)},
+  series       = {LIPIcs},
+  volume       = {198},
+  pages        = {38:1--38:19},
+  publisher    = {Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik},
+  year         = {2021},
+  url          = {https://doi.org/10.4230/LIPIcs.ICALP.2021.38},
+  doi          = {10.4230/LIPIcs.ICALP.2021.38},
+  timestamp    = {Sun, 02 Oct 2022 16:03:11 +0200},
+  biburl       = {https://dblp.org/rec/conf/icalp/BrandP21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Koutis12,
-  title={Constrained multilinear detection for faster functional motif discovery},
-  author={Koutis, Ioannis},
-  journal={Information Processing Letters},
-  volume={112},
-  number={22},
-  pages={889--892},
-  year={2012},
-  publisher={Elsevier}
+  author       = {Ioannis Koutis},
+  title        = {Constrained multilinear detection for faster functional motif discovery},
+  journal      = {Inf. Process. Lett.},
+  volume       = {112},
+  number       = {22},
+  pages        = {889--892},
+  year         = {2012},
+  url          = {https://doi.org/10.1016/j.ipl.2012.08.008},
+  doi          = {10.1016/j.ipl.2012.08.008},
+  timestamp    = {Fri, 26 May 2017 22:54:42 +0200},
+  biburl       = {https://dblp.org/rec/journals/ipl/Koutis12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Björklund16,
-  title={Constrained multilinear detection and generalized graph motifs},
-  author={Bj{\"o}rklund, Andreas and Kaski, Petteri and Kowalik, {\L}ukasz},
-  journal={Algorithmica},
-  volume={74},
-  pages={947--967},
-  year={2016},
-  publisher={Springer}
+  author       = {Andreas Bj{\"{o}}rklund and
+                  Petteri Kaski and
+                  Lukasz Kowalik},
+  title        = {Constrained Multilinear Detection and Generalized Graph Motifs},
+  journal      = {Algorithmica},
+  volume       = {74},
+  number       = {2},
+  pages        = {947--967},
+  year         = {2016},
+  url          = {https://doi.org/10.1007/s00453-015-9981-1},
+  doi          = {10.1007/s00453-015-9981-1},
+  timestamp    = {Mon, 26 Oct 2020 09:00:30 +0100},
+  biburl       = {https://dblp.org/rec/journals/algorithmica/BjorklundKK16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Thejaswi20,
-  title={Finding path motifs in large temporal graphs using algebraic fingerprints},
-  author={Thejaswi, Suhas and Gionis, Aristides and Lauri, Juho},
-  journal={Big Data},
-  volume={8},
-  number={5},
-  pages={335--362},
-  year={2020},
-  publisher={Mary Ann Liebert, Inc., publishers 140 Huguenot Street, 3rd Floor New~…}
+  author       = {Suhas Thejaswi and
+                  Aristides Gionis and
+                  Juho Lauri},
+  title        = {Finding Path Motifs in Large Temporal Graphs Using Algebraic Fingerprints},
+  journal      = {Big Data},
+  volume       = {8},
+  number       = {5},
+  pages        = {335--362},
+  year         = {2020},
+  url          = {https://doi.org/10.1089/big.2020.0078},
+  doi          = {10.1089/big.2020.0078},
+  timestamp    = {Tue, 01 Jun 2021 09:59:13 +0200},
+  biburl       = {https://dblp.org/rec/journals/bigdata/ThejaswiGL20.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{Saxena09,
-  title={Progress on Polynomial Identity Testing.},
-  author={Saxena, Nitin},
-  journal={Bull. EATCS},
-  volume={99},
-  pages={49--79},
-  year={2009}
+  author       = {Nitin Saxena},
+  title        = {Progress on Polynomial Identity Testing},
+  journal      = {Bull. {EATCS}},
+  volume       = {99},
+  pages        = {49--79},
+  year         = {2009},
+  timestamp    = {Thu, 18 Jun 2020 22:07:16 +0200},
+  biburl       = {https://dblp.org/rec/journals/eatcs/Saxena09.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }

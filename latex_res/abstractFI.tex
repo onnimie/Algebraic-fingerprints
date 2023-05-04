@@ -7,36 +7,37 @@
 
 \begin{fiabstract}
   Tässä työssä tutkitaan, kuinka parametrisoituja kombinatorisia ongelmia voidaan 
-  ratkaista löytämällä $k$-asteinen multilineaarinen monomi monimuuttujaisesta 
-  polynomista algebrallisin keinoin. Kandidaatintyö keskittyy tarkemmin 
+  ratkaista %löytämällä $k$-asteinen multilineaarinen monomi monimuuttujaisesta polynomista 
+  algebrallisin keinoin. Kandidaatintyö keskittyy tarkemmin 
   Williamsin ja Koutisin algebrallisia sormenjälkiä hyödyntävään 
   tekniikkaan, jolla voidaan havaita multilineaarinen monomi tehokkaasti. 
-  Lisäksi tutkitaan tämän tekniikan suomaa yleistä kehystä parametrisoitujen 
-  ongelmien ratkaisemiseksi ja sen mahdollisia rajoja. 
-  Viimeiseksi pohditaan keinoja, joilla kehystä voitaisiin kehittää tai jopa 
-  ohittaa kehyksen 
-  antama aliraja algoritmien tehokkuudelle. 
+  Työ tutkii tekniikan taustalla olevaa algebraa ja sen mahdollisia rajoja,  
+  kun sitä tarkastellaan yleisenä kehyksenä parametrisoitujen ongelmien ratkaisemiseksi. 
+  Viimeiseksi pohditaan keinoja, joilla tätä kehystä voitaisiin kehittää tai jopa 
+  ohittaa sen antama raja algoritmien tehokkuudelle. 
 
-  Williamsin ja Koutisin algebrallisten sormenjälkien avulla voidaan 
-  havaita $k$-asteen multilineaarinen monomi ajassa \bigO{2^k * poly(n)}, 
-  jossa $n$ on polynomin muuttujien lukumäärä. Tämä johtaa yleiseen 
-  parametrisoitujen ongelmien kehykseen, jolla niitä voidaan ratkaista 
-  tehokkaasti. 
-  Etenkin color-coding—metodiin 
-  nojaavia algoritmeja voidaan nopeuttaa tekijällä $e^k$ hyödyntämällä 
-  algebrallisia sormenjälkiä. Tällä hetkellä algebrallisten sormenjälkien 
-  tekniikka pohjaa nopeimpia algoritmeja monille parametrisoiduille 
+  Kombinatoriset ongelmat voidaan redusoida algebralliseen muotoon, jossa 
+  pyritään havaitsemaan multilineaarinen monomi monimuuttujaisesta polynomista. 
+  Algebrallisten sormenjälkien avulla multilineaarinen monomi 
+  voidaan havaita ajassa \bigO{2^k \cdot \poly(n)}, 
+  jossa $n$ on $k$-asteisen polynomin muuttujien lukumäärä. Tämä johtaa yleiseen kehykseen, 
+  jolla parametrisoituja kombinatorisia ongelmia voidaan ratkaista. 
+  Tällä hetkellä algebrallisten sormenjälkien 
+  tekniikka pohjaakin nopeimpia algoritmeja monille parametrisoiduille 
   kombinatorisille ongelmille.
 
-  \bigOmega{2^k * poly(n)} on kuitenkin 
-  kehyksen alaraja: Williamsin ja Koutisin algebrallisten sormenjälkien 
-  avulla ei voida havaita multilineaarisia monomeja nopeammin. Toisaalta 
-  heidän kehys perustuu yleiseen multilineaaristen monomien havaitsemisongelmaan; 
-  jos hyödynnetään ongelmakohtaisia kombinatorisia ominaisuuksia ongelman 
-  redusoinnissa multilineaaristen monomien havaitsemiseksi, 
-  voidaan löytää algoritmi, joka suoriutuu nopeammin kyseisellä ongelmalla. Björklund kykeni 
-  kehittämään algebrallisten sormenjälkien avulla algoritmin, joka 
-  löytää Hamiltonisen polun ajassa \bigO{1.657^n * poly(n)}.
+  \bigOmega{2^k \cdot \poly(n)} on kuitenkin 
+  kehyksen alaraja: algebrallisten sormenjälkien 
+  avulla ei voida yleisesti havaita multilineaarisia monomeja nopeammin. Toisaalta 
+  kehys kohdistuu hyvin yleismuotoiseen multilineaaristen monomien havaitsemisongelmaan; 
+  jos hyödynnetään ongelmakohtaisia kombinatorisia ominaisuuksia, 
+  voidaan löytää algoritmi, joka ratkaisee ongelman nopeammin. 
+  Muun muassa Björklund kehitti 
+  algebrallisten sormenjälkien antamien ideoiden avulla algoritmin, joka 
+  löytää Hamiltonisen polun ajassa \bigO{1.657^n \cdot \poly(n)}. 
+  Näyttääkin siltä, että algebrallisten sormenjälkien syvä ymmärrys sekä ongelmakohtainen 
+  hyödyntäminen on avain nopeammille algoritmeille ja kehitykselle yleisestä algebrallisesta 
+  kehyksestä.
 %
 %Tiivistelmätekstiä tähän (\languagename). Huomaa, että tiivistelmä tehdään %vasta kun koko työ on muuten kirjoitettu.
 

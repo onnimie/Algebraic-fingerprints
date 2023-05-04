@@ -225,7 +225,7 @@ this method results in a slightly
 faster algorithm than with naive expansion.
 
 However, the underlying problems are usually FPT 
-(\emph{fixed parameter tractable}, i.e., 
+(\emph{fixed-parameter tractable}, i.e., 
 solvable in time polynomial to $n$ if $k$ is fixed). 
 This implies that scaling exponentially 
 with the number of variables is far from optimal. 
@@ -314,7 +314,7 @@ before further discussing multilinear monomial detection and algebraic fingerpri
 \Cref{sect:prelims_algebra} gives definitions for some necessary algebraic structures 
 and concepts. \Cref{sect:prelims_circuits} gives a brief cover on arithmetic circuits. 
 
-Some lesser-known notation is also used. FPT or \emph{fixed parameter tractable} 
+Some lesser-known notation is also used. FPT or \emph{fixed-parameter tractable} 
 is a class of parameterized problems that 
 can be solved in polynomial time if the parameter is fixed. 
 \poly($n$) refers to a polymial function in $n$. 
@@ -382,7 +382,7 @@ The \emph{characteristic} of a field $\mathbf{F}$ is defined as follows:
     \end{cases}       
 \end{equation}
 
-Note, that a field $\mathbf{F}$ with 
+Note that a field $\mathbf{F}$ with 
 characteristic 2 satisfies the following:
 \[
   \forall u \in \mathbf{F} \colon u + u = u \cdot (\mathbf 1 + \mathbf 1) = u \cdot \mathbf 0 = \mathbf 0
@@ -450,9 +450,8 @@ where $d_m \in \mathbf{K}$. Then,
 \[
   \forall P_a,P_b \in \mathbf{K}[X] \colon P_a \cdot P_b
   = \left( \sum_{m \in M(X)} a_m m\right)
-  \cdot (\displaystyle \sum_{n \in M(X)} b_n n) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
+  \cdot \left(\displaystyle \sum_{n \in M(X)} b_n n\right) = \displaystyle \sum_{m,n \in M(X)} (a_mb_n) (mn)
 \]
-\amnote{added \texttt{\textbackslash left ... \textbackslash right}}
 Note that the definition for the coefficient $c_m$ essentially 
 decides whether a monomial $m \in M(X)$ appears in a polynomial. If a polynomial $P$ 
 does not contain the monomial $g$, then it must be that $c_g = \mathbf{0} \in \mathbf{K}$.
@@ -499,8 +498,7 @@ If the underlying algebra is commutative, we may call the arithmetic circuit a \
 %However, since we are using mainly commutative algebras in this thesis, we may define the 
 %gates for binary operations to have unbounded fan-in. 
 
-For example, an abstract evaluation of a polynomial
-\amnote*{you can drop the set braces}{$P \in \Z[\{a,b,c,d\}]$} of the form 
+For example, an abstract evaluation of a polynomial $P \in \Z[a,b,c,d]$ of the form 
 $P = (ab+cd)^2$ is given by the arithmetic circuit presented in Figure \ref{fig:circuit_example}. 
 Note that we use the same symbols for addition and multiplication gates as seen in the figure 
 in all arithmetic circuit diagrams in this thesis. 
@@ -755,7 +753,6 @@ and augment them to $P_k$ as follows:
   &\:+s_1s_5a_1^2b_1b_2c_1c_2 + s_2s_4a_1^2b_1b_2c_1c_2 + s_1s_6a_1a_2b_1b_2c_1c_3 \: \\
   &\:+s_3s_4a_1a_2b_1b_2c_1c_3 + s_2s_6a_1a_2b_2^2c_2c_3 + s_3s_5a_1a_2b_2^2c_2c_3. 
 \end{align*}
-\amnote{(moved trailing $+$ to beginning of line)}
 
 Then, the multilinear monomial detection algorithm 
 could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
@@ -846,18 +843,18 @@ A multilinear monomial is detected if
 $\exists f \in \Phi \colon Q(f) \neq \mathbf{0}_F \in \mathbf{F}$, 
 where $\mathbf{F}$ is a field of characteristic 2. 
 Polynomial identity testing is a well-studied problem, and can be efficiently 
-solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Saxena09}.
+solved with random test evaluations by the \emph{Schwartz-Zippel Lemma} \cite{Saxena09}. 
+Essentially, the lemma gives an upper bound for the probability of false-negatives 
+and, subsequently, a number of random test evaluations 
+enough for a satisfactory result on polynomial identity. 
 
 \newtheorem*{lemmaSZ}{Schwartz-Zippel Lemma}
 \begin{lemmaSZ}
   Let $P \in F[X]$ be a non-zero polynomial of degree $d$ over a field $F$. 
   Let $Z$ be a uniformly chosen random mapping $Z \colon X \to F$. Then, 
-  \[
-    %Probability[P(Z) = \mathbf{0}] \leq d/{\abs{F}}.  
+  \[ 
     \Pr[P(Z) = \mathbf{0}] \leq \frac{d}{\abs{F}}.  
   \]
-  \amnote{use $\Pr$ for probability}%
-  \amnote{use \texttt{\textbackslash frac} in display math}%
 \end{lemmaSZ}
 
 Assume multilinear monomials exist in $P(X)$. 
@@ -975,8 +972,8 @@ used for detecting $k$-multilinear monomials,
 the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
 
 Thus for the general $k$-multilinear monomial detection, we may say 
-that algebraic fingerprinting is in some sense
-\amnote*[inline,nomargin]{optimal (and cannot be improved upon)}{optimized}. 
+that algebraic fingerprinting is in some sense 
+optimal, and cannot be improved upon. 
 However, 
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
 specific $k$-multilinear monomial detection instances (see \Cref{sect:improvements}).
@@ -985,7 +982,7 @@ specific $k$-multilinear monomial detection instances (see \Cref{sect:improvemen
 \label{sect:derandomization}
 
 Algebraic fingerprinting gives a randomized algorithm for $k$-multilinear monomial detection. 
-The derandomization of the general framework seems hard\amnote*{no comma before \enquote{since}}, since algebraic fingerprinting 
+The derandomization of the general framework seems hard since algebraic fingerprinting 
 uses the fact that polynomial identity testing can be solved in polynomial time with 
 a randomized algorithm \cite{Williams09}.
 
@@ -997,7 +994,7 @@ a randomized algorithm \cite{Williams09}.
 If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
 polynomial time deterministic algorithm. However, this
-\amnote*{doubled word, choose one}{implies proving} superpolynomial 
+implies proving superpolynomial 
 lower bounds for arithmetic circuit sizes, which is notoriously hard \cite{Kabanets03}. 
 Therefore, with respect to the several decades of 
 sustained effort directed at circuit lower bounds \cite{Kabanets03}, 
@@ -1041,7 +1038,7 @@ However, this framework is very generic since it
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
 Creative algebrizations, though, 
-have potential for \amnote[inline,nomargin]{exploiting} these properties.
+have potential for exploiting these properties.
 
 Indeed, faster algorithms for specific combinatorial problems 
 have been found by designing new algebrizations utilizing techniques 
