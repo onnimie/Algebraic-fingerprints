@@ -871,14 +871,18 @@ $Q(\delta) \neq \mathbf{0}_F$ with a high probability over an arbitrary $\delta 
 Of course, $\mathbf{F}$ must have characteristic 2. For this, \citeauthor{Williams09} 
 used the field $GF(2^{l})$ with $l \in \N$ \cite{Williams09}. By Schwartz-Zippel, $Q(S)$ 
 evaluates to $\mathbf{0}_F$ over a random assignment $S \to GF(2^{l})$ with probability 
-at most $k/{2^l}$. For example with $k$-path, 
-\citeauthor{Williams09} used $l = 3 + \log_2k$, 
+at most $k/{2^l}$. With the $k$-path problem, for instance, \citeauthor{Williams09} used $l = 3 + \log_2k$, 
 which sets the probability of a false-negative evaluation 
-to at most $1/2^3$. 
-For the $k$-path problem, \citeauthor{Koutis08} 
+to at most $1/2^3$. Note that unlike with $\Z_2$, 
+we do not need the additive identity here, 
+and we can assign fingerprints to values of $GF(2^{l}) \setminus \{\mathbf{0}\}$.
+
+For $k$-path, \citeauthor{Koutis08} 
 gave a randomized \bigOstar{2^{3k/2}} time algorithm \cite{Koutis08}, 
 and \citeauthor{Williams09} developed this into a randomized \bigOstar{2^k} 
-time algorithm \cite{Williams09} with the ideas discussed here.
+time algorithm \cite{Williams09} with the ideas discussed here. 
+Furthermore, \citeauthor{Williams09} 
+generalized the technique by introducing the parameter $l$ for the Galois field.
 
 \subsection{Time and space complexity}
 \label{sect:complexity}
@@ -983,11 +987,6 @@ The derandomization of the general framework seems hard since algebraic fingerpr
 uses the fact that polynomial identity testing can be solved in polynomial time with 
 a randomized algorithm \cite{Williams09}.
 
-\begin{anamnote}[nomargin]{}
-  Couldn't someone improve the framework so it doesn't rely on PIT at all?
-  This would get rid of the derandomization barrier
-\end{anamnote}
-
 If algebraic fingerprinting can be derandomized 
 in polynomial time, it implies that polynomial identity testing can be solved with a 
 polynomial time deterministic algorithm. However, this
@@ -997,6 +996,11 @@ Therefore, with respect to the several decades of
 sustained effort directed at circuit lower bounds \cite{Kabanets03}, 
 it seems unlikely that someone discovers a derandomization of polynomial identity testing 
 in the near future.
+
+Thus, finding a deterministic algorithm 
+probably requires a different apporach from polynomial identity testing. 
+Although this is mostly outside the scope of this thesis, 
+in \Cref{sect:other_improvements} we briefly return to this discussion.
 
 \subsection{Finding the solution}
 \label{sect:finding_the_solution}
@@ -1100,7 +1104,7 @@ a multivariate polynomial $P$, where the monomials are
 to cycle covers of the input graph. Evaluating $P$ over a suitable ring, 
 non-Hamiltonian cycle covers cancel out, and we detect 
 only Hamiltonian cycle covers, i.e., valid solutions to the underlying problem.
-\amnote{This all sounds like magic to me \texttt{:)}}
+%\amnote{This all sounds like magic to me \texttt{:)}}
 
 \citeauthor{Björklund14} achieved this by labeling cycle covers such 
 that all non-Hamiltonian cycle covers receive a label identical 
@@ -1115,14 +1119,14 @@ For detecting whether $P$ is identical to zero (no solutions exist), \citeauthor
 employed the same idea of polynomial identity testing as in \Cref{sect:polynomial_identity_testing}.
 For achieving the time complexity of \bigOstar{1.657^n}, \citeauthor{Björklund14} 
 utilized the natural interpretation of a sum of labeled cycle covers as 
-a matrix permanent \cite{Björklund14}. 
-Moreover, the matrix permanent
-is identical to the determinant of the matrix 
-over a ring of characteristic 2 \cite{Björklund14}, 
-which essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
+a matrix permanent \cite{Björklund14}.
+
+While the matrix permanent is generally very hard to compute, in characteristic 2 it is identical 
+to the matrix determinant which is significantly easier to compute. In simple terms, the permanent is 
+the determinant where every subtraction is replaced with addition. Note that in characteristic 2 however, 
+there is no distinction between these operations. 
+This essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
 to detect a Hamiltonian path.
-\amnote{Aha... Side note: computing the permanent in general is very hard!}
-\amnote{Maybe add quick note about what permanent is}
 
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
@@ -1135,12 +1139,14 @@ detecting different types of monomials, i.e., \emph{q-monomials}.
 $q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
 were also further studied by \textcite{Chen14}.
 
-Much effort \cite{Chen13b, Chen13c, Fomin14, Pratt19, Brand19, Brand21, Brand22} 
+As mentioned in \Cref{sect:derandomization}, algebraic fingerprinting 
+relies on randomized methods which are hard to derandomize. 
+Much effort \cite{Chen13b, Chen13c, Fomin17, Pratt19, Brand19, Brand21, Brand22} 
 has been directed into deterministic algorithms for 
 instances of multilinear monomial detection, and 
 closing the gap between the deterministic and the randomized algorithms. 
 The general deterministic $k$-multilinear monomial detection is solved in
-in \bigOstar{3.84^k} time \cite{Fomin14}, though methods that result in 
+in \bigOstar{3.84^k} time \cite{Fomin17}, though methods that result in 
 much faster algorithms for specific problems 
 have been found. For example, the state-of-the-art deterministic algorithm for $k$-path 
 runs in \bigOstar{2.55^k} time by computing partial differentials of multivariate polynomials \cite{Brand21}.
@@ -1162,10 +1168,10 @@ and/or temporal properties
 
 The evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
 However, the matrix representations of the group algebras used 
-offer possibilities for parallelization. \textcite{Midas19} observed this and designed 
-an optimized distributed algorithm for multilinear monomial detection. 
-The authors showed applications of this method that outperform the previously 
-fastest parallel algorithms for several \amnote*{?}{network scan statistics} problems.
+offer possibilities for parallelization. \textcite{Midas19} observed this and 
+optimized distributed algorithms for multilinear monomial detection. 
+Using these methodologies, the authors showed applications that outperform the previously 
+fastest parallel algorithms for e.g. anomaly detection with graph scan statistics.
 
 %\clearpage
 \section{Conclusion}
@@ -1190,7 +1196,7 @@ by elements randomly chosen from $GF(2^{l}) \setminus \{\mathbf{0}\}$.
 This gives a randomized algorithm for 
 $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
 
-As discussed in \Cref{sect:other_improvements}, algebraic fingerprints 
+As mentioned in \Cref{sect:other_improvements}, algebraic fingerprints 
 have been studied for deterministic algorithms as well; closing 
 the gap between the runtimes of deterministic and randomized algorithms 
 has seen great effort, and the gaps for several problems are still bound for improvements.
