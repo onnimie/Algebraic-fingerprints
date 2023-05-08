@@ -1036,7 +1036,8 @@ algorithm a polynomial number of times for different subgraphs of the original i
 
 As mentioned in \Cref{sect:algebra_is_optimal}, 
 algebraic fingerprinting as a framework 
-for $k$-multilinear monomial detection has a lower bound of \bigOmega{2^k}. 
+for $k$-multilinear monomial detection has a lower bound of
+\amnote*{$\Omega$ or $\Omega*$?}{\bigOmega{2^k}}. 
 However, this framework is very generic since it 
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
@@ -1048,8 +1049,8 @@ have been found by designing new algebrizations utilizing techniques
 similar to algebraic fingerprinting. In \Cref{sect:cancel_nonsolutions}, 
 we see how \textcite{Björklund14} 
 exploited the cancelation due to characteristic to cancel non-solution monomials 
-by clever design of algebrization. 
-
+\amnote*{?}{by clever design of algebrization}. 
+\amnote{Join paragraphs}
 For parameterized problems in general, 
 \Cref{sect:other_improvements} 
 briefly overviews other ideas and 
@@ -1120,9 +1121,9 @@ employed the same idea of polynomial identity testing as in \Cref{sect:polynomia
 For achieving the time complexity of \bigOstar{1.657^n}, \citeauthor{Björklund14} 
 utilized the natural interpretation of a sum of labeled cycle covers as 
 a matrix permanent \cite{Björklund14}.
-
-In simple terms, the matrix permanent is 
-the matrix determinant where every subtraction is replaced with addition. 
+\amnote{Join paragraphs}
+\amnote*{Put in parentheses}{In simple terms, the matrix permanent is 
+the matrix determinant where every subtraction is replaced with addition. }
 While the permanent is generally very hard to compute, and the determinant is significantly easier, 
 they are identical in characteristic 2: there is no distinction between subtraction and addition. 
 This essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
@@ -1131,19 +1132,25 @@ to detect a Hamiltonian path.
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
 
-Since the runtime of algebraic fingerprinting is arguably optimized for 
+Since the runtime of algebraic fingerprinting is
+\amnote*{Why only \enquote{arguably}?}{arguably} optimized for 
 the general multilinear monomial detection, much research has been 
-done on specific settings. In their series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
-\citeauthor{Chen13a} studied complexities for different types of multivariate polynomials, and
+done on specific settings. In \amnote*[inline,nomargin]{a}{their} series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
+\citeauthor{Chen13a} studied complexities for different types of multivariate
+polynomials
+\amnote*{drop comma}, and
 detecting different types of monomials, i.e., \emph{q-monomials}. 
 $q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
-were also further studied by \textcite{Chen14}.
+were also further studied by
+\amnote*{Curiously these are different Chens... Can you reformulate text so this
+isn't ambiguous?}{\textcite{Chen14}}.
 
 As mentioned in \Cref{sect:derandomization}, algebraic fingerprinting 
 relies on randomized methods which are hard to derandomize. 
 Much effort \cite{Chen13b, Chen13c, Fomin17, Pratt19, Brand19, Brand21, Brand22} 
 has been directed into deterministic algorithms for 
-instances of multilinear monomial detection, and 
+instances of multilinear monomial detection
+\amnote*{drop comma}, and 
 closing the gap between the deterministic and the randomized algorithms. 
 The general deterministic $k$-multilinear monomial detection is solved in
 in \bigOstar{3.84^k} time \cite{Fomin17}, though methods that result in 
@@ -1171,7 +1178,8 @@ However, the matrix representations of the group algebras used
 offer possibilities for parallelization. \textcite{Midas19} observed this and 
 optimized distributed algorithms for multilinear monomial detection. 
 Using these methodologies, the authors showed applications that outperform the previously 
-fastest parallel algorithms for e.g. anomaly detection with graph scan statistics.
+fastest parallel algorithms for e.g. anomaly detection with
+\amnote*{still unclear what this is}{graph scan statistics}.
 
 %\clearpage
 \section{Conclusion}
