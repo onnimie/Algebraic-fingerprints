@@ -48,7 +48,6 @@ sortcites  % sorts citations
 ]{biblatex}
 \addbibresource{sources.bib}
 \usepackage[rightcaption]{sidecap}
-\usepackage{graphicx} % for images
 
 % For comments (remove from final version)
 \usepackage[draft]{fixme}
@@ -59,6 +58,15 @@ sortcites  % sorts citations
 
 % Koko dokumentin kattavia asetuksia:
 \graphicspath{ {./images} } % give path to images for use in figures
+
+\usepackage{graphicx} % for figures
+\usepackage{subcaption}
+\DeclareCaptionFormat{custom}
+{
+    \textbf{#1#2}\small{#3}
+}
+\captionsetup{format=custom}
+\captionsetup{width=0.8\textwidth}
 
 % Tavutettavia sanoja:
 %\hyphenation{vää-rin me-ne-vi-en eri-kois-ten sa-no-jen tavu-raja-ehdo-tuk-set}

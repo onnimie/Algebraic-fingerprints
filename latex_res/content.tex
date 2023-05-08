@@ -167,14 +167,13 @@ to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ ar
 indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
 %
 \begin{figure}[h]
-  \includegraphics[width=0.3\textwidth, height=3.7cm]{3D_matching.png}
+  \includegraphics[width=0.5\textwidth, height=5.6cm]{3D_matching_new.png}
   \centering
   \caption{An example instance of $k$-3D matching, with inputs defined 
-  as above. 
-  TODO: change from edges to bubbles or something similar without relying on colors.}
+  as above. The sets $A, B$ and $C$ are aligned as columns. 
+  The triples $T$ are drawn to overlap these columns horizontally.}
   \label{fig:3D_matching}
 \end{figure}
-%\amnote{TeX-internal tool for diagrams: TikZ}
 
 Thus, we have succesfully recuded a combinatorial problem to an 
 algebraic one that is multilinear monomial detection. 
@@ -302,7 +301,7 @@ and \emph{maximum graph motif} problems which are relevant in e.g. bioinformatic
 \textcite{Cadena17} 
 applied algebraic fingerprinting to general \emph{graph scan statistics} 
 which is a methodology that detects anomalies in a graph. This is relevant in 
-general network design problems and e.g. social network analysis.
+general network design problems and e.g. social network analysis. TODO: quickquik example of anomaly
 
 \section{Preliminaries}
 \label{sect:prelims}
@@ -317,7 +316,7 @@ is a class of parameterized problems that
 can be solved in polynomial time if the parameter is fixed. 
 \poly($n$) refers to a polymial function in $n$. 
 $\mathcal O$* hides factors polynomial to the input size, e.g., 
-\bigO{n^3k^n} = \bigOstar{k^n}.
+\bigO{n^3k^n} = \bigOstar{k^n}. Ditto for $\Omega$*.
 
 \subsection{Algebra} 
 \label{sect:prelims_algebra}
@@ -1036,8 +1035,7 @@ algorithm a polynomial number of times for different subgraphs of the original i
 
 As mentioned in \Cref{sect:algebra_is_optimal}, 
 algebraic fingerprinting as a framework 
-for $k$-multilinear monomial detection has a lower bound of
-\amnote*{$\Omega$ or $\Omega*$?}{\bigOmega{2^k}}. 
+for $k$-multilinear monomial detection has a lower bound of $\Omega$*$\{2^k\}$. 
 However, this framework is very generic since it 
 approaches the abstracted multilinear monomial detection without 
 utilizing the combinatorial properties specific to the underlying problem. 
@@ -1104,7 +1102,6 @@ a multivariate polynomial $P$, where the monomials are
 to cycle covers of the input graph. Evaluating $P$ over a suitable ring, 
 non-Hamiltonian cycle covers cancel out, and we detect 
 only Hamiltonian cycle covers, i.e., valid solutions to the underlying problem.
-%\amnote{This all sounds like magic to me \texttt{:)}}
 
 \citeauthor{Björklund14} achieved this by labeling cycle covers such 
 that all non-Hamiltonian cycle covers receive a label identical 
@@ -1132,15 +1129,14 @@ that is given by the general framework.
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
 
-Since the runtime of algebraic fingerprinting is
-\amnote*{Why only \enquote{arguably}?}{arguably} optimized for 
-the general multilinear monomial detection, much research has been 
+Since the algebraic fingerprinting technique is optimal for 
+the \emph{general} multilinear monomial detection, much research has been 
 done on specific settings. In a series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
 \citeauthor{Chen13a} studied complexities for different types of multivariate
-polynomials and
-detecting different types of monomials, i.e., \emph{q-monomials}. 
+polynomials and 
+detecting different types of monomials, e.g., \emph{q-monomials}. 
 $q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
-were also further studied by
+were also further studied by 
 \amnote*{Curiously these are different Chens... Can you reformulate text so this
 isn't ambiguous?}{\textcite{Chen14}}.
 
