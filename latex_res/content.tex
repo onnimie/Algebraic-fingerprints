@@ -1050,7 +1050,6 @@ similar to algebraic fingerprinting. In \Cref{sect:cancel_nonsolutions},
 we see how \textcite{Björklund14} 
 exploited the cancelation due to characteristic to cancel non-solution monomials 
 \amnote*{?}{by clever design of algebrization}. 
-\amnote{Join paragraphs}
 For parameterized problems in general, 
 \Cref{sect:other_improvements} 
 briefly overviews other ideas and 
@@ -1121,13 +1120,14 @@ employed the same idea of polynomial identity testing as in \Cref{sect:polynomia
 For achieving the time complexity of \bigOstar{1.657^n}, \citeauthor{Björklund14} 
 utilized the natural interpretation of a sum of labeled cycle covers as 
 a matrix permanent \cite{Björklund14}.
-\amnote{Join paragraphs}
-\amnote*{Put in parentheses}{In simple terms, the matrix permanent is 
-the matrix determinant where every subtraction is replaced with addition. }
+(In simple terms, the matrix permanent is 
+the matrix determinant where every subtraction is replaced with addition.) 
 While the permanent is generally very hard to compute, and the determinant is significantly easier, 
 they are identical in characteristic 2: there is no distinction between subtraction and addition. 
 This essentially allowed \citeauthor{Björklund14} to merely compute a matrix determinant 
-to detect a Hamiltonian path.
+to detect a Hamiltonian path, 
+and surpass the \bigOstar{2^n} bound 
+that is given by the general framework.
 
 \subsection{Other research in detecting multilinear monomials}
 \label{sect:other_improvements}
@@ -1135,10 +1135,9 @@ to detect a Hamiltonian path.
 Since the runtime of algebraic fingerprinting is
 \amnote*{Why only \enquote{arguably}?}{arguably} optimized for 
 the general multilinear monomial detection, much research has been 
-done on specific settings. In \amnote*[inline,nomargin]{a}{their} series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
+done on specific settings. In a series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
 \citeauthor{Chen13a} studied complexities for different types of multivariate
-polynomials
-\amnote*{drop comma}, and
+polynomials and
 detecting different types of monomials, i.e., \emph{q-monomials}. 
 $q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
 were also further studied by
@@ -1149,8 +1148,7 @@ As mentioned in \Cref{sect:derandomization}, algebraic fingerprinting
 relies on randomized methods which are hard to derandomize. 
 Much effort \cite{Chen13b, Chen13c, Fomin17, Pratt19, Brand19, Brand21, Brand22} 
 has been directed into deterministic algorithms for 
-instances of multilinear monomial detection
-\amnote*{drop comma}, and 
+instances of multilinear monomial detection and 
 closing the gap between the deterministic and the randomized algorithms. 
 The general deterministic $k$-multilinear monomial detection is solved in
 in \bigOstar{3.84^k} time \cite{Fomin17}, though methods that result in 
@@ -1177,9 +1175,9 @@ The evaluation of the polynomial in the algebraic fingerprinting framework is do
 However, the matrix representations of the group algebras used 
 offer possibilities for parallelization. \textcite{Midas19} observed this and 
 optimized distributed algorithms for multilinear monomial detection. 
-Using these methodologies, the authors showed applications that outperform the previously 
-fastest parallel algorithms for e.g. anomaly detection with
-\amnote*{still unclear what this is}{graph scan statistics}.
+Using these algorithms, the authors showed applications that outperform the previously 
+fastest parallel algorithms in e.g. graph scan statistics (which 
+is a methodology that detects anomalies in graphs, see \Cref{sect:related_problems}).
 
 %\clearpage
 \section{Conclusion}
