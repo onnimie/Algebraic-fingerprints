@@ -166,7 +166,7 @@ We may see that the multilinear monomial $2a_1a_2b_1b_2c_1c_3$ corresponds
 to a solution to our problem: the triples $(a_1,b_1,c_1)$ and $(a_2,b_2,c_3)$ are 
 indeed disjoint, as seen in Figure \ref{fig:3D_matching}.
 %
-\begin{figure}[h]
+\begin{figure}[!h]
   \includegraphics[width=0.5\textwidth, height=5.6cm]{3D_matching_new.png}
   \centering
   \caption{An example instance of $k$-3D matching, with inputs defined 
@@ -182,6 +182,7 @@ are indeed satisfied by merely \emph{detecting} a solution, i.e., deciding wheth
 the underlying problem has a solution (although we briefly overview 
 actually finding a solution in \Cref{sect:finding_the_solution}).
 
+\FloatBarrier
 \subsection{Detecting a multilinear monomial}
 \label{sect:problem_definition}
 
@@ -503,14 +504,14 @@ Note that in \Cref{sect:fingerprints}, we augment a circuit with \emph{scalar mu
 though we denote them with standard multiplication gates.
 
 \begin{figure}[h]
-  \includegraphics[width=0.7\textwidth, height=5.9cm]{arithmetic_circuit_EXAMPLE.png}
+  \includegraphics[width=0.8\textwidth, height=6.3cm]{arithmetic_circuit_EXAMPLE.png}
   \centering
   \caption{A circuit for evaluating $(ab+cd)^2$. 
   Note that the input terminals have been copied for clarity.}
   \label{fig:circuit_example}
 \end{figure}
 
-%\clearpage
+\FloatBarrier
 \section{General multilinear monomial detection}
 \label{sect:general_mld}
 
@@ -790,14 +791,15 @@ gates that read the output of $G_i$. We note the new polynomial represented by t
 as $P'(X, S)$. Note that here 
 \citeauthor{Koutis08} picked random elements from $\Z_2$ for $s_i$.
 
-\begin{figure}[h]
-  \includegraphics[width=\textwidth, height=7cm]{arithmetic_circuit_FINGERPRINTS.png}
+\begin{figure}[!h]
+  \includegraphics[width=\textwidth, height=7.5cm]{arithmetic_circuit_FINGERPRINTS.png}
   \centering
   \caption{A fingerprinted circuit for evaluating $(ab+cd)^2$. 
   Note the added terminals on the right circuit.}
   \label{fig:circuit_fingerprints}
 \end{figure}
 
+\FloatBarrier
 \subsection{Polynomial identity testing}
 \label{sect:polynomial_identity_testing}
 
@@ -922,9 +924,7 @@ the given implementation for (\ref{eq:polynomial_identity})
 is valid through $\kappa$.
 
 Computing on these matrices, 
-\textcite{Koutis08} detected $k$-multilinear monomials 
-%by computing the \omnote*{add to prelims?}{trace} of the matrix resulting 
-%from the evaluation of $P_S(X)$ over $\mathcal{M}$. The trace can be computed 
+\textcite{Koutis08} detected $k$-multilinear monomials  
 in time \bigO{2^k(nk+t)} and space \bigO{nk+s}, where $t$ and $s$ are the time 
 and space complexity of the $g(n)$ arithmetic operations, respectively. 
 For $GF(2^{l})[Z_2^k]$, the same ideas are used, though we omit 
