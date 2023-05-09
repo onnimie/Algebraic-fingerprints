@@ -6,13 +6,14 @@
 % Avainsanojen lista pitää merkitä main.tex-tiedoston kohtaan \KEYWORDS.
 
 \begin{fiabstract}
-  Tässä työssä tutkitaan, kuinka parametrisoituja kombinatorisia ongelmia voidaan 
+  Tässä työssä tutkitaan, kuinka kombinatorisia ongelmia voidaan 
   ratkaista %löytämällä $k$-asteinen multilineaarinen monomi monimuuttujaisesta polynomista 
   algebrallisin keinoin. Kandidaatintyö keskittyy tarkemmin 
-  Williamsin ja Koutisin algebrallisia sormenjälkiä hyödyntävään 
+  Koutisin (ICALP 2008) ja Williamsin (ICALP 2009) algebrallisia sormenjälkiä hyödyntävään 
   tekniikkaan, jolla voidaan havaita multilineaarinen monomi tehokkaasti. 
   Työ tutkii tekniikan taustalla olevaa algebraa ja sen mahdollisia rajoja,  
-  kun sitä tarkastellaan yleisenä kehyksenä parametrisoitujen ongelmien ratkaisemiseksi. 
+  kun sitä tarkastellaan yleisenä kehyksenä kombinatoristen ongelmien ratkaisemiseksi 
+  parametrisoidussa kompleksisuudessa. 
   Viimeiseksi pohditaan keinoja, joilla tätä kehystä voitaisiin kehittää tai jopa 
   ohittaa sen antama raja algoritmien tehokkuudelle. 
 
@@ -21,9 +22,9 @@
   Algebrallisten sormenjälkien avulla multilineaarinen monomi 
   voidaan havaita ajassa \bigO{2^k \cdot \poly(n)}, 
   jossa $n$ on $k$-asteisen polynomin muuttujien lukumäärä. Tämä johtaa yleiseen kehykseen, 
-  jolla parametrisoituja kombinatorisia ongelmia voidaan ratkaista. 
+  jolla kombinatorisia ongelmia voidaan ratkaista parametrisoidussa kompleksisuudessa. 
   Tällä hetkellä algebrallisten sormenjälkien 
-  tekniikka pohjaakin nopeimpia algoritmeja monille parametrisoiduille 
+  tekniikka pohjaakin nopeimpia algoritmeja monille 
   kombinatorisille ongelmille.
 
   \bigOmega{2^k \cdot \poly(n)} on kuitenkin 
@@ -32,7 +33,7 @@
   kehys kohdistuu hyvin yleismuotoiseen multilineaaristen monomien havaitsemisongelmaan; 
   jos hyödynnetään ongelmakohtaisia kombinatorisia ominaisuuksia, 
   voidaan löytää algoritmi, joka ratkaisee ongelman nopeammin. 
-  Muun muassa Björklund kehitti 
+  Muun muassa Björklund (FOCS 2010) kehitti 
   algebrallisten sormenjälkien antamien ideoiden avulla algoritmin, joka 
   löytää Hamiltonisen polun ajassa \bigO{1.657^n \cdot \poly(n)}. 
   Näyttääkin siltä, että algebrallisten sormenjälkien syvä ymmärrys sekä ongelmakohtainen 
