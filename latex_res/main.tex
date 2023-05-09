@@ -47,7 +47,6 @@ maxbibnames=99,  % prevents "et al." in bibliography
 sortcites  % sorts citations
 ]{biblatex}
 \addbibresource{sources.bib}
-\usepackage[rightcaption]{sidecap}
 
 % For comments (remove from final version)
 \usepackage[draft]{fixme}
@@ -57,9 +56,10 @@ sortcites  % sorts citations
 \FXRegisterAuthor{om}{anom}{OM} % if you want to add comments too
 
 % Koko dokumentin kattavia asetuksia:
-\graphicspath{ {./images} } % give path to images for use in figures
 
 \usepackage{graphicx} % for figures
+\graphicspath{ {./images} } % give path to images for use in figures
+
 \usepackage{subcaption}
 \DeclareCaptionFormat{custom}
 {

@@ -9,27 +9,27 @@
   Tässä työssä tutkitaan, kuinka kombinatorisia ongelmia voidaan 
   ratkaista %löytämällä $k$-asteinen multilineaarinen monomi monimuuttujaisesta polynomista 
   algebrallisin keinoin. Kandidaatintyö keskittyy tarkemmin 
-  Koutisin (ICALP 2008) ja Williamsin (ICALP 2009) algebrallisia sormenjälkiä hyödyntävään 
-  tekniikkaan, jolla voidaan havaita multilineaarinen monomi tehokkaasti. 
+  Koutisin (ICALP 2008) ja Williamsin (ICALP 2009) algebrallisia sormenjälkiä 
+  hyödyntävään tekniikkaan. 
   Työ tutkii tekniikan taustalla olevaa algebraa ja sen mahdollisia rajoja,  
   kun sitä tarkastellaan yleisenä kehyksenä kombinatoristen ongelmien ratkaisemiseksi 
   parametrisoidussa kompleksisuudessa. 
-  Viimeiseksi pohditaan keinoja, joilla tätä kehystä voitaisiin kehittää tai jopa 
-  ohittaa sen antama raja algoritmien tehokkuudelle. 
+  Viimeiseksi työssä pohditaan keinoja, joilla tätä kehystä voidaan kehittää tai joilla 
+  voidaan ohittaa sen antama raja algoritmien tehokkuudelle. 
 
   Kombinatoriset ongelmat voidaan redusoida algebralliseen muotoon, jossa 
   pyritään havaitsemaan multilineaarinen monomi monimuuttujaisesta polynomista. 
   Algebrallisten sormenjälkien avulla multilineaarinen monomi 
   voidaan havaita ajassa \bigO{2^k \cdot \poly(n)}, 
-  jossa $n$ on $k$-asteisen polynomin muuttujien lukumäärä. Tämä johtaa yleiseen kehykseen, 
+  jossa $n$ on $k$-asteisen polynomin muuttujien lukumäärä. 
+  Tämä toimii yleisen kehyksenä, 
   jolla kombinatorisia ongelmia voidaan ratkaista parametrisoidussa kompleksisuudessa. 
   Tällä hetkellä algebrallisten sormenjälkien 
-  tekniikka pohjaakin nopeimpia algoritmeja monille 
+  tekniikka pohjaa nopeimpia algoritmeja monille 
   kombinatorisille ongelmille.
 
   \bigOmega{2^k \cdot \poly(n)} on kuitenkin 
-  kehyksen alaraja: algebrallisten sormenjälkien 
-  avulla ei voida yleisesti havaita multilineaarisia monomeja nopeammin. Toisaalta 
+  kehyksen alaraja: tekniikalla ei voida yleisesti havaita multilineaarisia monomeja nopeammin. Toisaalta 
   kehys kohdistuu hyvin yleismuotoiseen multilineaaristen monomien havaitsemisongelmaan; 
   jos hyödynnetään ongelmakohtaisia kombinatorisia ominaisuuksia, 
   voidaan löytää algoritmi, joka ratkaisee ongelman nopeammin. 
@@ -37,8 +37,7 @@
   algebrallisten sormenjälkien antamien ideoiden avulla algoritmin, joka 
   löytää Hamiltonisen polun ajassa \bigO{1.657^n \cdot \poly(n)}. 
   Näyttääkin siltä, että algebrallisten sormenjälkien syvä ymmärrys sekä ongelmakohtainen 
-  hyödyntäminen ovat avaimia nopeammille algoritmeille ja kehitykselle yleisestä algebrallisesta 
-  kehyksestä.
+  hyödyntäminen ovat avaimia nopeammille algoritmeille.
 %
 %Tiivistelmätekstiä tähän (\languagename). Huomaa, että tiivistelmä tehdään %vasta kun koko työ on muuten kirjoitettu.
 
