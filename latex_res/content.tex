@@ -13,7 +13,7 @@ see also \Cref{sect:prelims_algebra}).
 This particular problem has proven to be fundamental since many combinatorial 
 problems can be reduced to it. 
 The idea of multilinear monomial detection 
-for parameterized combinatorial problems was 
+for combinatorial problems in parameterized complexity was 
 first introduced by \citeauthor{Koutis05} in an early work 
 \cite{Koutis05}, where a set packing problem is 
 reduced to multilinear monomial detection.
@@ -269,15 +269,15 @@ first introduced by \textcite{Koutis08} and
 further developed by \textcite{Williams09} 
 solves $k$-multilinear monomial detection in \bigOstar{2^k} time. 
 Since the technique focuses on the abstract $k$-multilinear monomial detection, 
-to which many parameterized problems can be reduced to, 
+to which many combinatorial problems can be reduced to, 
 it gives a general framework for 
-solving parameterized problems \cite{KouWil15}.
+solving combinatorial problems in parameterized complexity \cite{KouWil15}.
 
 \subsection{Related problems}
 \label{sect:related_problems}
 
 The importance of multilinear monomial detection lies in the fact 
-that many parameterized combinatorial problems, as we see in this section, 
+that many combinatorial problems, as we see in this section, 
 can be reduced to instances of it. 
 Thus, there is great interest in efficiently solving the 
 general $k$-multilinear monomial detection problem. 
@@ -1047,7 +1047,7 @@ have been found by designing new algebrizations utilizing techniques
 similar to algebraic fingerprinting. In \Cref{sect:cancel_nonsolutions}, 
 we see how \textcite{Björklund14} designed a clever algebrization that  
 exploits the cancelation due to characteristic to cancel non-solution monomials. 
-For parameterized problems in general, 
+For combinatorial problems in general, 
 \Cref{sect:other_improvements} 
 briefly overviews other ideas and 
 improvements in the domain of $k$-multilinear monomial detection.
@@ -1178,12 +1178,12 @@ is a methodology that detects anomalies in graphs, see \Cref{sect:related_proble
 From \Cref{sect:related_problems}, 
 it can be seen  
 that a fast algorithm for $k$-multilinear monomial detection gives a 
-fast algorithm for many parameterized combinatorial problems. 
+fast algorithm for many combinatorial problems in parameterized complexity. 
 We found that algebraic fingerprinting solves this problem by 
 evaluating the given multivariate polynomial over a specific algebraic structure. 
 Thus, we 
 may say that algebraic fingerprinting gives a general framework for solving 
-parameterized combinatorial problems. 
+combinatorial problems. 
 
 In \Cref{sect:algebraic_fingerprinting}, we discussed the idea behind 
 algebraic fingerprinting: generate a polynomial $P(X)$ from the algebrization of 
