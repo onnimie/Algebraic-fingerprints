@@ -723,27 +723,27 @@ Since $\mathbf{F}$ has characteristic 2 however,
 multilinear monomials may still cancel each other out 
 in $\mathbf{F}[Z_2^k]$ if they have even leading 
 coefficients in $P(X)$. In such case, multilinear monomials do not 
-survive under any assignment $X \to \mathbf{F}[\Z_2^k]$. 
+survive under \emph{any} assignment $X \to \mathbf{F}[\Z_2^k]$. 
 Next, we see how \citeauthor{Koutis08} approached this problem.
 
 \subsubsection{Fingerprints to prevent unwanted cancelation}
 \label{sect:fingerprints}
 
 Indeed, if we take the $k$-3D matching instance from Section \ref{sect:algebrization}, 
-we notice that the multilinear monomials in $P_2$ have even coefficients, and thus 
+we notice that the multilinear monomial in $P_2$ has an even coefficient, and thus 
 would cancel out in $\mathbf{F}[Z_2^k]$ due to characteristic.
 \begin{align*}
   P_2 &= (a_1b_1c_1 + a_1b_2c_2 + a_2b_2c_3)^2  \\
   &= a_1^2b_1^2c_1^2 + a_1^2b_2^2c_2^2 + a_2^2b_2^2c_3^2 + 
   2a_1^2b_1b_2c_1c_2 + 2a_1a_2b_1b_2c_1c_3 + 2 a_1a_2b_2^2c_2c_3. 
 \end{align*}
-In general, when $k$ is even, multilinear monomials will have even coefficients. 
+In general, when $k$ is even, monomials in $P_k$ will have even coefficients. 
 
 To tackle this issue, one idea is to add auxiliary indeterminates, 
 called \emph{fingerprints} \cite{KouWil15}, to the monomials 
 in order to make them unique. For example, let $S = \{s_1, \ldots, s_6\}$ 
 be the set of an appropriate number of fingerprints 
-and augment them to $P_k$ as follows: 
+and augment them to $P_2$ as follows: 
 \begin{align*}
   P'_2 = &\:(s_1a_1b_1c_1 + s_2a_1b_2c_2 + s_3a_2b_2c_3)(s_4a_1b_1c_1 + s_5a_1b_2c_2 + s_6a_2b_2c_3) \\
   = &\:s_1s_4a_1^2b_1^2c_1^2 + s_2s_5a_1^2b_2^2c_2^2 + s_3s_6a_2^2b_2^2c_3^2 \: \\
@@ -752,12 +752,11 @@ and augment them to $P_k$ as follows:
 \end{align*}
 
 Then, the multilinear monomial detection algorithm 
-could assign every $a \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
+could assign every $x \in X \cup S$ to $\mathbf{F}[\Z_2^k]$. 
 With this, non-multilinear monomials will still vanish, but multilinear monomials 
 will not \emph{identically} cancel each other out when $k$ is even. 
 
-However, introducing new indeterminates raises the degree of multilinear
-monomials. 
+However, introducing new indeterminates raises the degree of monomials. 
 Therefore, it increases the probability that indeterminates in a multilinear monomial are 
 assigned the same value from $\mathbf{F}[Z_2^k]$, which results in the 
 multilinear monomial evaluating to zero with higher probability. 
@@ -784,7 +783,7 @@ In practice, fingerprints can be implemented
 into the algebrization as follows (see also Figure \ref{fig:circuit_fingerprints}): 
 for every multiplication gate $G_i$ feeding into an addition gate 
 in the arithmetic circuit $A$ for $P(X)$, 
-pick a unique $s_i \in S$. Insert a new multiplication gate $\overbar{G_i}$ that takes 
+pick a unique $s_i \in S$. Insert a new (scalar) multiplication gate $\overbar{G_i}$ that takes 
 as input $s_i$ and the output of $G_i$. The output of $\overbar{G_i}$ feeds to the 
 gates that read the output of $G_i$. We note the new polynomial represented by this circuit 
 as $P'(X, S)$. Note that here 
@@ -814,11 +813,11 @@ In a sense, we switch the roles of coefficients and indeterminates in $P'(X, S)$
 to find a new polynomial $Q(S) \in \mathbf{K}[S]$. 
 
 Now, deciding whether a multilinear monomial exists in $P(X)$ is essentially given by 
-whether the polynomial $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$, 
+whether the polynomial $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is not identical to $\mathbf{0}$, 
 i.e., with $\Phi$ representing the family of mappings $S \to \mathbf{F}$, 
 \[
-  \forall \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
-  \colon P'(\overbar{X}, \phi) = \mathbf{0}.
+  \exists \phi \in \Phi %, \overbar{S} = \{\phi(s) \: | \: s \in S\} 
+  \colon P'(\overbar{X}, \phi) \neq \mathbf{0}.
 \]
 Therefore, we formulate algebraic fingerprinting as polynomial identity testing, i.e., 
 we test whether $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{0}$.
@@ -830,7 +829,7 @@ we test whether $P'(\overbar{X}, S) \in \mathbf{K}[S]$ is identical to $\mathbf{
 \end{problem}
 
 We frame $P'(\overbar{X}, S)$ as $Q(S) \in \mathbf{K}[S]$. 
-Here, it is necessary to test whether $Q(S)$ is identical to \emph{zero modulo 2}, 
+Here, it is necessary to test whether $Q(S)$ is identical to \emph{zero modulo 2} 
 since we used characteristic 2 to eliminate 
 the underlying non-multilinear monomials in $P'(\overbar{X}, S)$.
 
@@ -971,7 +970,7 @@ used for detecting $k$-multilinear monomials,
 the lengths of elements in $\mathcal{G}$ must be \bigOmega{2^k/k}.
 
 Thus for the general $k$-multilinear monomial detection, we may say 
-that algebraic fingerprinting is in some sense 
+that algebraic fingerprinting and the runtime of \bigOstar{2^k} are in some sense 
 optimal, and cannot be improved upon. 
 However, 
 ideas from algebraic fingerprints can be utilized for faster algorithms for 
@@ -996,7 +995,7 @@ it seems unlikely that someone discovers a derandomization of polynomial identit
 in the near future.
 
 Thus, finding a deterministic algorithm 
-probably requires a different apporach from polynomial identity testing. 
+probably requires a different approach from polynomial identity testing. 
 Although this is mostly outside the scope of this thesis, 
 in \Cref{sect:other_improvements} we briefly return to this discussion.
 
@@ -1007,21 +1006,22 @@ In many instances of multilinear monomial detection,
 a solution to the underlying problem can be directly found 
 from the multilinear monomials by 
 reverse-engineering the algebrization. 
-However in algebraic fingerprinting, we do not have this information on the monomials: 
+In algebraic fingerprinting, however, we do not have this information on the monomials: 
 when we assign the variables values and evaluate the polynomial, we may only detect the 
 presence of a solution. As such, algebraic fingerprinting applies to decision algorithms.
 
 However, while constructing such a decision algorithm is generally hard for 
 many combinatorial problems (e.g. problems in \Cref{sect:related_problems}), 
 finding the solution using such an algorithm 
-(i.e., constructing a \emph{search} algorithm) is often easy. 
+(i.e., constructing a \emph{search} algorithm given an oracle that decides the existence of a solution) 
+is often easy. 
 For example, it is widely known that decision and search algorithms 
 for NP-complete problems are essentially equivalent in complexities \cite{Bellare94}. 
 Moreover, since most of the problems in \Cref{sect:related_problems} 
 have search problems in FPT, it is known that a solution can be found in polynomial time when its 
 existence can be detected efficiently.
 
-For example, in \cite{Koutis08}, 
+For example in \cite{Koutis08}, 
 \citeauthor{Koutis08} gives an algorithm that detects a $k$-path, and shows that a 
 $k$-path can be found by \bigOstar{n+\min(k^2, m)} applications of the given
 algorithm, where $n$ is the number of vertices and $m$ the number of edges in the input graph. 
@@ -1129,7 +1129,7 @@ that is given by the general framework.
 
 Since the algebraic fingerprinting technique is optimal for 
 the \emph{general} multilinear monomial detection, much research has been 
-done on specific settings. There is a series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a}, 
+done on specific settings. There is a series of papers \cite{Chen10, Chen11a, Chen11b, Chen13a} 
 studying complexities for different types of multivariate polynomials and 
 detecting different types of monomials, e.g. \emph{q-monomials}. 
 Detecting $q$-monomials, i.e. $d$-degree monomials where every exponent is smaller than $d$, 
@@ -1162,8 +1162,8 @@ and/or temporal properties
 (i.e., we can solve constrained problems that exist in graphs with weights and timestamped vertices) 
 \cite{Thejaswi20}.
 
-The evaluation of the polynomial in the algebraic fingerprinting framework is done sequentially. 
-However, the matrix representations of the group algebras used 
+The evaluation of the polynomial is done sequentially in the algebraic fingerprinting framework. 
+However, the matrix representations of the group algebras 
 offer possibilities for parallelization. \textcite{Midas19} observed this and 
 optimized distributed algorithms for multilinear monomial detection. 
 Using these algorithms, the authors showed applications that outperform the previously 
@@ -1182,7 +1182,7 @@ We found that algebraic fingerprinting solves this problem by
 evaluating the given multivariate polynomial over a specific algebraic structure. 
 Thus, we 
 may say that algebraic fingerprinting gives a general framework for solving 
-combinatorial problems. 
+these combinatorial problems. 
 
 In \Cref{sect:algebraic_fingerprinting}, we discussed the idea behind 
 algebraic fingerprinting: generate a polynomial $P(X)$ from the algebrization of 
@@ -1190,7 +1190,7 @@ a combinatorial problem, and evaluate $P(X)$ over $GF(2^{l})[Z_2^k]$ with
 randomized assignments $X \to GF(2^{l})[Z_2^k]$ of form 
 $x_i \to (v_0 + v_i)$, augmented with scalar multiplications 
 by elements randomly chosen from $GF(2^{l}) \setminus \{\mathbf{0}\}$. 
-This gives a randomized algorithm for 
+This yields a randomized algorithm for 
 $k$-multilinear monomial detection that runs in \bigOstar{2^k} time.
 
 As mentioned in \Cref{sect:other_improvements}, algebraic fingerprints 
